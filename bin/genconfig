@@ -2,18 +2,27 @@
 
 require 'yaml'
 
+def pe_dir(version, family)
+  # If our version is the same as our family, we're installing a
+  # released version. Use the archive path. Otherwise, we want to use
+  # the development build path.
+  if version && family
+    if version == family
+      return "http://enterprise.delivery.puppetlabs.net/archives/releases/#{family}/"
+    else
+      return "http://enterprise.delivery.puppetlabs.net/#{family}/ci-ready"
+    end
+  end
+end
+
 # Pull our version information out of the environment
 PE_VERSION=ENV['pe_version']
 PE_FAMILY=ENV['pe_family']
+PE_UPGRADE_VERSION=ENV['pe_upgrade_version']
+PE_UPGRADE_FAMILY=ENV['pe_upgrade_family']
 
-# If our version is the same as our family, we're installing a
-# released version. Use the archive path. Otherwise, we want to use
-# the development build path.
-if PE_VERSION == PE_FAMILY
-  PE_DIR="http://enterprise.delivery.puppetlabs.net/archives/releases/#{PE_FAMILY}/"
-else
-  PE_DIR="http://enterprise.delivery.puppetlabs.net/#{PE_FAMILY}/ci-ready/"
-end
+PE_DIR = pe_dir PE_VERSION, PE_FAMILY
+PE_UPGRADE_DIR = pe_dir PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY
 
 # This regex determines if we're looking at a OS token or a node
 # token. If a node token, it captures the platform bittage and the
@@ -26,6 +35,8 @@ NODE_TEMPLATE = {
   'hypervisor' => 'vcloud',
   'pe_dir' => PE_DIR,
   'pe_ver' => PE_VERSION,
+  'pe_upgrade_dir' => PE_UPGRADE_DIR,
+  'pe_upgrade_ver' => PE_UPGRADE_VERSION,
 }
 
 # Mapping from character roles to string roles
