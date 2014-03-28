@@ -184,6 +184,14 @@ OSINFO = {
     'platform' => 'ubuntu-12.04-amd64',
     'template' => 'ubuntu-1204-x86_64'
   },
+  'ubuntu1404-32' => {
+    'platform' => 'ubuntu-14.04-i386',
+    'template' => 'ubuntu-1404-i386'
+  },
+  'ubuntu1404-64' => {
+    'platform' => 'ubuntu-14.04-amd64',
+    'template' => 'ubuntu-1404-x86_64'
+  },
   'windows2003-64' => {
     'platform' => 'windows-2003-64',
     'template' => 'win-2003-x86_64'
@@ -207,6 +215,10 @@ OSINFO = {
   'windows2012-64' => {
     'platform' => 'windows-2012-64',
     'template' => 'win-2012-x86_64'
+  },
+  'windows2012r2-64' => {
+    'platform' => 'windows-2012r2-64',
+    'template' => 'win-2012r2-x86_64'
   }
 }
 
