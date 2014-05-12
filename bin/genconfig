@@ -132,6 +132,10 @@ OSINFO = {
     'platform' => 'el-6-x86_64',
     'template' => 'redhat-6-x86_64'
   },
+  'redhat7-64' => {
+    'platform' => 'el-7-x86_64',
+    'template' => 'redhat-7-x86_64'
+  },
   'scientific5-32' => {
     'platform' => 'el-5-i386',
     'template' => 'scientific-5-i386'
