@@ -1,0 +1,8 @@
+#! /usr/bin/env ruby
+
+lib_dir = File.expand_path(File.dirname(File.dirname(__FILE__)), 'lib')
+$LOAD_PATH.unshift(lib_dir)
+
+require 'genconfig'
+
+GenConfig::CLI.new.execute!
