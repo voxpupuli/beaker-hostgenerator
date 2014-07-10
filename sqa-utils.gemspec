@@ -6,6 +6,13 @@ Gem::Specification.new do |s|
   s.description = "Utilities we use to help test things here at Puppet"
   s.authors     = ["Branan Purvine-Riley"]
   s.email       = ["sqa@puppetlabs.com"]
-  s.executables = ["genconfig"]
+  s.executables = ["genconfig", "genconfig2"]
   s.license     = 'Apache'
+
+  s.require_paths = ["lib"]
+
+  # Run time dependencies
+  s.add_runtime_dependency 'beaker', '1.15.0'
+  s.add_runtime_dependency 'json', '1.8'
+
 end

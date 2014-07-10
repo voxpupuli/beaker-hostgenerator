@@ -2,16 +2,17 @@ require 'genconfig/generator'
 
 module GenConfig
   class CLI
-    include GenConfig::Generator
     include GenConfig::Data
 
     def initialize
       @tokens = ARGV[0].split('-')
+      @hypervisor = ARGV[1] || 'vsphere'
     end
 
     def execute!
       # Tokenizing the config definition for great justice
-      yaml_string = generate @tokens
+      generator = GenConfig::Generator.create @hypervisor
+      yaml_string = generator.generate @tokens
       puts yaml_string
     end
   end
