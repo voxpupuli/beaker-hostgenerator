@@ -308,6 +308,11 @@ tokens.each do |toke|
     template = cfg['template']
     cfg['template'] = "#{QA_VCENTER_PATH}/#{template}"
 
+    # for 64-bit windows nodes, we may want to use the 32-bit agent
+    if ENV['pe_use_win32'] && ostype =~ /windows/ && bits == "64"
+      cfg['install_32'] = true
+    end
+
     # Some platforms have special requirements. We munge the node
     # config here if that is necessary.
     fixup_node cfg
