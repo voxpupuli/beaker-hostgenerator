@@ -164,6 +164,10 @@ OSINFO = {
     'platform' => 'el-6-x86_64',
     'template' => 'scientific-6-x86_64'
   },
+  'scientific6-64' => {
+    'platform' => 'el-7-x86_64',
+    'template' => 'scientific-7-x86_64'
+  },
   'sles10-32' => {
     'platform' => 'sles-10-i386',
     'template' => 'sles-10-i386'
