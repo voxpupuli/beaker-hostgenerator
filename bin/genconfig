@@ -164,7 +164,7 @@ OSINFO = {
     'platform' => 'el-6-x86_64',
     'template' => 'scientific-6-x86_64'
   },
-  'scientific6-64' => {
+  'scientific7-64' => {
     'platform' => 'el-7-x86_64',
     'template' => 'scientific-7-x86_64'
   },
