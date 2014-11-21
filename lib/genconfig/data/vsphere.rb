@@ -107,6 +107,18 @@ module GenConfig
           'platform' => 'el-6-x86_64',
           'template' => 'scientific-6-x86_64'
         },
+        'scientific7-64' => {
+          'platform' => 'el-7-x86_64',
+          'template' => 'scientific-7-x86_64'
+        },
+        'sles10-32' => {
+          'platform' => 'sles-10-i386',
+          'template' => 'sles-10-i386'
+        },
+        'sles10-64' => {
+          'platform' => 'sles-10-x86_64',
+          'template' => 'sles-10-x86_64'
+        },
         'sles11-32' => {
           'platform' => 'sles-11-i386',
           'template' => 'sles-11-i386'
@@ -115,13 +127,13 @@ module GenConfig
           'platform' => 'sles-11-x86_64',
           'template' => 'sles-11-x86_64'
         },
+        'sles12-64' => {
+          'platform' => 'sles-12-x86_64',
+          'template' => 'sles-12-x86_64'
+        },
         'solaris10-64' => {
           'platform' => 'solaris-10-i386',
           'template' => 'solaris-10-x86_64'
-        },
-        'solaris11-64' => {
-          'platform' => 'solaris-11-i386',
-          'template' => 'solaris-11-x86_64'
         },
         'solaris11-64' => {
           'platform' => 'solaris-11-i386',
