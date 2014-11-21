@@ -30,7 +30,6 @@ module GenConfig
       roles = node_info['roles']
 
       # node definition state
-
       platform = "#{ostype}-#{bits}"
       name = "#{platform}-#{nodeid}"
 

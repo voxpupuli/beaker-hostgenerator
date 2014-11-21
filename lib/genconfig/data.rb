@@ -2,11 +2,13 @@ module GenConfig
   module Data
     include GenConfig::Utils
 
-    # Pull our version information out of the environment
+    # Pull various informations out of the environment.
     PE_VERSION=ENV['pe_version']
     PE_FAMILY=ENV['pe_family']
     PE_UPGRADE_VERSION=ENV['pe_upgrade_version']
     PE_UPGRADE_FAMILY=ENV['pe_upgrade_family']
+
+    PE_USE_WIN32=ENV['pe_use_win32']
 
     ROLES = {
       'a' => 'agent',

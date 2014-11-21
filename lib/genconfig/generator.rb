@@ -41,6 +41,10 @@ module GenConfig
 
         host_name, host_config = generate_node node_info
 
+        if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
+          host_config['install_32'] = true
+        end
+
         @config['HOSTS'][host_name] = host_config
         nodeid += 1
       end
