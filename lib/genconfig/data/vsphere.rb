@@ -27,6 +27,10 @@ module GenConfig
           'platform' => 'el-6-x86_64',
           'template' => 'centos-6-x86_64'
         },
+        'centos7-64' => {
+          'platform' => 'el-7-x86_64',
+          'template' => 'centos-7-x86_64'
+        },
         'debian6-32' => {
           'platform' => 'debian-6-i386',
           'template' => 'debian-6-i386'
@@ -58,6 +62,10 @@ module GenConfig
         'oracle6-64' => {
           'platform' => 'el-6-x86_64',
           'template' => 'oracle-6-x86_64'
+        },
+        'oracle7-64' => {
+          'platform' => 'el-7-x86_64',
+          'template' => 'oracle-7-x86_64'
         },
         'osx109-64' => {
           'platform' => 'osx-10.9-x86_64',
