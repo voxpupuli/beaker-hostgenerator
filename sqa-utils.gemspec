@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # Run time dependencies
-  s.add_runtime_dependency 'beaker', '1.15.0'
+  s.add_runtime_dependency 'deep_merge'
   s.add_runtime_dependency 'json', '1.8'
 
 end

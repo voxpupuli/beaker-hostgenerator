@@ -1,8 +1,6 @@
 require 'genconfig/util'
 require 'genconfig/data'
 
-require 'beaker/options/options_hash'
-
 require 'yaml'
 require 'json'
 
@@ -22,7 +20,7 @@ module GenConfig
         raise "Invalid hypervisor #{type}"
       end
 
-      hclass.new Beaker::Options::OptionsHash.new
+      hclass.new
     end
 
     def generate( tokens )
@@ -49,21 +47,11 @@ module GenConfig
         nodeid += 1
       end
 
-      # Because a Beaker::Options::OptionsHash dump straight to yaml leaves in
-      # class metadata for each enclosed Beaker::Options::OptionsHash, we first
-      # have to dump it as json (because Beaker::Options::OptionsHash already
-      # has json support so why the hell not??). So we dump to json, load back a
-      # Ruby Hash now that we done with the recursive merge of
-      # Beaker::Options::OptionsHash, then dump that to_yaml using the yaml
-      # library's monkey patch. Whew.
-      #
-      config = @config.dump
-      config = JSON.load(config)
-      return config.to_yaml
+      return @config.to_yaml
     end
 
     def generate_node
-      raise "Method 'generate' not implemented!"
+      raise "Method 'generate_node' not implemented!"
     end
 
   end

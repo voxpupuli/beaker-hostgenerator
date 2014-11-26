@@ -5,12 +5,12 @@ module GenConfig
     include GenConfig::Data
 
     def initialize
+      # Tokenizing the config definition for great justice
       @tokens = ARGV[0].split('-')
       @hypervisor = ARGV[1] || 'vsphere'
     end
 
     def execute!
-      # Tokenizing the config definition for great justice
       generator = GenConfig::Generator.create @hypervisor
       yaml_string = generator.generate @tokens
       puts yaml_string

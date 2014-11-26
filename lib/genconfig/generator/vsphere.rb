@@ -1,16 +1,17 @@
 require 'genconfig/generator'
 require 'genconfig/data/vsphere'
 require 'genconfig/data'
+require 'deep_merge'
 
 module GenConfig
   class VSphere < GenConfig::Generator
     include GenConfig::Data
     include GenConfig::Data::VSphere
 
-    def initialize config
-      @config = config
-      @config.merge! BASE_CONFIG
-      @config.merge! VSPHERE_CONFIG
+    def initialize
+      @config = {}
+      @config.deep_merge! BASE_CONFIG
+      @config.deep_merge! VSPHERE_CONFIG
     end
 
     def generate_node node_info
@@ -33,7 +34,7 @@ module GenConfig
       platform = "#{ostype}-#{bits}"
       name = "#{platform}-#{nodeid}"
 
-      host_config.merge! OSINFO[platform]
+      host_config.deep_merge! OSINFO[platform]
 
       # parse the roles out and append to the node
       roles.each_char do |c|
