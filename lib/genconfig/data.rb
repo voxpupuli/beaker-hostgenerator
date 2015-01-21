@@ -13,6 +13,7 @@ module GenConfig
     ROLES = {
       'a' => 'agent',
       'u' => 'ca',
+      'l' => 'classifier',
       'c' => 'dashboard',
       'd' => 'database',
       'f' => 'frictionless',
@@ -22,7 +23,7 @@ module GenConfig
     # This regex determines if we're looking at a OS token or a node
     # token. If a node token, it captures the platform bittage and the
     # roles that node should have.
-    NODE_REGEX=/\A(?<bits>\d+)(?<roles>[uacdfm]*)\Z/
+    NODE_REGEX=/\A(?<bits>\d+)(?<roles>[uacldfm]*)\Z/
 
     BASE_CONFIG = {
       'HOSTS' => {},
