@@ -25,10 +25,10 @@ module GenConfig
 
     def generate( tokens )
       nodeid = 1
-      ostype = tokens[0]
-      tokens = tokens.drop(1)
 
       tokens.each do |toke|
+        ostype, toke = tokens.shift(2)
+
         node_info = NODE_REGEX.match(toke)
         node_info = {
           'bits' => node_info['bits'],
