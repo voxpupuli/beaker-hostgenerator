@@ -1,6 +1,5 @@
 module GenConfig
   module Data
-    include GenConfig::Utils
 
     # Pull various informations out of the environment.
     PE_VERSION=ENV['pe_version']

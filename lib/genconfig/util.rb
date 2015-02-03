@@ -1,5 +1,9 @@
+require 'genconfig/data'
+
 module GenConfig
   module Utils
+    include GenConfig::Data
+
     def pe_dir(version, family)
       # If our version is the same as our family, we're installing a
       # released version. Use the archive path. Otherwise, we want to use

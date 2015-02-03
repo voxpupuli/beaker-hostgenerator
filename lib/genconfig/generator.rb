@@ -25,26 +25,31 @@ module GenConfig
 
     def generate( tokens )
       nodeid = 1
+      ostype = nil
 
       tokens.each do |toke|
-        ostype, toke = tokens.shift(2)
-
         node_info = NODE_REGEX.match(toke)
-        node_info = {
-          'bits' => node_info['bits'],
-          'roles' => node_info['roles'],
-          'ostype' => ostype,
-          'nodeid' => nodeid,
-        }
+        if node_info
+          raise "Can't create a node without an OS" unless ostype
 
-        host_name, host_config = generate_node node_info
+          node_info = {
+            'bits' => node_info['bits'],
+            'roles' => node_info['roles'],
+            'ostype' => ostype,
+            'nodeid' => nodeid,
+          }
 
-        if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
-          host_config['install_32'] = true
+          host_name, host_config = generate_node node_info
+
+          if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
+            host_config['install_32'] = true
+          end
+
+          @config['HOSTS'][host_name] = host_config
+          nodeid += 1
+        else
+          ostype = toke
         end
-
-        @config['HOSTS'][host_name] = host_config
-        nodeid += 1
       end
 
       return @config.to_yaml
