@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "sqa-utils"
-  s.version     = " 0.11.3"
+  s.version     = " 0.11.4"
   s.date        = "2015-02-01"
   s.summary     = "SQA Utilities"
   s.description = "Utilities we use to help test things here at Puppet"
