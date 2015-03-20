@@ -36,7 +36,7 @@ module GenConfig
           'template' => 'debian-6-i386'
         },
         'debian6-64' => {
-          'platform' => 'debian-6-amd64',
+          'platform' => 'debian-6-x86_64',
           'template' => 'debian-6-x86_64'
         },
         'debian7-32' => {
@@ -44,8 +44,16 @@ module GenConfig
           'template' => 'debian-7-i386'
         },
         'debian7-64' => {
-          'platform' => 'debian-7-amd64',
+          'platform' => 'debian-7-x86_64',
           'template' => 'debian-7-x86_64'
+        },
+        'debian8-32' => {
+          'platform' => 'debian-8-i386',
+          'template' => 'debian-8-i386'
+        },
+        'debian8-64' => {
+          'platform' => 'debian-8-x86_64',
+          'template' => 'debian-8-x86_64'
         },
         'oracle5-32' => {
           'platform' => 'el-5-i386',
@@ -99,6 +107,42 @@ module GenConfig
           'platform' => 'el-7-x86_64',
           'template' => 'redhat-7-x86_64'
         },
+        'fedora14-32' => {
+          'platform' => 'fedora-14-i386',
+          'template' => 'fedora-14-i386'
+        },
+        'fedora19-32' => {
+          'platform' => 'fedora-19-i386',
+          'template' => 'fedora-19-i386'
+        },
+        'fedora19-64' => {
+          'platform' => 'fedora-19-x86_64',
+          'template' => 'fedora-19-x86_64'
+        },
+        'fedora20-32' => {
+          'platform' => 'fedora-20-i386',
+          'template' => 'fedora-20-i386'
+        },
+        'fedora20-64' => {
+          'platform' => 'fedora-20-x86_64',
+          'template' => 'fedora-20-x86_64'
+        },
+        'fedora21-32' => {
+          'platform' => 'fedora-21-i386',
+          'template' => 'fedora-21-i386'
+        },
+        'fedora21-64' => {
+          'platform' => 'fedora-21-x86_64',
+          'template' => 'fedora-21-x86_64'
+        },
+        'opensuse11-32' => {
+          'platform' => 'opensuse-11-i386',
+          'template' => 'opensuse-11-i386'
+        },
+        'opensuse11-64' => {
+          'platform' => 'opensuse-11-x86_64',
+          'template' => 'opensuse-11-x86_64'
+        },
         'scientific5-32' => {
           'platform' => 'el-5-i386',
           'template' => 'scientific-5-i386'
@@ -140,12 +184,16 @@ module GenConfig
           'template' => 'sles-12-x86_64'
         },
         'solaris10-64' => {
-          'platform' => 'solaris-10-i386',
+          'platform' => 'solaris-10-x86_64',
           'template' => 'solaris-10-x86_64'
         },
         'solaris11-64' => {
-          'platform' => 'solaris-11-i386',
+          'platform' => 'solaris-11-x86_64',
           'template' => 'solaris-11-x86_64'
+        },
+        'solaris112-64' => {
+          'platform' => 'solaris-11.2-x86_64',
+          'template' => 'solaris-112-x86_64'
         },
         'ubuntu1004-32' => {
           'platform' => 'ubuntu-10.04-i386',
@@ -198,7 +246,23 @@ module GenConfig
         'windows2012r2-64' => {
           'platform' => 'windows-2012r2-64',
           'template' => 'win-2012r2-x86_64'
-        }
+        },
+        'windows7-64' => {
+          'platform' => 'windows-7-64',
+          'template' => 'win-7-x86_64'
+        },
+        'windows8-64' => {
+          'platform' => 'windows-8-64',
+          'template' => 'win-8-x86_64'
+        },
+        'windows81-64' => {
+          'platform' => 'windows-8.1-64',
+          'template' => 'win-81-x86_64'
+        },
+        'windowsvista-64' => {
+          'platform' => 'windows-vista-64',
+          'template' => 'win-vista-x86_64'
+        },
       }
 
       # Prepended to all Templates. This uniquely identifies them, because
