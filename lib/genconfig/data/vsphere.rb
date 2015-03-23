@@ -36,7 +36,7 @@ module GenConfig
           'template' => 'debian-6-i386'
         },
         'debian6-64' => {
-          'platform' => 'debian-6-x86_64',
+          'platform' => 'debian-6-amd64',
           'template' => 'debian-6-x86_64'
         },
         'debian7-32' => {
@@ -44,7 +44,7 @@ module GenConfig
           'template' => 'debian-7-i386'
         },
         'debian7-64' => {
-          'platform' => 'debian-7-x86_64',
+          'platform' => 'debian-7-amd64',
           'template' => 'debian-7-x86_64'
         },
         'debian8-32' => {
@@ -52,7 +52,7 @@ module GenConfig
           'template' => 'debian-8-i386'
         },
         'debian8-64' => {
-          'platform' => 'debian-8-x86_64',
+          'platform' => 'debian-8-amd64',
           'template' => 'debian-8-x86_64'
         },
         'oracle5-32' => {
@@ -184,15 +184,15 @@ module GenConfig
           'template' => 'sles-12-x86_64'
         },
         'solaris10-64' => {
-          'platform' => 'solaris-10-x86_64',
+          'platform' => 'solaris-10-i386',
           'template' => 'solaris-10-x86_64'
         },
         'solaris11-64' => {
-          'platform' => 'solaris-11-x86_64',
+          'platform' => 'solaris-11-i386',
           'template' => 'solaris-11-x86_64'
         },
         'solaris112-64' => {
-          'platform' => 'solaris-11.2-x86_64',
+          'platform' => 'solaris-11.2-i386',
           'template' => 'solaris-112-x86_64'
         },
         'ubuntu1004-32' => {
