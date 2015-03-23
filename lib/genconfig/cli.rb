@@ -5,12 +5,14 @@ module GenConfig
   class CLI
     include GenConfig::Data
 
-    class << self
-      attr_reader :options
-    end
+    attr_reader :options
 
     def initialize
-      @options = {}
+      @options = {
+        list_platforms_and_roles: false,
+        hypervisor: 'vsphere',
+      }
+
       optparse = OptionParser.new do |opts|
         opts.banner = <<-eos
 Usage: genconfig2 [options] <layout>
@@ -40,7 +42,6 @@ Usage: genconfig2 [options] <layout>
 
         eos
 
-        @options[:list_platforms_and_roles] = false
         opts.on('-l',
                 '--list',
                 'List genconfig2 supported platforms and roles. ' <<
@@ -48,9 +49,8 @@ Usage: genconfig2 [options] <layout>
           @options[:list_platforms_and_roles] = true
         end
 
-        @options[:hypervisor] = 'vsphere'
         opts.on('-t',
-                '--hypervisor',
+                '--hypervisor HYPERVISOR',
                 'Set genconfig2 hypervisor. ') do |h|
           @options[:hypervisor] = h
         end
@@ -72,7 +72,6 @@ Usage: genconfig2 [options] <layout>
 
       # Tokenizing the config definition for great justice
       @tokens = ARGV[0].split('-')
-      @hypervisor = ARGV[1] || 'vsphere'
     end
 
     def print_platforms_and_roles
@@ -92,7 +91,7 @@ Usage: genconfig2 [options] <layout>
     end
 
     def execute!
-      generator = GenConfig::Generator.create @hypervisor
+      generator = GenConfig::Generator.create @options[:hypervisor]
       yaml_string = generator.generate @tokens
       puts yaml_string
     end
