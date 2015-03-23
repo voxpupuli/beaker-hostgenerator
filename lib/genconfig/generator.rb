@@ -2,7 +2,6 @@ require 'genconfig/util'
 require 'genconfig/data'
 
 require 'yaml'
-require 'json'
 
 module GenConfig
   class Generator
