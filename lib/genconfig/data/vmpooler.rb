@@ -1,6 +1,6 @@
 module GenConfig
   module Data
-    module VSphere
+    module Vmpooler
 
       OSINFO = {
         'centos4-32' => {
@@ -265,17 +265,10 @@ module GenConfig
         },
       }
 
-      # Prepended to all Templates. This uniquely identifies them, because
-      # their names are fairly generic.
-      QA_VCENTER_PATH = 'Delivery/Quality Assurance/Templates/vCloud'
-
-      VSPHERE_CONFIG = {
+      VMPOOLER_CONFIG = {
         'HOSTS' => {},
         'CONFIG' => {
-          'datastore' => 'instance0',
-          'folder' => 'Delivery/Quality Assurance/Enterprise/Dynamic',
-          'resourcepool' => 'delivery/Quality Assurance/Enterprise/Dynamic',
-          'pooling_api' => 'http://vcloud.delivery.puppetlabs.net/'
+          'pooling_api' => 'http://vmpooler.delivery.puppetlabs.net/'
         }
       }
 

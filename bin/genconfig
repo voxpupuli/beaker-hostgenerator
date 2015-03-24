@@ -32,7 +32,7 @@ NODE_REGEX=/\A(?<bits>\d+)(?<roles>[acdfm]*)\Z/
 # Template for a single node.
 NODE_TEMPLATE = {
   'roles' => ['agent'],
-  'hypervisor' => 'vcloud',
+  'hypervisor' => 'vmpooler',
   'pe_dir' => PE_DIR,
   'pe_ver' => PE_VERSION,
   'pe_upgrade_dir' => PE_UPGRADE_DIR,
@@ -250,10 +250,6 @@ OSINFO = {
   }
 }
 
-# Prepended to all Templates. This uniquely identifies them, because
-# their names are fairly generic.
-QA_VCENTER_PATH = 'Delivery/Quality Assurance/Templates/vCloud'
-
 # There's no deep copy in ruby by default. I know, right?
 def deep_copy(object)
   # I feel so dirty
@@ -274,10 +270,7 @@ config = {
   'CONFIG' => {
     'nfs_server' => 'none',
     'consoleport' => 443,
-    'datastore' => 'instance0',
-    'folder' => 'Delivery/Quality Assurance/Enterprise/Dynamic',
-    'resourcepool' => 'delivery/Quality Assurance/Enterprise/Dynamic',
-    'pooling_api' => 'http://vcloud.delivery.puppetlabs.net/'
+    'pooling_api' => 'http://vmpooler.delivery.puppetlabs.net/'
   }
 }
 
@@ -307,10 +300,6 @@ tokens.each do |toke|
 
     # Remove any duplicates (such as user-specified agents)
     cfg['roles'].uniq!
-
-    # Make the template path fully qualified
-    template = cfg['template']
-    cfg['template'] = "#{QA_VCENTER_PATH}/#{template}"
 
     # for 64-bit windows nodes, we may want to use the 32-bit agent
     if ENV['pe_use_win32'] && ostype =~ /windows/ && bits == "64"
