@@ -1,11 +1,11 @@
 require 'genconfig/data'
-require 'genconfig/data/vsphere'
+require 'genconfig/data/vmpooler'
 require 'deep_merge'
 
 module GenConfig
   module Utils
     include GenConfig::Data
-    include GenConfig::Data::VSphere
+    include GenConfig::Data::Vmpooler
 
     def pe_dir(version, family)
       # If our version is the same as our family, we're installing a
@@ -30,7 +30,7 @@ module GenConfig
     def dump_hosts(hosts, path)
       config = {}
       config.deep_merge! BASE_CONFIG
-      config.deep_merge! VSPHERE_CONFIG
+      config.deep_merge! VMPOOLER_CONFIG
 
       hosts.each do |host|
         config['HOSTS'][host.node_name] = {
@@ -45,10 +45,10 @@ module GenConfig
       end
     end
 
-    def get_platforms(hypervisor_type='vsphere')
+    def get_platforms(hypervisor_type='vmpooler')
       case hypervisor_type
-      when /vsphere/
-        osinfo = GenConfig::Data::VSphere::OSINFO
+      when /vmpooler/
+        osinfo = GenConfig::Data::Vmpooler::OSINFO
       else
         raise "Invalid hypervisor #{hypervisor_type}"
       end

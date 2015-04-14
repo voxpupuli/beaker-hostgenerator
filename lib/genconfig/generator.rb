@@ -11,8 +11,8 @@ module GenConfig
     def self.create( hypervisor_type )
 
       hclass = case hypervisor_type
-      when /vsphere/
-        GenConfig::VSphere
+      when /vmpooler/
+        GenConfig::Vmpooler
       when /vagrant/
         GenConfig::Vagrant
       else
@@ -61,4 +61,4 @@ module GenConfig
   end
 end
 
-require 'genconfig/generator/vsphere'
+require 'genconfig/generator/vmpooler'

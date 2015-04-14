@@ -1,24 +1,24 @@
 require 'genconfig/generator'
-require 'genconfig/data/vsphere'
+require 'genconfig/data/vmpooler'
 require 'genconfig/data'
 require 'deep_merge'
 
 module GenConfig
-  class VSphere < GenConfig::Generator
+  class Vmpooler < GenConfig::Generator
     include GenConfig::Data
-    include GenConfig::Data::VSphere
+    include GenConfig::Data::Vmpooler
 
     def initialize
       @config = {}
       @config.deep_merge! BASE_CONFIG
-      @config.deep_merge! VSPHERE_CONFIG
+      @config.deep_merge! VMPOOLER_CONFIG
     end
 
     def generate_node node_info
       # Template for a single node.
       host_config = {
         'roles' => ['agent'],
-        'hypervisor' => 'vcloud',
+        'hypervisor' => 'vmpooler',
         'pe_dir' => pe_dir(PE_VERSION, PE_FAMILY),
         'pe_ver' => PE_VERSION,
         'pe_upgrade_dir' => pe_dir(PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY),
@@ -43,10 +43,6 @@ module GenConfig
 
       # Remove any duplicates (such as user-specified agents)
       host_config['roles'].uniq!
-
-      # Make the template path fully qualified
-      template = host_config['template']
-      host_config['template'] = "#{QA_VCENTER_PATH}/#{template}"
 
       # Some platforms have special requirements. We munge the node
       # host_config here if that is necessary.

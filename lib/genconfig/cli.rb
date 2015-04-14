@@ -10,7 +10,7 @@ module GenConfig
     def initialize
       @options = {
         list_platforms_and_roles: false,
-        hypervisor: 'vsphere',
+        hypervisor: 'vmpooler',
       }
 
       optparse = OptionParser.new do |opts|
