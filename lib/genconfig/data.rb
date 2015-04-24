@@ -19,10 +19,30 @@ module GenConfig
       'm' => 'master',
     }
 
-    # This regex determines if we're looking at a OS token or a node
-    # token. If a node token, it captures the platform bittage and the
-    # roles that node should have.
-    NODE_REGEX=/\A(?<bits>\d+)(?<roles>[uacldfm]*)\Z/
+    # Capture role and bit width information about the node.
+    #
+    # Examples node specs and their resulting roles
+    #
+    #  64compile_master,zuul,meow.a
+    #   * compile_master
+    #   * zuul
+    #   * meow
+    #   * agent
+    #
+    #  32herp.cdma
+    #   * herp
+    #   * dashboard
+    #   * database
+    #   * master
+    #   * agent
+    #
+    #  64dashboard,master,agent,database.
+    #   * dashboard
+    #   * master
+    #   * agent
+    #   * database
+    #
+    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)\Z/
 
     BASE_CONFIG = {
       'HOSTS' => {},

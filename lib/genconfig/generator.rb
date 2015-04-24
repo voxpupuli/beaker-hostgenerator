@@ -48,7 +48,6 @@ module GenConfig
             host_config['install_32'] = true
           end
 
-          # Role handling
           host_config['roles'].concat __generate_host_roles(node_info)
           host_config['roles'].uniq!
 
@@ -71,14 +70,25 @@ module GenConfig
           return nil
         end
 
+        if node_info['arbitrary_roles']
+          node_info['arbitrary_roles'] = node_info['arbitrary_roles'].split(',') || ''
+        else
+          # Default to empty list to avoid having to check for nil elsewhere
+          node_info['arbitrary_roles'] = []
+        end
+
         return node_info
     end
 
     def __generate_host_roles node_info
-      # parse roles and append to the node
       roles = []
+
       node_info['roles'].each_char do |c|
         roles << ROLES[c]
+      end
+
+      node_info['arbitrary_roles'].each do |role|
+        roles << role
       end
 
       return roles
