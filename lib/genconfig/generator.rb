@@ -31,11 +31,14 @@ module GenConfig
     end
 
     def generate tokens
-      nodeid = 1
+      nodeid = Hash.new(1)
       ostype = nil
 
       tokens.each do |token|
         if is_ostype_token?(token)
+          if nodeid[ostype] == 1 and ostype != nil
+            raise "Error: no nodes generated for #{ostype}"
+          end
           ostype = token
           next
         end
@@ -43,7 +46,7 @@ module GenConfig
         node_info = __parse_node_info_token(token)
 
         node_info['ostype'] = ostype
-        node_info['nodeid'] = nodeid
+        node_info['nodeid'] = nodeid[ostype]
 
         host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
 
@@ -55,7 +58,7 @@ module GenConfig
         host_config['roles'].uniq!
 
         @config['HOSTS'][host_name] = host_config
-        nodeid += 1
+        nodeid[ostype] += 1
       end
 
       return @config.to_yaml
