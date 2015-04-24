@@ -1,5 +1,6 @@
 require 'genconfig/util'
 require 'genconfig/data'
+require 'genconfig/roles'
 
 require 'yaml'
 
@@ -9,14 +10,19 @@ module GenConfig
     include GenConfig::Utils
 
     BASE_HOST_CONFIG = {
-        'roles' => ['agent'],
         'pe_dir' => GenConfig::Utils.pe_dir(PE_VERSION, PE_FAMILY),
         'pe_ver' => PE_VERSION,
         'pe_upgrade_dir' => GenConfig::Utils.pe_dir(PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY),
         'pe_upgrade_ver' => PE_UPGRADE_VERSION,
       }
+    attr_reader :options
 
-    def self.create( hypervisor_type )
+    def initialize options
+      @options = options
+    end
+
+    def self.create( options )
+      hypervisor_type = options[:hypervisor]
 
       hclass = case hypervisor_type
       when /vmpooler/
@@ -27,7 +33,7 @@ module GenConfig
         raise "Invalid hypervisor #{type}"
       end
 
-      return hclass.new
+      return hclass.new(options)
     end
 
     def generate tokens
@@ -54,14 +60,37 @@ module GenConfig
           host_config['install_32'] = true
         end
 
+        if not @options[:disable_default_role]
+          host_config['roles'] = ['agent']
+        else
+          host_config['roles'] = []
+        end
+
         host_config['roles'].concat __generate_host_roles(node_info)
         host_config['roles'].uniq!
+
+        if not @options[:disable_role_config]
+          host_config['roles'].each do |role|
+            host_config.deep_merge! __get_role_config(role)
+          end
+        end
 
         @config['HOSTS'][host_name] = host_config
         nodeid[ostype] += 1
       end
 
       return @config.to_yaml
+    end
+
+    def __get_role_config role
+      begin
+        r = GenConfig::Roles.new
+        m = r.method(role)
+      rescue NameError
+        return {}
+      end
+
+      return m.call
     end
 
     def __parse_node_info_token token

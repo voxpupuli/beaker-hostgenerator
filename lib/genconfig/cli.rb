@@ -10,6 +10,8 @@ module GenConfig
     def initialize
       @options = {
         list_platforms_and_roles: false,
+        disable_default_role: false,
+        disable_role_config: false,
         hypervisor: 'vmpooler',
       }
 
@@ -55,6 +57,16 @@ Usage: genconfig2 [options] <layout>
           @options[:hypervisor] = h
         end
 
+        opts.on('--disable-role-config',
+                "Do not include role-specific configuration.") do
+          @options[:disable_role_config] = true
+        end
+
+        opts.on('--disable-default-role',
+                "Do not include the default /'agent/' role.") do
+          @options[:disable_default_role] = true
+        end
+
         opts.on('-h',
                 '--help',
                 'Display command help.') do
@@ -91,7 +103,7 @@ Usage: genconfig2 [options] <layout>
     end
 
     def execute!
-      generator = GenConfig::Generator.create @options[:hypervisor]
+      generator = GenConfig::Generator.create @options
       yaml_string = generator.generate @tokens
       puts yaml_string
     end

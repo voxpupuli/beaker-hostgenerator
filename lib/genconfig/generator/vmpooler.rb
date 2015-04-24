@@ -8,10 +8,11 @@ module GenConfig
     include GenConfig::Data
     include GenConfig::Data::Vmpooler
 
-    def initialize
+    def initialize(options)
       @config = {}
       @config.deep_merge! BASE_CONFIG
       @config.deep_merge! VMPOOLER_CONFIG
+      super(options)
     end
 
     def generate_node node_info, base_config
