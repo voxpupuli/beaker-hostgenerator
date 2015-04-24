@@ -59,6 +59,6 @@ module GenConfig
       return GenConfig::Data::ROLES
     end
 
-    module_function :dump_hosts, :get_platforms, :get_roles
+    module_function :dump_hosts, :get_platforms, :get_roles, :pe_dir
   end
 end
