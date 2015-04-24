@@ -38,5 +38,19 @@ module GenConfig
       return name, host_config
     end
 
+    def is_ostype_token? token
+       OSINFO.each do |key,value|
+
+         ostype = key.split('-')[0]
+
+         if ostype == token
+           return true
+         end
+
+       end
+
+       return false
+    end
+
   end
 end

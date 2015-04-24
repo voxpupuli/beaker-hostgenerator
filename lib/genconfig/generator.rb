@@ -35,27 +35,27 @@ module GenConfig
       ostype = nil
 
       tokens.each do |token|
-        node_info = __parse_node_info_token(token)
-        if node_info
-          raise "Can't create a node without an OS" unless ostype
-
-          node_info['ostype'] = ostype
-          node_info['nodeid'] = nodeid
-
-          host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
-
-          if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
-            host_config['install_32'] = true
-          end
-
-          host_config['roles'].concat __generate_host_roles(node_info)
-          host_config['roles'].uniq!
-
-          @config['HOSTS'][host_name] = host_config
-          nodeid += 1
-        else
+        if is_ostype_token?(token)
           ostype = token
+          next
         end
+
+        node_info = __parse_node_info_token(token)
+
+        node_info['ostype'] = ostype
+        node_info['nodeid'] = nodeid
+
+        host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
+
+        if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
+          host_config['install_32'] = true
+        end
+
+        host_config['roles'].concat __generate_host_roles(node_info)
+        host_config['roles'].uniq!
+
+        @config['HOSTS'][host_name] = host_config
+        nodeid += 1
       end
 
       return @config.to_yaml
@@ -92,6 +92,10 @@ module GenConfig
       end
 
       return roles
+    end
+
+    def is_ostype_token?
+      raise "Method 'is_ostype_token?' not implemented!"
     end
 
     def generate_node
