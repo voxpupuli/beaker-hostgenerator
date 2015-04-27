@@ -20,7 +20,7 @@ module GenConfig
 Usage: genconfig2 [options] <layout>
 
  where <layout> takes the following form:
-  <platform>-<arch><roles>[[-<platform>]-<arch><roles>[...]]
+  <platform>-<arch><roles>[[-<platform>]-<arch>[[<arbitrary-roles>,[...]].]<roles>[...]]
 
  examples:
   centos6-64mdca-32a
@@ -36,6 +36,10 @@ Usage: genconfig2 [options] <layout>
   debian8-64m-windows8-64a
    1 Debian 8 64 bit node with roles = master
    1 Windows 8 64 bit node with roles = agent
+
+ example with arbitrary roles:
+  centos6-32compile_master,another_role.ma
+   1 CentOS 6 64 bit node with roles = master, agent, compile_master, another_role
 
  Generally, it is expected that genconfig output will be redirected to a file, for example:
   genconfig2 centos6-64ma > host.cfg
