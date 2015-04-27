@@ -1,5 +1,6 @@
 require 'genconfig/util'
 require 'genconfig/data'
+require 'genconfig/error'
 require 'genconfig/roles'
 
 require 'yaml'
@@ -7,6 +8,7 @@ require 'yaml'
 module GenConfig
   class Generator
     include GenConfig::Data
+    include GenConfig::Errors
     include GenConfig::Utils
 
     BASE_HOST_CONFIG = {
@@ -99,7 +101,7 @@ module GenConfig
         if node_info
           node_info = Hash[ node_info.names.zip( node_info.captures ) ]
         else
-          return nil
+          raise InvalidNodeSpecError.new, "Invalid node_info token: #{token}"
         end
 
         if node_info['arbitrary_roles']
