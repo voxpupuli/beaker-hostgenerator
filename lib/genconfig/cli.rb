@@ -10,6 +10,8 @@ module GenConfig
     def initialize
       @options = {
         list_platforms_and_roles: false,
+        disable_default_role: false,
+        disable_role_config: false,
         hypervisor: 'vmpooler',
       }
 
@@ -18,7 +20,7 @@ module GenConfig
 Usage: genconfig2 [options] <layout>
 
  where <layout> takes the following form:
-  <platform>-<arch><roles>[[-<platform>]-<arch><roles>[...]]
+  <platform>-<arch><roles>[[-<platform>]-<arch>[[<arbitrary-roles>,[...]].]<roles>[...]]
 
  examples:
   centos6-64mdca-32a
@@ -34,6 +36,10 @@ Usage: genconfig2 [options] <layout>
   debian8-64m-windows8-64a
    1 Debian 8 64 bit node with roles = master
    1 Windows 8 64 bit node with roles = agent
+
+ example with arbitrary roles:
+  centos6-32compile_master,another_role.ma
+   1 CentOS 6 64 bit node with roles = master, agent, compile_master, another_role
 
  Generally, it is expected that genconfig output will be redirected to a file, for example:
   genconfig2 centos6-64ma > host.cfg
@@ -53,6 +59,16 @@ Usage: genconfig2 [options] <layout>
                 '--hypervisor HYPERVISOR',
                 'Set genconfig2 hypervisor. ') do |h|
           @options[:hypervisor] = h
+        end
+
+        opts.on('--disable-role-config',
+                "Do not include role-specific configuration.") do
+          @options[:disable_role_config] = true
+        end
+
+        opts.on('--disable-default-role',
+                "Do not include the default /'agent/' role.") do
+          @options[:disable_default_role] = true
         end
 
         opts.on('-h',
@@ -91,7 +107,7 @@ Usage: genconfig2 [options] <layout>
     end
 
     def execute!
-      generator = GenConfig::Generator.create @options[:hypervisor]
+      generator = GenConfig::Generator.create @options
       yaml_string = generator.generate @tokens
       puts yaml_string
     end
