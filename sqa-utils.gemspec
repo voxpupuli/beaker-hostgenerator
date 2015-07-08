@@ -1,6 +1,10 @@
+# -*- encoding: utf-8 -*-
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require 'sqa-utils/version'
+
 Gem::Specification.new do |s|
   s.name        = "sqa-utils"
-  s.version     = " 0.13.0"
+  s.version     = SQAUtils::Versions::STRING
   s.date        = "2015-05-29"
   s.summary     = "SQA Utilities"
   s.description = "Utilities we use to help test things here at Puppet"
