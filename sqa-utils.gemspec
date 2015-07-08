@@ -4,7 +4,7 @@ require 'sqa-utils/version'
 
 Gem::Specification.new do |s|
   s.name        = "sqa-utils"
-  s.version     = SQAUtils::Versions::STRING
+  s.version     = SQAUtils::Version::STRING
   s.date        = "2015-05-29"
   s.summary     = "SQA Utilities"
   s.description = "Utilities we use to help test things here at Puppet"
