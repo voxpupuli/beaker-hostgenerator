@@ -223,6 +223,14 @@ module GenConfig
           'platform' => 'ubuntu-14.04-amd64',
           'template' => 'ubuntu-1404-x86_64'
         },
+        'ubuntu1504-32' => {
+          'platform' => 'ubuntu-15.04-i386',
+          'template' => 'ubuntu-1504-i386'
+        },
+        'ubuntu1504-64' => {
+          'platform' => 'ubuntu-15.04-amd64',
+          'template' => 'ubuntu-1504-x86_64'
+        },
         'windows2003-64' => {
           'platform' => 'windows-2003-64',
           'template' => 'win-2003-x86_64'
