@@ -1,0 +1,25 @@
+*.swp
+log/*
+!.gitignore
+junit
+acceptance-tests
+pkg
+Gemfile.lock
+options.rb
+test.cfg
+.yardoc
+coverage
+.bundle
+.vendor
+_vendor
+tmp/
+doc
+# JetBrains IDEA
+*.iml
+.idea/
+# rbenv file
+.ruby-version
+.ruby-gemset
+# Vagrant folder
+.vagrant/
+.vagrant_files/
