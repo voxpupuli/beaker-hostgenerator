@@ -15,6 +15,8 @@ module GenConfig
         hypervisor: 'vmpooler',
       }
 
+      ARGV.push('--help') if ARGV.empty?
+
       optparse = OptionParser.new do |opts|
         opts.banner = <<-eos
 Usage: genconfig2 [options] <layout>
