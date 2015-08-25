@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 class ClassMixedWithDSLHelpers
-  include Beaker::DSL::Helpers
-  include Beaker::DSL::Wrappers
-  include Beaker::DSL::Roles
-  include Beaker::DSL::Patterns
   include BeakerTemplate::Helpers
 
   def logger
@@ -15,10 +11,10 @@ end
 
 describe ClassMixedWithDSLHelpers do
 
-  describe '#first' do
+  describe 'release conditions' do
 
-    it 'has tests' do
-      fail('It has no tests!')
+    it 'has set the version number from the original template' do
+      expect( BeakerTemplate::Version::STRING ).to_not be === '0.0.1rc0'
     end
 
   end

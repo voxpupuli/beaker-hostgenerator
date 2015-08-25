@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 10.1'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'pry', '~> 0.10'
-  # s.add_development_dependency 'beaker', '~>2.0'
 
   # Documentation dependencies
   s.add_development_dependency 'yard'

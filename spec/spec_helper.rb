@@ -1,5 +1,4 @@
 require 'simplecov'
-require 'beaker'
 require 'beaker-template'
 require 'helpers'
 
