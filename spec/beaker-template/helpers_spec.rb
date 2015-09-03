@@ -13,7 +13,7 @@ describe ClassMixedWithDSLHelpers do
 
   describe 'release conditions' do
 
-    it 'has set the version number from the original template' do
+    it 'has updated the version number from the original template' do
       expect( BeakerTemplate::Version::STRING ).to_not be === '0.0.1rc0'
     end
 
