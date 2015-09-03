@@ -4,7 +4,7 @@ require 'beaker-template/version'
 
 Gem::Specification.new do |s|
   s.name        = "beaker-template"
-  s.version     = BeakerTemplate::Version::STRING
+  s.version     = Beaker::DSL::Helpers::Template::Version::STRING
   s.authors     = ["Puppetlabs"]
   s.email       = ["qe-team@puppetlabs.com"]
   s.homepage    = "https://github.com/puppetlabs/beaker-template"
