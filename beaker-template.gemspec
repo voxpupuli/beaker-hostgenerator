@@ -32,7 +32,6 @@ Gem::Specification.new do |s|
 
   # Run time dependencies
   s.add_runtime_dependency 'stringify-hash', '~> 0.0.0'
-  s.add_runtime_dependency 'require_all', '~> 1.3.2'
 
 end
 
