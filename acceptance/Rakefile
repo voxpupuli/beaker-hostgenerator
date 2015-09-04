@@ -9,7 +9,7 @@ EOS
     task :quick do
 
     sh("beaker",
-       "--hosts", ENV['CONFIG'] || "config/nodes/redhat-7-x86_64.yaml",
+       "--hosts", ENV['CONFIG'] || "config/nodes/vagrant-ubuntu-1404.yml",
        "--tests", "tests",
        "--log-level", "debug",
        "--keyfile", ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa")
