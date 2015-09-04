@@ -13,4 +13,27 @@ RSpec::Core::RakeTask.new(:coverage) do |t|
   t.pattern = 'spec/'
 end
 
+
+
+namespace :ci do
+
+  namespace :test do
+
+    desc <<-EOS
+A quick acceptance test, named because it has no pre-suites to run
+EOS
+    task :quick do
+
+    sh("beaker",
+       "--hosts", ENV['CONFIG'] || "config/nodes/vagrant-ubuntu-1404.yml",
+       "--tests", "tests",
+       "--log-level", "debug",
+       "--keyfile", ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa")
+    end
+
+  end
+
+end
+
+
 task :default => :test
