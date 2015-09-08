@@ -25,8 +25,8 @@ EOS
     task :quick do
 
     sh("beaker",
-       "--hosts", ENV['CONFIG'] || "config/nodes/vagrant-ubuntu-1404.yml",
-       "--tests", "tests",
+       "--hosts", ENV['CONFIG'] || "acceptance/config/nodes/vagrant-ubuntu-1404.yml",
+       "--tests", "acceptance/tests",
        "--log-level", "debug",
        "--keyfile", ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa")
     end
