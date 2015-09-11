@@ -83,6 +83,10 @@ module GenConfig
           'platform' => 'osx-10.10-x86_64',
           'template' => 'osx-1010-x86_64'
         },
+        'osx1011-64' => {
+          'platform' => 'osx-10.11-x86_64',
+          'template' => 'osx-1011-x86_64'
+        },
         'redhat4-32' => {
           'platform' => 'el-4-i386',
           'template' => 'redhat-4-i386'
