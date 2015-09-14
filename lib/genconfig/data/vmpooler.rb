@@ -159,6 +159,14 @@ module GenConfig
           'platform' => 'fedora-22-x86_64',
           'template' => 'fedora-22-x86_64'
         },
+        'fedora23-32' => {
+          'platform' => 'fedora-23-i386',
+          'template' => 'fedora-23-i386'
+        },
+        'fedora23-64' => {
+          'platform' => 'fedora-23-x86_64',
+          'template' => 'fedora-23-x86_64'
+        },
         'opensuse11-32' => {
           'platform' => 'opensuse-11-i386',
           'template' => 'opensuse-11-i386'
