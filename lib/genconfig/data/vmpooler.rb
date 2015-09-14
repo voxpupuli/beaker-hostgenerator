@@ -303,6 +303,18 @@ module GenConfig
           'platform' => 'windows-vista-64',
           'template' => 'win-vista-x86_64'
         },
+        'windows10ent-32' => {
+          'platform' => 'windows-10ent-32',
+          'template' => 'win-10-ent-i386'
+        },
+        'windows10ent-64' => {
+          'platform' => 'windows-10ent-x86_64',
+          'template' => 'win-10-ent-x86_64'
+        },
+        'windows10pro-64' => {
+          'platform' => 'windows-10pro-x86_64',
+          'template' => 'win-10-pro-x86_64'
+        },
       }
 
       VMPOOLER_CONFIG = {
