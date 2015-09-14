@@ -55,6 +55,14 @@ module GenConfig
           'platform' => 'debian-8-amd64',
           'template' => 'debian-8-x86_64'
         },
+        'debian9-32' => {
+          'platform' => 'debian-9-i386',
+          'template' => 'debian-9-i386'
+        },
+        'debian9-64' => {
+          'platform' => 'debian-9-amd64',
+          'template' => 'debian-9-x86_64'
+        },
         'oracle5-32' => {
           'platform' => 'el-5-i386',
           'template' => 'oracle-5-i386'
@@ -151,6 +159,14 @@ module GenConfig
           'platform' => 'fedora-22-x86_64',
           'template' => 'fedora-22-x86_64'
         },
+        'fedora23-32' => {
+          'platform' => 'fedora-23-i386',
+          'template' => 'fedora-23-i386'
+        },
+        'fedora23-64' => {
+          'platform' => 'fedora-23-x86_64',
+          'template' => 'fedora-23-x86_64'
+        },
         'opensuse11-32' => {
           'platform' => 'opensuse-11-i386',
           'template' => 'opensuse-11-i386'
@@ -243,6 +259,14 @@ module GenConfig
           'platform' => 'ubuntu-15.04-amd64',
           'template' => 'ubuntu-1504-x86_64'
         },
+        'ubuntu1510-32' => {
+          'platform' => 'ubuntu-15.10-i386',
+          'template' => 'ubuntu-1510-i386'
+        },
+        'ubuntu1510-64' => {
+          'platform' => 'ubuntu-15.10-amd64',
+          'template' => 'ubuntu-1510-x86_64'
+        },
         'windows2003-64' => {
           'platform' => 'windows-2003-64',
           'template' => 'win-2003-x86_64'
@@ -286,6 +310,18 @@ module GenConfig
         'windowsvista-64' => {
           'platform' => 'windows-vista-64',
           'template' => 'win-vista-x86_64'
+        },
+        'windows10ent-32' => {
+          'platform' => 'windows-10ent-32',
+          'template' => 'win-10-ent-i386'
+        },
+        'windows10ent-64' => {
+          'platform' => 'windows-10ent-x86_64',
+          'template' => 'win-10-ent-x86_64'
+        },
+        'windows10pro-64' => {
+          'platform' => 'windows-10pro-x86_64',
+          'template' => 'win-10-pro-x86_64'
         },
       }
 
