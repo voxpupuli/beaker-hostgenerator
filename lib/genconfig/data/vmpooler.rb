@@ -55,6 +55,14 @@ module GenConfig
           'platform' => 'debian-8-amd64',
           'template' => 'debian-8-x86_64'
         },
+        'debian9-32' => {
+          'platform' => 'debian-9-i386',
+          'template' => 'debian-9-i386'
+        },
+        'debian9-64' => {
+          'platform' => 'debian-9-amd64',
+          'template' => 'debian-9-x86_64'
+        },
         'oracle5-32' => {
           'platform' => 'el-5-i386',
           'template' => 'oracle-5-i386'
