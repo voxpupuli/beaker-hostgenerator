@@ -7,7 +7,7 @@ Let's construct a Beaker DSL extension library!
 There are two reasons to create a Beaker library:
 
 1. To pull functionality out of Beaker core to be maintained/improved separately (mostly QE tasks)
-2. To provide additional functionality to their Beaker testing (biggest Beaker user use case)
+2. To provide additional methods to the Beaker DSL, extending Beaker functionality (biggest Beaker user use case)
 
 These instructions are here to give people a working guide on how to create your own Beaker
 libraries for the second use case. If you'd like to pull functionality out of Beaker
