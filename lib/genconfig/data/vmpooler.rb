@@ -215,13 +215,25 @@ module GenConfig
           'platform' => 'sles-12-x86_64',
           'template' => 'sles-12-x86_64'
         },
+        'solaris10-32' => {
+          'platform' => 'solaris-10-i386',
+          'template' => 'solaris-10-x86_64'
+        },
         'solaris10-64' => {
           'platform' => 'solaris-10-i386',
           'template' => 'solaris-10-x86_64'
         },
+        'solaris11-32' => {
+          'platform' => 'solaris-11-i386',
+          'template' => 'solaris-11-x86_64'
+        },
         'solaris11-64' => {
           'platform' => 'solaris-11-i386',
           'template' => 'solaris-11-x86_64'
+        },
+        'solaris112-32' => {
+          'platform' => 'solaris-11.2-i386',
+          'template' => 'solaris-112-x86_64'
         },
         'solaris112-64' => {
           'platform' => 'solaris-11.2-i386',
