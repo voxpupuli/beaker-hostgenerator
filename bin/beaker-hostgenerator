@@ -3,6 +3,6 @@
 lib_dir = File.expand_path(File.dirname(File.dirname(__FILE__)), 'lib')
 $LOAD_PATH.unshift(lib_dir)
 
-require 'genconfig'
+require 'beaker-hostgenerator'
 
-GenConfig::CLI.new.execute!
+Beaker::Host::Generator::CLI.new.execute!
