@@ -1,9 +1,8 @@
 require 'simplecov'
-require 'beaker-template'
+require 'beaker-hostgenerator'
 require 'helpers'
 
 require 'rspec/its'
-require 'genconfig'
 
 RSpec.configure do |config|
   config.include TestFileHelpers
