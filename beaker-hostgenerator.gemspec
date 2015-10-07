@@ -1,14 +1,20 @@
 # -*- encoding: utf-8 -*-
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-require 'beaker-template/version'
+require 'beaker-hostgenerator/version'
 
 Gem::Specification.new do |s|
-  s.name        = "beaker-template"
-  s.version     = Beaker::DSL::Helpers::Template::Version::STRING
-  s.authors     = ["Puppetlabs"]
+  s.name        = "beaker-hostgenerator"
+  s.version     = Beaker::Host::Generator::Version::STRING
+  s.date        = "2015-10-07"
+  s.authors     = ["Branan Purvine-Riley", "Wayne Warren"]
   s.email       = ["qe-team@puppetlabs.com"]
-  s.homepage    = "https://github.com/puppetlabs/beaker-template"
-  s.summary     = %q{Beaker DSL Extension Helpers!}
+  s.homepage    = "https://github.com/puppetlabs/beaker-hostgenerator"
+  s.summary     = "Beaker Host Generator Utility"
+  s.description = <<-eos
+The beaker-hostgenerator tool will take a Beaker SUT (System Under Test) spec as
+its first positional argument and use that to generate a Beaker host
+configuration file.
+eos
   s.description = %q{For use for the Beaker acceptance testing tool}
   s.license     = 'Apache2'
 
@@ -31,6 +37,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'thin'
 
   # Run time dependencies
+  s.add_runtime_dependency 'deep_merge', '~> 1.0'
   s.add_runtime_dependency 'stringify-hash', '~> 0.0.0'
 
 end
