@@ -21,7 +21,7 @@ module Beaker
 
           optparse = OptionParser.new do |opts|
             opts.banner = <<-eos
-Usage: beaker-hostgenerator2 [options] <layout>
+Usage: beaker-hostgenerator [options] <layout>
 
  where <layout> takes the following form:
   <platform>-<arch><roles>[[-<platform>]-<arch>[[<arbitrary-roles>,[...]].]<roles>[...]]
@@ -43,10 +43,10 @@ Usage: beaker-hostgenerator2 [options] <layout>
 
  example with arbitrary roles:
   centos6-32compile_master,another_role.ma
-   1 CentOS 6 64 bit node with roles = master, agent, compile_master, another_role
+   1 CentOS 6 32 bit node with roles = master, agent, compile_master, another_role
 
  Generally, it is expected that beaker-hostgenerator output will be redirected to a file, for example:
-  beaker-hostgenerator2 centos6-64ma > host.cfg
+  beaker-hostgenerator centos6-64ma > host.cfg
 
  This can then be used in a Beaker call instead of a static Beaker config.
 
@@ -54,14 +54,14 @@ Usage: beaker-hostgenerator2 [options] <layout>
 
             opts.on('-l',
                     '--list',
-                    'List beaker-hostgenerator2 supported platforms and roles. ' <<
+                    'List beaker-hostgenerator supported platforms and roles. ' <<
                     'Does not produce host config.') do
               @options[:list_platforms_and_roles] = true
             end
 
             opts.on('-t',
                     '--hypervisor HYPERVISOR',
-                    'Set beaker-hostgenerator2 hypervisor. ') do |h|
+                    'Set beaker-hostgenerator hypervisor. ') do |h|
               @options[:hypervisor] = h
             end
 
