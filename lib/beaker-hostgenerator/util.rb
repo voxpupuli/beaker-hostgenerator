@@ -50,7 +50,7 @@ module Beaker
         def get_platforms(hypervisor_type='vmpooler')
           case hypervisor_type
           when /vmpooler/
-            osinfo = GenConfig::Data::Vmpooler::OSINFO
+            osinfo = Beaker::Host::Generator::Data::Vmpooler::OSINFO
           else
             raise "Invalid hypervisor #{hypervisor_type}"
           end
@@ -58,7 +58,7 @@ module Beaker
         end
 
         def get_roles
-          return GenConfig::Data::ROLES
+          return Beaker::Host::Generator::Data::ROLES
         end
 
         module_function :dump_hosts, :get_platforms, :get_roles, :pe_dir
