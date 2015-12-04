@@ -7,7 +7,7 @@ module BeakerHostGenerator
 
     attr_reader :options
 
-    def initialize
+    def initialize(argv = ARGV.dup)
       @options = {
         list_platforms_and_roles: false,
         disable_default_role: false,
@@ -15,7 +15,7 @@ module BeakerHostGenerator
         hypervisor: 'vmpooler',
       }
 
-      ARGV.push('--help') if ARGV.empty?
+      argv.push('--help') if argv.empty?
 
       optparse = OptionParser.new do |opts|
         opts.banner = <<-eos
@@ -81,7 +81,7 @@ Usage: beaker-hostgenerator [options] <layout>
         end
       end
 
-      optparse.parse!
+      optparse.parse!(argv)
 
       if @options[:list_platforms_and_roles]
         print_platforms_and_roles
@@ -89,7 +89,7 @@ Usage: beaker-hostgenerator [options] <layout>
       end
 
       # Tokenizing the config definition for great justice
-      @tokens = ARGV[0].split('-')
+      @tokens = argv[0].split('-')
     end
 
     def print_platforms_and_roles
