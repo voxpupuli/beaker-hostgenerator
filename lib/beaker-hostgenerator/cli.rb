@@ -2,23 +2,23 @@ require 'beaker-hostgenerator/generator'
 require 'optparse'
 
 module BeakerHostGenerator
-      class CLI
-        include BeakerHostGenerator::Data
+  class CLI
+    include BeakerHostGenerator::Data
 
-        attr_reader :options
+    attr_reader :options
 
-        def initialize
-          @options = {
-            list_platforms_and_roles: false,
-            disable_default_role: false,
-            disable_role_config: false,
-            hypervisor: 'vmpooler',
-          }
+    def initialize
+      @options = {
+        list_platforms_and_roles: false,
+        disable_default_role: false,
+        disable_role_config: false,
+        hypervisor: 'vmpooler',
+      }
 
-          ARGV.push('--help') if ARGV.empty?
+      ARGV.push('--help') if ARGV.empty?
 
-          optparse = OptionParser.new do |opts|
-            opts.banner = <<-eos
+      optparse = OptionParser.new do |opts|
+        opts.banner = <<-eos
 Usage: beaker-hostgenerator [options] <layout>
 
  where <layout> takes the following form:
@@ -50,68 +50,68 @@ Usage: beaker-hostgenerator [options] <layout>
 
             eos
 
-            opts.on('-l',
-                    '--list',
-                    'List beaker-hostgenerator supported platforms and roles. ' <<
-                    'Does not produce host config.') do
-              @options[:list_platforms_and_roles] = true
-            end
-
-            opts.on('-t',
-                    '--hypervisor HYPERVISOR',
-                    'Set beaker-hostgenerator hypervisor. ') do |h|
-              @options[:hypervisor] = h
-            end
-
-            opts.on('--disable-role-config',
-                    "Do not include role-specific configuration.") do
-              @options[:disable_role_config] = true
-            end
-
-            opts.on('--disable-default-role',
-                    "Do not include the default /'agent/' role.") do
-              @options[:disable_default_role] = true
-            end
-
-            opts.on('-h',
-                    '--help',
-                    'Display command help.') do
-              puts opts
-              exit
-            end
-          end
-
-          optparse.parse!
-
-          if @options[:list_platforms_and_roles]
-            print_platforms_and_roles
-            exit
-          end
-
-          # Tokenizing the config definition for great justice
-          @tokens = ARGV[0].split('-')
+        opts.on('-l',
+                '--list',
+                'List beaker-hostgenerator supported platforms and roles. ' <<
+                'Does not produce host config.') do
+          @options[:list_platforms_and_roles] = true
         end
 
-        def print_platforms_and_roles
-            puts "valid beaker-hostgenerator platforms:  "
-            osinfo = BeakerHostGenerator::Utils.get_platforms
-            osinfo.each do |k,v|
-              puts "   #{k}"
-            end
-
-            puts "\n"
-
-            roles = BeakerHostGenerator::Utils.get_roles
-            puts "valid beaker-hostgenerator host roles:  "
-            roles.each do |k,v|
-              puts "   #{k} => #{v}"
-            end
+        opts.on('-t',
+                '--hypervisor HYPERVISOR',
+                'Set beaker-hostgenerator hypervisor. ') do |h|
+          @options[:hypervisor] = h
         end
 
-        def execute!
-          generator = BeakerHostGenerator::Generator.create @options
-          yaml_string = generator.generate @tokens
-          puts yaml_string
+        opts.on('--disable-role-config',
+                "Do not include role-specific configuration.") do
+          @options[:disable_role_config] = true
+        end
+
+        opts.on('--disable-default-role',
+                "Do not include the default /'agent/' role.") do
+          @options[:disable_default_role] = true
+        end
+
+        opts.on('-h',
+                '--help',
+                'Display command help.') do
+          puts opts
+          exit
         end
       end
+
+      optparse.parse!
+
+      if @options[:list_platforms_and_roles]
+        print_platforms_and_roles
+        exit
+      end
+
+      # Tokenizing the config definition for great justice
+      @tokens = ARGV[0].split('-')
+    end
+
+    def print_platforms_and_roles
+      puts "valid beaker-hostgenerator platforms:  "
+      osinfo = BeakerHostGenerator::Utils.get_platforms
+      osinfo.each do |k,v|
+        puts "   #{k}"
+      end
+
+      puts "\n"
+
+      roles = BeakerHostGenerator::Utils.get_roles
+      puts "valid beaker-hostgenerator host roles:  "
+      roles.each do |k,v|
+        puts "   #{k} => #{v}"
+      end
+    end
+
+    def execute!
+      generator = BeakerHostGenerator::Generator.create @options
+      yaml_string = generator.generate @tokens
+      puts yaml_string
+    end
+  end
 end
