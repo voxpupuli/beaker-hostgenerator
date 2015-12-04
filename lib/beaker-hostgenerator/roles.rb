@@ -2,9 +2,7 @@ require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/data/vmpooler'
 require 'deep_merge'
 
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       class Roles
 
         def initialize
@@ -21,6 +19,4 @@ module Beaker
           }
         end
       end
-    end
-  end
 end

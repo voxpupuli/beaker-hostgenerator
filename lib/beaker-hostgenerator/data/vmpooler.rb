@@ -1,6 +1,4 @@
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       module Data
         module Vmpooler
 
@@ -348,6 +346,4 @@ module Beaker
 
         end
       end
-    end
-  end
 end

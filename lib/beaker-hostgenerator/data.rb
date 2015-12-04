@@ -1,6 +1,4 @@
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       module Data
 
         # Pull various informations out of the environment.
@@ -54,6 +52,4 @@ module Beaker
           }
         }
       end
-    end
-  end
 end

@@ -1,10 +1,6 @@
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       module Errors
         class Error < RuntimeError ; end
-        class InvalidNodeSpecError < Beaker::Host::Generator::Errors::Error ; end
+        class InvalidNodeSpecError < BeakerHostGenerator::Errors::Error ; end
       end
-    end
-  end
 end

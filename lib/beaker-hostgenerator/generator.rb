@@ -5,18 +5,16 @@ require 'beaker-hostgenerator/roles'
 
 require 'yaml'
 
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       class Generator
-        include Beaker::Host::Generator::Data
-        include Beaker::Host::Generator::Errors
-        include Beaker::Host::Generator::Utils
+        include BeakerHostGenerator::Data
+        include BeakerHostGenerator::Errors
+        include BeakerHostGenerator::Utils
 
         BASE_HOST_CONFIG = {
-            'pe_dir' => Beaker::Host::Generator::Utils.pe_dir(PE_VERSION, PE_FAMILY),
+            'pe_dir' => BeakerHostGenerator::Utils.pe_dir(PE_VERSION, PE_FAMILY),
             'pe_ver' => PE_VERSION,
-            'pe_upgrade_dir' => Beaker::Host::Generator::Utils.pe_dir(PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY),
+            'pe_upgrade_dir' => BeakerHostGenerator::Utils.pe_dir(PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY),
             'pe_upgrade_ver' => PE_UPGRADE_VERSION,
           }
         attr_reader :options
@@ -30,9 +28,9 @@ module Beaker
 
           hclass = case hypervisor_type
           when /vmpooler/
-            Beaker::Host::Generator::Vmpooler
+            BeakerHostGenerator::Vmpooler
           when /vagrant/
-            Beaker::Host::Generator::Vagrant
+            BeakerHostGenerator::Vagrant
           else
             raise "Invalid hypervisor #{type}"
           end
@@ -88,7 +86,7 @@ module Beaker
 
         def __get_role_config role
           begin
-            r = Beaker::Host::Generator::Roles.new
+            r = BeakerHostGenerator::Roles.new
             m = r.method(role)
           rescue NameError
             return {}
@@ -139,8 +137,6 @@ module Beaker
         end
 
       end
-    end
-  end
 end
 
 require 'beaker-hostgenerator/generator/vmpooler'

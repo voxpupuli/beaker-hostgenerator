@@ -1,11 +1,9 @@
 require 'beaker-hostgenerator/generator'
 require 'optparse'
 
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       class CLI
-        include Beaker::Host::Generator::Data
+        include BeakerHostGenerator::Data
 
         attr_reader :options
 
@@ -96,14 +94,14 @@ Usage: beaker-hostgenerator [options] <layout>
 
         def print_platforms_and_roles
             puts "valid beaker-hostgenerator platforms:  "
-            osinfo = Beaker::Host::Generator::Utils.get_platforms
+            osinfo = BeakerHostGenerator::Utils.get_platforms
             osinfo.each do |k,v|
               puts "   #{k}"
             end
 
             puts "\n"
 
-            roles = Beaker::Host::Generator::Utils.get_roles
+            roles = BeakerHostGenerator::Utils.get_roles
             puts "valid beaker-hostgenerator host roles:  "
             roles.each do |k,v|
               puts "   #{k} => #{v}"
@@ -111,11 +109,9 @@ Usage: beaker-hostgenerator [options] <layout>
         end
 
         def execute!
-          generator = Beaker::Host::Generator::Generator.create @options
+          generator = BeakerHostGenerator::Generator.create @options
           yaml_string = generator.generate @tokens
           puts yaml_string
         end
       end
-    end
-  end
 end

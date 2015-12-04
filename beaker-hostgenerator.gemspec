@@ -4,7 +4,7 @@ require 'beaker-hostgenerator/version'
 
 Gem::Specification.new do |s|
   s.name        = "beaker-hostgenerator"
-  s.version     = Beaker::Host::Generator::Version::STRING
+  s.version     = BeakerHostGenerator::Version::STRING
   s.date        = "2015-10-07"
   s.authors     = ["Branan Purvine-Riley", "Wayne Warren"]
   s.email       = ["qe-team@puppetlabs.com"]

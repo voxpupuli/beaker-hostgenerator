@@ -2,12 +2,10 @@ require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/data/vmpooler'
 require 'deep_merge'
 
-module Beaker
-  module Host
-    module Generator
+module BeakerHostGenerator
       module Utils
-        include Beaker::Host::Generator::Data
-        include Beaker::Host::Generator::Data::Vmpooler
+        include BeakerHostGenerator::Data
+        include BeakerHostGenerator::Data::Vmpooler
 
         def pe_dir(version, family)
           # If our version is the same as our family, we're installing a
@@ -50,7 +48,7 @@ module Beaker
         def get_platforms(hypervisor_type='vmpooler')
           case hypervisor_type
           when /vmpooler/
-            osinfo = Beaker::Host::Generator::Data::Vmpooler::OSINFO
+            osinfo = BeakerHostGenerator::Data::Vmpooler::OSINFO
           else
             raise "Invalid hypervisor #{hypervisor_type}"
           end
@@ -58,11 +56,9 @@ module Beaker
         end
 
         def get_roles
-          return Beaker::Host::Generator::Data::ROLES
+          return BeakerHostGenerator::Data::ROLES
         end
 
         module_function :dump_hosts, :get_platforms, :get_roles, :pe_dir
       end
-    end
-  end
 end

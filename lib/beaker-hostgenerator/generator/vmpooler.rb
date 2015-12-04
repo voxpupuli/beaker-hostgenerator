@@ -3,12 +3,10 @@ require 'beaker-hostgenerator/data/vmpooler'
 require 'beaker-hostgenerator/data'
 require 'deep_merge'
 
-module Beaker
-  module Host
-    module Generator
-      class Vmpooler < Beaker::Host::Generator::Generator
-        include Beaker::Host::Generator::Data
-        include Beaker::Host::Generator::Data::Vmpooler
+module BeakerHostGenerator
+      class Vmpooler < BeakerHostGenerator::Generator
+        include BeakerHostGenerator::Data
+        include BeakerHostGenerator::Data::Vmpooler
 
         def initialize(options)
           @config = {}
@@ -56,6 +54,4 @@ module Beaker
         end
 
       end
-    end
-  end
 end
