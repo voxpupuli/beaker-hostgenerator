@@ -108,10 +108,13 @@ Usage: beaker-hostgenerator [options] <layout>
       end
     end
 
-    def execute!
+    def execute
       generator = BeakerHostGenerator::Generator.create @options
-      yaml_string = generator.generate @tokens
-      puts yaml_string
+      generator.generate @tokens
+    end
+
+    def execute!
+      puts execute
     end
   end
 end
