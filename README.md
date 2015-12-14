@@ -97,6 +97,9 @@ interested in extending and using `beaker-hostgenerator` for their own purposes.
 See the [contributing][contributing] doc for more information about how to
 contribute.
 
+If you have questions or comments, please contact the Beaker team at the
+`#puppet-dev` IRC channel on chat.freenode.org
+
 ## License
 
 `beaker-hostgenerator` is distributed under the
