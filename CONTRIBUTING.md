@@ -21,8 +21,8 @@
 ```
 
 * Make sure you have added [RSpec](http://rspec.info/) tests that exercise your
-  These test should be located in the appropriate `spec/` subdirectory. The
-  addition of new methods/classes or the addition of code paths to existing
+  changes. These test should be located in the appropriate `spec/` subdirectory.
+  The addition of new methods/classes or the addition of code paths to existing
   methods/classes requires additional RSpec coverage.
 * Run the tests to assure nothing else was accidentally broken, using `rake test`
   * **Bonus**: if possible ensure that `rake test` runs without failures for
