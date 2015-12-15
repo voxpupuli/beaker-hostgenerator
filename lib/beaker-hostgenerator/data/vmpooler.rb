@@ -281,59 +281,73 @@ module BeakerHostGenerator
         },
         'windows2003-64' => {
           'platform' => 'windows-2003-64',
-          'template' => 'win-2003-x86_64'
+          'template' => 'win-2003-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows2003r2-32' => {
           'platform' => 'windows-2003r2-32',
-          'template' => 'win-2003r2-i386'
+          'template' => 'win-2003r2-i386',
+          'ruby_arch' => 'x86'
         },
         'windows2003r2-64' => {
           'platform' => 'windows-2003r2-64',
           'template' => 'win-2003r2-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows2008-64' => {
           'platform' => 'windows-2008-64',
-          'template' => 'win-2008-x86_64'
+          'template' => 'win-2008-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows2008r2-64' => {
           'platform' => 'windows-2008r2-64',
-          'template' => 'win-2008r2-x86_64'
+          'template' => 'win-2008r2-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows2012-64' => {
           'platform' => 'windows-2012-64',
-          'template' => 'win-2012-x86_64'
+          'template' => 'win-2012-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows2012r2-64' => {
           'platform' => 'windows-2012r2-64',
-          'template' => 'win-2012r2-x86_64'
+          'template' => 'win-2012r2-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows7-64' => {
           'platform' => 'windows-7-64',
-          'template' => 'win-7-x86_64'
+          'template' => 'win-7-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows8-64' => {
           'platform' => 'windows-8-64',
-          'template' => 'win-8-x86_64'
+          'template' => 'win-8-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows81-64' => {
           'platform' => 'windows-8.1-64',
-          'template' => 'win-81-x86_64'
+          'template' => 'win-81-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windowsvista-64' => {
           'platform' => 'windows-vista-64',
-          'template' => 'win-vista-x86_64'
+          'template' => 'win-vista-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows10ent-32' => {
           'platform' => 'windows-10ent-32',
-          'template' => 'win-10-ent-i386'
+          'template' => 'win-10-ent-i386',
+          'ruby_arch' => 'x86'
         },
         'windows10ent-64' => {
           'platform' => 'windows-10ent-x86_64',
-          'template' => 'win-10-ent-x86_64'
+          'template' => 'win-10-ent-x86_64',
+          'ruby_arch' => 'x64'
         },
         'windows10pro-64' => {
           'platform' => 'windows-10pro-x86_64',
-          'template' => 'win-10-pro-x86_64'
+          'template' => 'win-10-pro-x86_64',
+          'ruby_arch' => 'x64'
         },
       }
 
