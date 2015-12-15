@@ -101,6 +101,12 @@ Usage: beaker-hostgenerator [options] <layout>
 
       puts "\n"
 
+      puts "valid beaker-hostgenerator architectures:"
+      puts "   32   => 32-bit OS"
+      puts "   64   => 64-bit OS"
+      puts "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)"
+      puts "\n"
+
       roles = BeakerHostGenerator::Utils.get_roles
       puts "valid beaker-hostgenerator host roles:  "
       roles.each do |k,v|

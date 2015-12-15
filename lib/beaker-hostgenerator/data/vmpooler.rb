@@ -284,6 +284,11 @@ module BeakerHostGenerator
           'template' => 'win-2003-x86_64',
           'ruby_arch' => 'x64'
         },
+        'windows2003-6432' => {
+          'platform' => 'windows-2003-64',
+          'template' => 'win-2003-x86_64',
+          'ruby_arch' => 'x86'
+        },
         'windows2003r2-32' => {
           'platform' => 'windows-2003r2-32',
           'template' => 'win-2003r2-i386',
@@ -294,25 +299,50 @@ module BeakerHostGenerator
           'template' => 'win-2003r2-x86_64',
           'ruby_arch' => 'x64'
         },
+        'windows2003r2-6432' => {
+          'platform' => 'windows-2003r2-64',
+          'template' => 'win-2003r2-x86_64',
+          'ruby_arch' => 'x86'
+        },
         'windows2008-64' => {
           'platform' => 'windows-2008-64',
           'template' => 'win-2008-x86_64',
           'ruby_arch' => 'x64'
+        },
+        'windows2008-6432' => {
+          'platform' => 'windows-2008-64',
+          'template' => 'win-2008-x86_64',
+          'ruby_arch' => 'x86'
         },
         'windows2008r2-64' => {
           'platform' => 'windows-2008r2-64',
           'template' => 'win-2008r2-x86_64',
           'ruby_arch' => 'x64'
         },
+        'windows2008r2-6432' => {
+          'platform' => 'windows-2008r2-64',
+          'template' => 'win-2008r2-x86_64',
+          'ruby_arch' => 'x86'
+        },
         'windows2012-64' => {
           'platform' => 'windows-2012-64',
           'template' => 'win-2012-x86_64',
           'ruby_arch' => 'x64'
         },
+        'windows2012-6432' => {
+          'platform' => 'windows-2012-64',
+          'template' => 'win-2012-x86_64',
+          'ruby_arch' => 'x86'
+        },
         'windows2012r2-64' => {
           'platform' => 'windows-2012r2-64',
           'template' => 'win-2012r2-x86_64',
           'ruby_arch' => 'x64'
+        },
+        'windows2012r2-6432' => {
+          'platform' => 'windows-2012r2-64',
+          'template' => 'win-2012r2-x86_64',
+          'ruby_arch' => 'x86'
         },
         'windows7-64' => {
           'platform' => 'windows-7-64',
