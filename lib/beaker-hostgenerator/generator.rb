@@ -59,6 +59,7 @@ module BeakerHostGenerator
         host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
+          host_config['ruby_arch'] = 'x86'
           host_config['install_32'] = true
         end
 
