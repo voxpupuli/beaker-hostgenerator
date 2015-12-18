@@ -3,6 +3,10 @@ module BeakerHostGenerator
     module Vmpooler
 
       OSINFO = {
+        'arista-32' => {
+          'platform' => 'eos-4-i386',
+          'template' => 'arista-4-i386'
+        },
         'centos4-32' => {
           'platform' => 'el-4-i386',
           'template' => 'centos-4-i386'
