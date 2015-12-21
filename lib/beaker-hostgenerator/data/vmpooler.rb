@@ -35,6 +35,14 @@ module BeakerHostGenerator
           'platform' => 'el-7-x86_64',
           'template' => 'centos-7-x86_64'
         },
+        'cisco5-64' => {
+          'platform' => 'cisconxos-9-x86_64',
+          'template' => 'cisco-nxos-9k-x86_64'
+        },
+        'cisco7-64' => {
+          'platform' => 'ciscoexr-9-x86_64',
+          'template' => 'cisco-exr-9k-x86_64'
+        },
         'debian6-32' => {
           'platform' => 'debian-6-i386',
           'template' => 'debian-6-i386'
