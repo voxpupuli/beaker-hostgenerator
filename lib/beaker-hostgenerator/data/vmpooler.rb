@@ -7,10 +7,6 @@ module BeakerHostGenerator
           'platform' => 'eos-4-i386',
           'template' => 'arista-4-i386'
         },
-        'cisco7-64' => {
-          'platform' => 'cisco-wrlinux-7-x86_64',
-          'template' => 'cisco-exr-9k-x86_64'
-        },
         'centos4-32' => {
           'platform' => 'el-4-i386',
           'template' => 'centos-4-i386'
