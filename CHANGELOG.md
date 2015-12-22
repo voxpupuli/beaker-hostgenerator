@@ -6,6 +6,40 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 ### Changed
+- Updated this changelog for recent beaker-hostgenerator releases.
+
+## [0.2.0] - 2015-12-22
+- Add platforms:
+  - Cumulus 2.5 (x86_64)
+  - Cisco NXOS 5 (x86_64)
+  - Cisco eXR 7 (x86_64)
+- Fix platforms:
+  - Arista 4 (i386); spec string previously did not include version number.
+
+## [0.1.0] - 2015-12-21
+- Add platforms:
+  - Arista 4 (i386)
+  - windows 2012r2 (x86_64); 32 bit agent
+    - sets ruby_arch=x32
+  - windows 2008r2 (x86_64); 32 bit agent
+    - sets ruby_arch=x32
+  - windows 2008 (x86_64); 32 bit agent
+    - sets ruby_arch=x32
+  - windows 2003r2 (x86_64); 32 bit agent
+    - sets ruby_arch=x32
+- Set ruby_arch=x64 on a bunch of 64 bit windows platforms.
+- Allow beaker-hostgenerator to be called programmatically.
+- Fix bug in module/class namespaces that prevented both `beaker` and
+`beaker-hostgenerator` from being required.
+
+## [0.0.1] - 2015-10-07
+Test beaker-hostgenerator release pipeline (not intended to be a functional
+release)
+
+# sqa-utils (old Gem)
+
+## [Unreleased][unreleased]
+### Changed
 - Updated this changelog for 0.13.3
 
 ## [0.13.3] - 2015-04-29
