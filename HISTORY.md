@@ -1,10 +1,77 @@
 # default - History
 ## Tags
-* [LATEST - 21 Dec, 2015 (13477a89)](#LATEST)
+* [LATEST - 22 Dec, 2015 (1194df93)](#LATEST)
+* [0.1.0 - 21 Dec, 2015 (474f4ccb)](#0.1.0)
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 21 Dec, 2015 (13477a89)
+### <a name = "LATEST">LATEST - 22 Dec, 2015 (1194df93)
+
+* (GEM) update beaker-hostgenerator version to 0.2.0 (1194df93)
+
+* Merge pull request #15 from puppetlabs/(QENG-3301)-Add-support-for-Cumulus-Linux (9a8e655c)
+
+
+```
+Merge pull request #15 from puppetlabs/(QENG-3301)-Add-support-for-Cumulus-Linux
+
+(QENG-3301) Add support for Cumulus Linux
+```
+* Merge pull request #16 from puppetlabs/maint (982e7deb)
+
+
+```
+Merge pull request #16 from puppetlabs/maint
+
+(MAINT) Fix arista4 spec string.
+```
+* Merge pull request #14 from puppetlabs/(QENG-3308)(QENG-3309)-Add-support-for-Cisco-platforms (bb18139d)
+
+
+```
+Merge pull request #14 from puppetlabs/(QENG-3308)(QENG-3309)-Add-support-for-Cisco-platforms
+
+(QENG-3308)(QENG-3309) Add support for Cisco platforms
+```
+* (MAINT) Fix arista4 spec string. (6a7715a0)
+
+* (QENG-3308) (QENG-3309) Add hardware platform signifier. (29bf775c)
+
+* Updated platform strings based on comments. (6727a9dd)
+
+* (QENG-3301) Add support for Cumulus Linux (a1a96d5a)
+
+* (QENG-3308)(QENG-3309) Add support for Cisco platforms (c7cfbaa0)
+
+* Merge pull request #12 from puppetlabs/maint (084ae0cf)
+
+
+```
+Merge pull request #12 from puppetlabs/maint
+
+Revert "(QENG-3309) Add support for Cisco wrlinux-7"
+```
+* Revert "(QENG-3309) Add support for Cisco wrlinux-7" (3693133f)
+
+
+```
+Revert "(QENG-3309) Add support for Cisco wrlinux-7"
+
+This reverts commit 3e36da18e7bfeec2fa92295fa5f9959d45611eb4.
+```
+* Merge pull request #11 from puppetlabs/(QENG-3309)-Add-support-for-Cisco-wrlinux-7 (0fdf80ec)
+
+
+```
+Merge pull request #11 from puppetlabs/(QENG-3309)-Add-support-for-Cisco-wrlinux-7
+
+(QENG-3309) Add support for Cisco wrlinux-7
+```
+* (QENG-3309) Add support for Cisco wrlinux-7 (3e36da18)
+
+### <a name = "0.1.0">0.1.0 - 21 Dec, 2015 (474f4ccb)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.1.0 (474f4ccb)
 
 * (GEM) update beaker-hostgenerator version to 0.1.0 (13477a89)
 
