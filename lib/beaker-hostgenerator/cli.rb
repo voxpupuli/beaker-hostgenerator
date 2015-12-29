@@ -73,6 +73,11 @@ Usage: beaker-hostgenerator [options] <layout>
           @options[:disable_default_role] = true
         end
 
+        opts.on('--enable-unambiguous-platform-names',
+                "Do not include the default /'agent/' role.") do
+          @options[:enable_unambiguous_platform_names] = true
+        end
+
         opts.on('-h',
                 '--help',
                 'Display command help.') do

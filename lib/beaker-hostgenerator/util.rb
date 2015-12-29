@@ -45,10 +45,10 @@ module BeakerHostGenerator
       end
     end
 
-    def get_platforms(hypervisor_type='vmpooler')
+    def get_platforms(hypervisor_type='vmpooler', version=0)
       case hypervisor_type
       when /vmpooler/
-        osinfo = BeakerHostGenerator::Data::Vmpooler::OSINFO
+        osinfo = BeakerHostGenerator::Data::Vmpooler.get_osinfo()
       else
         raise "Invalid hypervisor #{hypervisor_type}"
       end
