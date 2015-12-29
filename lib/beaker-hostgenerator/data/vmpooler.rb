@@ -8,31 +8,31 @@ module BeakerHostGenerator
           'template' => 'arista-4-i386'
         },
         'centos4-32' => {
-          'platform' => 'el-4-i386',
+          'platform' => 'centos-4-i386',
           'template' => 'centos-4-i386'
         },
         'centos4-64' => {
-          'platform' => 'el-4-x86_64',
+          'platform' => 'centos-4-x86_64',
           'template' => 'centos-4-x86_64'
         },
         'centos5-32' => {
-          'platform' => 'el-5-i386',
+          'platform' => 'centos-5-i386',
           'template' => 'centos-5-i386'
         },
         'centos5-64' => {
-          'platform' => 'el-5-x86_64',
+          'platform' => 'centos-5-x86_64',
           'template' => 'centos-5-x86_64'
         },
         'centos6-32' => {
-          'platform' => 'el-6-i386',
+          'platform' => 'centos-6-i386',
           'template' => 'centos-6-i386'
         },
         'centos6-64' => {
-          'platform' => 'el-6-x86_64',
+          'platform' => 'centos-6-x86_64',
           'template' => 'centos-6-x86_64'
         },
         'centos7-64' => {
-          'platform' => 'el-7-x86_64',
+          'platform' => 'centos-7-x86_64',
           'template' => 'centos-7-x86_64'
         },
         'cisconxos5-64' => {
