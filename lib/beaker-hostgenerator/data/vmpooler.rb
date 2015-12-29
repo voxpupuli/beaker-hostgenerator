@@ -397,7 +397,7 @@ module BeakerHostGenerator
         },
       }
 
-      OSINFO_BGHv1 = {
+      OSINFO_BHGv1 = {
         'centos4-32' => {
           'platform' => 'centos-4-i386',
           'template' => 'centos-4-i386'
@@ -503,15 +503,15 @@ module BeakerHostGenerator
         }
       }
 
-      def get_osinfo(bgh_version=0)
-        case bgh_version
+      def get_osinfo(bhg_version=0)
+        case bhg_version
         when 0
           osinfo = OSINFO
         when 1
           osinfo = OSINFO
-          osinfo.deep_merge! OSINFO_BGHv1
+          osinfo.deep_merge! OSINFO_BHGv1
         else
-          raise "Invalid beaker-hostgenerator version: #{bgh_version}"
+          raise "Invalid beaker-hostgenerator version: #{bhg_version}"
         end
         return osinfo
       end

@@ -57,7 +57,7 @@ module BeakerHostGenerator
         node_info['nodeid'] = nodeid[ostype]
 
         host_name, host_config = generate_node(
-          node_info, BASE_HOST_CONFIG, bgh_version=@options[:osinfo_version])
+          node_info, BASE_HOST_CONFIG, bhg_version=@options[:osinfo_version])
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'
