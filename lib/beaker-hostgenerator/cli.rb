@@ -105,7 +105,8 @@ Usage: beaker-hostgenerator [options] <layout>
 
     def print_platforms_and_roles
       puts "valid beaker-hostgenerator platforms:  "
-      osinfo = BeakerHostGenerator::Utils.get_platforms
+      osinfo = BeakerHostGenerator::Utils.get_platforms(@options[:hypervisor],
+                                                        @options[:osinfo_version])
       osinfo.each do |k,v|
         puts "   #{k}"
       end
