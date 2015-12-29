@@ -505,9 +505,9 @@ module BeakerHostGenerator
 
       def get_osinfo(bgh_version=0)
         case bgh_version
-        when '0'
+        when 0
           osinfo = OSINFO
-        when '1'
+        when 1
           osinfo = OSINFO
           osinfo.deep_merge! OSINFO_BGHv1
         else

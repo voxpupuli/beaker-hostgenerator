@@ -45,7 +45,7 @@ module BeakerHostGenerator
       end
     end
 
-    def get_platforms(hypervisor_type='vmpooler', bgh_version='0')
+    def get_platforms(hypervisor_type='vmpooler', bgh_version=0)
       case hypervisor_type
       when /vmpooler/
         osinfo = BeakerHostGenerator::Data::Vmpooler.get_osinfo(bgh_version)
