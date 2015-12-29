@@ -43,10 +43,7 @@ module BeakerHostGenerator
       ostype = nil
 
       tokens.each do |token|
-        if @options[:enable_unambiguous_platform_names]
-          bgh_version = 1
-        end
-        if is_ostype_token?(token, bgh_version=1)
+        if is_ostype_token?(token, @options[:osinfo_version])
           if nodeid[ostype] == 1 and ostype != nil
             raise "Error: no nodes generated for #{ostype}"
           end
@@ -59,11 +56,8 @@ module BeakerHostGenerator
         node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
-        if @options[:enable_unambiguous_platform_names]
-          host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG, bgh_version=1)
-        else
-          host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
-        end
+        host_name, host_config = generate_node(
+          node_info, BASE_HOST_CONFIG, bgh_version=@options[:osinfo_version])
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'

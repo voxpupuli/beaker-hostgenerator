@@ -495,6 +495,7 @@ module BeakerHostGenerator
           'template' => 'scientific-7-x86_64'
         },
       }
+
       VMPOOLER_CONFIG = {
         'HOSTS' => {},
         'CONFIG' => {
@@ -504,13 +505,13 @@ module BeakerHostGenerator
 
       def get_osinfo(bgh_version=0)
         case bgh_version
-        when 0
+        when '0'
           osinfo = OSINFO_BGHv0
-        when 1
+        when '1'
           osinfo = OSINFO_BGHv0
           osinfo.deep_merge! OSINFO_BGHv1
         else
-          raise "Invalid beaker-hostgenerator version: #{version}"
+          raise "Invalid beaker-hostgenerator version: #{bgh_version}"
         end
         return osinfo
       end

@@ -12,6 +12,7 @@ module BeakerHostGenerator
         list_platforms_and_roles: false,
         disable_default_role: false,
         disable_role_config: false,
+        osinfo_version: '0',
         hypervisor: 'vmpooler',
       }
 
@@ -73,9 +74,14 @@ Usage: beaker-hostgenerator [options] <layout>
           @options[:disable_default_role] = true
         end
 
-        opts.on('--enable-unambiguous-platform-names',
-                "Do not include the default /'agent/' role.") do
-          @options[:enable_unambiguous_platform_names] = true
+        opts.on('--osinfo-version MAJOR_VERSION',
+                "Use OSINFO for specified beaker-hostgenerator version. " <<
+                "Allows early access to future version of OSINFO data structure " <<
+                "used to generate host configs.") do |version|
+          if not ['0', '1'].include? version
+              raise "Invalid beaker-hostgenerator version: #{version}"
+          end
+          @options[:osinfo_version] = version
         end
 
         opts.on('-h',
