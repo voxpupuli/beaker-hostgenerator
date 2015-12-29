@@ -82,6 +82,17 @@ Usage: beaker-hostgenerator [options] <layout>
           if not [0, 1].include? version
               raise "Invalid beaker-hostgenerator version: #{version}"
           end
+          if version == 0
+            warning <<-eow
+WARNING: Starting with beaker-hostgenerator 1.x platform strings for "el" hosts
+will correspond to the actual linux distribution name. ie, the platform string
+corresponding to a host specified as "centos4_64a" will be "centos-6-x86_64"
+rather than "el-6-x86_64". It is recommended that you update your project's
+presuite ASAP or be forced to do so beaker-hostgenerator development moves on to
+the 1.x series. We don't intend to backport features or platforms to 0.x.
+eow
+            STDERR.puts(warning)
+          end
           @options[:osinfo_version] = version
         end
 
