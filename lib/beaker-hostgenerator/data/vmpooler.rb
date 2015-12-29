@@ -2,7 +2,7 @@ module BeakerHostGenerator
   module Data
     module Vmpooler
 
-      OSINFO_BGHv0 = {
+      OSINFO = {
         'arista4-32' => {
           'platform' => 'eos-4-i386',
           'template' => 'arista-4-i386'
@@ -506,9 +506,9 @@ module BeakerHostGenerator
       def get_osinfo(bgh_version=0)
         case bgh_version
         when '0'
-          osinfo = OSINFO_BGHv0
+          osinfo = OSINFO
         when '1'
-          osinfo = OSINFO_BGHv0
+          osinfo = OSINFO
           osinfo.deep_merge! OSINFO_BGHv1
         else
           raise "Invalid beaker-hostgenerator version: #{bgh_version}"
