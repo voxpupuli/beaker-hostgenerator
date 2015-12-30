@@ -1,12 +1,35 @@
 # default - History
 ## Tags
-* [LATEST - 30 Dec, 2015 (5bc2d40b)](#LATEST)
+* [LATEST - 30 Dec, 2015 (8f469a6f)](#LATEST)
+* [0.3.0 - 30 Dec, 2015 (4b03eaf4)](#0.3.0)
 * [0.2.0 - 22 Dec, 2015 (dfa33e5f)](#0.2.0)
 * [0.1.0 - 21 Dec, 2015 (474f4ccb)](#0.1.0)
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 30 Dec, 2015 (5bc2d40b)
+### <a name = "LATEST">LATEST - 30 Dec, 2015 (8f469a6f)
+
+* (GEM) update beaker-hostgenerator version to 0.3.1 (8f469a6f)
+
+* Merge pull request #19 from puppetlabs/issue/qeng-3335-centos-only (a478482a)
+
+
+```
+Merge pull request #19 from puppetlabs/issue/qeng-3335-centos-only
+
+(QENG-3335) Restrict osinfo v1 to centos only changes
+```
+* (QENG-3335) Restrict osinfo v1 to centos only changes (851f1b40)
+
+
+```
+(QENG-3335) Restrict osinfo v1 to centos only changes
+
+See https://tickets.puppetlabs.com/browse/BKR-662 for backstory.
+```
+### <a name = "0.3.0">0.3.0 - 30 Dec, 2015 (4b03eaf4)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.3.0 (4b03eaf4)
 
 * (GEM) update beaker-hostgenerator version to 0.3.0 (5bc2d40b)
 
