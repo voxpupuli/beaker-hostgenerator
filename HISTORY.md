@@ -1,11 +1,63 @@
 # default - History
 ## Tags
-* [LATEST - 22 Dec, 2015 (1194df93)](#LATEST)
+* [LATEST - 30 Dec, 2015 (5bc2d40b)](#LATEST)
+* [0.2.0 - 22 Dec, 2015 (dfa33e5f)](#0.2.0)
 * [0.1.0 - 21 Dec, 2015 (474f4ccb)](#0.1.0)
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 22 Dec, 2015 (1194df93)
+### <a name = "LATEST">LATEST - 30 Dec, 2015 (5bc2d40b)
+
+* (GEM) update beaker-hostgenerator version to 0.3.0 (5bc2d40b)
+
+* Merge pull request #18 from puppetlabs/qeng-3335 (323ed794)
+
+
+```
+Merge pull request #18 from puppetlabs/qeng-3335
+
+(QENG-3335) Don't identify centos as el in 'platform'
+```
+* (QENG-3335) Fix typo in osinfo version deprecation message. (b4903f78)
+
+* (QENG-3335) Fix the OSINFO deprecation warning. (e364bd97)
+
+
+```
+(QENG-3335) Fix the OSINFO deprecation warning.
+
+Assignment to the "warning" variable was incorrect, also it appears that one
+cannot print to STDERR within the OptionParser.new block...
+```
+* (QENG-3335) Add OSINFO v0 deprecation warning. (4336126a)
+
+* (QENG-3335) s/bgh/bhg/ s/BGH/BHG/ (bfb95f05)
+
+* (QENG-3335) Cast osinfo-version to integer. (4e9d8088)
+
+* (QENG-3335) Don't forget to use the bgh_version. (c9dec1b7)
+
+* (QENG-3335) Actually, don't change the original datastructure name. (e1f4cd4a)
+
+* (QENG-3335) Actually, use '--osinfo-version' flag instead. (391fdd68)
+
+* (QENG-3335) Add 'enable-unambiguous-platform-names' flag. (888f8d40)
+
+* (QENG-3335) Don't identify centos as el in 'platform' (520028e2)
+
+* Merge pull request #17 from puppetlabs/maint (3fc629e4)
+
+
+```
+Merge pull request #17 from puppetlabs/maint
+
+(MAINT) Update Changelog for recent releases.
+```
+* (MAINT) Update Changelog for recent releases. (2ae32038)
+
+### <a name = "0.2.0">0.2.0 - 22 Dec, 2015 (dfa33e5f)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.2.0 (dfa33e5f)
 
 * (GEM) update beaker-hostgenerator version to 0.2.0 (1194df93)
 
