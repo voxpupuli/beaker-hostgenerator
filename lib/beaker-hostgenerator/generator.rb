@@ -43,7 +43,7 @@ module BeakerHostGenerator
       ostype = nil
 
       tokens.each do |token|
-        if is_ostype_token?(token)
+        if is_ostype_token?(token, @options[:osinfo_version])
           if nodeid[ostype] == 1 and ostype != nil
             raise "Error: no nodes generated for #{ostype}"
           end
@@ -56,7 +56,8 @@ module BeakerHostGenerator
         node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
-        host_name, host_config = generate_node(node_info, BASE_HOST_CONFIG)
+        host_name, host_config = generate_node(
+          node_info, BASE_HOST_CONFIG, bhg_version=@options[:osinfo_version])
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'

@@ -12,6 +12,7 @@ module BeakerHostGenerator
         list_platforms_and_roles: false,
         disable_default_role: false,
         disable_role_config: false,
+        osinfo_version: 0,
         hypervisor: 'vmpooler',
       }
 
@@ -73,6 +74,18 @@ Usage: beaker-hostgenerator [options] <layout>
           @options[:disable_default_role] = true
         end
 
+        opts.on('--osinfo-version MAJOR_VERSION',
+                "Use OSINFO for specified beaker-hostgenerator version. " <<
+                "Allows early access to future version of OSINFO data structure " <<
+                "used to generate host configs.") do |version|
+          version = version.to_i
+          if not [0, 1].include? version
+              raise "Invalid beaker-hostgenerator version: #{version}"
+          end
+
+          @options[:osinfo_version] = version
+        end
+
         opts.on('-h',
                 '--help',
                 'Display command help.') do
@@ -90,11 +103,24 @@ Usage: beaker-hostgenerator [options] <layout>
 
       # Tokenizing the config definition for great justice
       @tokens = argv[0].split('-')
+
+      if @options[:osinfo_version] === 0
+        warning = <<-eow
+WARNING: Starting with beaker-hostgenerator 1.x platform strings for "el" hosts
+will correspond to the actual linux distribution name. ie, the platform string
+corresponding to a host specified as "centos4_64a" will be "centos-4-x86_64"
+rather than "el-4-x86_64". It is recommended that you update your project's test
+suites ASAP or be forced to do so when beaker-hostgenerator development moves on
+to the 1.x series. We don't intend to backport features or platforms to 0.x.
+eow
+        STDERR.puts(warning)
+      end
     end
 
     def print_platforms_and_roles
       puts "valid beaker-hostgenerator platforms:  "
-      osinfo = BeakerHostGenerator::Utils.get_platforms
+      osinfo = BeakerHostGenerator::Utils.get_platforms(@options[:hypervisor],
+                                                        @options[:osinfo_version])
       osinfo.each do |k,v|
         puts "   #{k}"
       end

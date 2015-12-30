@@ -397,6 +397,105 @@ module BeakerHostGenerator
         },
       }
 
+      OSINFO_BHGv1 = {
+        'centos4-32' => {
+          'platform' => 'centos-4-i386',
+          'template' => 'centos-4-i386'
+        },
+        'centos4-64' => {
+          'platform' => 'centos-4-x86_64',
+          'template' => 'centos-4-x86_64'
+        },
+        'centos5-32' => {
+          'platform' => 'centos-5-i386',
+          'template' => 'centos-5-i386'
+        },
+        'centos5-64' => {
+          'platform' => 'centos-5-x86_64',
+          'template' => 'centos-5-x86_64'
+        },
+        'centos6-32' => {
+          'platform' => 'centos-6-i386',
+          'template' => 'centos-6-i386'
+        },
+        'centos6-64' => {
+          'platform' => 'centos-6-x86_64',
+          'template' => 'centos-6-x86_64'
+        },
+        'centos7-64' => {
+          'platform' => 'centos-7-x86_64',
+          'template' => 'centos-7-x86_64'
+        },
+        'oracle5-32' => {
+          'platform' => 'oracle-5-i386',
+          'template' => 'oracle-5-i386'
+        },
+        'oracle5-64' => {
+          'platform' => 'oracle-5-x86_64',
+          'template' => 'oracle-5-x86_64'
+        },
+        'oracle6-32' => {
+          'platform' => 'oracle-6-i386',
+          'template' => 'oracle-6-i386'
+        },
+        'oracle6-64' => {
+          'platform' => 'oracle-6-x86_64',
+          'template' => 'oracle-6-x86_64'
+        },
+        'oracle7-64' => {
+          'platform' => 'oracle-7-x86_64',
+          'template' => 'oracle-7-x86_64'
+        },
+        'redhat4-32' => {
+          'platform' => 'redhat-4-i386',
+          'template' => 'redhat-4-i386'
+        },
+        'redhat4-64' => {
+          'platform' => 'redhat-4-x86_64',
+          'template' => 'redhat-4-x86_64'
+        },
+        'redhat5-32' => {
+          'platform' => 'redhat-5-i386',
+          'template' => 'redhat-5-i386'
+        },
+        'redhat5-64' => {
+          'platform' => 'redhat-5-x86_64',
+          'template' => 'redhat-5-x86_64'
+        },
+        'redhat6-32' => {
+          'platform' => 'redhat-6-i386',
+          'template' => 'redhat-6-i386'
+        },
+        'redhat6-64' => {
+          'platform' => 'redhat-6-x86_64',
+          'template' => 'redhat-6-x86_64'
+        },
+        'redhat7-64' => {
+          'platform' => 'redhat-7-x86_64',
+          'template' => 'redhat-7-x86_64'
+        },
+        'scientific5-32' => {
+          'platform' => 'scientific-5-i386',
+          'template' => 'scientific-5-i386'
+        },
+        'scientific5-64' => {
+          'platform' => 'scientific-5-x86_64',
+          'template' => 'scientific-5-x86_64'
+        },
+        'scientific6-32' => {
+          'platform' => 'scientific-6-i386',
+          'template' => 'scientific-6-i386'
+        },
+        'scientific6-64' => {
+          'platform' => 'scientific-6-x86_64',
+          'template' => 'scientific-6-x86_64'
+        },
+        'scientific7-64' => {
+          'platform' => 'scientific-7-x86_64',
+          'template' => 'scientific-7-x86_64'
+        },
+      }
+
       VMPOOLER_CONFIG = {
         'HOSTS' => {},
         'CONFIG' => {
@@ -404,6 +503,20 @@ module BeakerHostGenerator
         }
       }
 
+      def get_osinfo(bhg_version=0)
+        case bhg_version
+        when 0
+          osinfo = OSINFO
+        when 1
+          osinfo = OSINFO
+          osinfo.deep_merge! OSINFO_BHGv1
+        else
+          raise "Invalid beaker-hostgenerator version: #{bhg_version}"
+        end
+        return osinfo
+      end
+
+      module_function :get_osinfo
     end
   end
 end

@@ -15,7 +15,7 @@ module BeakerHostGenerator
       super(options)
     end
 
-    def generate_node node_info, base_config
+    def generate_node node_info, base_config, bhg_version=0
       host_config = {}
       host_config.deep_merge! base_config
 
@@ -30,7 +30,8 @@ module BeakerHostGenerator
       platform = "#{ostype}-#{bits}"
       name = "#{platform}-#{nodeid}"
 
-      host_config.deep_merge! OSINFO[platform]
+      osinfo = get_osinfo(bhg_version)
+      host_config.deep_merge! osinfo[platform]
 
       # Some vmpooler/vsphere platforms have special requirements. We munge the
       # node host_config here if that is necessary.
@@ -39,8 +40,9 @@ module BeakerHostGenerator
       return name, host_config
     end
 
-    def is_ostype_token? token
-      OSINFO.each do |key,value|
+    def is_ostype_token? token, bhg_version=0
+      osinfo = get_osinfo(bhg_version)
+      osinfo.each do |key,value|
 
         ostype = key.split('-')[0]
 
