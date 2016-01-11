@@ -8,6 +8,14 @@ Versioning](http://semver.org).
 ### Changed
 - Updated this changelog for recent beaker-hostgenerator releases.
 
+## [0.2.1] - 2016-01-20
+- Fix platforms:
+  - Cisco NXOS 5 (x86_64)
+    - set Virtual Routing & Forwarding (vrf) to 'management'
+    - set ssh username to 'beaker'
+  - Cisco eXR 7 (x86_64)
+    - set Virtual Routing & Forwarding (vrf) to 'management'
+  
 ## [0.2.0] - 2015-12-22
 - Add platforms:
   - Cumulus 2.5 (x86_64)
