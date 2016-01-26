@@ -56,6 +56,14 @@ module BeakerHostGenerator
         node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
+        config = BASE_HOST_CONFIG
+
+        [:pe_dir, :pe_ver, :pe_upgrade_dir, :pe_upgrade_ver].each do |option|
+          if option
+            config[option.to_s] = @options[option]
+          end
+        end
+
         host_name, host_config = generate_node(
           node_info, BASE_HOST_CONFIG, bhg_version=@options[:osinfo_version])
 

@@ -64,6 +64,26 @@ Usage: beaker-hostgenerator [options] <layout>
           @options[:hypervisor] = h
         end
 
+        opts.on('--pe_upgrade_dir UPGRADE_PATH',
+                'Explicitly set pe_upgrade_dir attribute on generated hosts. ') do |p|
+          @options[:pe_upgrade_dir] = p
+        end
+
+        opts.on('--pe_upgrade_ver UPGRADE_VERSION',
+                'Explicitly set pe_upgrade_ver attribute on generated hosts. ') do |p|
+          @options[:pe_upgrade_ver] = p
+        end
+
+        opts.on('--pe_dir PATH',
+                'Explicitly set pe_dir attribute on generated hosts. ') do |p|
+          @options[:pe_dir] = p
+        end
+
+        opts.on('--pe_ver VERSION',
+                'Explicitly set pe_ver attribute on generated hosts. ') do |p|
+          @options[:pe_ver] = p
+        end
+
         opts.on('--disable-role-config',
                 "Do not include role-specific configuration.") do
           @options[:disable_role_config] = true
