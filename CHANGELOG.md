@@ -6,7 +6,17 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 ### Changed
-- Updated this changelog for recent beaker-hostgenerator releases.
+
+## [0.3.2] - 2016-01-28
+- Change the way we generate the platform string for windows 10 hosts.
+
+## [0.3.1] - 2015-12-31
+- Bug fix: Restrict OSINFO v1 to centos-only changes.
+
+## [0.3.0] - 2015-12-30
+- Add --osinfo-version flag to allow users to select beaker-hostgenerator 1.x
+major versions of the OSINFO data structure.
+  - Don't identify "centos" machines as "el" in the platform string.
 
 ## [0.2.0] - 2015-12-22
 - Add platforms:
