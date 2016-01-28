@@ -1,13 +1,46 @@
 # default - History
 ## Tags
-* [LATEST - 30 Dec, 2015 (8f469a6f)](#LATEST)
+* [LATEST - 28 Jan, 2016 (1b73712d)](#LATEST)
+* [0.3.1 - 30 Dec, 2015 (7a3f10ca)](#0.3.1)
 * [0.3.0 - 30 Dec, 2015 (4b03eaf4)](#0.3.0)
 * [0.2.0 - 22 Dec, 2015 (dfa33e5f)](#0.2.0)
 * [0.1.0 - 21 Dec, 2015 (474f4ccb)](#0.1.0)
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 30 Dec, 2015 (8f469a6f)
+### <a name = "LATEST">LATEST - 28 Jan, 2016 (1b73712d)
+
+* (GEM) update beaker-hostgenerator version to 0.3.2 (1b73712d)
+
+* Merge pull request #22 from Iristyle/update-win-10-platforms (b181cd18)
+
+
+```
+Merge pull request #22 from Iristyle/update-win-10-platforms
+
+(maint) Update Windows 10 platform names
+```
+* (maint) Update Windows 10 platform names (27a26440)
+
+
+```
+(maint) Update Windows 10 platform names
+
+ - Previous convention for Windows platforms is to always end in a -32
+   or -64.  There are some tests that rely on this naming scheme to
+   properly identify a 32-bit or 64-bit OS.
+
+   For instance, a Puppet acceptance test relies on that convention when
+   detecting the location of binaries per:
+
+   https://github.com/puppetlabs/puppet/blob/master/acceptance/tests/ensure_puppet-agent_paths.rb#L140-L143
+
+   Original commit that introduced these was
+   3d1be3833b0dd95d508d89ecbe76464524f578c3
+```
+### <a name = "0.3.1">0.3.1 - 30 Dec, 2015 (7a3f10ca)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.3.1 (7a3f10ca)
 
 * (GEM) update beaker-hostgenerator version to 0.3.1 (8f469a6f)
 
