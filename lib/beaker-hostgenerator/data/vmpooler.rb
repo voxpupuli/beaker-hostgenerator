@@ -386,12 +386,12 @@ module BeakerHostGenerator
           'ruby_arch' => 'x86'
         },
         'windows10ent-64' => {
-          'platform' => 'windows-10ent-x86_64',
+          'platform' => 'windows-10ent-64',
           'template' => 'win-10-ent-x86_64',
           'ruby_arch' => 'x64'
         },
         'windows10pro-64' => {
-          'platform' => 'windows-10pro-x86_64',
+          'platform' => 'windows-10pro-64',
           'template' => 'win-10-pro-x86_64',
           'ruby_arch' => 'x64'
         },
