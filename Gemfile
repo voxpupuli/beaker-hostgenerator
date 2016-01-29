@@ -21,6 +21,8 @@ group :acceptance_testing do
   gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '~> 2.0')
 end
 
+gem "minitest"
+
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)
