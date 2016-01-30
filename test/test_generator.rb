@@ -1,15 +1,16 @@
-require "minitest/autorun"
 require "yaml"
+
+require "minitest/autorun"
+
+require 'beaker-hostgenerator'
 
 module GeneratorTestHelpers
   def run_cli_with_options options = []
-    # Calls beaker-hostgenerator with the given options, then reads the
-    # resulting yaml stdout, then returns a hash of that data structure to be
-    # asserted upon.
-    options.insert(0, "beaker-hostgenerator")
-    command = options.join(" ")
-    stdin, stdout, stderr = Open3.popen3(String(command))
-    hash = YAML.load(stdout.read())
+    STDERR.reopen("stderr.txt", "w")
+    cli = BeakerHostGenerator::CLI.new(options)
+    yaml_string = cli.execute
+
+    hash = YAML.load(yaml_string)
     return hash
   end
 end
