@@ -1,0 +1,21 @@
+---
+options_string: solaris10-32u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris10-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-i386
+      template: solaris-10-x86_64
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
