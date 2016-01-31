@@ -45,12 +45,13 @@ module GeneratorTestHelpers
   end
 
   def generate_fixtures_using_osinfo(relative_path,
+                                     role_enumerator,
                                      options=[],
-                                     bhg_version=0,
-                                     )
+                                     bhg_version=0)
     osinfo = get_osinfo(bhg_version)
     osinfo.each_key do |platform_info|
-      spec = "#{platform_info}aulcdfm"
+      role = role_enumerator.next
+      spec = "#{platform_info}" + role
       generate_fixture(relative_path, options, spec)
     end
   end
