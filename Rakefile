@@ -47,6 +47,21 @@ A quick acceptance test, named because it has no pre-suites to run
 
 end
 
+namespace :generate do
+  desc "Generate test fixtures."
+  task :fixtures do
+    $LOAD_PATH.unshift(
+      File.join(Dir.pwd, 'lib'),
+      File.join(Dir.pwd, 'test')
+    )
+    require 'beaker-hostgenerator'
+    require 'util/generator_helpers'
+
+    fixgen = FixtureGenerator.new
+    fixgen.generate
+  end
+end
+
 # namespace-named default tasks.
 # these are the default tasks invoked when only the namespace is referenced.
 # they're needed because `task :default` in those blocks doesn't work as expected.
