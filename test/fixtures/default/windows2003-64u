@@ -1,5 +1,5 @@
 ---
-options_string: windows2003-64u
+arguments_string: windows2003-64u
 environment_variables: {}
 expected_hash:
   HOSTS:

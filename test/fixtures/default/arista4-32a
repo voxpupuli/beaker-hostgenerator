@@ -1,5 +1,5 @@
 ---
-options_string: arista4-32a
+arguments_string: arista4-32a
 environment_variables: {}
 expected_hash:
   HOSTS:

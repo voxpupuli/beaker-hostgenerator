@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 redhat5-32f"
+arguments_string: "--osinfo-version 0 redhat5-32f"
 environment_variables: {}
 expected_hash:
   HOSTS:

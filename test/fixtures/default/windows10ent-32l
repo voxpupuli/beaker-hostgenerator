@@ -1,5 +1,5 @@
 ---
-options_string: windows10ent-32l
+arguments_string: windows10ent-32l
 environment_variables: {}
 expected_hash:
   HOSTS:

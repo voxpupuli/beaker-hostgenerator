@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 1 windows2003-6432l"
+arguments_string: "--osinfo-version 1 windows2003-6432l"
 environment_variables: {}
 expected_hash:
   HOSTS:

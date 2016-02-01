@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 scientific7-64c"
+arguments_string: "--osinfo-version 0 scientific7-64c"
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: windows8-64aulcdfm
+arguments_string: windows8-64aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

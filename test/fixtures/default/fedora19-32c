@@ -1,5 +1,5 @@
 ---
-options_string: fedora19-32c
+arguments_string: fedora19-32c
 environment_variables: {}
 expected_hash:
   HOSTS:

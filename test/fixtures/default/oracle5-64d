@@ -1,5 +1,5 @@
 ---
-options_string: oracle5-64d
+arguments_string: oracle5-64d
 environment_variables: {}
 expected_hash:
   HOSTS:

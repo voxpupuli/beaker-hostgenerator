@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 debian9-32u"
+arguments_string: "--osinfo-version 0 debian9-32u"
 environment_variables: {}
 expected_hash:
   HOSTS:

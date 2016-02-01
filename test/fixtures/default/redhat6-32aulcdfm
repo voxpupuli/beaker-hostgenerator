@@ -1,5 +1,5 @@
 ---
-options_string: redhat6-32aulcdfm
+arguments_string: redhat6-32aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

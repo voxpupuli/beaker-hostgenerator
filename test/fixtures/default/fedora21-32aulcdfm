@@ -1,5 +1,5 @@
 ---
-options_string: fedora21-32aulcdfm
+arguments_string: fedora21-32aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

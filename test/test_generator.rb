@@ -37,7 +37,7 @@ class TestGenerator < Minitest::Test
 
       fixture_hash = YAML.load_file(f)
 
-      options = fixture_hash["options_string"]
+      options = fixture_hash["arguments_string"]
 
       mismatch_message = <<-eom
         Fixture: #{f}

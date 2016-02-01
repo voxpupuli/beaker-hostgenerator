@@ -1,5 +1,5 @@
 ---
-options_string: osx1011-64l
+arguments_string: osx1011-64l
 environment_variables: {}
 expected_hash:
   HOSTS:

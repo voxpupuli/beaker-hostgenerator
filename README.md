@@ -117,7 +117,7 @@ follows:
 
 ```yaml
 ---
-options_string: "--pe_dir /opt/hello centos6-64mdc"
+arguments_string: "--pe_dir /opt/hello centos6-64mdc"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -145,13 +145,13 @@ These test fixtures are yaml files searched for in the directory
 `test/fixtures`. The data structure expected in these files is a hash with four
 keys:
 
-- `options_string`: The command line arguments that should be passed to
+- `arguments_string`: The command line arguments that should be passed to
   `beaker-hostgenerator`
 - `environment_variables`: The environment variables that should be set during
   the `beaker-hostgenerator` call.
 - `expected_hash`: A hash that should match the output of `beaker-hostgenerator`
   when it is run with `options\_string`
-- `expected_exception`: If the `options_string` passed to `beaker-hostgenerator`
+- `expected_exception`: If the `arguments_string` passed to `beaker-hostgenerator`
   is expected to lead to an exceptional state, this is the name of the exception
   that the fixture test will attempt to match.
 

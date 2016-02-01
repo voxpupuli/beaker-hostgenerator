@@ -1,5 +1,5 @@
 ---
-options_string: "--pe_ver 2020.7 centos6-64mdc"
+arguments_string: "--pe_ver 2020.7 centos6-64mdc"
 environment_variables: {}
 expected_hash:
   HOSTS:

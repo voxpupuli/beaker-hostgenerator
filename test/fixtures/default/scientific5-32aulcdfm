@@ -1,5 +1,5 @@
 ---
-options_string: scientific5-32aulcdfm
+arguments_string: scientific5-32aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: windows2008r2-6432u
+arguments_string: windows2008r2-6432u
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: debian6-32c
+arguments_string: debian6-32c
 environment_variables: {}
 expected_hash:
   HOSTS:

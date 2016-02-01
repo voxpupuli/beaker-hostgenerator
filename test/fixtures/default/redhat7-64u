@@ -1,5 +1,5 @@
 ---
-options_string: redhat7-64u
+arguments_string: redhat7-64u
 environment_variables: {}
 expected_hash:
   HOSTS:

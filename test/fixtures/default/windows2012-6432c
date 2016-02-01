@@ -1,5 +1,5 @@
 ---
-options_string: windows2012-6432c
+arguments_string: windows2012-6432c
 environment_variables: {}
 expected_hash:
   HOSTS:

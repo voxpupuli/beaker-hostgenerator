@@ -1,5 +1,5 @@
 ---
-options_string: ubuntu1404-32c
+arguments_string: ubuntu1404-32c
 environment_variables: {}
 expected_hash:
   HOSTS:

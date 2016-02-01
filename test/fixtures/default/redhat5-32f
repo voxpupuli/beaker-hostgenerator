@@ -1,5 +1,5 @@
 ---
-options_string: redhat5-32f
+arguments_string: redhat5-32f
 environment_variables: {}
 expected_hash:
   HOSTS:

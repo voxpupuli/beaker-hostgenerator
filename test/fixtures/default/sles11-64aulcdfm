@@ -1,5 +1,5 @@
 ---
-options_string: sles11-64aulcdfm
+arguments_string: sles11-64aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

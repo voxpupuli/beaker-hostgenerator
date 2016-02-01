@@ -1,5 +1,5 @@
 ---
-options_string: solaris112-32f
+arguments_string: solaris112-32f
 environment_variables: {}
 expected_hash:
   HOSTS:

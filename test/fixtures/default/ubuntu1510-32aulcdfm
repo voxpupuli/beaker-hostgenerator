@@ -1,5 +1,5 @@
 ---
-options_string: ubuntu1510-32aulcdfm
+arguments_string: ubuntu1510-32aulcdfm
 environment_variables: {}
 expected_hash:
   HOSTS:

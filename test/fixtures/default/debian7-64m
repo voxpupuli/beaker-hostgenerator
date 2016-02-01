@@ -1,5 +1,5 @@
 ---
-options_string: debian7-64m
+arguments_string: debian7-64m
 environment_variables: {}
 expected_hash:
   HOSTS:

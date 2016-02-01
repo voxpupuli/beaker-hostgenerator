@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 windowsvista-64u"
+arguments_string: "--osinfo-version 0 windowsvista-64u"
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 1 windows2008-6432aulcdfm"
+arguments_string: "--osinfo-version 1 windows2008-6432aulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:

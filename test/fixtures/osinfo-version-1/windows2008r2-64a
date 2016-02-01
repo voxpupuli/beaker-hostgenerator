@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 1 windows2008r2-64a"
+arguments_string: "--osinfo-version 1 windows2008r2-64a"
 environment_variables: {}
 expected_hash:
   HOSTS:

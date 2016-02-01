@@ -1,5 +1,5 @@
 ---
-options_string: debian8-64a
+arguments_string: debian8-64a
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: scientific6-32u
+arguments_string: scientific6-32u
 environment_variables: {}
 expected_hash:
   HOSTS:

@@ -1,5 +1,5 @@
 ---
-options_string: scientific5-64a
+arguments_string: scientific5-64a
 environment_variables: {}
 expected_hash:
   HOSTS:

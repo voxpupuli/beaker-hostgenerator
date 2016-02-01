@@ -1,5 +1,5 @@
 ---
-options_string: sles10-32d
+arguments_string: sles10-32d
 environment_variables: {}
 expected_hash:
   HOSTS:

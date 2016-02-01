@@ -29,11 +29,11 @@ module GeneratorTestHelpers
 
   def generate_fixture(relative_path, options, spec)
     specopts = options + [spec]
-    options_string = specopts.join(" ")
+    arguments_string = specopts.join(" ")
     generated_hash = run_cli_with_options(specopts)
 
     fixture_hash = {
-      "options_string" => options_string,
+      "arguments_string" => arguments_string,
       "environment_variables" => {},
       "expected_hash" => generated_hash,
       "expected_exception" => nil,

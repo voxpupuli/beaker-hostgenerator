@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 osx1010-64u"
+arguments_string: "--osinfo-version 0 osx1010-64u"
 environment_variables: {}
 expected_hash:
   HOSTS:

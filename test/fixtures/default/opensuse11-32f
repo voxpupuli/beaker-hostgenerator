@@ -1,5 +1,5 @@
 ---
-options_string: opensuse11-32f
+arguments_string: opensuse11-32f
 environment_variables: {}
 expected_hash:
   HOSTS:

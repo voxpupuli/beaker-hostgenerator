@@ -1,5 +1,5 @@
 ---
-options_string: ubuntu1204-32u
+arguments_string: ubuntu1204-32u
 environment_variables: {}
 expected_hash:
   HOSTS:

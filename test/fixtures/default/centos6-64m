@@ -1,5 +1,5 @@
 ---
-options_string: centos6-64m
+arguments_string: centos6-64m
 environment_variables: {}
 expected_hash:
   HOSTS:

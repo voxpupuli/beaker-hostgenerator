@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 sles11-32m"
+arguments_string: "--osinfo-version 0 sles11-32m"
 environment_variables: {}
 expected_hash:
   HOSTS:

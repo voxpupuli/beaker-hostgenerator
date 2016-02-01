@@ -1,5 +1,5 @@
 ---
-options_string: "--pe_upgrade_ver 2020.7.3 centos6-64mdc"
+arguments_string: "--pe_upgrade_ver 2020.7.3 centos6-64mdc"
 environment_variables: {}
 expected_hash:
   HOSTS:

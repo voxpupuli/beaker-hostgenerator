@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 1 cisconxos5-64a"
+arguments_string: "--osinfo-version 1 cisconxos5-64a"
 environment_variables: {}
 expected_hash:
   HOSTS:

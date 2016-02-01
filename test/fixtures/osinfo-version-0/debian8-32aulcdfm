@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 0 debian8-32aulcdfm"
+arguments_string: "--osinfo-version 0 debian8-32aulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:

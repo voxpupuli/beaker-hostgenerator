@@ -1,5 +1,5 @@
 ---
-options_string: debian9-32u
+arguments_string: debian9-32u
 environment_variables: {}
 expected_hash:
   HOSTS:

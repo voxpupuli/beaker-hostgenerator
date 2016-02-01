@@ -1,5 +1,5 @@
 ---
-options_string: "--osinfo-version 1 solaris11-64d"
+arguments_string: "--osinfo-version 1 solaris11-64d"
 environment_variables: {}
 expected_hash:
   HOSTS:
