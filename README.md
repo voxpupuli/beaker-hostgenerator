@@ -8,6 +8,21 @@ but is designed in a way that makes it possible to easily add support for
 additional hypervisor templates (any hypervisor type supported by
 [beaker][beaker]).
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [Beaker Host Generator](#beaker-host-generator)
+    - [Usage](#usage)
+        - [Simple two-host SUT layout](#simple-two-host-sut-layout)
+        - [Single-host SUT layout with Arbitrary Roles](#single-host-sut-layout-with-arbitrary-roles)
+    - [Testing](#testing)
+        - [Test Fixtures](#test-fixtures)
+            - [Generated Fixtures](#generated-fixtures)
+    - [Support](#support)
+    - [License](#license)
+
+<!-- markdown-toc end -->
+ 
 ## Usage
 
 Below are some example usages of `beaker-hostgenerator`.
@@ -85,6 +100,82 @@ CONFIG:
   consoleport: 443
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
+
+## Testing
+
+Beaker Host Generator currently uses both rspec and minitest tests. To run both
+at the same time, run:
+```bash
+bundle exec rake tests
+```
+
+### Test Fixtures
+
+Beaker Host Generator makes extensive use of test fixtures to validate its
+behavior under specific conditions. An example of such a test fixture is as
+follows:
+
+```yaml
+---
+options_string: "--pe_dir /opt/hello centos6-64mdc"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos6-64-1:
+      pe_dir: "/opt/hello"
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: centos-6-x86_64
+      template: centos-6-x86_64
+      roles:
+      - agent
+      - master
+      - database
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
+```
+
+These test fixtures are yaml files searched for in the directory
+`test/fixtures`. The data structure expected in these files is a hash with four
+keys:
+
+- `options_string`: The command line arguments that should be passed to
+  `beaker-hostgenerator`
+- `environment_variables`: The environment variables that should be set during
+  the `beaker-hostgenerator` call.
+- `expected_hash`: A hash that should match the output of `beaker-hostgenerator`
+  when it is run with `options\_string`
+- `expected_exception`: If the `options_string` passed to `beaker-hostgenerator`
+  is expected to lead to an exceptional state, this is the name of the exception
+  that the fixture test will attempt to match.
+
+#### Generated Fixtures
+
+It is possible to generate test fixtures using the current state of the
+`beaker-hostgenerator` library. To do this, call the `generate:fixtures` Rake
+task.
+
+However, this is not something that should need to be done very often. If you
+are running tests and find that some fixtures no longer work, you have most
+likely made a change that incompatibly changes the behavior of
+`beaker-hostgenerator` for other users. Use the test fixtures as a guide to
+figure out what you did wrong and figure out how to achieve your goal without
+potentially breaking `beaker-hostgenerator` for other users.
+
+There are are few circumstances when you should expect to run the
+`generate:fixtures` task:
+
+- When you modify the `FixtureGenerator` to generate new fixtures.
+- When you need to fix bug (generated hosts are not usable without your change,
+  for example).
+- When preparing for a major version bump of Beaker Host Generator.
+
 
 ## Support
 
