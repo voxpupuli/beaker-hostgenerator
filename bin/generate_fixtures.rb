@@ -1,18 +1,22 @@
-require "minitest/autorun"
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(
+  File.expand_path(File.dirname(File.dirname(__FILE__)), 'lib'),
+  File.expand_path(File.dirname(File.dirname(__FILE__)), 'test')
+)
 
 require 'beaker-hostgenerator'
-
 require 'util/generator_helpers'
 
-class GenerateFixtures < Minitest::Test
+class FixtureGenerator
   include GeneratorTestHelpers
 
-  def setup
+  def initialize
     @fixture_root = 'test/fixtures/'
     @simple_roles = ["a", "u", "l", "c", "d", "f", "m", "aulcdfm"]
   end
 
-  def test_generate_fixtures
+  def generate
     # Validates single-host scenarios using all short-form role aliases with no
     # optional flags'
     generate_fixtures_using_osinfo(['default'], @simple_roles.cycle, [])
@@ -56,3 +60,6 @@ class GenerateFixtures < Minitest::Test
     end
   end
 end
+
+fixgen = FixtureGenerator.new
+fixgen.generate
