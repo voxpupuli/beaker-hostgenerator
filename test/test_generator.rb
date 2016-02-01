@@ -38,9 +38,18 @@ class TestGenerator < Minitest::Test
       fixture_hash = YAML.load_file(f)
 
       options = fixture_hash["options_string"]
+
+      mismatch_message = <<-eom
+        Fixture: #{f}
+        CLI Args: "#{options}"
+      eom
+
       options = options.split
       test_hash = run_cli_with_options(options)
-      assert_equal(fixture_hash["expected_hash"], test_hash)
+      assert_equal(fixture_hash["expected_hash"],
+                   test_hash,
+                   mismatch_message
+                  )
     end
   end
 end
