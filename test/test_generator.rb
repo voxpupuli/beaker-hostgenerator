@@ -35,8 +35,7 @@ class TestGenerator < Minitest::Test
         next
       end
 
-      fixture_file = File.open(f, "r")
-      fixture_hash = YAML.load(fixture_file)
+      fixture_hash = YAML.load_file(f)
 
       options = fixture_hash["options_string"]
       options = options.split
