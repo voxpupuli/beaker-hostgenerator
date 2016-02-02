@@ -98,14 +98,13 @@ module BeakerHostGenerator
           end
         end
 
-        shared_examples "fixtures" do |fixture_filename, fixture_hash|
+        shared_examples "fixtures" do |fixture_hash|
           arguments = fixture_hash["arguments_string"]
           it "beaker-hostgenerator #{arguments}" do
             arguments = arguments.split
             STDERR.reopen("stderr.txt", "w")
             cli = BeakerHostGenerator::CLI.new(arguments)
-            yaml_string = cli.execute
-            test_hash = YAML.load(yaml_string)
+            test_hash = YAML.load(cli.execute)
             expect(test_hash).to eq(fixture_hash["expected_hash"])
           end
         end
@@ -116,8 +115,7 @@ module BeakerHostGenerator
               if File.directory?(f)
                 next
               end
-
-              include_examples "fixtures", f, YAML.load_file(f)
+              include_examples "fixtures", YAML.load_file(f)
             end
           end
         end
