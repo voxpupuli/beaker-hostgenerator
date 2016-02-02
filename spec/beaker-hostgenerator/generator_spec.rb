@@ -1,5 +1,9 @@
-require 'beaker-hostgenerator'
+require 'find'
+
 require 'spec_helper'
+
+require 'beaker-hostgenerator'
+require 'util/generator_helpers'
 
 module BeakerHostGenerator
       describe Generator do
@@ -90,6 +94,30 @@ module BeakerHostGenerator
                 "arbitrary_roles" => ["compile_master", "ca", "blah"],
                 "bits" => "64",
               })
+            end
+          end
+        end
+
+        shared_examples "fixtures" do |fixture_filename, fixture_hash|
+          arguments = fixture_hash["arguments_string"]
+          it "beaker-hostgenerator #{arguments}" do
+            arguments = arguments.split
+            STDERR.reopen("stderr.txt", "w")
+            cli = BeakerHostGenerator::CLI.new(arguments)
+            yaml_string = cli.execute
+            test_hash = YAML.load(yaml_string)
+            expect(test_hash).to eq(fixture_hash["expected_hash"])
+          end
+        end
+
+        context "Fixtures" do
+          Find.find 'test/fixtures' do |f|
+            context "#{f}" do
+              if File.directory?(f)
+                next
+              end
+
+              include_examples "fixtures", f, YAML.load_file(f)
             end
           end
         end

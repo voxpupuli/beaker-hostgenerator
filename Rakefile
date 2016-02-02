@@ -18,6 +18,7 @@ namespace :test do
     RSpec::Core::RakeTask.new(:run) do |t|
       t.rspec_opts = ['--color']
       t.pattern = 'spec/'
+      t.ruby_opts = '-Itest'
     end
 
     desc "Run spec tests with coverage"

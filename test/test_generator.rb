@@ -24,32 +24,4 @@ class TestGenerator < Minitest::Test
       assert_includes(centos6['roles'], role)
     end
   end
-
-  def test_pe_dir_option
-    skip "pe_dir option not yet tested"
-  end
-
-  def test_fixtures
-    Find.find 'test/fixtures' do |f|
-      if File.directory?(f)
-        next
-      end
-
-      fixture_hash = YAML.load_file(f)
-
-      options = fixture_hash["arguments_string"]
-
-      mismatch_message = <<-eom
-        Fixture: #{f}
-        CLI Args: "#{options}"
-      eom
-
-      options = options.split
-      test_hash = run_cli_with_options(options)
-      assert_equal(fixture_hash["expected_hash"],
-                   test_hash,
-                   mismatch_message
-                  )
-    end
-  end
 end
