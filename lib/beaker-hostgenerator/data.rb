@@ -1,11 +1,21 @@
 module BeakerHostGenerator
   module Data
 
-    # Pull various informations out of the environment.
-    PE_VERSION=ENV['pe_version']
-    PE_FAMILY=ENV['pe_family']
-    PE_UPGRADE_VERSION=ENV['pe_upgrade_version']
-    PE_UPGRADE_FAMILY=ENV['pe_upgrade_family']
+    def pe_version
+      ENV['pe_version']
+    end
+
+    def pe_family
+      ENV['pe_family']
+    end
+
+    def pe_upgrade_version
+      ENV['pe_upgrade_version']
+    end
+
+    def pe_upgrade_family
+      ENV['pe_upgrade_family']
+    end
 
     PE_USE_WIN32=ENV['pe_use_win32']
 
@@ -51,5 +61,7 @@ module BeakerHostGenerator
         'consoleport' => 443,
       }
     }
+
+    module_function :pe_version, :pe_family, :pe_upgrade_version, :pe_upgrade_family
   end
 end

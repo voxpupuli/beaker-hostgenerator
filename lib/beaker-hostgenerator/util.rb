@@ -22,7 +22,7 @@ module BeakerHostGenerator
 
     def fixup_node(cfg)
       # PE 2.8 doesn't exist for EL 4. We use 2.0 instead.
-      if cfg['platform'] =~ /el-4/ and PE_VERSION =~ /2\.8/
+      if cfg['platform'] =~ /el-4/ and BeakerHostGenerator::Data.pe_version =~ /2\.8/
         cfg['pe_ver'] = "2.0.3"
       end
     end
