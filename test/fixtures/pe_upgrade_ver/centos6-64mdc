@@ -9,7 +9,7 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 2020.7.3
       hypervisor: vmpooler
-      platform: centos-6-x86_64
+      platform: el-6-x86_64
       template: centos-6-x86_64
       roles:
       - agent

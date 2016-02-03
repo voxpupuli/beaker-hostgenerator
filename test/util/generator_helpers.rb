@@ -78,16 +78,6 @@ class FixtureGenerator
     # optional flags'
     generate_fixtures_using_osinfo(['default'], @simple_roles.cycle, [])
 
-    # Validates single-host scenarios using all short-form role aliases with the
-    # addition of the --osinfo-version flag to indicate which BHG version to
-    # generate host configs for.
-    [0, 1].each do |bhg_version|
-      generate_fixtures_using_osinfo(["osinfo-version-#{bhg_version}"],
-                                     @simple_roles.cycle,
-                                     ["--osinfo-version", "#{bhg_version}"],
-                                     bhg_version)
-    end
-
     # Validates the use of environment variables to set various pe options.
     [
       {'case_name' => 'pe_version_and_pe_family',
@@ -119,10 +109,16 @@ class FixtureGenerator
                        fixture_hash['environment_variables'])
     end
 
-    ENV['pe_version'] = nil
-    ENV['pe_upgrade_version'] = nil
-    ENV['pe_family'] = nil
-    ENV['pe_upgrade_family'] = nil
+    # Validates single-host scenarios using all short-form role aliases with the
+    # addition of the --osinfo-version flag to indicate which BHG version to
+    # generate host configs for.
+    [0, 1].each do |bhg_version|
+      generate_fixtures_using_osinfo(["osinfo-version-#{bhg_version}"],
+                                     @simple_roles.cycle,
+                                     ["--osinfo-version", "#{bhg_version}"],
+                                     bhg_version)
+    end
+
     # Validates the use of the pe ver/dir type options.
     [
       {

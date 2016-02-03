@@ -13,7 +13,7 @@ expected_hash:
       pe_upgrade_dir: http://enterprise.delivery.puppetlabs.net/archives/releases/6.6.6/
       pe_upgrade_ver: 6.6.6
       hypervisor: vmpooler
-      platform: centos-6-i386
+      platform: el-6-i386
       template: centos-6-i386
       roles:
       - agent
