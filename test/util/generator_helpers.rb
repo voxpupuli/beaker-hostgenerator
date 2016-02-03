@@ -27,14 +27,21 @@ module GeneratorTestHelpers
     return File.open(filename, "w")
   end
 
-  def generate_fixture(relative_path, options, spec)
+  def generate_fixture(relative_path, options, spec, environment_variables={})
     specopts = options + [spec]
     arguments_string = specopts.join(" ")
+
+    environment_variables.each do |key, value| 
+      ENV[key] = value
+    end
     generated_hash = run_cli_with_options(specopts)
+    environment_variables.each_key do |key|
+      ENV[key] = nil
+    end
 
     fixture_hash = {
       "arguments_string" => arguments_string,
-      "environment_variables" => {},
+      "environment_variables" => environment_variables,
       "expected_hash" => generated_hash,
       "expected_exception" => nil,
     }
@@ -81,6 +88,41 @@ class FixtureGenerator
                                      bhg_version)
     end
 
+    # Validates the use of environment variables to set various pe options.
+    [
+      {'case_name' => 'pe_version_and_pe_family',
+       'environment_variables' => {
+         'pe_version' => '6.6.6',
+         'pe_upgrade_version' => '6.6.6',
+         'pe_family' => '6.6.6',
+         'pe_upgrade_family' => '6.6.6',
+       }
+      },
+      {'case_name' => 'pe_version_and_pe_family_upgrade_only',
+       'environment_variables' => {
+        'pe_upgrade_version' => '6.6.6',
+        'pe_upgrade_family' => '6.6.6',
+       }
+      },
+      {'case_name' => 'pe_version_and_pe_family_no_upgrade',
+       'environment_variables' => {
+         'pe_version' => '6.6.6',
+         'pe_family' => '6.6.6',
+       }
+      },
+    ].each do |fixture_hash| 
+      case_name = fixture_hash['case_name']
+      environment_variables = fixture_hash['case_name']
+      generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
+                       [],
+                       'centos6-32a',
+                       fixture_hash['environment_variables'])
+    end
+
+    ENV['pe_version'] = nil
+    ENV['pe_upgrade_version'] = nil
+    ENV['pe_family'] = nil
+    ENV['pe_upgrade_family'] = nil
     # Validates the use of the pe ver/dir type options.
     [
       {

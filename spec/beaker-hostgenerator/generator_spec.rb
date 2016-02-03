@@ -103,8 +103,14 @@ module BeakerHostGenerator
           it "beaker-hostgenerator #{arguments}" do
             arguments = arguments.split
             STDERR.reopen("stderr.txt", "w")
+            fixture_hash['environment_variables'].each do |key, value| 
+              ENV[key] = value
+            end
             cli = BeakerHostGenerator::CLI.new(arguments)
             test_hash = YAML.load(cli.execute)
+            fixture_hash['environment_variables'].each_key do |key|
+              ENV[key] = nil
+            end
             expect(test_hash).to eq(fixture_hash["expected_hash"])
           end
         end

@@ -1,0 +1,24 @@
+---
+arguments_string: centos6-32a
+environment_variables:
+  pe_version: 6.6.6
+  pe_upgrade_version: 6.6.6
+  pe_family: 6.6.6
+  pe_upgrade_family: 6.6.6
+expected_hash:
+  HOSTS:
+    centos6-32-1:
+      pe_dir: http://enterprise.delivery.puppetlabs.net/archives/releases/6.6.6/
+      pe_ver: 6.6.6
+      pe_upgrade_dir: http://enterprise.delivery.puppetlabs.net/archives/releases/6.6.6/
+      pe_upgrade_ver: 6.6.6
+      hypervisor: vmpooler
+      platform: centos-6-i386
+      template: centos-6-i386
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
