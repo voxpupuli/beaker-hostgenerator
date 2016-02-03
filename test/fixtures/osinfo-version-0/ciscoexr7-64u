@@ -11,6 +11,7 @@ expected_hash:
       hypervisor: vmpooler
       platform: cisco-7-x86_64
       template: cisco-exr-9k-x86_64
+      vrf: management
       roles:
       - agent
       - ca

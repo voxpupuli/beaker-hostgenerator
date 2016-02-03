@@ -11,6 +11,9 @@ expected_hash:
       hypervisor: vmpooler
       platform: cisco-5-x86_64
       template: cisco-nxos-9k-x86_64
+      vrf: management
+      ssh:
+        user: beaker
       roles:
       - agent
   CONFIG:
