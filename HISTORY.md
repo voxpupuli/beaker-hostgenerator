@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 28 Jan, 2016 (1b73712d)](#LATEST)
+* [LATEST - 3 Feb, 2016 (34f5cee5)](#LATEST)
+* [0.3.2 - 28 Jan, 2016 (299df8ec)](#0.3.2)
 * [0.3.1 - 30 Dec, 2015 (7a3f10ca)](#0.3.1)
 * [0.3.0 - 30 Dec, 2015 (4b03eaf4)](#0.3.0)
 * [0.2.0 - 22 Dec, 2015 (dfa33e5f)](#0.2.0)
@@ -8,7 +9,25 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 28 Jan, 2016 (1b73712d)
+### <a name = "LATEST">LATEST - 3 Feb, 2016 (34f5cee5)
+
+* (GEM) update beaker-hostgenerator version to 0.3.3 (34f5cee5)
+
+* Merge pull request #20 from LuvCurves/master (9615ac0c)
+
+
+```
+Merge pull request #20 from LuvCurves/master
+
+(maint) Add better support for Cisco platforms
+```
+* (MAINT) Update changelog. (bd675277)
+
+* (maint) Add better support for Cisco platforms (f4ca866a)
+
+### <a name = "0.3.2">0.3.2 - 28 Jan, 2016 (299df8ec)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.3.2 (299df8ec)
 
 * (GEM) update beaker-hostgenerator version to 0.3.2 (1b73712d)
 
