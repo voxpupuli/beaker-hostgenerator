@@ -172,8 +172,8 @@ There are are few circumstances when you should expect to run the
 `generate:fixtures` task:
 
 - When you modify the `FixtureGenerator` to generate new fixtures.
-- When you need to fix bug (generated hosts are not usable without your change,
-  for example).
+- When you need to fix a bug (generated hosts are not usable without your
+  change, for example).
 - When preparing for a major version bump of Beaker Host Generator.
 
 
