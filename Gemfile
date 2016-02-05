@@ -21,7 +21,9 @@ group :acceptance_testing do
   gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '~> 2.0')
 end
 
-gem "minitest"
+group :testing do
+  gem "minitest"
+end
 
 
 if File.exists? "#{__FILE__}.local"

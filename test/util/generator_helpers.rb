@@ -8,7 +8,7 @@ module GeneratorTestHelpers
   include BeakerHostGenerator::Data
   include BeakerHostGenerator::Data::Vmpooler
 
-  def run_cli_with_options options = []
+  def run_cli_with_options(options=[])
     STDERR.reopen("stderr.txt", "w")
     cli = BeakerHostGenerator::CLI.new(options)
     yaml_string = cli.execute
@@ -17,7 +17,7 @@ module GeneratorTestHelpers
     return hash
   end
 
-  def open_file path
+  def open_file(path)
     # Takes a list of path elements.
     # Returns a file object where the basename of the file is the last path
     # element.

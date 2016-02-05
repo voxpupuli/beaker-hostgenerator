@@ -168,7 +168,7 @@ likely made a change that incompatibly changes the behavior of
 figure out what you did wrong and figure out how to achieve your goal without
 potentially breaking `beaker-hostgenerator` for other users.
 
-There are are few circumstances when you should expect to run the
+There are a few circumstances when you should expect to run the
 `generate:fixtures` task:
 
 - When you modify the `FixtureGenerator` to generate new fixtures.
