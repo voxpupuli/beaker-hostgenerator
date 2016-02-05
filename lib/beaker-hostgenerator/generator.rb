@@ -51,14 +51,10 @@ module BeakerHostGenerator
         node_info['nodeid'] = nodeid[ostype]
 
         config = {
-          'pe_dir' => BeakerHostGenerator::Utils.pe_dir(
-            BeakerHostGenerator::Data.pe_version,
-            BeakerHostGenerator::Data.pe_family),
-          'pe_ver' => BeakerHostGenerator::Data.pe_version,
-          'pe_upgrade_dir' => BeakerHostGenerator::Utils.pe_dir(
-            BeakerHostGenerator::Data.pe_upgrade_version,
-            BeakerHostGenerator::Data.pe_upgrade_family),
-          'pe_upgrade_ver' => BeakerHostGenerator::Data.pe_upgrade_version,
+          'pe_dir' => pe_dir(pe_version, pe_family),
+          'pe_ver' => pe_version,
+          'pe_upgrade_dir' => pe_dir(pe_upgrade_version, pe_upgrade_family),
+          'pe_upgrade_ver' => pe_upgrade_version,
         }
 
         [:pe_dir, :pe_ver, :pe_upgrade_dir, :pe_upgrade_ver].each do |option|

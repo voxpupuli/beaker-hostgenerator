@@ -61,7 +61,5 @@ module BeakerHostGenerator
         'consoleport' => 443,
       }
     }
-
-    module_function :pe_version, :pe_family, :pe_upgrade_version, :pe_upgrade_family
   end
 end
