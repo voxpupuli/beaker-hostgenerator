@@ -441,11 +441,12 @@ module BeakerHostGenerator
       }
 
       def get_osinfo(bhg_version=0)
+        osinfo = {}
         case bhg_version
         when 0
-          osinfo = OSINFO
+          osinfo.deep_merge! OSINFO
         when 1
-          osinfo = OSINFO
+          osinfo.deep_merge! OSINFO
           osinfo.deep_merge! OSINFO_BHGv1
         else
           raise "Invalid beaker-hostgenerator version: #{bhg_version}"

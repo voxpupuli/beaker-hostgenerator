@@ -11,12 +11,6 @@ module BeakerHostGenerator
     include BeakerHostGenerator::Errors
     include BeakerHostGenerator::Utils
 
-    BASE_HOST_CONFIG = {
-      'pe_dir' => BeakerHostGenerator::Utils.pe_dir(PE_VERSION, PE_FAMILY),
-      'pe_ver' => PE_VERSION,
-      'pe_upgrade_dir' => BeakerHostGenerator::Utils.pe_dir(PE_UPGRADE_VERSION, PE_UPGRADE_FAMILY),
-      'pe_upgrade_ver' => PE_UPGRADE_VERSION,
-    }
     attr_reader :options
 
     def initialize options
@@ -56,8 +50,21 @@ module BeakerHostGenerator
         node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
+        config = {
+          'pe_dir' => pe_dir(pe_version, pe_family),
+          'pe_ver' => pe_version,
+          'pe_upgrade_dir' => pe_dir(pe_upgrade_version, pe_upgrade_family),
+          'pe_upgrade_ver' => pe_upgrade_version,
+        }
+
+        [:pe_dir, :pe_ver, :pe_upgrade_dir, :pe_upgrade_ver].each do |option|
+          if @options[option]
+            config[option.to_s] = @options[option]
+          end
+        end
+
         host_name, host_config = generate_node(
-          node_info, BASE_HOST_CONFIG, bhg_version=@options[:osinfo_version])
+          node_info, config, bhg_version=@options[:osinfo_version])
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'

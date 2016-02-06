@@ -1,0 +1,22 @@
+---
+arguments_string: "--osinfo-version 1 windows2012-6432c"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows2012-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012-64
+      template: win-2012-x86_64
+      ruby_arch: x86
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

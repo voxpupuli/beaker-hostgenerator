@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 0 windows81-64a"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows81-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-8.1-64
+      template: win-81-x86_64
+      ruby_arch: x64
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

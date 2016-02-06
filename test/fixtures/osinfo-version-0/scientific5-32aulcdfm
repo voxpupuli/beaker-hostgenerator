@@ -1,0 +1,26 @@
+---
+arguments_string: "--osinfo-version 0 scientific5-32aulcdfm"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    scientific5-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: scientific-5-i386
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

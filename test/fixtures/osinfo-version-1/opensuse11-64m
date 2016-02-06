@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 1 opensuse11-64m"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    opensuse11-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: opensuse-11-x86_64
+      template: opensuse-11-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
