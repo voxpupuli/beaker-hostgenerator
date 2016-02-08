@@ -7,6 +7,14 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.4.0] - 2016-02-05
+- Add new optional parameters to CLI.
+- Implement data-driven testing approach that separates test logic from test
+  data to improve coverage on important code path (BeakerHostGenerator::CLI).
+
+## [0.3.3] - 2016-02-04
+- Fix Cisco platforms by setting required parameters for the vmpooler templates.
+
 ## [0.3.2] - 2016-01-28
 - Change the way we generate the platform string for windows 10 hosts.
 
