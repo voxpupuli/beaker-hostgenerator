@@ -11,7 +11,10 @@ class TestStdout < Minitest::Test
   end
 
   def test_default_list_output
-    BeakerHostGenerator::CLI.new(['--list'])
+    begin
+      BeakerHostGenerator::CLI.new(['--list'])
+    rescue BeakerHostGenerator::Errors::SafeEarlyExit
+    end
 
     osinfo = BeakerHostGenerator::Data::Vmpooler.get_osinfo()
     osinfo.each_key do |spec_key|

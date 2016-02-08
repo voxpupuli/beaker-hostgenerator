@@ -7,8 +7,8 @@ require 'beaker-hostgenerator'
 
 STDERR.puts("Warning: 'genconfig2' is deprecated and will be removed in beaker-hostgenerator 1.x\n\n")
 
-cli = BeakerHostGenerator::CLI.new
-
-if not cli then
+begin
+  cli = BeakerHostGenerator::CLI.new
   cli.execute!
+rescue BeakerHostGenerator::Errors::SafeEarlyExit
 end
