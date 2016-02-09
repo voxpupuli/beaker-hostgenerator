@@ -8,7 +8,16 @@ Versioning](http://semver.org).
 ### Changed
 
 ## [0.4.0] - 2016-02-05
-- Add new optional parameters to CLI.
+- Add new optional parameters to CLI:
+    --pe_upgrade_dir UPGRADE_PATH
+        Explicitly set pe_upgrade_dir attribute on generated hosts.
+    --pe_upgrade_ver UPGRADE_VERSION
+        Explicitly set pe_upgrade_ver attribute on generated hosts.
+    --pe_dir PATH
+        Explicitly set pe_dir attribute on generated hosts.
+    --pe_ver VERSION
+        Explicitly set pe_ver attribute on generated hosts.
+
 - Implement data-driven testing approach that separates test logic from test
   data to improve coverage on important code path (BeakerHostGenerator::CLI).
 
