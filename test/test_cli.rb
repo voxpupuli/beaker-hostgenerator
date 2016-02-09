@@ -13,7 +13,7 @@ class TestUtil < Minitest::Test
   end
 
   def test_new_with_list_option
-    assert_raises(BeakerHostGenerator::Errors::SafeEarlyExit) do
+    assert_raises(BeakerHostGenerator::Exceptions::SafeEarlyExit) do
       BeakerHostGenerator::CLI.new(['--list'])
     end
   end

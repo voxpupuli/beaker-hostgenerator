@@ -13,7 +13,7 @@ class TestStdout < Minitest::Test
   def test_default_list_output
     begin
       BeakerHostGenerator::CLI.new(['--list'])
-    rescue BeakerHostGenerator::Errors::SafeEarlyExit
+    rescue BeakerHostGenerator::Exceptions::SafeEarlyExit
     end
 
     osinfo = BeakerHostGenerator::Data::Vmpooler.get_osinfo()

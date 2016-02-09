@@ -118,7 +118,7 @@ Usage: beaker-hostgenerator [options] <layout>
 
       if @options[:list_platforms_and_roles]
         print_platforms_and_roles
-        raise BeakerHostGenerator::Errors::SafeEarlyExit
+        raise BeakerHostGenerator::Exceptions::SafeEarlyExit
       else
         # Tokenizing the config definition for great justice
         @tokens = argv[0].split('-')
