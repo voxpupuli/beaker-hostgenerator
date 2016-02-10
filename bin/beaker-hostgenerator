@@ -8,5 +8,5 @@ require 'beaker-hostgenerator'
 begin
   cli = BeakerHostGenerator::CLI.new
   cli.execute!
-rescue BeakerHostGenerator::Errors::SafeEarlyExit
+rescue BeakerHostGenerator::Exceptions::SafeEarlyExit
 end
