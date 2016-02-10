@@ -5,7 +5,6 @@ require 'beaker-hostgenerator/version'
 Gem::Specification.new do |s|
   s.name        = "beaker-hostgenerator"
   s.version     = BeakerHostGenerator::Version::STRING
-  s.date        = "2015-10-07"
   s.authors     = ["Branan Purvine-Riley", "Wayne Warren"]
   s.email       = ["qe-team@puppetlabs.com"]
   s.homepage    = "https://github.com/puppetlabs/beaker-hostgenerator"
