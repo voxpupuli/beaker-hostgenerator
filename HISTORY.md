@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 3 Feb, 2016 (34f5cee5)](#LATEST)
+* [LATEST - 10 Feb, 2016 (fe10edc1)](#LATEST)
+* [0.3.3 - 3 Feb, 2016 (41051da9)](#0.3.3)
 * [0.3.2 - 28 Jan, 2016 (299df8ec)](#0.3.2)
 * [0.3.1 - 30 Dec, 2015 (7a3f10ca)](#0.3.1)
 * [0.3.0 - 30 Dec, 2015 (4b03eaf4)](#0.3.0)
@@ -9,7 +10,205 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 3 Feb, 2016 (34f5cee5)
+### <a name = "LATEST">LATEST - 10 Feb, 2016 (fe10edc1)
+
+* (GEM) update beaker-hostgenerator version to 0.4.0 (fe10edc1)
+
+* (MAINT) Remove hard-coded gemspec date. (4770b013)
+
+* Merge pull request #23 from puppetlabs/maint (f8b77852)
+
+
+```
+Merge pull request #23 from puppetlabs/maint
+
+(QENG-3466) Fix --list bug and write tests to prevent recurrences.
+```
+* (MAINT) s/Errors/Exceptions/ in bin directory (b8b68c60)
+
+* (MAINT) Better semantics for exception naming. (d0129893)
+
+* (MAINT) Actually add new test. (f80192f3)
+
+* (MAINT) Be more explicit in CHANGELOG (0a39fb6b)
+
+* (MAINT) Write test for safe early exit behavior. (34866de1)
+
+
+```
+(MAINT) Write test for safe early exit behavior.
+
+Specifically, ensure that when passed the "--list" options,
+BeakerHostGenerator::CLI.initialize will raise the
+BeakerHostGenerator::Errors::SafeEarlyExit exception which is intended to be
+ignored by the script calling BeakerHostGenerator::CLI.initialize
+```
+* (MAINT) Update CHANGELOG (bb52432b)
+
+* (MAINT) Write tests to protect --list CLI behavior. (e523773f)
+
+* (MAINT) Don't call 'exit' in BeakerHostGenerator::CLI class. (e3bac654)
+
+* (MAINT) Fix bug introduced by eecc04c (865b04c2)
+
+* Merge pull request #21 from puppetlabs/qeng-3370 (45bf2295)
+
+
+```
+Merge pull request #21 from puppetlabs/qeng-3370
+
+(QENG-3370) Add pe_* value CLI override options.
+```
+* (QENG-3370) Use mixins instead of module method references. (eecc04c8)
+
+* (QENG-3370) Address PR feedback. (19cc3a9b)
+
+* (QENG-3370) Fix grammar no no. (4d7d5db3)
+
+* Revert "(QENG-3370) Add .projectile (emacs plugin) path exclusion." (1db7dfcc)
+
+
+```
+Revert "(QENG-3370) Add .projectile (emacs plugin) path exclusion."
+
+This reverts commit 3dd4eb3a5488b55f6aae1d65db43e84c7c0ff625.
+```
+* (QENG-3370) Fix fixtures after merging cisco changes from master branch. (e1c65ffc)
+
+* Merge remote-tracking branch 'origin/master' into qeng-3370 (8559505b)
+
+* (QENG-3370) Fix module constant initialization bug. (aa3e08cd)
+
+
+```
+(QENG-3370) Fix module constant initialization bug.
+
+Similar to the BeakerHostGenerator::Data::Vmpooler data initialization bug, this
+is something that would not typically show up during normal command line usage
+of beaker-hostgenerator because at that time there is typically only one
+reference made to the BeakerHostGenerator::Utils module constant. However during
+test fixture generation and rspec tests the modules were only loaded once so
+there was only one attempt to read in environment variables which led to
+inconsisten results depending on the order in which the fixtures were
+generated/tested.
+```
+* (QENG-3370) Fix major bug in BeakerHostGenerator::Data::Vmpooler (f3359c8f)
+
+
+```
+(QENG-3370) Fix major bug in BeakerHostGenerator::Data::Vmpooler
+
+Since the OSINFO and OSINFO_BHGv1 module constants are only initialized once
+(during library load), do not refer directly to them using reference variables.
+Instead, initialize the osinfo variable directly on each call of get_osinfo and
+merge in the module constants as appropriate based on the given
+beaker-hostenerator version integer.
+
+This bug never came up during normal command-line usage of beaker-hostgenerator
+because get_osinfo would never be expected to be called with both bhg_version=0
+and bhg_version=1. However, it came up both during generation of test fixtures
+and validation of those test fixtures in rspec since the module is only loaded
+once which led to the mutated value of the OSINFO module constant to persist
+across all initializations of the BeakerHostGenerator::CLI class.
+```
+* (QENG-3370) Generate test cases for pe_{family,version} variable combinations. (99965b3f)
+
+* (QENG-3370) Minor cleanup of new rspec test. (e9a77bb5)
+
+* (QENG-3370) Use fixtures in rspec tests instead of minitest. (b401574d)
+
+
+```
+(QENG-3370) Use fixtures in rspec tests instead of minitest.
+
+This makes it possible to treat each individual fixture its own test case which
+improves the reporting and ensures that all fixtures are tested even if some
+fail.
+
+Using a loop containing an assertion in minitest did not work for this purpose
+because a failed assertion caused the loop to break prematurely; it probably
+would have been possible to catch whatever the exception was and continue the
+loop but whatever. I already did this.
+```
+* (QENG-3370) Rename options_string to arguments_string. (c6507fd4)
+
+* (QENG-3370) Add documentation for test fixtures. (b6712a9b)
+
+* (QENG-3370) Make it a little easier to generate fixtures. (a829a425)
+
+
+```
+(QENG-3370) Make it a little easier to generate fixtures.
+
+* Move FixtureGenerator class into test/utils/generator_helpers.rb
+* Create generate:test Rake task
+```
+* (QENG-3370) Add assert_equal mismatch message. (11cbba23)
+
+* (QENG-3370) Add .projectile (emacs plugin) path exclusion. (3dd4eb3a)
+
+* (QENG-3370) Use YAML.load_file method. (0b353986)
+
+* (QENG-3370) Don't use minitest to generate fixtures. (6c3a890f)
+
+* (QENG-3370) Generate various option fixtures. (71e4efca)
+
+* (QENG-3370) Add some fixtures and a test case to iterate over them. (722abcd5)
+
+* (QENG-3370) Use enumerators to produce more diverse combinations of host roles. (2f913aec)
+
+* (QENG-3370) Move helper methods into helper module. (f4fd1cf5)
+
+
+```
+(QENG-3370) Move helper methods into helper module.
+
+Unclutters the fixture generator class and maintains distinction between test
+and helper methods.
+```
+* (QENG-3370) Create common method for generating options-based fixtures. (6be93ddc)
+
+
+```
+(QENG-3370) Create common method for generating options-based fixtures.
+
+This will make it easier to generate many many fixtures.
+```
+* (QENG-3370) Add janky fixture generator. (88ac0341)
+
+
+```
+(QENG-3370) Add janky fixture generator.
+
+This script allows one to generate test fixtures using beaker-hostgenerator
+itself. Yay. The generated directory structure could use some more thought.
+```
+* (QENG-3370) Move GeneratorTestHelpers into its own file. (f7d3f996)
+
+* (QENG-3370) Use BeakerHostGenerator::CLI directly. (45a2f7e4)
+
+
+```
+(QENG-3370) Use BeakerHostGenerator::CLI directly.
+
+This may be necessary to ensure coverage checks can work correctly. Also, it
+makes sense to test at this since I know of at least one project that is doing
+something similar.
+
+Not so sure about the way this is handling stderr though--just trying to avoid
+polluting the minitest console output.
+```
+* (QENG-3770) Add GeneratorTestHelpers and default options test for test class. (388867d1)
+
+* (QENG-3770) Stub out minitest for Generator class. (3af5796d)
+
+* (QENG-3770) Get test:spec rake task to run minitest also. (436bb778)
+
+* (QENG-3370) Add pe_* value CLI override options. (e321afc3)
+
+### <a name = "0.3.3">0.3.3 - 3 Feb, 2016 (41051da9)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.3.3 (41051da9)
 
 * (GEM) update beaker-hostgenerator version to 0.3.3 (34f5cee5)
 
