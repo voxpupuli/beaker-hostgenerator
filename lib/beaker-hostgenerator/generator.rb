@@ -1,6 +1,6 @@
 require 'beaker-hostgenerator/util'
 require 'beaker-hostgenerator/data'
-require 'beaker-hostgenerator/error'
+require 'beaker-hostgenerator/exceptions'
 require 'beaker-hostgenerator/roles'
 
 require 'yaml'
@@ -8,7 +8,7 @@ require 'yaml'
 module BeakerHostGenerator
   class Generator
     include BeakerHostGenerator::Data
-    include BeakerHostGenerator::Errors
+    include BeakerHostGenerator::Exceptions
     include BeakerHostGenerator::Utils
 
     attr_reader :options

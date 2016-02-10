@@ -7,6 +7,23 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.4.0] - 2016-02-05
+- Add new optional parameters to CLI:
+    --pe_upgrade_dir UPGRADE_PATH
+        Explicitly set pe_upgrade_dir attribute on generated hosts.
+    --pe_upgrade_ver UPGRADE_VERSION
+        Explicitly set pe_upgrade_ver attribute on generated hosts.
+    --pe_dir PATH
+        Explicitly set pe_dir attribute on generated hosts.
+    --pe_ver VERSION
+        Explicitly set pe_ver attribute on generated hosts.
+
+- Implement data-driven testing approach that separates test logic from test
+  data to improve coverage on important code path (BeakerHostGenerator::CLI).
+
+## [0.3.3] - 2016-02-04
+- Fix Cisco platforms by setting required parameters for the vmpooler templates.
+
 ## [0.3.2] - 2016-01-28
 - Change the way we generate the platform string for windows 10 hosts.
 

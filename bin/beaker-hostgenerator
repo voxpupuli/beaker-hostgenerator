@@ -5,4 +5,8 @@ $LOAD_PATH.unshift(lib_dir)
 
 require 'beaker-hostgenerator'
 
-BeakerHostGenerator::CLI.new.execute!
+begin
+  cli = BeakerHostGenerator::CLI.new
+  cli.execute!
+rescue BeakerHostGenerator::Exceptions::SafeEarlyExit
+end

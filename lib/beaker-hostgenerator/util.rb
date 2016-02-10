@@ -58,5 +58,7 @@ module BeakerHostGenerator
     def get_roles
       return BeakerHostGenerator::Data::ROLES
     end
+
+    module_function :get_roles, :get_platforms, :dump_hosts, :fixup_node, :pe_dir
   end
 end

@@ -61,7 +61,7 @@ module BeakerHostGenerator
 
           it 'Raises InvalidNodeSpecError for invalid tokens.' do
             expect{ generator.__parse_node_info_token("64compile_master") }.to \
-              raise_error(BeakerHostGenerator::Errors::InvalidNodeSpecError)
+              raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
           end
 
           it 'Supports no roles in the spec.' do
@@ -85,7 +85,7 @@ module BeakerHostGenerator
           context 'When using arbitrary roles'do
             it 'Fails without a role-type delimiter (a period)' do
               expect{ generator.__parse_node_info_token("64compile_master,ca,blah") }.to \
-                raise_error(BeakerHostGenerator::Errors::InvalidNodeSpecError)
+                raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
             end
             it 'It supports no static roles.' do
               node_info = generator.__parse_node_info_token("64compile_master,ca,blah.")
