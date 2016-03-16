@@ -45,10 +45,7 @@ module BeakerHostGenerator
         },
         'ciscoxr-64' => {
           'platform' => 'cisco_ios_xr-6-x86_64',
-          'template' => 'cisco-exr-9k-x86_64',
-          'ssh' => {
-            'user' => 'beaker'
-          }
+          'template' => 'cisco-exr-9k-x86_64'
         },
         'cumulus25-64' => {
           'platform' => 'cumulus-2.5-x86_64',
