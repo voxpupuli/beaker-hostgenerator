@@ -1,17 +1,16 @@
 ---
-arguments_string: "--osinfo-version 0 ciscoexr7-64u"
+arguments_string: ciscoxr-64u
 environment_variables: {}
 expected_hash:
   HOSTS:
-    ciscoexr7-64-1:
+    ciscoxr-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: cisco-7-x86_64
+      platform: cisco_ios_xr-6-x86_64
       template: cisco-exr-9k-x86_64
-      vrf: management
       roles:
       - agent
       - ca

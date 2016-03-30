@@ -1,15 +1,15 @@
 ---
-arguments_string: "--osinfo-version 0 cisconxos5-64a"
+arguments_string: cisconx-64a
 environment_variables: {}
 expected_hash:
   HOSTS:
-    cisconxos5-64-1:
+    cisconx-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: cisco-5-x86_64
+      platform: cisco_nexus-7-x86_64
       template: cisco-nxos-9k-x86_64
       vrf: management
       ssh:

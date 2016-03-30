@@ -1,20 +1,21 @@
 ---
-arguments_string: ciscoexr7-64u
+arguments_string: "--osinfo-version 0 cisconx-64a"
 environment_variables: {}
 expected_hash:
   HOSTS:
-    ciscoexr7-64-1:
+    cisconx-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: cisco-7-x86_64
-      template: cisco-exr-9k-x86_64
+      platform: cisco_nexus-7-x86_64
+      template: cisco-nxos-9k-x86_64
       vrf: management
+      ssh:
+        user: beaker
       roles:
       - agent
-      - ca
   CONFIG:
     nfs_server: none
     consoleport: 443
