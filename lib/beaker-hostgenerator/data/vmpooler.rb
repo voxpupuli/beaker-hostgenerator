@@ -299,6 +299,14 @@ module BeakerHostGenerator
           'platform' => 'ubuntu-15.10-amd64',
           'template' => 'ubuntu-1510-x86_64'
         },
+        'ubuntu1604-32' => {
+          'platform' => 'ubuntu-16.04-i386',
+          'template' => 'ubuntu-1604-i386'
+        },
+        'ubuntu1604-64' => {
+          'platform' => 'ubuntu-16.04-amd64',
+          'template' => 'ubuntu-1604-x86_64'
+        },
         'windows2003-64' => {
           'platform' => 'windows-2003-64',
           'template' => 'win-2003-x86_64',
