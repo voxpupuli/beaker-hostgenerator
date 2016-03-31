@@ -1,20 +1,19 @@
 ---
-arguments_string: ciscoexr7-64u
+arguments_string: ubuntu1604-64l
 environment_variables: {}
 expected_hash:
   HOSTS:
-    ciscoexr7-64-1:
+    ubuntu1604-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: cisco-7-x86_64
-      template: cisco-exr-9k-x86_64
-      vrf: management
+      platform: ubuntu-16.04-amd64
+      template: ubuntu-1604-x86_64
       roles:
       - agent
-      - ca
+      - classifier
   CONFIG:
     nfs_server: none
     consoleport: 443
