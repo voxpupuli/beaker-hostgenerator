@@ -7,6 +7,12 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.5.0] - 2016-03-30
+- Add platforms:
+ - Ubuntu 16.06 x86 and x86_64
+- Fix platforms:
+ - Cisco XR and NXOS
+
 ## [0.4.0] - 2016-02-05
 - Add new optional parameters to CLI:
     --pe_upgrade_dir UPGRADE_PATH
