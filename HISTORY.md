@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 10 Feb, 2016 (fe10edc1)](#LATEST)
+* [LATEST - 31 Mar, 2016 (36291ea6)](#LATEST)
+* [0.4.0 - 10 Feb, 2016 (dc333b1c)](#0.4.0)
 * [0.3.3 - 3 Feb, 2016 (41051da9)](#0.3.3)
 * [0.3.2 - 28 Jan, 2016 (299df8ec)](#0.3.2)
 * [0.3.1 - 30 Dec, 2015 (7a3f10ca)](#0.3.1)
@@ -10,7 +11,49 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 10 Feb, 2016 (fe10edc1)
+### <a name = "LATEST">LATEST - 31 Mar, 2016 (36291ea6)
+
+* (GEM) update beaker-hostgenerator version to 0.5.0 (36291ea6)
+
+* (MAINT) Update changelog for pending release. (5b2e75bf)
+
+* Merge pull request #26 from puppetlabs/qeng-3489 (2b9b0ad4)
+
+
+```
+Merge pull request #26 from puppetlabs/qeng-3489
+
+(QENG-3489) Add Ubuntu 16.04 to beaker host generator data.
+```
+* (MAINT) Fix borked test fixtures. (e5d60be4)
+
+* (QENG-3489) Add Ubuntu 16.04 to vmpooler platform data. (23e10232)
+
+* Merge pull request #25 from LuvCurves/remove_cisco_xr_ssh_user (50016446)
+
+
+```
+Merge pull request #25 from LuvCurves/remove_cisco_xr_ssh_user
+
+(maint) Remove ssh user from Cisco XR platform.
+```
+* (maint) Remove ssh user from Cisco XR platform. (79fcd1cf)
+
+* Merge pull request #24 from LuvCurves/BKR-706 (0c7c31cf)
+
+
+```
+Merge pull request #24 from LuvCurves/BKR-706
+
+(BKR-706) Update Cisco platforms to match beaker
+```
+* (maint) Changed names based on Cisco recommendation (7b88434c)
+
+* (BKR-706) Update Cisco platforms to match beaker (7c44bb80)
+
+### <a name = "0.4.0">0.4.0 - 10 Feb, 2016 (dc333b1c)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.4.0 (dc333b1c)
 
 * (GEM) update beaker-hostgenerator version to 0.4.0 (fe10edc1)
 
