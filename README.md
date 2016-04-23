@@ -106,7 +106,7 @@ CONFIG:
 Beaker Host Generator currently uses both rspec and minitest tests. To run both
 at the same time, run:
 ```bash
-bundle exec rake tests
+bundle exec rake test
 ```
 
 ### Test Fixtures

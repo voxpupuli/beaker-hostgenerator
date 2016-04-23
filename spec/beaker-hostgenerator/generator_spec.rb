@@ -7,15 +7,7 @@ require 'util/generator_helpers'
 
 module BeakerHostGenerator
       describe Generator do
-        let(:options) {
-          {
-            list_platforms_and_roles: false,
-            disable_default_role: false,
-            disable_role_config: false,
-            hypervisor: 'vmpooler',
-          }
-        }
-        let(:generator) { BeakerHostGenerator::Generator.new(options) }
+        let(:generator) { BeakerHostGenerator::Generator.new }
 
         describe '__generate_host_roles' do
           it 'Generates a list of roles' do
@@ -103,7 +95,7 @@ module BeakerHostGenerator
           it "beaker-hostgenerator #{arguments}" do
             arguments = arguments.split
             STDERR.reopen("stderr.txt", "w")
-            fixture_hash['environment_variables'].each do |key, value| 
+            fixture_hash['environment_variables'].each do |key, value|
               ENV[key] = value
             end
             cli = BeakerHostGenerator::CLI.new(arguments)

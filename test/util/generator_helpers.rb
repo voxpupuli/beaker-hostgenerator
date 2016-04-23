@@ -1,12 +1,10 @@
 require "yaml"
 
 require 'beaker-hostgenerator'
-require 'beaker-hostgenerator/data/vmpooler'
 require 'beaker-hostgenerator/data'
 
 module GeneratorTestHelpers
   include BeakerHostGenerator::Data
-  include BeakerHostGenerator::Data::Vmpooler
 
   def run_cli_with_options(options=[])
     STDERR.reopen("stderr.txt", "w")
@@ -55,8 +53,8 @@ module GeneratorTestHelpers
                                      role_enumerator,
                                      options=[],
                                      bhg_version=0)
-    osinfo = get_osinfo(bhg_version)
-    osinfo.each_key do |platform_info|
+    platforms = get_platforms(bhg_version)
+    platforms.each do |platform_info|
       role = role_enumerator.next
       spec = "#{platform_info}" + role
       generate_fixture(relative_path, options, spec)

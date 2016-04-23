@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'beaker-hostgenerator/data'
 
 class TestStdout < Minitest::Test
 
@@ -16,8 +17,7 @@ class TestStdout < Minitest::Test
     rescue BeakerHostGenerator::Exceptions::SafeEarlyExit
     end
 
-    osinfo = BeakerHostGenerator::Data::Vmpooler.get_osinfo()
-    osinfo.each_key do |spec_key|
+    BeakerHostGenerator::Data.get_platforms(0).each do |spec_key|
       assert_match(/.*#{spec_key}.*/, @stdout.string)
     end
   end
