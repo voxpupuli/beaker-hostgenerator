@@ -1,0 +1,43 @@
+---
+arguments_string: debian9-64l-windows2003-6432-debian9-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian9-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-9-amd64
+      template: debian-9-x86_64
+      roles:
+      - agent
+      - classifier
+    windows2003-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2003-64
+      ruby_arch: x86
+      template: win-2003-x86_64
+      roles:
+      - agent
+    debian9-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-9-amd64
+      template: debian-9-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

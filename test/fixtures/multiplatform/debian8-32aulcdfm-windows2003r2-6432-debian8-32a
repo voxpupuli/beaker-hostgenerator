@@ -1,0 +1,47 @@
+---
+arguments_string: debian8-32aulcdfm-windows2003r2-6432-debian8-32a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian8-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-8-i386
+      template: debian-8-i386
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    windows2003r2-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2003r2-64
+      ruby_arch: x86
+      template: win-2003r2-x86_64
+      roles:
+      - agent
+    debian8-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-8-i386
+      template: debian-8-i386
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

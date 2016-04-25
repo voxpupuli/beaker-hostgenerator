@@ -144,5 +144,15 @@ class FixtureGenerator
                        fixture_info['options'],
                        fixture_info['spec'])
     end
+
+    # Validates multi-platform specs
+    get_platforms(0).zip(
+      get_platforms(1).reverse,
+      get_platforms(0),
+      @simple_roles.cycle,
+      @simple_roles.reverse.cycle
+    ) do |p1, p2, p3, r1, r2|
+      generate_fixture(["multiplatform"], [], "#{p1}#{r1}-#{p2}-#{p3}#{r2}")
+    end
   end
 end

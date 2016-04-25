@@ -1,0 +1,46 @@
+---
+arguments_string: sles12-64a-fedora20-64-sles12-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles12-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-x86_64
+      template: sles-12-x86_64
+      roles:
+      - agent
+    fedora20-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-20-x86_64
+      template: fedora-20-x86_64
+      roles:
+      - agent
+    sles12-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-x86_64
+      template: sles-12-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
