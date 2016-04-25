@@ -1,4 +1,3 @@
-require 'beaker-hostgenerator/generator'
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/hypervisor'
 require 'deep_merge'

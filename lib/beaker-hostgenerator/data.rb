@@ -1,4 +1,17 @@
 module BeakerHostGenerator
+  # Contains all the information that ends up in the generated hosts
+  # configuration. This includes the various OS-specific platform
+  # configuration, PE-specific installation & upgrade configuration, and
+  # Beaker-supported roles.
+  #
+  # Any data used by any hypervisor or any other abstraction should be defined
+  # in this module, likely in the `osinfo` hash. The hypervisor implementation
+  # must then use the provided module functions (likely `get_platform_info`) to
+  # extract the relevant portions of the `osinfo` data.
+  #
+  # This module is intended to be used by either directly accessing the static
+  # functions like `BeakerHostGenerator::Data.<function>()` or as a mixin via
+  # `include BeakerHostGenerator::Data` and then `<function>()`.
   module Data
     module_function
 
@@ -935,6 +948,15 @@ module BeakerHostGenerator
     #
     NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)\Z/
 
+    # Returns the map of OS info for the given version of this library.
+    # The current version is always available as version 0 (zero).
+    # Throws an exception if the version number is unrecognized.
+    #
+    # This is intended to be the primary access point for the OS info maps
+    # defined in `osinfo`, `osinfo_bhgv1`, etc.
+    #
+    # See also `get_platforms`, `get_platform_info`, and `is_ostype_token?` for
+    # common operations on this OS info map.
     def get_osinfo(bhg_version)
       case bhg_version
       when 0
@@ -946,15 +968,60 @@ module BeakerHostGenerator
       end
     end
 
+    # Returns the list of platforms supported by the specified version of this
+    # library. This list should be equal to the keys of the `get_osinfo` map
+    # and is provided as a common convenience.
     def get_platforms(bhg_version)
       get_osinfo(bhg_version).keys
     end
 
+    # Returns the fully parsed map of information of the specified OS platform
+    # for the specified hypervisor. This map should be suitable for outputting
+    # to the user as it will have the intermediate organizational branches of
+    # the `get_osinfo` map removed.
+    #
+    # This is intended to be the primary way to access OS info from hypervisor
+    # implementations when generating host definitions.
+    #
+    # @param [Integer] bhg_version The version of OS info to use.
+    #
+    # @param [String] platform The OS platform to access from the OS info map.
+    #
+    # @param [Symbol] hypervisor The symbol representing which hypervisor submap
+    #                 to extract from the general OS info map.
+    #
+    # @example Getting CentOS 6 64-bit information for the VMPooler hypervisor
+    #     Given the OS info map looks like:
+    #         ...
+    #         'centos6-64' => {
+    #           :general => { 'platform' => 'el-6-x86_64' },
+    #           :vmpooler => { 'template' => 'centos-6-x86_64' }
+    #         }
+    #         ...
+    #
+    #     Then get_platform_info(0, 'centos6-64', :vmpooler) returns:
+    #         {
+    #           'platform' => 'el-6-x86_64',
+    #           'template' => 'centos-6-x86_64'
+    #         }
     def get_platform_info(bhg_version, platform, hypervisor)
       info = get_osinfo(bhg_version)[platform]
       {}.deep_merge!(info[:general]).deep_merge!(info[hypervisor])
     end
 
+    # Tests if a string token represents an OS platform (i.e. "centos6" or
+    # "debian8") and not another part of the host specification like the
+    # architecture bit (i.e. "32" or "64").
+    #
+    # This is used when parsing the host generator input string to determine
+    # if we're introducing a host for a new platform or if we're adding another
+    # host for a current platform.
+    #
+    # @param [String] token A piece of the host generator input that might refer
+    #                 to an OS platform. For example `"centos6"` or `"debian8"`.
+    #
+    # @param [Integer] bhg_version The version of OS info to use when testing
+    #                  for whether the token represent an OS platform.
     def is_ostype_token?(token, bhg_version)
       get_platforms(bhg_version).each do |platform|
         ostype = platform.split('-')[0]
@@ -965,6 +1032,12 @@ module BeakerHostGenerator
       return false
     end
 
+    # Perform any adjustments or modifications necessary to the given node
+    # configuration map, taking things like platform and PE version into
+    # account.
+    #
+    # This is intended to capture any oddities that are necessary for a node
+    # to be used in a particular context.
     def fixup_node(cfg)
       # PE 2.8 doesn't exist for EL 4. We use 2.0 instead.
       if cfg['platform'] =~ /el-4/ and pe_version =~ /2\.8/

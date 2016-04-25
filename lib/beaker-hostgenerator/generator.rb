@@ -10,6 +10,13 @@ module BeakerHostGenerator
     include BeakerHostGenerator::Data
     include BeakerHostGenerator::Exceptions
 
+    # Main host generation entry point, returns a YAML map as a string for the
+    # given host specification and optional configuration.
+    #
+    # @param [Array<String>] tokens The hosts specification input split on '-'.
+    #                        For example `["centos6", "64m", "redhat7", "64a"]`.
+    # @param [Hash] options General configuration options, such as optional
+    #               parameters provided on the command line.
     def generate(tokens, options)
       config = {}.deep_merge(BASE_CONFIG)
       nodeid = Hash.new(1)
