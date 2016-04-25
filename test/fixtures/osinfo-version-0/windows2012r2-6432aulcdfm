@@ -1,21 +1,25 @@
 ---
-arguments_string: cisconx-64a
+arguments_string: "--osinfo-version 0 windows2012r2-6432aulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:
-    cisconx-64-1:
+    windows2012r2-6432-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: cisco_nexus-7-x86_64
-      vrf: management
-      ssh:
-        user: beaker
-      template: cisco-nxos-9k-x86_64
+      platform: windows-2012r2-64
+      ruby_arch: x86
+      template: win-2012r2-x86_64
       roles:
       - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
   CONFIG:
     nfs_server: none
     consoleport: 443
