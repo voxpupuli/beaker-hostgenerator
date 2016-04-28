@@ -62,6 +62,7 @@ module BeakerHostGenerator
               "roles" => "",
               "arbitrary_roles" => [],
               "bits" => "64",
+              "host_settings" => {}
             })
           end
 
@@ -71,6 +72,7 @@ module BeakerHostGenerator
               "roles" => "mad",
               "arbitrary_roles" => ["compile_master", "ca", "blah"],
               "bits" => "64",
+              "host_settings" => {}
             })
           end
 
@@ -85,6 +87,7 @@ module BeakerHostGenerator
                 "roles" => "",
                 "arbitrary_roles" => ["compile_master", "ca", "blah"],
                 "bits" => "64",
+                "host_settings" => {}
               })
             end
           end

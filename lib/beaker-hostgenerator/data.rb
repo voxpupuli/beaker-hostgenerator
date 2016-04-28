@@ -64,12 +64,12 @@ module BeakerHostGenerator
       }
     }
 
-    def base_host_config
+    def base_host_config(options)
       {
-        'pe_dir' => pe_dir(pe_version, pe_family),
-        'pe_ver' => pe_version,
-        'pe_upgrade_dir' => pe_dir(pe_upgrade_version, pe_upgrade_family),
-        'pe_upgrade_ver' => pe_upgrade_version,
+        'pe_dir' => options[:pe_dir] || pe_dir(pe_version, pe_family),
+        'pe_ver' => options[:pe_ver] || pe_version,
+        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version, pe_upgrade_family),
+        'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
       }
     end
 
@@ -925,6 +925,9 @@ module BeakerHostGenerator
 
     # Capture role and bit width information about the node.
     #
+    # See Ruby Regexp class for information on the capture groups used below.
+    # http://ruby-doc.org/core-2.2.0/Regexp.html#class-Regexp-label-Character+Classes
+    #
     # Examples node specs and their resulting roles
     #
     #  64compile_master,zuul,meow.a
@@ -946,7 +949,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)\Z/
+    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:graph:]]*\})?\Z/
 
     # Returns the map of OS info for the given version of this library.
     # The current version is always available as version 0 (zero).

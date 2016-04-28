@@ -34,21 +34,29 @@ module BeakerHostGenerator
 
         node_info = __parse_node_info_token(token)
 
+        # Build node host name
+        platform = "#{ostype}-#{node_info['bits']}"
+        host_name = "#{platform}-#{nodeid[ostype]}"
+
+        node_info['platform'] = platform
         node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
-        host_config = base_host_config()
+        host_config = base_host_config(options)
 
-        [:pe_dir, :pe_ver, :pe_upgrade_dir, :pe_upgrade_ver].each do |option|
-          if options[option]
-            host_config[option.to_s] = options[option]
-          end
-        end
-
+        # Delegate to the hypervisor
         hypervisor = BeakerHostGenerator::Hypervisor.create(node_info, options)
-        host_name, host_config =
-                   hypervisor.generate_node(node_info, host_config, bhg_version)
+        host_config = hypervisor.generate_node(node_info, host_config, bhg_version)
         config['CONFIG'].deep_merge!(hypervisor.global_config())
+
+        # Merge in any arbitrary key-value host settings. Treat the 'hostname'
+        # setting specially, and don't merge it in as an arbitrary setting.
+        arbitrary_settings = node_info['host_settings']
+        if arbitrary_settings['hostname']
+          host_name = arbitrary_settings['hostname']
+          arbitrary_settings.delete('hostname')
+        end
+        host_config.merge!(arbitrary_settings)
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'
@@ -102,6 +110,19 @@ module BeakerHostGenerator
       else
         # Default to empty list to avoid having to check for nil elsewhere
         node_info['arbitrary_roles'] = []
+      end
+
+      if node_info['host_settings']
+        # Turns a string like "{foo=bar,this=that}" into a
+        # hash like {'foo' => 'bar', 'this' => 'that'}.
+        node_info['host_settings'] = Hash[
+          node_info['host_settings'].
+          delete('{}').
+          split(',').
+          map { |keyvalue| keyvalue.split('=') }
+        ]
+      else
+        node_info['host_settings'] = {}
       end
 
       return node_info

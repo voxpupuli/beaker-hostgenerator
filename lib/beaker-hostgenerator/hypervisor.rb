@@ -18,14 +18,20 @@ module BeakerHostGenerator
     # given node. If no hypervisor is specified in the node info, then the
     # hypervisor specified in the options will be created.
     #
+    # @param node_info [Hash{String=>Object}] Node data parsed from the input
+    #                                         spec string.
+    #
     # @option options [String] :hypervisor The string name of the hypervisor to
     #                          create. An exception will be thrown if the
     #                          hypervisor is unrecognized.
     def self.create(node_info, options)
-      hypervisor = options[:hypervisor] || 'vmpooler'
+      hypervisor =
+        node_info['host_settings']['hypervisor'] || options[:hypervisor]
       case hypervisor
       when 'vmpooler'
         BeakerHostGenerator::Hypervisor::Vmpooler.new
+      when 'none'
+        BeakerHostGenerator::Hypervisor::None.new
       else
         raise "Invalid hypervisor #{hypervisor}"
       end
@@ -40,7 +46,7 @@ module BeakerHostGenerator
       # case the returned map will be merged in with global configuration from
       # other hypervisors.
       def global_config()
-        raise "Method 'global_config' not implemented!"
+        {}
       end
 
       # Returns a map of host configuration for a single node.
@@ -75,3 +81,4 @@ end
 # bottom of this file to avoid circular references between this file and the
 # hypervisor implementation files.
 require 'beaker-hostgenerator/hypervisor/vmpooler'
+require 'beaker-hostgenerator/hypervisor/none'
