@@ -1,0 +1,42 @@
+---
+arguments_string: solaris112-64m-redhat6-64-solaris112-64u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris112-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11.2-i386
+      template: solaris-112-x86_64
+      roles:
+      - agent
+      - master
+    redhat6-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      template: redhat-6-x86_64
+      roles:
+      - agent
+    solaris112-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11.2-i386
+      template: solaris-112-x86_64
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

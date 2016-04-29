@@ -10,10 +10,10 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: cisco_nexus-7-x86_64
-      template: cisco-nxos-9k-x86_64
       vrf: management
       ssh:
         user: beaker
+      template: cisco-nxos-9k-x86_64
       roles:
       - agent
   CONFIG:

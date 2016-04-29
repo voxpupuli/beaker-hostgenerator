@@ -1,0 +1,42 @@
+---
+arguments_string: redhat5-32f-ubuntu1204-32-redhat5-32l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat5-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: redhat-5-i386
+      roles:
+      - agent
+      - frictionless
+    ubuntu1204-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-12.04-i386
+      template: ubuntu-1204-i386
+      roles:
+      - agent
+    redhat5-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: redhat-5-i386
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

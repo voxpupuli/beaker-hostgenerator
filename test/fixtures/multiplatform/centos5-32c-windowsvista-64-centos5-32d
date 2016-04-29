@@ -1,0 +1,43 @@
+---
+arguments_string: centos5-32c-windowsvista-64-centos5-32d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos5-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: centos-5-i386
+      roles:
+      - agent
+      - dashboard
+    windowsvista-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-vista-64
+      ruby_arch: x64
+      template: win-vista-x86_64
+      roles:
+      - agent
+    centos5-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: centos-5-i386
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

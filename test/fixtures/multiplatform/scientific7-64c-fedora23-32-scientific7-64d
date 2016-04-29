@@ -1,0 +1,42 @@
+---
+arguments_string: scientific7-64c-fedora23-32-scientific7-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    scientific7-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      template: scientific-7-x86_64
+      roles:
+      - agent
+      - dashboard
+    fedora23-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-23-i386
+      template: fedora-23-i386
+      roles:
+      - agent
+    scientific7-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      template: scientific-7-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

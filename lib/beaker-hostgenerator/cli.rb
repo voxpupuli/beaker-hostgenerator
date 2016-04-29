@@ -139,9 +139,8 @@ eow
 
     def print_platforms_and_roles
       puts "valid beaker-hostgenerator platforms:  "
-      osinfo = BeakerHostGenerator::Utils.get_platforms(@options[:hypervisor],
-                                                        @options[:osinfo_version])
-      osinfo.each do |k,v|
+      platforms = get_platforms(@options[:osinfo_version])
+      platforms.each do |k|
         puts "   #{k}"
       end
 
@@ -153,16 +152,14 @@ eow
       puts "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)"
       puts "\n"
 
-      roles = BeakerHostGenerator::Utils.get_roles
       puts "valid beaker-hostgenerator host roles:  "
-      roles.each do |k,v|
+      ROLES.each do |k,v|
         puts "   #{k} => #{v}"
       end
     end
 
     def execute
-      generator = BeakerHostGenerator::Generator.create @options
-      generator.generate @tokens
+      BeakerHostGenerator::Generator.new.generate(@tokens, @options)
     end
 
     def execute!

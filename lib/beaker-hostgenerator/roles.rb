@@ -1,7 +1,3 @@
-require 'beaker-hostgenerator/data'
-require 'beaker-hostgenerator/data/vmpooler'
-require 'deep_merge'
-
 module BeakerHostGenerator
   class Roles
 

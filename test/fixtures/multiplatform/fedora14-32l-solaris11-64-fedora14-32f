@@ -1,0 +1,42 @@
+---
+arguments_string: fedora14-32l-solaris11-64-fedora14-32f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora14-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-14-i386
+      template: fedora-14-i386
+      roles:
+      - agent
+      - classifier
+    solaris11-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11-i386
+      template: solaris-11-x86_64
+      roles:
+      - agent
+    fedora14-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-14-i386
+      template: fedora-14-i386
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

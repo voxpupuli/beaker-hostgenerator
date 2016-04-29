@@ -1,0 +1,43 @@
+---
+arguments_string: ciscoxr-64u-windows2012-6432-ciscoxr-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ciscoxr-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: cisco_ios_xr-6-x86_64
+      template: cisco-exr-9k-x86_64
+      roles:
+      - agent
+      - ca
+    windows2012-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012-64
+      ruby_arch: x86
+      template: win-2012-x86_64
+      roles:
+      - agent
+    ciscoxr-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: cisco_ios_xr-6-x86_64
+      template: cisco-exr-9k-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
