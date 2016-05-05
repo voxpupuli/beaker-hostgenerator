@@ -3,18 +3,19 @@
 `beaker-hostgenerator` is a command line utility designed to generate beaker
 host config files using a compact command line SUT specification.
 
-It currently only supports puppetlabs' internal [vmpooler][vmpooler] templates,
-but is designed in a way that makes it possible to easily add support for
-additional hypervisor templates (any hypervisor type supported by
-[beaker][beaker]).
+It currently supports Puppets' internal [vmpooler][vmpooler] hypervisor and
+static (non-provisioned) nodes, and is designed in a way that makes it possible
+to easily add support for additional hypervisors (any hypervisor type supported
+by [beaker][beaker]).
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
 - [Beaker Host Generator](#beaker-host-generator)
     - [Usage](#usage)
-        - [Simple two-host SUT layout](#simple-two-host-sut-layout)
-        - [Single-host SUT layout with Arbitrary Roles](#single-host-sut-layout-with-arbitrary-roles)
+        - [Simple two-host layout](#simple-two-host-layout)
+        - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
+        - [Two hosts with multiple hypervisors and arbitrary host settings](#two-hosts-with-multiple-hypervisors-and-arbitrary-host-settings)
     - [Testing](#testing)
         - [Test Fixtures](#test-fixtures)
             - [Generated Fixtures](#generated-fixtures)
@@ -22,12 +23,12 @@ additional hypervisor templates (any hypervisor type supported by
     - [License](#license)
 
 <!-- markdown-toc end -->
- 
+
 ## Usage
 
 Below are some example usages of `beaker-hostgenerator`.
 
-### Simple two-host SUT layout
+### Simple two-host layout
 
 ```
 $ beaker-hostgenerator centos6-64mdca-32a
@@ -67,7 +68,7 @@ CONFIG:
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
 
-### Single-host SUT layout with Arbitrary Roles
+### Single host with Arbitrary Roles
 
 ```
 $ beaker-hostgenerator centos6-32compile_master,another_role.ma
@@ -95,6 +96,44 @@ HOSTS:
       main:
         dns_alt_names: puppet
         environmentpath: "/etc/puppetlabs/puppet/environments"
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+```
+
+### Two hosts with multiple hypervisors and arbitrary host settings
+
+```
+$ beaker-hostgenerator centos6-64m{hypervisor=none\,hostname=static-master}-redhat7-64a{somekey=some-value}
+```
+
+Will generate
+
+```yaml
+---
+HOSTS:
+  static-master:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    platform: el-6-x86_64
+    hypervisor: none
+    roles:
+    - agent
+    - master
+  redhat7-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: el-7-x86_64
+    template: redhat-7-x86_64
+    somekey: some-value
+    roles:
+    - agent
 CONFIG:
   nfs_server: none
   consoleport: 443
@@ -179,7 +218,7 @@ There are a few circumstances when you should expect to run the
 
 ## Support
 
-Support offered by [Puppet Labs](https://puppetlabs.com) may not always be timely
+Support offered by [Puppet](https://puppet.com) may not always be timely
 since it is maintained by a tooling support team that is primarily focused on
 improving tools, infrastructure, and automation for our Enterprise products.
 
