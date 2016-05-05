@@ -127,7 +127,7 @@ Usage: beaker-hostgenerator [options] <layout>
         raise BeakerHostGenerator::Exceptions::SafeEarlyExit
       else
         # Tokenizing the config definition for great justice
-        @tokens = __tokenize_input(argv[0])
+        @tokens = tokenize_input(argv[0])
 
         if @options[:osinfo_version] === 0
           warning = <<-eow
@@ -143,6 +143,16 @@ eow
       end
     end
 
+    def execute
+      BeakerHostGenerator::Generator.new.generate(@tokens, @options)
+    end
+
+    def execute!
+      puts execute
+    end
+
+    private
+
     # Breaks apart the host input string into chunks suitable for processing
     # by the generator. Returns an array of substrings of the input spec string.
     #
@@ -155,7 +165,7 @@ eow
     # @returns [Array<String>] Input string split into substrings suitable for
     #                          processing by the generator. For example
     #                          `["centos6", "64m", "debian8", "32a"]`.
-    def __tokenize_input(spec)
+    def tokenize_input(spec)
       # Here we allow dashes in certain parts of the spec string
       # i.e. "centos6-64m{hostname=foo-bar}-debian8-32"
       # by first replacing all occurrences of - with | that exist within
@@ -215,14 +225,6 @@ eow
       BeakerHostGenerator::Hypervisor.supported_hypervisors().keys.each do |k|
         puts "   #{k}"
       end
-    end
-
-    def execute
-      BeakerHostGenerator::Generator.new.generate(@tokens, @options)
-    end
-
-    def execute!
-      puts execute
     end
   end
 end

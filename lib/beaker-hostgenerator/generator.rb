@@ -113,19 +113,25 @@ module BeakerHostGenerator
       end
 
       if node_info['host_settings']
-        # Turns a string like "{foo=bar,this=that}" into a
-        # hash like {'foo' => 'bar', 'this' => 'that'}.
-        node_info['host_settings'] = Hash[
-          node_info['host_settings'].
-          delete('{}').
-          split(',').
-          map { |keyvalue| keyvalue.split('=') }
-        ]
+        node_info['host_settings'] =
+          __settings_string_to_map(node_info['host_settings'])
       else
         node_info['host_settings'] = {}
       end
 
       return node_info
+    end
+
+    # Transforms the arbitrary host settings map from a string representation
+    # to a proper hash map data structure. The string is expected to be of the
+    # form "{key1=value1,key2=value2,...}".
+    def __settings_string_to_map(host_settings)
+      Hash[
+        host_settings.
+        delete('{}').
+        split(',').
+        map { |keyvalue| keyvalue.split('=') }
+      ]
     end
 
     def __generate_host_roles(node_info)
