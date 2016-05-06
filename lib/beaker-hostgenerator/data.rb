@@ -923,34 +923,6 @@ module BeakerHostGenerator
       }
     end
 
-    # Capture role and bit width information about the node.
-    #
-    # See Ruby Regexp class for information on the capture groups used below.
-    # http://ruby-doc.org/core-2.2.0/Regexp.html#class-Regexp-label-Character+Classes
-    #
-    # Examples node specs and their resulting roles
-    #
-    #  64compile_master,zuul,meow.a
-    #   * compile_master
-    #   * zuul
-    #   * meow
-    #   * agent
-    #
-    #  32herp.cdma
-    #   * herp
-    #   * dashboard
-    #   * database
-    #   * master
-    #   * agent
-    #
-    #  64dashboard,master,agent,database.
-    #   * dashboard
-    #   * master
-    #   * agent
-    #   * database
-    #
-    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:graph:]]*\})?\Z/
-
     # Returns the map of OS info for the given version of this library.
     # The current version is always available as version 0 (zero).
     # Throws an exception if the version number is unrecognized.
@@ -958,8 +930,8 @@ module BeakerHostGenerator
     # This is intended to be the primary access point for the OS info maps
     # defined in `osinfo`, `osinfo_bhgv1`, etc.
     #
-    # See also `get_platforms`, `get_platform_info`, and `is_ostype_token?` for
-    # common operations on this OS info map.
+    # See also `get_platforms`, `get_platform_info`, for common operations on
+    # this OS info map.
     def get_osinfo(bhg_version)
       case bhg_version
       when 0
@@ -1010,29 +982,6 @@ module BeakerHostGenerator
     def get_platform_info(bhg_version, platform, hypervisor)
       info = get_osinfo(bhg_version)[platform]
       {}.deep_merge!(info[:general]).deep_merge!(info[hypervisor])
-    end
-
-    # Tests if a string token represents an OS platform (i.e. "centos6" or
-    # "debian8") and not another part of the host specification like the
-    # architecture bit (i.e. "32" or "64").
-    #
-    # This is used when parsing the host generator input string to determine
-    # if we're introducing a host for a new platform or if we're adding another
-    # host for a current platform.
-    #
-    # @param [String] token A piece of the host generator input that might refer
-    #                 to an OS platform. For example `"centos6"` or `"debian8"`.
-    #
-    # @param [Integer] bhg_version The version of OS info to use when testing
-    #                  for whether the token represent an OS platform.
-    def is_ostype_token?(token, bhg_version)
-      get_platforms(bhg_version).each do |platform|
-        ostype = platform.split('-')[0]
-        if ostype == token
-          return true
-        end
-      end
-      return false
     end
 
     # Perform any adjustments or modifications necessary to the given node

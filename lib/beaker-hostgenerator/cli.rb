@@ -126,8 +126,7 @@ Usage: beaker-hostgenerator [options] <layout>
         print_supported_values
         raise BeakerHostGenerator::Exceptions::SafeEarlyExit
       else
-        # Tokenizing the config definition for great justice
-        @tokens = tokenize_input(argv[0])
+        @layout = argv[0]
 
         if @options[:osinfo_version] === 0
           warning = <<-eow
@@ -144,7 +143,7 @@ eow
     end
 
     def execute
-      BeakerHostGenerator::Generator.new.generate(@tokens, @options)
+      BeakerHostGenerator::Generator.new.generate(@layout, @options)
     end
 
     def execute!
@@ -152,52 +151,6 @@ eow
     end
 
     private
-
-    # Breaks apart the host input string into chunks suitable for processing
-    # by the generator. Returns an array of substrings of the input spec string.
-    #
-    # The input string is expected to be properly formatted using the dash `-`
-    # character as a delimiter. Dashes may also be used within braces `{...}`,
-    # which are used to define arbitrary key-values on a node.
-    #
-    # @param spec [String] Well-formatted string specification of the hosts to
-    #                      generate. For example `"centos6-64m-debian8-32a"`.
-    # @returns [Array<String>] Input string split into substrings suitable for
-    #                          processing by the generator. For example
-    #                          `["centos6", "64m", "debian8", "32a"]`.
-    def tokenize_input(spec)
-      # Here we allow dashes in certain parts of the spec string
-      # i.e. "centos6-64m{hostname=foo-bar}-debian8-32"
-      # by first replacing all occurrences of - with | that exist within
-      # the braces {...}.
-      #
-      # So we'd end up with:
-      #   "centos6-64m{hostname=foo|bar}-debian8-32"
-      #
-      # Which we can then simply split on - into:
-      #   ["centos6", "64{hostname=foo|bar}", "debian8", "32"]
-      #
-      # And then finally turn the | back into - now that we've
-      # properly decomposed the spec string:
-      #   ["centos6", "64{hostname=foo-bar}", "debian8", "32"]
-      #
-      # NOTE we've specifically chosen to use the pipe character |
-      # due to its unlikely occurrence in the user input string.
-      spec = String.new(spec) # Copy so we can replace characters inline
-      within_braces = false
-      spec.chars.each_with_index do |char, index|
-        case char
-        when '{'
-          within_braces = true
-        when '}'
-          within_braces = false
-        when '-'
-          spec[index] = '|' if within_braces
-        end
-      end
-      tokens = spec.split('-')
-      tokens.map { |t| t.gsub('|', '-') }
-    end
 
     # Prints to stdout a human-readable listing of all supported values for
     # the following: platforms, architectures, roles, and hypervisors.

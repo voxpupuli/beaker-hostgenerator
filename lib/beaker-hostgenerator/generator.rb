@@ -1,23 +1,27 @@
 require 'beaker-hostgenerator/data'
-require 'beaker-hostgenerator/exceptions'
 require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/hypervisor'
+require 'beaker-hostgenerator/parser'
 
 require 'yaml'
 
 module BeakerHostGenerator
   class Generator
     include BeakerHostGenerator::Data
-    include BeakerHostGenerator::Exceptions
+    include BeakerHostGenerator::Parser
 
     # Main host generation entry point, returns a YAML map as a string for the
     # given host specification and optional configuration.
     #
-    # @param [Array<String>] tokens The hosts specification input split on '-'.
-    #                        For example `["centos6", "64m", "redhat7", "64a"]`.
-    # @param [Hash] options General configuration options, such as optional
-    #               parameters provided on the command line.
-    def generate(tokens, options)
+    # @param layout [String] The raw hosts specification user input.
+    #                        For example `"centos6-64m-redhat7-64a"`.
+    # @param options [Hash] Global, optional configuration such as the default
+    #                       hypervisor or OS info version.
+    #
+    # @returns [String] A complete YAML map as a string defining the HOSTS and
+    #                   CONFIG sections as required by Beaker.
+    def generate(layout, options)
+      tokens = tokenize_layout(layout)
       config = {}.deep_merge(BASE_CONFIG)
       nodeid = Hash.new(1)
       ostype = nil
@@ -32,7 +36,7 @@ module BeakerHostGenerator
           next
         end
 
-        node_info = __parse_node_info_token(token)
+        node_info = parse_node_info_token(token)
 
         # Build node host name
         platform = "#{ostype}-#{node_info['bits']}"
@@ -96,44 +100,6 @@ module BeakerHostGenerator
       return m.call
     end
 
-    def __parse_node_info_token(token)
-      node_info = NODE_REGEX.match(token)
-
-      if node_info
-        node_info = Hash[ node_info.names.zip( node_info.captures ) ]
-      else
-        raise InvalidNodeSpecError.new, "Invalid node_info token: #{token}"
-      end
-
-      if node_info['arbitrary_roles']
-        node_info['arbitrary_roles'] = node_info['arbitrary_roles'].split(',') || ''
-      else
-        # Default to empty list to avoid having to check for nil elsewhere
-        node_info['arbitrary_roles'] = []
-      end
-
-      if node_info['host_settings']
-        node_info['host_settings'] =
-          __settings_string_to_map(node_info['host_settings'])
-      else
-        node_info['host_settings'] = {}
-      end
-
-      return node_info
-    end
-
-    # Transforms the arbitrary host settings map from a string representation
-    # to a proper hash map data structure. The string is expected to be of the
-    # form "{key1=value1,key2=value2,...}".
-    def __settings_string_to_map(host_settings)
-      Hash[
-        host_settings.
-        delete('{}').
-        split(',').
-        map { |keyvalue| keyvalue.split('=') }
-      ]
-    end
-
     def __generate_host_roles(node_info)
       roles = []
 
@@ -147,6 +113,5 @@ module BeakerHostGenerator
 
       return roles
     end
-
   end
 end

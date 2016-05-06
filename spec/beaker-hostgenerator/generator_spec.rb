@@ -49,50 +49,6 @@ module BeakerHostGenerator
           end
         end
 
-        describe '__parse_node_info_token' do
-
-          it 'Raises InvalidNodeSpecError for invalid tokens.' do
-            expect{ generator.__parse_node_info_token("64compile_master") }.to \
-              raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
-          end
-
-          it 'Supports no roles in the spec.' do
-            node_info = generator.__parse_node_info_token("64")
-            expect( node_info ).to eq({
-              "roles" => "",
-              "arbitrary_roles" => [],
-              "bits" => "64",
-              "host_settings" => {}
-            })
-          end
-
-          it 'Supports the use of arbitrary roles.' do
-            node_info = generator.__parse_node_info_token("64compile_master,ca,blah.mad")
-            expect( node_info ).to eq({
-              "roles" => "mad",
-              "arbitrary_roles" => ["compile_master", "ca", "blah"],
-              "bits" => "64",
-              "host_settings" => {}
-            })
-          end
-
-          context 'When using arbitrary roles'do
-            it 'Fails without a role-type delimiter (a period)' do
-              expect{ generator.__parse_node_info_token("64compile_master,ca,blah") }.to \
-                raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
-            end
-            it 'It supports no static roles.' do
-              node_info = generator.__parse_node_info_token("64compile_master,ca,blah.")
-              expect( node_info ).to eq({
-                "roles" => "",
-                "arbitrary_roles" => ["compile_master", "ca", "blah"],
-                "bits" => "64",
-                "host_settings" => {}
-              })
-            end
-          end
-        end
-
         shared_examples "fixtures" do |fixture_hash|
           arguments = fixture_hash["arguments_string"]
           it "beaker-hostgenerator #{arguments}" do
