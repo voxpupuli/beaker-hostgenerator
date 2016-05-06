@@ -1,8 +1,7 @@
 module BeakerHostGenerator
-  # Contains all the information that ends up in the generated hosts
+  # Contains all the platform information that ends up in the generated hosts
   # configuration. This includes the various OS-specific platform
-  # configuration, PE-specific installation & upgrade configuration, and
-  # Beaker-supported roles.
+  # configuration, and PE-specific installation & upgrade configuration.
   #
   # Any data used by any hypervisor or any other abstraction should be defined
   # in this module, likely in the `osinfo` hash. The hypervisor implementation
@@ -45,16 +44,6 @@ module BeakerHostGenerator
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
-
-    ROLES = {
-      'a' => 'agent',
-      'u' => 'ca',
-      'l' => 'classifier',
-      'c' => 'dashboard',
-      'd' => 'database',
-      'f' => 'frictionless',
-      'm' => 'master',
-    }
 
     BASE_CONFIG = {
       'HOSTS' => {},

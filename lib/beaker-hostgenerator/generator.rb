@@ -9,6 +9,7 @@ module BeakerHostGenerator
   class Generator
     include BeakerHostGenerator::Data
     include BeakerHostGenerator::Parser
+    include BeakerHostGenerator::Roles
 
     # Main host generation entry point, returns a YAML map as a string for the
     # given host specification and optional configuration.
@@ -67,20 +68,7 @@ module BeakerHostGenerator
           host_config['install_32'] = true
         end
 
-        if not options[:disable_default_role]
-          host_config['roles'] = ['agent']
-        else
-          host_config['roles'] = []
-        end
-
-        host_config['roles'].concat __generate_host_roles(node_info)
-        host_config['roles'].uniq!
-
-        if not options[:disable_role_config]
-          host_config['roles'].each do |role|
-            host_config.deep_merge! __get_role_config(role)
-          end
-        end
+        __generate_host_roles!(host_config, node_info, options)
 
         config['HOSTS'][host_name] = host_config
         nodeid[ostype] += 1
@@ -89,15 +77,21 @@ module BeakerHostGenerator
       return config.to_yaml
     end
 
-    def __get_role_config(role)
-      begin
-        r = BeakerHostGenerator::Roles.new
-        m = r.method(role)
-      rescue NameError
-        return {}
+    def __generate_host_roles!(host_config, node_info, options)
+      if not options[:disable_default_role]
+        host_config['roles'] = ['agent']
+      else
+        host_config['roles'] = []
       end
 
-      return m.call
+      host_config['roles'].concat __generate_host_roles(node_info)
+      host_config['roles'].uniq!
+
+      if not options[:disable_role_config]
+        host_config['roles'].each do |role|
+          host_config.deep_merge! get_role_config(role)
+        end
+      end
     end
 
     def __generate_host_roles(node_info)

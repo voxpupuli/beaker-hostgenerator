@@ -1,5 +1,6 @@
 require 'beaker-hostgenerator/generator'
 require 'beaker-hostgenerator/hypervisor'
+require 'beaker-hostgenerator/roles'
 require 'optparse'
 
 module BeakerHostGenerator
@@ -169,7 +170,7 @@ eow
       puts "\n"
 
       puts "valid beaker-hostgenerator host roles:"
-      ROLES.each do |k,v|
+      BeakerHostGenerator::Roles::ROLES.each do |k,v|
         puts "   #{k} => #{v}"
       end
       puts "\n"

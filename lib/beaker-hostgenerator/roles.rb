@@ -1,18 +1,29 @@
 module BeakerHostGenerator
-  class Roles
+  module Roles
 
-    def initialize
-    end
+    ROLES = {
+      'a' => 'agent',
+      'u' => 'ca',
+      'l' => 'classifier',
+      'c' => 'dashboard',
+      'd' => 'database',
+      'f' => 'frictionless',
+      'm' => 'master',
+    }
 
-    def compile_master
-      return {
-        'frictionless_options' => {
-          'main' => {
-            'dns_alt_names' => 'puppet',
-            'environmentpath' => '/etc/puppetlabs/puppet/environments',
-          }
+    ROLE_CONFIG = {
+      'compile_master' => {
+        'main' => {
+          'dns_alt_names' => 'puppet',
+          'environmentpath' => '/etc/puppetlabs/puppet/environments',
         }
       }
+    }
+
+    module_function
+
+    def get_role_config(role)
+      ROLE_CONFIG[role] || {}
     end
   end
 end
