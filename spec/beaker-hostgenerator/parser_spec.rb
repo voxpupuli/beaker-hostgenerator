@@ -48,6 +48,37 @@ module BeakerHostGenerator
                   })
         end
       end
+
+      context 'When using arbitrary host settings' do
+        it 'Supports arbitrary whitespace' do
+          expect( parse_node_info_token("64{ k1=v1, k2=v2,  k3 = v3 ,  k4  =v4  }") ).
+            to eq({
+                    "roles" => "",
+                    "arbitrary_roles" => [],
+                    "bits" => "64",
+                    "host_settings" => {
+                      "k1" => "v1",
+                      "k2" => "v2",
+                      "k3" => "v3",
+                      "k4" => "v4"
+                    }
+                  })
+        end
+
+        it 'Raises InvalidNodeSpecError for malformed key-value pairs' do
+          expect { parse_node_info_token("64{foo=bar=baz}") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+          expect { parse_node_info_token("64{foo=}") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+          expect { parse_node_info_token("64{=bar}") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+          expect { parse_node_info_token("64{=}") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+        end
+      end
     end
   end
 end

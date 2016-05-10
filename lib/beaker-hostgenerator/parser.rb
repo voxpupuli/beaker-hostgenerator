@@ -40,7 +40,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:graph:]]*\})?\Z/
+    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
@@ -164,18 +164,36 @@ module BeakerHostGenerator
     # configuration.
     #
     # The string is expected to be of the form "{key1=value1,key2=value2,...}".
+    # Any whitespace found in the string will be stripped and ignored.
+    #
+    # Throws an exception of the string is malformed in any way.
     #
     # @param host_settings [String] Non-nil user input string that defines host
     #                               specific settings.
     #
     # @returns [Hash{String=>String}] The host_settings string as a map.
     def settings_string_to_map(host_settings)
-      Hash[
+      # Strip it down to a list of pairs
+      settings_pairs =
         host_settings.
         delete('{}').
+        gsub(' ', '').
         split(',').
         map { |keyvalue| keyvalue.split('=') }
-      ]
+
+      # Validate they're actually pairs, and that all keys are non-empty
+      settings_pairs.each do |pair|
+        if pair.length != 2
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "Malformed host settings: #{host_settings}"
+        end
+        if pair.first.nil? || pair.first.empty?
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "Malformed host settings: #{host_settings}"
+        end
+      end
+
+      Hash[settings_pairs]
     end
   end
 end
