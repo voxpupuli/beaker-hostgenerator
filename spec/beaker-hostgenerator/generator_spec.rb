@@ -57,12 +57,20 @@ module BeakerHostGenerator
             fixture_hash['environment_variables'].each do |key, value|
               ENV[key] = value
             end
+
             cli = BeakerHostGenerator::CLI.new(arguments)
-            test_hash = YAML.load(cli.execute)
+            if fixture_hash['expected_exception']
+              # Turn fully-qualified classname string into an actual Class object.
+              expected_class = eval fixture_hash['expected_exception']
+              expect { cli.execute }.to raise_error(expected_class)
+            else
+              test_hash = YAML.load(cli.execute)
+              expect(test_hash).to eq(fixture_hash['expected_hash'])
+            end
+
             fixture_hash['environment_variables'].each_key do |key|
               ENV[key] = nil
             end
-            expect(test_hash).to eq(fixture_hash["expected_hash"])
           end
         end
 
