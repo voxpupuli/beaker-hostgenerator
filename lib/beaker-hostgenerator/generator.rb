@@ -57,10 +57,8 @@ module BeakerHostGenerator
         # Merge in any arbitrary key-value host settings. Treat the 'hostname'
         # setting specially, and don't merge it in as an arbitrary setting.
         arbitrary_settings = node_info['host_settings']
-        if arbitrary_settings['hostname']
-          host_name = arbitrary_settings['hostname']
-          arbitrary_settings.delete('hostname')
-        end
+        host_name = arbitrary_settings.delete('hostname') if
+          arbitrary_settings.has_key?('hostname')
         host_config.merge!(arbitrary_settings)
 
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
@@ -68,7 +66,7 @@ module BeakerHostGenerator
           host_config['install_32'] = true
         end
 
-        __generate_host_roles!(host_config, node_info, options)
+        generate_host_roles!(host_config, node_info, options)
 
         config['HOSTS'][host_name] = host_config
         nodeid[ostype] += 1
@@ -77,24 +75,7 @@ module BeakerHostGenerator
       return config.to_yaml
     end
 
-    def __generate_host_roles!(host_config, node_info, options)
-      if not options[:disable_default_role]
-        host_config['roles'] = ['agent']
-      else
-        host_config['roles'] = []
-      end
-
-      host_config['roles'].concat __generate_host_roles(node_info)
-      host_config['roles'].uniq!
-
-      if not options[:disable_role_config]
-        host_config['roles'].each do |role|
-          host_config.deep_merge! get_role_config(role)
-        end
-      end
-    end
-
-    def __generate_host_roles(node_info)
+    def get_host_roles(node_info)
       roles = []
 
       node_info['roles'].each_char do |c|
@@ -106,6 +87,25 @@ module BeakerHostGenerator
       end
 
       return roles
+    end
+
+    private
+
+    def generate_host_roles!(host_config, node_info, options)
+      if not options[:disable_default_role]
+        host_config['roles'] = ['agent']
+      else
+        host_config['roles'] = []
+      end
+
+      host_config['roles'].concat get_host_roles(node_info)
+      host_config['roles'].uniq!
+
+      if not options[:disable_role_config]
+        host_config['roles'].each do |role|
+          host_config.deep_merge! get_role_config(role)
+        end
+      end
     end
   end
 end
