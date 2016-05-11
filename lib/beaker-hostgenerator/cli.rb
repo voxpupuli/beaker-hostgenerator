@@ -1,4 +1,6 @@
 require 'beaker-hostgenerator/generator'
+require 'beaker-hostgenerator/hypervisor'
+require 'beaker-hostgenerator/roles'
 require 'optparse'
 
 module BeakerHostGenerator
@@ -23,7 +25,7 @@ module BeakerHostGenerator
 Usage: beaker-hostgenerator [options] <layout>
 
  where <layout> takes the following form:
-  <platform>-<arch><roles>[[-<platform>]-<arch>[[<arbitrary-roles>,[...]].]<roles>[...]]
+  <platform>-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}][-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}]][-<layout>]
 
  examples:
   centos6-64mdca-32a
@@ -44,6 +46,11 @@ Usage: beaker-hostgenerator [options] <layout>
   centos6-32compile_master,another_role.ma
    1 CentOS 6 32 bit node with roles = master, agent, compile_master, another_role
 
+ example with arbitrary host settings:
+  centos6-64m{hypervisor=none\\,hostname=static1\\,my-key=my-value}-32a
+   1 CentOS 6 64 bit node with roles = master, hypervisor = none, node name = static1, and my-key = my-value
+   1 CentOS 6 32 bit node with roles = agent and the default hypervisor
+
  Generally, it is expected that beaker-hostgenerator output will be redirected to a file, for example:
   beaker-hostgenerator centos6-64ma > host.cfg
 
@@ -53,14 +60,14 @@ Usage: beaker-hostgenerator [options] <layout>
 
         opts.on('-l',
                 '--list',
-                'List beaker-hostgenerator supported platforms and roles. ' <<
+                'List beaker-hostgenerator supported platforms, roles, and hypervisors. ' <<
                 'Does not produce host config.') do
-          @options[:list_platforms_and_roles] = true
+          @options[:list_supported_values] = true
         end
 
         opts.on('-t',
                 '--hypervisor HYPERVISOR',
-                'Set beaker-hostgenerator hypervisor. ') do |h|
+                'Set beaker-hostgenerator default hypervisor. ') do |h|
           @options[:hypervisor] = h
         end
 
@@ -90,7 +97,7 @@ Usage: beaker-hostgenerator [options] <layout>
         end
 
         opts.on('--disable-default-role',
-                "Do not include the default /'agent/' role.") do
+                "Do not include the default 'agent' role.") do
           @options[:disable_default_role] = true
         end
 
@@ -116,12 +123,11 @@ Usage: beaker-hostgenerator [options] <layout>
 
       optparse.parse!(argv)
 
-      if @options[:list_platforms_and_roles]
-        print_platforms_and_roles
+      if @options[:list_supported_values]
+        print_supported_values
         raise BeakerHostGenerator::Exceptions::SafeEarlyExit
       else
-        # Tokenizing the config definition for great justice
-        @tokens = argv[0].split('-')
+        @layout = argv[0]
 
         if @options[:osinfo_version] === 0
           warning = <<-eow
@@ -137,13 +143,24 @@ eow
       end
     end
 
-    def print_platforms_and_roles
-      puts "valid beaker-hostgenerator platforms:  "
+    def execute
+      BeakerHostGenerator::Generator.new.generate(@layout, @options)
+    end
+
+    def execute!
+      puts execute
+    end
+
+    private
+
+    # Prints to stdout a human-readable listing of all supported values for
+    # the following: platforms, architectures, roles, and hypervisors.
+    def print_supported_values
+      puts "valid beaker-hostgenerator platforms:"
       platforms = get_platforms(@options[:osinfo_version])
       platforms.each do |k|
         puts "   #{k}"
       end
-
       puts "\n"
 
       puts "valid beaker-hostgenerator architectures:"
@@ -152,18 +169,16 @@ eow
       puts "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)"
       puts "\n"
 
-      puts "valid beaker-hostgenerator host roles:  "
-      ROLES.each do |k,v|
+      puts "valid beaker-hostgenerator host roles:"
+      BeakerHostGenerator::Roles::ROLES.each do |k,v|
         puts "   #{k} => #{v}"
       end
-    end
+      puts "\n"
 
-    def execute
-      BeakerHostGenerator::Generator.new.generate(@tokens, @options)
-    end
-
-    def execute!
-      puts execute
+      puts "valid beaker-hostgenerator hypervisors:"
+      BeakerHostGenerator::Hypervisor.supported_hypervisors().keys.each do |k|
+        puts "   #{k}"
+      end
     end
   end
 end

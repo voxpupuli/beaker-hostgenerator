@@ -1,0 +1,57 @@
+---
+arguments_string: redhat7-64role_a,role_b.m{hypervisor=none,hostname=redhat,vmhostname=vm-redhat,ip=1.2.3.4}-sles10-32a-64a{key=value-with-dashes}-64dc
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-7-x86_64
+      hypervisor: none
+      vmhostname: vm-redhat
+      ip: 1.2.3.4
+      roles:
+      - agent
+      - master
+      - role_a
+      - role_b
+    sles10-32-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: sles-10-i386
+      template: sles-10-i386
+      roles:
+      - agent
+    sles10-64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: sles-10-x86_64
+      template: sles-10-x86_64
+      key: value-with-dashes
+      roles:
+      - agent
+    sles10-64-3:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: sles-10-x86_64
+      template: sles-10-x86_64
+      roles:
+      - agent
+      - database
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

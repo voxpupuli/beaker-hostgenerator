@@ -7,6 +7,10 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [Next] - UNRELEASED
+- Add new 'none' hypervisor implementation to support static, non-provisioned hosts.
+- Add support for arbitrary, per-host key=value settings.
+
 ## [0.5.0] - 2016-03-30
 - Add platforms:
  - Ubuntu 16.06 x86 and x86_64

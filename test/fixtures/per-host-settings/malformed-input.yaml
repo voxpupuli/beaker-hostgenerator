@@ -1,0 +1,5 @@
+---
+arguments_string: 'centos6-64m\ {foo=bar}'
+environment_variables: {}
+expected_hash:
+expected_exception: BeakerHostGenerator::Exceptions::InvalidNodeSpecError

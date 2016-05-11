@@ -1,8 +1,7 @@
 module BeakerHostGenerator
-  # Contains all the information that ends up in the generated hosts
+  # Contains all the platform information that ends up in the generated hosts
   # configuration. This includes the various OS-specific platform
-  # configuration, PE-specific installation & upgrade configuration, and
-  # Beaker-supported roles.
+  # configuration, and PE-specific installation & upgrade configuration.
   #
   # Any data used by any hypervisor or any other abstraction should be defined
   # in this module, likely in the `osinfo` hash. The hypervisor implementation
@@ -46,16 +45,6 @@ module BeakerHostGenerator
 
     PE_USE_WIN32 = ENV['pe_use_win32']
 
-    ROLES = {
-      'a' => 'agent',
-      'u' => 'ca',
-      'l' => 'classifier',
-      'c' => 'dashboard',
-      'd' => 'database',
-      'f' => 'frictionless',
-      'm' => 'master',
-    }
-
     BASE_CONFIG = {
       'HOSTS' => {},
       'CONFIG' => {
@@ -64,12 +53,12 @@ module BeakerHostGenerator
       }
     }
 
-    def base_host_config
+    def base_host_config(options)
       {
-        'pe_dir' => pe_dir(pe_version, pe_family),
-        'pe_ver' => pe_version,
-        'pe_upgrade_dir' => pe_dir(pe_upgrade_version, pe_upgrade_family),
-        'pe_upgrade_ver' => pe_upgrade_version,
+        'pe_dir' => options[:pe_dir] || pe_dir(pe_version, pe_family),
+        'pe_ver' => options[:pe_ver] || pe_version,
+        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version, pe_upgrade_family),
+        'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
       }
     end
 
@@ -923,31 +912,6 @@ module BeakerHostGenerator
       }
     end
 
-    # Capture role and bit width information about the node.
-    #
-    # Examples node specs and their resulting roles
-    #
-    #  64compile_master,zuul,meow.a
-    #   * compile_master
-    #   * zuul
-    #   * meow
-    #   * agent
-    #
-    #  32herp.cdma
-    #   * herp
-    #   * dashboard
-    #   * database
-    #   * master
-    #   * agent
-    #
-    #  64dashboard,master,agent,database.
-    #   * dashboard
-    #   * master
-    #   * agent
-    #   * database
-    #
-    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)\Z/
-
     # Returns the map of OS info for the given version of this library.
     # The current version is always available as version 0 (zero).
     # Throws an exception if the version number is unrecognized.
@@ -955,8 +919,8 @@ module BeakerHostGenerator
     # This is intended to be the primary access point for the OS info maps
     # defined in `osinfo`, `osinfo_bhgv1`, etc.
     #
-    # See also `get_platforms`, `get_platform_info`, and `is_ostype_token?` for
-    # common operations on this OS info map.
+    # See also `get_platforms`, `get_platform_info`, for common operations on
+    # this OS info map.
     def get_osinfo(bhg_version)
       case bhg_version
       when 0
@@ -1007,29 +971,6 @@ module BeakerHostGenerator
     def get_platform_info(bhg_version, platform, hypervisor)
       info = get_osinfo(bhg_version)[platform]
       {}.deep_merge!(info[:general]).deep_merge!(info[hypervisor])
-    end
-
-    # Tests if a string token represents an OS platform (i.e. "centos6" or
-    # "debian8") and not another part of the host specification like the
-    # architecture bit (i.e. "32" or "64").
-    #
-    # This is used when parsing the host generator input string to determine
-    # if we're introducing a host for a new platform or if we're adding another
-    # host for a current platform.
-    #
-    # @param [String] token A piece of the host generator input that might refer
-    #                 to an OS platform. For example `"centos6"` or `"debian8"`.
-    #
-    # @param [Integer] bhg_version The version of OS info to use when testing
-    #                  for whether the token represent an OS platform.
-    def is_ostype_token?(token, bhg_version)
-      get_platforms(bhg_version).each do |platform|
-        ostype = platform.split('-')[0]
-        if ostype == token
-          return true
-        end
-      end
-      return false
     end
 
     # Perform any adjustments or modifications necessary to the given node

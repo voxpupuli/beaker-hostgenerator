@@ -1,4 +1,5 @@
 require 'beaker-hostgenerator/data'
+require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/hypervisor/vmpooler'
 require 'deep_merge'
 
@@ -38,7 +39,7 @@ module BeakerHostGenerator
     end
 
     def get_roles
-      BeakerHostGenerator::Data::ROLES
+      BeakerHostGenerator::Roles.ROLES
     end
   end
 end
