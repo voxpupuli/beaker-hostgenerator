@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 31 Mar, 2016 (36291ea6)](#LATEST)
+* [LATEST - 11 May, 2016 (4a8ee90e)](#LATEST)
+* [0.5.0 - 31 Mar, 2016 (fa3ae0c8)](#0.5.0)
 * [0.4.0 - 10 Feb, 2016 (dc333b1c)](#0.4.0)
 * [0.3.3 - 3 Feb, 2016 (41051da9)](#0.3.3)
 * [0.3.2 - 28 Jan, 2016 (299df8ec)](#0.3.2)
@@ -11,7 +12,237 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 31 Mar, 2016 (36291ea6)
+### <a name = "LATEST">LATEST - 11 May, 2016 (4a8ee90e)
+
+* (GEM) update beaker-hostgenerator version to 0.6.0 (4a8ee90e)
+
+* Merge pull request #29 from nwolfe/maint/master/prepare-for-release (7e0decc0)
+
+
+```
+Merge pull request #29 from nwolfe/maint/master/prepare-for-release
+
+(maint) Prepare for 0.6.0 release
+```
+* (maint) Prepare for 0.6.0 release (c15c1bf6)
+
+* Merge pull request #28 from nwolfe/qeng3276/none-hypervisor-and-host-settings (d105e4bd)
+
+
+```
+Merge pull request #28 from nwolfe/qeng3276/none-hypervisor-and-host-settings
+
+(QENG-3276) Add None hypervisor and per-host settings support
+```
+* (QENG-3276) Minor refactorings; failing test fixture (b0926b22)
+
+
+```
+(QENG-3276) Minor refactorings; failing test fixture
+
+This commit includes the following minor refactorings based on feedback:
+* Inline if block surrounding arbitrary_settings['hostname']
+* Strip the `__` name prefix from `__generate_host_roles!` and make
+  private; adjust spec test accordingly
+* Change test fixture `expected_exception` support to not use the
+  dangerous `eval`, and added `per-host-settings/malformed-input.yaml`
+  test fixture to exercise the support
+```
+* (QENG-3276) Update CHANGELOG (0a170d42)
+
+
+```
+(QENG-3276) Update CHANGELOG
+
+This commit adds notes for the next release regarding the 'none'
+hypervisor and arbitrary key-value host settings support.
+```
+* (QENG-3276) Add more parser tests for failures (b80d94ab)
+
+
+```
+(QENG-3276) Add more parser tests for failures
+
+This commit adds tests that validate the proper exceptions are thrown
+when invalid arbitrary host settings are provided.
+
+This also expands host-setting support to include arbitrary whitespace
+to allow for more human-readable input.
+```
+* (MAINT) Wire up expected_excpetion test fitxure support (78cccb14)
+
+
+```
+(MAINT) Wire up expected_excpetion test fitxure support
+
+This commits finishes the work necessary to support expected exceptions
+defined in the test fixture YAML files.
+```
+* (QENG-3276) Move host role code into Roles module (78a2679e)
+
+
+```
+(QENG-3276) Move host role code into Roles module
+
+This commit moves the ROLES map and custom role config map out of the
+Data and Generator classes and into the Roles class.
+This also changes the implementation of custom role configuration from
+being a meta-programming method call into a standard map index.
+```
+* (QENG-3276) Extract code into new Parser module (9764fd7e)
+
+
+```
+(QENG-3276) Extract code into new Parser module
+
+This commit moves the NODE_REGEX constant and handful of methods tightly
+coupled to it into a new module called Parser. This module is
+responsible for dealing with the raw user input string and turning it
+into data structures that the Generator and hypervisors can operate on.
+```
+* (QENG-3276) Minor method refactoring (ce763dc0)
+
+
+```
+(QENG-3276) Minor method refactoring
+
+This commit renames a method, marks some methods as private, and
+extracts some logic into its own method.
+```
+* (QENG-3276) Update README (fd99cc9f)
+
+
+```
+(QENG-3276) Update README
+
+This commit updates the README to include an example of the new 'none'
+hypervisor and per-host settings.
+
+Also rename "Puppet Labs" references to just "Puppet".
+```
+* (QENG-3276) Update CLI help/usage text (7d85dff4)
+
+
+```
+(QENG-3276) Update CLI help/usage text
+
+This commit updates the CLI help text to mention the new arbitrary host
+settings support, and include the list of valid hypervisors when the
+`--list` option is given.
+```
+* (QENG-3276) Test fixtures for hypervisor and settings (34d4e649)
+
+
+```
+(QENG-3276) Test fixtures for hypervisor and settings
+
+This commit adds a couple hand-made test fixtures that exercise the new
+"none" hypervisor and arbitrary host settings support.
+```
+* Merge pull request #27 from nwolfe/maint/master/decouple-generator-and-hypervisors (52293374)
+
+
+```
+Merge pull request #27 from nwolfe/maint/master/decouple-generator-and-hypervisors
+
+(maint) Decouple hypervisors from generator
+```
+* (QENG-3276) Add None hypervisor and per-host settings support (ab38abef)
+
+
+```
+(QENG-3276) Add None hypervisor and per-host settings support
+
+This commit adds a new "none" hypervisor to support non-provisioned
+hosts. Non-provisioned hosts require a handful of other host settings to
+be specified in order for Beaker to use it properly, so this commit also
+adds support for arbitrary key-value host settings.
+
+For example:
+
+ $ .. centos6-64m{hypervisor=none,hostname=my-host,vmhostname=othername}
+ ---
+ HOSTS:
+   my-host:
+     pe_dir:
+     pe_ver:
+     pe_upgrade_dir:
+     pe_upgrade_ver:
+     platform: el-6-x86_64
+     hypervisor: none
+     vmhostname: othername
+     roles:
+     - agent
+     - master
+ CONFIG:
+   nfs_server: none
+   consoleport: 443
+```
+* (maint) Docstrings for new hypervisor architecture (9c35595f)
+
+
+```
+(maint) Docstrings for new hypervisor architecture
+
+This commit adds docstrings to modules and methods, specifically the
+BeakerHostGenerator::Hypervisor and BeakerHostGenerator::Data modules.
+```
+* (maint) Generate multi-platform test fixtures (996578cb)
+
+
+```
+(maint) Generate multi-platform test fixtures
+
+To help with test coverage, this adds a directory full of generated
+test fixtures with multi-platform hosts in a form similar to
+"centos6-64m-debian8-32-sles12-64a". Two of the three hosts have a
+random role assigned.
+```
+* (maint) New generated windows test fixtures (2591347e)
+
+
+```
+(maint) New generated windows test fixtures
+
+The rake task 'generate:fixtures' produced several new Windows fixtures.
+Perhaps we had previously updated the code to add support for more
+Windows platforms, but we forgot to re-generate the test fixtures?
+```
+* (maint) Decouple hypervisors from generator (aa39202e)
+
+
+```
+(maint) Decouple hypervisors from generator
+
+This commit is a large refactor that teases apart the generate code from
+the hypervisor code.
+
+Previously the VMPooler hypervisor class was a subclass of the Generator
+class, which was fine when there was only one hypervisor, but made it
+difficult to add support for per-host/multiple hypervisors.
+
+Now, there's a 1-to-many relationship between the Generator
+(BeakerHostGenerator::Generator) and the
+Hypervisors (BeakerHostGenerator::Hypervisor).
+
+The giant map of OSINFO data that was previously in the
+'data/vmpooler.rb' has been promoted and moved into data.rb as the
+`osinfo` module function. The parts specific to the VMPooler hypervisor
+have been nested under submaps keyed by the name of the hypervisor,
+`:vmpooler`.
+
+Adding support for a new hypervisor now requires implementing
+BeakerHostGenerator::Hypervisor::Interface, and adding any appropriate
+platform data as a submap to the OSINFO map in data.rb, keyed under a
+symbol named after the new hypervisor (e.g. `:my_hypervisor`).
+
+The module function `BeakerHostGenerator::Data.get_platform_info` can
+then be used when implementing the hypervisor to extract the relevant
+platform data under the key `:my_hypervisor`.
+```
+### <a name = "0.5.0">0.5.0 - 31 Mar, 2016 (fa3ae0c8)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.5.0 (fa3ae0c8)
 
 * (GEM) update beaker-hostgenerator version to 0.5.0 (36291ea6)
 
