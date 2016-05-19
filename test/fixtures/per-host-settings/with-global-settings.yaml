@@ -1,0 +1,24 @@
+---
+arguments_string: "--global-config {masterless=true,number=1234} redhat7-64c{type=o-negative}"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat7-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      template: redhat-7-x86_64
+      type: o-negative
+      roles:
+        - agent
+        - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    masterless: true
+    number: 1234
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

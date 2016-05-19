@@ -113,6 +113,12 @@ Usage: beaker-hostgenerator [options] <layout>
           @options[:osinfo_version] = version
         end
 
+        opts.on('--global-config KEYVALUE_STRING',
+                "General configuration settings to be included as-is in the " <<
+                "CONFIG section. Value should be in the form '{key=value,...}'.") do |p|
+          @options[:global_config] = p
+        end
+
         opts.on('-h',
                 '--help',
                 'Display command help.') do

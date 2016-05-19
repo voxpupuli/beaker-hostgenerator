@@ -28,6 +28,12 @@ module BeakerHostGenerator
       ostype = nil
       bhg_version = options[:osinfo_version] || 0
 
+      # Merge in global configuration settings
+      if options[:global_config]
+        global_config = settings_string_to_map(options[:global_config])
+        config['CONFIG'].deep_merge!(global_config)
+      end
+
       tokens.each do |token|
         if is_ostype_token?(token, bhg_version)
           if nodeid[ostype] == 1 and ostype != nil
@@ -72,6 +78,9 @@ module BeakerHostGenerator
         nodeid[ostype] += 1
       end
 
+      # Munge non-string scalar values into proper data types
+      unstringify_values!(config)
+
       return config.to_yaml
     end
 
@@ -106,6 +115,35 @@ module BeakerHostGenerator
           host_config.deep_merge! get_role_config(role)
         end
       end
+    end
+
+    # Passes over all the values of config['HOSTS'] and config['CONFIG'] and
+    # converts any numbers and booleans into proper integer and boolean types.
+    def unstringify_values!(config)
+      config['HOSTS'].each do |host, settings|
+        settings.each do |k, v|
+          config['HOSTS'][host][k] = unstringify_number_or_boolean(v)
+        end
+      end
+      config['CONFIG'].each do |k, v|
+        config['CONFIG'][k] = unstringify_number_or_boolean(v)
+      end
+    end
+
+    # Attempts to convert numeric strings and boolean strings into proper
+    # integer and boolean types. Returns the input value if it's not a
+    # number string or boolean string.
+    # For example "123" would be converted to 123, and "true"/"false" would be
+    # converted to true/false.
+    # The only valid boolean-strings are "true" and "false".
+    def unstringify_number_or_boolean(value)
+      result = Integer(value) rescue value
+      if value == 'true'
+        result = true
+      elsif value == 'false'
+        result = false
+      end
+      result
     end
   end
 end

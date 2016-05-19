@@ -140,6 +140,37 @@ CONFIG:
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
 
+### Arbitrary global configuration settings
+
+```
+$ beaker-hostgenerator --global-config {preserve_hosts=onfail\,log_level=debug\,server.ip=12.345.6789} redhat7-64m
+```
+
+Will generate
+
+```yaml
+---
+HOSTS:
+  redhat7-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: el-7-x86_64
+    template: redhat-7-x86_64
+    roles:
+    - agent
+    - master
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  preserve_hosts: onfail
+  log_level: debug
+  server.ip: 12.345.6789
+  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+```
+
 ## Testing
 
 Beaker Host Generator currently uses both rspec and minitest tests. To run both
