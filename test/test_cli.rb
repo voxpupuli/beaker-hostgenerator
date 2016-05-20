@@ -4,17 +4,12 @@ require 'beaker-hostgenerator/cli'
 
 class TestUtil < Minitest::Test
 
-  def setup
-    @stderr = StringIO.new
-    @stdout = StringIO.new
-
-    $stderr = @stderr
-    $stdout = @stdout
+  def test_new_with_list_option
+    assert_instance_of(String, BeakerHostGenerator::CLI.new(['--list']).execute)
   end
 
-  def test_new_with_list_option
-    assert_raises(BeakerHostGenerator::Exceptions::SafeEarlyExit) do
-      BeakerHostGenerator::CLI.new(['--list'])
-    end
+  def test_version_option
+    assert_equal(BeakerHostGenerator::Version::STRING,
+                 BeakerHostGenerator::CLI.new(['--version']).execute)
   end
 end

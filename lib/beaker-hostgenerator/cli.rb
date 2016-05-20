@@ -1,6 +1,7 @@
 require 'beaker-hostgenerator/generator'
 require 'beaker-hostgenerator/hypervisor'
 require 'beaker-hostgenerator/roles'
+require 'beaker-hostgenerator/version'
 require 'optparse'
 
 module BeakerHostGenerator
@@ -116,35 +117,31 @@ Usage: beaker-hostgenerator [options] <layout>
         opts.on('-h',
                 '--help',
                 'Display command help.') do
-          puts opts
-          exit
+          @options[:help] = opts.to_s
+        end
+
+        opts.on('-v',
+                '--version',
+                'Display beaker-hostgenerator version number.') do
+          @options[:version] = true
         end
       end
 
       optparse.parse!(argv)
-
-      if @options[:list_supported_values]
-        print_supported_values
-        raise BeakerHostGenerator::Exceptions::SafeEarlyExit
-      else
-        @layout = argv[0]
-
-        if @options[:osinfo_version] === 0
-          warning = <<-eow
-WARNING: Starting with beaker-hostgenerator 1.x platform strings for "el" hosts
-will correspond to the actual linux distribution name. ie, the platform string
-corresponding to a host specified as "centos4_64a" will be "centos-4-x86_64"
-rather than "el-4-x86_64". It is recommended that you update your project's test
-suites ASAP or be forced to do so when beaker-hostgenerator development moves on
-to the 1.x series. We don't intend to backport features or platforms to 0.x.
-eow
-          STDERR.puts(warning)
-        end
-      end
+      @layout = argv[0]
     end
 
     def execute
-      BeakerHostGenerator::Generator.new.generate(@layout, @options)
+      if @options[:help]
+        @options[:help] # Value is help text string
+      elsif @options[:version]
+        BeakerHostGenerator::Version::STRING
+      elsif @options[:list_supported_values]
+        supported_values_help_text
+      else
+        print_warnings
+        BeakerHostGenerator::Generator.new.generate(@layout, @options)
+      end
     end
 
     def execute!
@@ -153,32 +150,48 @@ eow
 
     private
 
-    # Prints to stdout a human-readable listing of all supported values for
-    # the following: platforms, architectures, roles, and hypervisors.
-    def print_supported_values
-      puts "valid beaker-hostgenerator platforms:"
+    def print_warnings
+      if @options[:osinfo_version] === 0
+        warning = <<-eow
+WARNING: Starting with beaker-hostgenerator 1.x platform strings for "el" hosts
+will correspond to the actual linux distribution name. ie, the platform string
+corresponding to a host specified as "centos4_64a" will be "centos-4-x86_64"
+rather than "el-4-x86_64". It is recommended that you update your project's test
+suites ASAP or be forced to do so when beaker-hostgenerator development moves on
+to the 1.x series. We don't intend to backport features or platforms to 0.x.
+eow
+        STDERR.puts(warning)
+      end
+    end
+
+    # Builds help text with a human-readable listing of all supported values
+    # for the following: platforms, architectures, roles, and hypervisors.
+    def supported_values_help_text
+      result = "valid beaker-hostgenerator platforms:\n"
       platforms = get_platforms(@options[:osinfo_version])
       platforms.each do |k|
-        puts "   #{k}"
+        result << "   #{k}\n"
       end
-      puts "\n"
+      result << "\n\n"
 
-      puts "valid beaker-hostgenerator architectures:"
-      puts "   32   => 32-bit OS"
-      puts "   64   => 64-bit OS"
-      puts "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)"
-      puts "\n"
+      result << "valid beaker-hostgenerator architectures:\n"
+      result << "   32   => 32-bit OS\n"
+      result << "   64   => 64-bit OS\n"
+      result << "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)\n"
+      result << "\n\n"
 
-      puts "valid beaker-hostgenerator host roles:"
+      result << "valid beaker-hostgenerator host roles:\n"
       BeakerHostGenerator::Roles::ROLES.each do |k,v|
-        puts "   #{k} => #{v}"
+        result << "   #{k} => #{v}\n"
       end
-      puts "\n"
+      result << "\n\n"
 
-      puts "valid beaker-hostgenerator hypervisors:"
+      result << "valid beaker-hostgenerator hypervisors:\n"
       BeakerHostGenerator::Hypervisor.supported_hypervisors().keys.each do |k|
-        puts "   #{k}"
+        result << "   #{k}\n"
       end
+
+      result
     end
   end
 end
