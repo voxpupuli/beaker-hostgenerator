@@ -21,6 +21,62 @@ module BeakerHostGenerator
                 })
       end
 
+      context 'When specifying architecture bits' do
+
+        it 'Supports uppercase alphanumeric architecture bits' do
+          expect( parse_node_info_token("SPARC") ).
+            to eq({
+                    "roles" => "",
+                    "arbitrary_roles" => [],
+                    "bits" => "SPARC",
+                    "host_settings" => {}
+                  })
+
+          expect( parse_node_info_token("POWER6") ).
+            to eq({
+                    "roles" => "",
+                    "arbitrary_roles" => [],
+                    "bits" => "POWER6",
+                    "host_settings" => {}
+                  })
+
+          expect( parse_node_info_token("S390X") ).
+            to eq({
+                    "roles" => "",
+                    "arbitrary_roles" => [],
+                    "bits" => "S390X",
+                    "host_settings" => {}
+                  })
+
+        end
+
+        it 'Trailing lowercase characters are parsed as roles' do
+          expect( parse_node_info_token("S390Xm") ).
+            to eq({
+                    "roles" => "m",
+                    "arbitrary_roles" => [],
+                    "bits" => "S390X",
+                    "host_settings" => {}
+                  })
+
+          expect( parse_node_info_token("S390Xcustom.m") ).
+            to eq({
+                    "roles" => "m",
+                    "arbitrary_roles" => ["custom"],
+                    "bits" => "S390X",
+                    "host_settings" => {}
+                  })
+        end
+
+        it 'Rejects lowercase characters that are not at the end' do
+          expect { parse_node_info_token("AbC3") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+          expect { parse_node_info_token("aBC3") }.
+            to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+        end
+      end
+
       it 'Supports the use of arbitrary roles.' do
         expect( parse_node_info_token("64compile_master,ca,blah.mad") ).
           to eq({
