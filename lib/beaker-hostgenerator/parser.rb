@@ -14,7 +14,28 @@ module BeakerHostGenerator
   # each token you would call `is_ostype_token?` and/or `parse_node_info_token`.
   module Parser
 
-    # Capture role and bit width information about the node.
+    # Parses a single node definition into the following components:
+    #
+    #   * bits             Uppercase-only alphanumeric
+    #                      Examples: 32, 64, POWER, S390X
+    #
+    #   * arbitrary_roles  Lowercase-only alphabetical & underscores
+    #                      Examples: myrole, role_a
+    #
+    #   * roles            Lowercase-only, any combination of: u, a, c, l, d, f, m
+    #                      Examples: m, mdca
+    #
+    #   * host_settings    Any character (see `settings_string_to_map` for details)
+    #                      Examples: {hostname=foo-bar, ip.address=123.4.5.6}
+    #
+    # This regex is the main workhorse for parsing input to beaker-hostgenerator.
+    # There is a bit of pre and post parsing that happens before and after this
+    # regex though.
+    # Before we use this regex, we split the input containing multiple node
+    # definitions into individual node definitions to be parsed by this regex
+    # (see `tokenize_layout`).
+    # After we use this regex, we turn the host_settings key-value string into
+    # a proper Hash map (see `settings_string_to_map`).
     #
     # See Ruby Regexp class for information on the capture groups used below.
     # http://ruby-doc.org/core-2.2.0/Regexp.html#class-Regexp-label-Character+Classes
@@ -40,7 +61,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
