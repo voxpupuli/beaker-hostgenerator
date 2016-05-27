@@ -1,0 +1,42 @@
+---
+arguments_string: fedora19-32d-ubuntu1604-64-fedora19-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora19-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-19-i386
+      template: fedora-19-i386
+      roles:
+      - agent
+      - database
+    ubuntu1604-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-amd64
+      template: ubuntu-1604-x86_64
+      roles:
+      - agent
+    fedora19-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-19-i386
+      template: fedora-19-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

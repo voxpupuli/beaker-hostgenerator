@@ -67,7 +67,7 @@ class FixtureGenerator
   include GeneratorTestHelpers
 
   def initialize
-    @fixture_root = 'test/fixtures/'
+    @fixture_root = 'test/fixtures/generated/'
     @simple_roles = ["a", "u", "l", "c", "d", "f", "m", "aulcdfm"]
   end
 
@@ -98,7 +98,7 @@ class FixtureGenerator
          'pe_family' => '6.6.6',
        }
       },
-    ].each do |fixture_hash| 
+    ].each do |fixture_hash|
       case_name = fixture_hash['case_name']
       environment_variables = fixture_hash['case_name']
       generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
