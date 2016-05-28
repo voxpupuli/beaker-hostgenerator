@@ -1,0 +1,21 @@
+---
+arguments_string: ubuntu1510-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1510-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.10-amd64
+      template: ubuntu-1510-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -1,0 +1,21 @@
+---
+arguments_string: centos4-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos4-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-4-x86_64
+      template: centos-4-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

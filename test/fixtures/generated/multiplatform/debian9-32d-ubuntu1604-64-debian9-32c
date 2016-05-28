@@ -1,0 +1,42 @@
+---
+arguments_string: debian9-32d-ubuntu1604-64-debian9-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian9-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-9-i386
+      template: debian-9-i386
+      roles:
+      - agent
+      - database
+    ubuntu1604-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-amd64
+      template: ubuntu-1604-x86_64
+      roles:
+      - agent
+    debian9-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-9-i386
+      template: debian-9-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -1,0 +1,42 @@
+---
+arguments_string: opensuse11-32u-solaris112-32-opensuse11-32m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    opensuse11-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: opensuse-11-i386
+      template: opensuse-11-i386
+      roles:
+      - agent
+      - ca
+    solaris112-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11.2-i386
+      template: solaris-112-x86_64
+      roles:
+      - agent
+    opensuse11-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: opensuse-11-i386
+      template: opensuse-11-i386
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -1,0 +1,42 @@
+---
+arguments_string: fedora20-32u-ubuntu1504-32-fedora20-32m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora20-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-20-i386
+      template: fedora-20-i386
+      roles:
+      - agent
+      - ca
+    ubuntu1504-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.04-i386
+      template: ubuntu-1504-i386
+      roles:
+      - agent
+    fedora20-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-20-i386
+      template: fedora-20-i386
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

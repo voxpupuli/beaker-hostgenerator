@@ -1,0 +1,20 @@
+---
+arguments_string: --osinfo-version 1 aix61-POWERu
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    aix61-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: aix-6.1-power
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

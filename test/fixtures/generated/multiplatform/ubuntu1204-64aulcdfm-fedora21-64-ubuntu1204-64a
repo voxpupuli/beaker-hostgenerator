@@ -1,0 +1,46 @@
+---
+arguments_string: ubuntu1204-64aulcdfm-fedora21-64-ubuntu1204-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1204-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-12.04-amd64
+      template: ubuntu-1204-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    fedora21-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-21-x86_64
+      template: fedora-21-x86_64
+      roles:
+      - agent
+    ubuntu1204-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-12.04-amd64
+      template: ubuntu-1204-x86_64
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -1,0 +1,42 @@
+---
+arguments_string: redhat4-32c-sles10-64-redhat4-32d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat4-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-4-i386
+      template: redhat-4-i386
+      roles:
+      - agent
+      - dashboard
+    sles10-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-10-x86_64
+      template: sles-10-x86_64
+      roles:
+      - agent
+    redhat4-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-4-i386
+      template: redhat-4-i386
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
