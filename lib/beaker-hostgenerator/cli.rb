@@ -186,14 +186,14 @@ eow
       result << "   6432 => 64-bit OS with 32-bit Puppet (Windows Only)\n"
       result << "\n\n"
 
-      result << "valid beaker-hostgenerator host roles:\n"
+      result << "built-in beaker-hostgenerator host roles:\n"
       BeakerHostGenerator::Roles::ROLES.each do |k,v|
         result << "   #{k} => #{v}\n"
       end
       result << "\n\n"
 
-      result << "valid beaker-hostgenerator hypervisors:\n"
-      BeakerHostGenerator::Hypervisor.supported_hypervisors().keys.each do |k|
+      result << "built-in beaker-hostgenerator hypervisors:\n"
+      BeakerHostGenerator::Hypervisor.builtin_hypervisors().keys.each do |k|
         result << "   #{k}\n"
       end
 

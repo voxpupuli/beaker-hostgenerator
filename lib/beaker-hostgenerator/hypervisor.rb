@@ -5,7 +5,7 @@ module BeakerHostGenerator
   # the appropriate hypervisor implementation.
   #
   # New hypervisor implementations must define the methods in the Interface
-  # class, and add a new element to the `supported_hypervisors` map.
+  # class, and add a new element to the `builtin_hypervisors` map.
   #
   # Any number of hypervisors are used by a single Generator during host
   # generation in the `BeakerHostGenerator::Generator#generate` method.
@@ -16,26 +16,26 @@ module BeakerHostGenerator
 
     # Static factory method to instantiate the appropriate hypervisor for the
     # given node. If no hypervisor is specified in the node info, then the
-    # hypervisor specified in the options will be created.
+    # hypervisor specified in the options will be created. If the hypervisor is
+    # not a built-in implementation, then an `Unknown` instance will be used.
     #
     # @param node_info [Hash{String=>Object}] Node data parsed from the input
     #                                         spec string.
     #
     # @option options [String] :hypervisor The string name of the hypervisor to
-    #                          create. An exception will be thrown if the
-    #                          hypervisor is unrecognized.
+    #                          create.
     def self.create(node_info, options)
       name = node_info['host_settings']['hypervisor'] || options[:hypervisor]
-      hypervisor = supported_hypervisors[name]
+      hypervisor = builtin_hypervisors[name]
       if hypervisor
         hypervisor.new
       else
-        raise "Invalid hypervisor: #{name}"
+        BeakerHostGenerator::Hypervisor::Unknown.new(name)
       end
     end
 
-    # Returns a map of all valid hypervisor implementations, where the keys are
-    # the string names and the values are the implementation classes.
+    # Returns a map of all built-in hypervisor implementations, where the keys
+    # are the string names and the values are the implementation classes.
     #
     # The string names are part of the beaker-hostgenerator API as they are
     # used for specifying the default or per-host hypervisor in the layout
@@ -43,9 +43,8 @@ module BeakerHostGenerator
     #
     # @returns [Hash{String=>Hypervisor::Interface}] A map of hypervisor names
     #                                                and their implementations.
-    def self.supported_hypervisors()
+    def self.builtin_hypervisors()
       {
-        'none' => BeakerHostGenerator::Hypervisor::None,
         'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler
       }
     end
@@ -93,5 +92,5 @@ end
 # in the `create` factory method. We need to put these require statements at the
 # bottom of this file to avoid circular references between this file and the
 # hypervisor implementation files.
+require 'beaker-hostgenerator/hypervisor/unknown'
 require 'beaker-hostgenerator/hypervisor/vmpooler'
-require 'beaker-hostgenerator/hypervisor/none'

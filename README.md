@@ -3,19 +3,17 @@
 `beaker-hostgenerator` is a command line utility designed to generate beaker
 host config files using a compact command line SUT specification.
 
-It currently supports Puppets' internal [vmpooler][vmpooler] hypervisor and
-static (non-provisioned) nodes, and is designed in a way that makes it possible
-to easily add support for additional hypervisors (any hypervisor type supported
-by [beaker][beaker]).
-
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
 - [Beaker Host Generator](#beaker-host-generator)
+    - [Hypervisors](#hypervisors)
     - [Usage](#usage)
         - [Simple two-host layout](#simple-two-host-layout)
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
         - [Two hosts with multiple hypervisors and arbitrary host settings](#two-hosts-with-multiple-hypervisors-and-arbitrary-host-settings)
+        - [Arbitrary global configuration settings](#arbitrary-global-configuration-settings)
+        - [Custom hypervisor](#custom-hypervisor)
     - [Testing](#testing)
         - [Test Fixtures](#test-fixtures)
             - [Generated Fixtures](#generated-fixtures)
@@ -23,6 +21,23 @@ by [beaker][beaker]).
     - [License](#license)
 
 <!-- markdown-toc end -->
+
+## Hypervisors
+
+Any hypervisor may be specified and generated, but if it's not a built-in
+hypervisor you will have to provide the entire hypervisor configuration as
+input. See the [Custom hypervisor](#custom-hypervisor) example for more
+information.
+
+It currently provides built-in configuration for Puppets' internal
+[vmpooler][vmpooler] hypervisor and static (non-provisioned) nodes, and is
+designed in a way that makes it possible to easily add support for additional
+hypervisors (any hypervisor type supported by [beaker][beaker]).
+
+To see the list of built-in hypervisors you can run:
+```
+$ beaker-hostgenerator --list
+```
 
 ## Usage
 
@@ -169,6 +184,39 @@ CONFIG:
   log_level: debug
   server.ip: 12.345.6789
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
+```
+
+### Custom hypervisor
+
+The following example shows one way of generating a custom hypervisor that
+includes both per-host configuration and global configuration.
+
+The term "custom" in this case signifies that it's not a built-in hypervisor
+(like `vmpooler`), which means we'll have to provide all the configuration
+ourselves as there isn't any built-in configuration for our hypervisor.
+
+```
+$ beaker-hostgenerator --hypervisor=custom --global={custom_api=http://api.custom.net} centos6-64
+```
+
+Will generate
+
+```yaml
+---
+HOSTS:
+  centos6-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    platform: el-6-x86_64
+    hypervisor: custom
+    roles:
+    - agent
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  custom_api: http://api.custom.net
 ```
 
 ## Testing
