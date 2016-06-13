@@ -1,0 +1,48 @@
+---
+arguments_string: windowsvista-64a-arista4-32-windowsvista-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windowsvista-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-vista-64
+      ruby_arch: x64
+      template: win-vista-x86_64
+      roles:
+      - agent
+    arista4-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: eos-4-i386
+      template: arista-4-i386
+      roles:
+      - agent
+    windowsvista-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-vista-64
+      ruby_arch: x64
+      template: win-vista-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -64,6 +64,21 @@ module BeakerHostGenerator
 
     def osinfo
       {
+        'aix53-POWER' => {
+          :general => {
+            'platform' => 'aix-5.3-power'
+          }
+        },
+        'aix61-POWER' => {
+          :general => {
+            'platform' => 'aix-6.1-power'
+          }
+        },
+        'aix71-POWER' => {
+          :general => {
+            'platform' => 'aix-7.1-power'
+          }
+        },
         'arista4-32' => {
           :general => {
             'platform' => 'eos-4-i386'
@@ -540,6 +555,11 @@ module BeakerHostGenerator
             'template' => 'solaris-10-x86_64'
           }
         },
+        'solaris10-SPARC' => {
+          :general => {
+            'platform' => 'solaris-10-sparc'
+          }
+        },
         'solaris11-32' => {
           :general => {
             'platform' => 'solaris-11-i386'
@@ -554,6 +574,11 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'solaris-11-x86_64'
+          }
+        },
+        'solaris11-SPARC' => {
+          :general => {
+            'platform' => 'solaris-11-sparc'
           }
         },
         'solaris112-32' => {
