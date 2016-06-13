@@ -7,6 +7,21 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.7.0] - 2016-6-13
+- Add optional '--global-config' CLI argument to support arbitrary values in the
+  general CONFIG section of host files.
+- Add '--version' CLI flag to print out the library version to stdout.
+- Remove requirement that only valid (read: built-in) hypervisors are generated
+  by allowing any arbitrary string to be specified as the hypervisor. If the
+  hypervisor specified is not a built-in one there will be no additional
+  hypervisor-specific configuration generated.
+- Add platforms:
+  - aix-5.3-power
+  - aix-6.1-power
+  - aix-7.1-power
+  - solaris-10-sparc
+  - solaris-11-sparc
+
 ## [0.6.0] - 2016-05-11
 - Add new 'none' hypervisor implementation to support static, non-provisioned hosts.
 - Add support for arbitrary, per-host key=value settings.
