@@ -1,0 +1,23 @@
+---
+arguments_string: --pe_ver 2020.7 centos6-64mdc
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos6-64-1:
+      pe_dir: 
+      pe_ver: '2020.7'
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      template: centos-6-x86_64
+      roles:
+      - agent
+      - master
+      - database
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

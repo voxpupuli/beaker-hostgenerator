@@ -220,6 +220,110 @@ module BeakerHostGenerator
             'template' => 'debian-9-x86_64'
           }
         },
+        'fedora14-32' => {
+          :general => {
+            'platform' => 'fedora-14-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-14-i386'
+          }
+        },
+        'fedora19-32' => {
+          :general => {
+            'platform' => 'fedora-19-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-19-i386'
+          }
+        },
+        'fedora19-64' => {
+          :general => {
+            'platform' => 'fedora-19-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-19-x86_64'
+          }
+        },
+        'fedora20-32' => {
+          :general => {
+            'platform' => 'fedora-20-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-20-i386'
+          }
+        },
+        'fedora20-64' => {
+          :general => {
+            'platform' => 'fedora-20-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-20-x86_64'
+          }
+        },
+        'fedora21-32' => {
+          :general => {
+            'platform' => 'fedora-21-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-21-i386'
+          }
+        },
+        'fedora21-64' => {
+          :general => {
+            'platform' => 'fedora-21-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-21-x86_64'
+          }
+        },
+        'fedora22-32' => {
+          :general => {
+            'platform' => 'fedora-22-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-22-i386'
+          }
+        },
+        'fedora22-64' => {
+          :general => {
+            'platform' => 'fedora-22-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-22-x86_64'
+          }
+        },
+        'fedora23-32' => {
+          :general => {
+            'platform' => 'fedora-23-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-23-i386'
+          }
+        },
+        'fedora23-64' => {
+          :general => {
+            'platform' => 'fedora-23-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-23-x86_64'
+          }
+        },
+        'opensuse11-32' => {
+          :general => {
+            'platform' => 'opensuse-11-i386'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-11-i386'
+          }
+        },
+        'opensuse11-64' => {
+          :general => {
+            'platform' => 'opensuse-11-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-11-x86_64'
+          }
+        },
         'oracle5-32' => {
           :general => {
             'platform' => 'el-5-i386'
@@ -338,110 +442,6 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'redhat-7-x86_64'
-          }
-        },
-        'fedora14-32' => {
-          :general => {
-            'platform' => 'fedora-14-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-14-i386'
-          }
-        },
-        'fedora19-32' => {
-          :general => {
-            'platform' => 'fedora-19-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-19-i386'
-          }
-        },
-        'fedora19-64' => {
-          :general => {
-            'platform' => 'fedora-19-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-19-x86_64'
-          }
-        },
-        'fedora20-32' => {
-          :general => {
-            'platform' => 'fedora-20-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-20-i386'
-          }
-        },
-        'fedora20-64' => {
-          :general => {
-            'platform' => 'fedora-20-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-20-x86_64'
-          }
-        },
-        'fedora21-32' => {
-          :general => {
-            'platform' => 'fedora-21-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-21-i386'
-          }
-        },
-        'fedora21-64' => {
-          :general => {
-            'platform' => 'fedora-21-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-21-x86_64'
-          }
-        },
-        'fedora22-32' => {
-          :general => {
-            'platform' => 'fedora-22-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-22-i386'
-          }
-        },
-        'fedora22-64' => {
-          :general => {
-            'platform' => 'fedora-22-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-22-x86_64'
-          }
-        },
-        'fedora23-32' => {
-          :general => {
-            'platform' => 'fedora-23-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-23-i386'
-          }
-        },
-        'fedora23-64' => {
-          :general => {
-            'platform' => 'fedora-23-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-23-x86_64'
-          }
-        },
-        'opensuse11-32' => {
-          :general => {
-            'platform' => 'opensuse-11-i386'
-          },
-          :vmpooler => {
-            'template' => 'opensuse-11-i386'
-          }
-        },
-        'opensuse11-64' => {
-          :general => {
-            'platform' => 'opensuse-11-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'opensuse-11-x86_64'
           }
         },
         'scientific5-32' => {
