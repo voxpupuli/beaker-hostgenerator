@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 11 May, 2016 (4a8ee90e)](#LATEST)
+* [LATEST - 13 Jun, 2016 (4792554b)](#LATEST)
+* [0.6.0 - 11 May, 2016 (c807eb0d)](#0.6.0)
 * [0.5.0 - 31 Mar, 2016 (fa3ae0c8)](#0.5.0)
 * [0.4.0 - 10 Feb, 2016 (dc333b1c)](#0.4.0)
 * [0.3.3 - 3 Feb, 2016 (41051da9)](#0.3.3)
@@ -12,7 +13,214 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 11 May, 2016 (4a8ee90e)
+### <a name = "LATEST">LATEST - 13 Jun, 2016 (4792554b)
+
+* (GEM) update beaker-hostgenerator version to 0.7.0 (4792554b)
+
+* Merge pull request #36 from nwolfe/qeng3987/release-0.7.0 (11256701)
+
+
+```
+Merge pull request #36 from nwolfe/qeng3987/release-0.7.0
+
+(QENG-3987) Update CHANGELOG for 0.7.0 release
+```
+* (QENG-3987) Update CHANGELOG for 0.7.0 release (2f9fa77c)
+
+* Merge pull request #33 from nwolfe/qeng3811-add-aix-and-sparc-platforms (9e73e059)
+
+
+```
+Merge pull request #33 from nwolfe/qeng3811-add-aix-and-sparc-platforms
+
+(QENG-3811) Add AIX and Solaris SPARC platforms
+```
+* Merge pull request #35 from nwolfe/maint/alphabetize-test-fixtures (26ae944e)
+
+
+```
+Merge pull request #35 from nwolfe/maint/alphabetize-test-fixtures
+
+(MAINT) Sort platforms alphabetically
+```
+* Merge pull request #34 from nwolfe/qeng3946-support-arbitrary-hypervisors (4d018b46)
+
+
+```
+Merge pull request #34 from nwolfe/qeng3946-support-arbitrary-hypervisors
+
+(QENG-3946) Support arbitrary hypervisors
+```
+* (QENG-3946) Support arbitrary hypervisors (cf62fc5e)
+
+
+```
+(QENG-3946) Support arbitrary hypervisors
+
+This commit allows unknown hypervisors to be specified by the user.
+Previously, if the hypervisor specified by the user was not one of the
+valid, built-in implementations then an error was thrown notifying the
+user that an invalid hypervisor was requested.
+Now, this is no longer an error, and instead the host generation will
+continue as normal but there will be no hypervisor-specific
+configuration. The name of the unknown hypervisor will be the value of
+the hypervisor configuration of the hosts.
+
+To implement this, we can repurpose the special `Hypervisor::None`
+implementation to instead represent an unknown (but equally valid)
+hypervisor. The unknown name will now be the value of `hypervisor` in
+the generated config, where it used to be `hypervisor: none`.
+
+For example:
+  $ .. centos6-64{hypervisor=custom}
+  ---
+  HOSTS:
+    centos6-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-6-x86_64
+      hypervisor: custom
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+```
+* (QENG-3811) Regenerate fixtures with new platforms (dbd40c80)
+
+
+```
+(QENG-3811) Regenerate fixtures with new platforms
+
+Our fixture generation isn't quite deterministic, and adding a new
+platform somehow causes unrelated platform fixtures to be changed.
+
+This commit deletes the entire `test/fixtures/generated` directory and
+regenerates them anew, with new fixtures for the new AIX and Solaris
+SPARC platforms.
+```
+* (QENG-3811) Add AIX and Solaris SPARC platforms (8c5eb30d)
+
+* (MAINT) Regenerate test fixtures and isolate them (d17d2341)
+
+
+```
+(MAINT) Regenerate test fixtures and isolate them
+
+Since we sorted the platforms alphabetically, the fixture generation
+results in different filenames. Basically every time we modify
+Data#platforms() we should regenerate the fixtures so we have all
+platforms covered.
+
+This moves the generated fixtures into a new directory called
+`test/fixtures/generated/` so it's easier to work with them and not have
+the manually created fixtures get in the way.
+```
+* (MAINT) Sort platforms alphabetically (2376853e)
+
+
+```
+(MAINT) Sort platforms alphabetically
+
+Just so it's easier to navigate the large structure in the code.
+```
+* Merge pull request #32 from nwolfe/qeng3808-alphanumeric-architectures (92eb8545)
+
+
+```
+Merge pull request #32 from nwolfe/qeng3808-alphanumeric-architectures
+
+(QENG-3808) Support uppercase alphanumeric architectures
+```
+* Merge pull request #31 from nwolfe/qeng3377-fix-version-flag (7bedf39f)
+
+
+```
+Merge pull request #31 from nwolfe/qeng3377-fix-version-flag
+
+(QENG-3377) Add --version CLI flag
+```
+* Merge pull request #30 from nwolfe/qeng3920-arbitrary-global-config-support (ffe6078a)
+
+
+```
+Merge pull request #30 from nwolfe/qeng3920-arbitrary-global-config-support
+
+(QENG-3920) Global host config CLI configuration support
+```
+* (QENG-3808) Support uppercase alphanumeric architectures (0fc1ba77)
+
+
+```
+(QENG-3808) Support uppercase alphanumeric architectures
+
+This commit adds support for uppercase-only alphanumeric architecture
+bits in platform names. For example, we can support things like
+"POWER", "POWER7", "S390X" instead of just "32" or "64".
+
+Uppercase letters allow for backwards compatibility when roles are
+specified, which come after the architecture bit. This implementation
+relies on the fact that the role and arbitrary role characters are
+only lowercase.
+
+This allows us to distinguish between the architecture "POWER" and the
+role "m" when parsing the spec "POWERm", as in "aix71-POWERm".
+```
+* (QENG-3377) Add --version CLI flag (2ddec220)
+
+
+```
+(QENG-3377) Add --version CLI flag
+
+This commit adds a -v/--version CLI flag to print the version number.
+
+This also refactors the flow-of-control to remove the need for the
+SafeEarlyExit exception by moving all output-generating codepaths out of
+the initialize method and into the execute method, and teasing apart the
+--list and default generation codepaths. The execute method
+now chooses the code path based on the CLI options set in initialize.
+
+While we no longer throw a SafeEarlyExit exception, it's effectively
+part of the API so we must wait until the appropriate time/release to
+delete it. Existing usages of it should not be broken with the changes
+in this commit.
+```
+* (QENG-3920) Global host config CLI configuration support (151918d9)
+
+
+```
+(QENG-3920) Global host config CLI configuration support
+
+This commit adds CLI support for specifying global configuration
+settings that will be included in the CONFIG section.
+
+For example:
+
+  $ beaker-hostgenerator --global-config {master=headless} redhat7-64m
+  ---
+  HOSTS:
+    redhat7-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      template: redhat-7-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    master: headless
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+```
+### <a name = "0.6.0">0.6.0 - 11 May, 2016 (c807eb0d)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.6.0 (c807eb0d)
 
 * (GEM) update beaker-hostgenerator version to 0.6.0 (4a8ee90e)
 
