@@ -1,0 +1,42 @@
+---
+arguments_string: sles12-64f-oracle6-64-sles12-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles12-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-x86_64
+      template: sles-12-x86_64
+      roles:
+      - agent
+      - frictionless
+    oracle6-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      template: oracle-6-x86_64
+      roles:
+      - agent
+    sles12-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-x86_64
+      template: sles-12-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

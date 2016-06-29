@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 debian6-32m
+arguments_string: "--osinfo-version 0 debian6-32m"
 environment_variables: {}
 expected_hash:
   HOSTS:

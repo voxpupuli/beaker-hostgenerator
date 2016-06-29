@@ -1,0 +1,42 @@
+---
+arguments_string: sles10-32u-osx1011-64-sles10-32m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles10-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-10-i386
+      template: sles-10-i386
+      roles:
+      - agent
+      - ca
+    osx1011-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.11-x86_64
+      template: osx-1011-x86_64
+      roles:
+      - agent
+    sles10-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-10-i386
+      template: sles-10-i386
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

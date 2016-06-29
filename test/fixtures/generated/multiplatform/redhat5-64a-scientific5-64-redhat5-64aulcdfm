@@ -1,0 +1,46 @@
+---
+arguments_string: redhat5-64a-scientific5-64-redhat5-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat5-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-x86_64
+      template: redhat-5-x86_64
+      roles:
+      - agent
+    scientific5-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-x86_64
+      template: scientific-5-x86_64
+      roles:
+      - agent
+    redhat5-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-x86_64
+      template: redhat-5-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

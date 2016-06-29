@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 centos7-64l
+arguments_string: "--osinfo-version 0 centos7-64l"
 environment_variables: {}
 expected_hash:
   HOSTS:

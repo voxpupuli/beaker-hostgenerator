@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 aix53-POWERa
+arguments_string: "--osinfo-version 0 aix53-POWERa"
 environment_variables: {}
 expected_hash:
   HOSTS:

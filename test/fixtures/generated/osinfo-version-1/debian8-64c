@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 debian8-64c
+arguments_string: "--osinfo-version 1 debian8-64c"
 environment_variables: {}
 expected_hash:
   HOSTS:

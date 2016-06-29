@@ -1,0 +1,46 @@
+---
+arguments_string: ubuntu1510-64aulcdfm-fedora14-32-ubuntu1510-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1510-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.10-amd64
+      template: ubuntu-1510-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    fedora14-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-14-i386
+      template: fedora-14-i386
+      roles:
+      - agent
+    ubuntu1510-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.10-amd64
+      template: ubuntu-1510-x86_64
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
