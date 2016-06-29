@@ -186,6 +186,7 @@ eow
       result << "   6432  => 64-bit OS with 32-bit Puppet (Windows Only)\n"
       result << "   POWER => power OS (AIX only)\n"
       result << "   SPARC => sparc OS (Solaris only)\n"
+      result << "   S390X => s390x OS (RedHat and SLES only)\n"
       result << "\n\n"
 
       result << "built-in beaker-hostgenerator host roles:\n"
