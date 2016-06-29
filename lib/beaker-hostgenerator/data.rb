@@ -323,6 +323,22 @@ module BeakerHostGenerator
             'template' => 'fedora-23-x86_64'
           }
         },
+        'fedora24-32' => {
+          :general => {
+            'platform' => 'fedora-24-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-24-i386'
+          }
+        },
+        'fedora24-64' => {
+          :general => {
+            'platform' => 'fedora-24-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-24-x86_64'
+          }
+        },
         'opensuse11-32' => {
           :general => {
             'platform' => 'opensuse-11-i386'
@@ -451,6 +467,11 @@ module BeakerHostGenerator
             'template' => 'redhat-6-x86_64'
           }
         },
+        'redhat6-S390X' => {
+          :general => {
+            'platform' => 'el-6-s390x'
+          },
+        },
         'redhat7-64' => {
           :general => {
             'platform' => 'el-7-x86_64'
@@ -458,6 +479,11 @@ module BeakerHostGenerator
           :vmpooler => {
             'template' => 'redhat-7-x86_64'
           }
+        },
+        'redhat7-S390X' => {
+          :general => {
+            'platform' => 'el-7-s390x'
+          },
         },
         'scientific5-32' => {
           :general => {
