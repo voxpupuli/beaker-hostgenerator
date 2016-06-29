@@ -7,6 +7,14 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.7.1] - 2016-6-29
+- Add platforms:
+  - Fedora 24 x86_64 and i386
+  - Redhat 6 s390x
+  - Redhat 7 s390x
+  - SLES 11 s390x
+  - SLES 12 s390x
+
 ## [0.7.0] - 2016-6-13
 - Add optional '--global-config' CLI argument to support arbitrary values in the
   general CONFIG section of host files.
