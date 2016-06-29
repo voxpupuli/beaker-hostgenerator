@@ -1,0 +1,46 @@
+---
+arguments_string: solaris112-32a-fedora24-32-solaris112-32aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris112-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11.2-i386
+      template: solaris-112-x86_64
+      roles:
+      - agent
+    fedora24-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-24-i386
+      template: fedora-24-i386
+      roles:
+      - agent
+    solaris112-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11.2-i386
+      template: solaris-112-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

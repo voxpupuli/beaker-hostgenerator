@@ -1,0 +1,40 @@
+---
+arguments_string: sles12-S390Xu-oracle6-64-sles12-S390Xm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles12-S390X-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-s390x
+      roles:
+      - agent
+      - ca
+    oracle6-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      template: oracle-6-x86_64
+      roles:
+      - agent
+    sles12-S390X-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-s390x
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
