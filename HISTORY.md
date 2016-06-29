@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 13 Jun, 2016 (4792554b)](#LATEST)
+* [LATEST - 29 Jun, 2016 (530baa09)](#LATEST)
+* [0.7.0 - 13 Jun, 2016 (f0aafe8d)](#0.7.0)
 * [0.6.0 - 11 May, 2016 (c807eb0d)](#0.6.0)
 * [0.5.0 - 31 Mar, 2016 (fa3ae0c8)](#0.5.0)
 * [0.4.0 - 10 Feb, 2016 (dc333b1c)](#0.4.0)
@@ -13,7 +14,76 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 13 Jun, 2016 (4792554b)
+### <a name = "LATEST">LATEST - 29 Jun, 2016 (530baa09)
+
+* (GEM) update beaker-hostgenerator version to 0.7.1 (530baa09)
+
+* Merge pull request #41 from nwolfe/maint/master/prepare-for-release (d576464b)
+
+
+```
+Merge pull request #41 from nwolfe/maint/master/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.7.1 release
+```
+* Merge pull request #42 from nwolfe/maint/master/regenerate-fixture-for-new-platforms (1e1b7f47)
+
+
+```
+Merge pull request #42 from nwolfe/maint/master/regenerate-fixture-for-new-platforms
+
+(MAINT) Regenerate test fixtures for new platforms
+```
+* (MAINT) Regenerate test fixtures for new platforms (cc4fa0ef)
+
+
+```
+(MAINT) Regenerate test fixtures for new platforms
+
+I blew away the whole fixtures/generated/ directory and regenerated them
+all again, so the new platforms will be included and tested.
+```
+* Merge pull request #39 from nwolfe/qeng3626-add-sles11-s390x (2155fb79)
+
+
+```
+Merge pull request #39 from nwolfe/qeng3626-add-sles11-s390x
+
+(QENG-3626) Add sles-11-s390x platform
+```
+* Merge pull request #38 from puppetlabs/qeng-3815 (8bcbcfef)
+
+
+```
+Merge pull request #38 from puppetlabs/qeng-3815
+
+(QENG-3815) Adding sles12-s390x
+```
+* Merge pull request #40 from puppetlabs/QENG-3960 (c0d76e1d)
+
+
+```
+Merge pull request #40 from puppetlabs/QENG-3960
+
+(QENG-3960, QENG-3817, QENG-3816) - Updated for Fedora 24 (x86_64, i3…
+```
+* (MAINT) Update CHANGELOG for 0.7.1 release (56b71af5)
+
+* (QENG-3626) Add sles-11-s390x platform (c09b8a87)
+
+* (QENG-3960, QENG-3817, QENG-3816) - Updated for Fedora 24 (x86_64, i386), el-7-s390x, and el-6-s390x (d88aba55)
+
+* (QENG-3815) Adding sles12-s390x (a95646ea)
+
+
+```
+(QENG-3815) Adding sles12-s390x
+
+Adding sles12-s390x. No vmpooler
+```
+### <a name = "0.7.0">0.7.0 - 13 Jun, 2016 (f0aafe8d)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.7.0 (f0aafe8d)
 
 * (GEM) update beaker-hostgenerator version to 0.7.0 (4792554b)
 
