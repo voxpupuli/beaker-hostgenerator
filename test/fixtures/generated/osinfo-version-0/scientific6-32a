@@ -1,0 +1,20 @@
+---
+arguments_string: --osinfo-version 0 scientific6-32a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    scientific6-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-i386
+      template: scientific-6-i386
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

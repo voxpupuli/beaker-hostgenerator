@@ -1,0 +1,25 @@
+---
+arguments_string: --osinfo-version 1 solaris11-SPARCaulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris11-SPARC-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11-sparc
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
