@@ -1,0 +1,22 @@
+---
+arguments_string: "--osinfo-version 0 windows2008r2-64u"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows2008r2-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2008r2-64
+      ruby_arch: x64
+      template: win-2008r2-x86_64
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

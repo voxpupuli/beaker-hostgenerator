@@ -1,0 +1,19 @@
+---
+arguments_string: solaris10-SPARCa
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris10-SPARC-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-sparc
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

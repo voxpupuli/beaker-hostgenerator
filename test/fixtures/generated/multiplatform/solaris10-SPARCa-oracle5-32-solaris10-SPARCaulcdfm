@@ -1,0 +1,44 @@
+---
+arguments_string: solaris10-SPARCa-oracle5-32-solaris10-SPARCaulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris10-SPARC-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-sparc
+      roles:
+      - agent
+    oracle5-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: oracle-5-i386
+      roles:
+      - agent
+    solaris10-SPARC-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-sparc
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

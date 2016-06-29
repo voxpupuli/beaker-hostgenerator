@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 centos5-32m
+arguments_string: "--osinfo-version 1 centos5-32m"
 environment_variables: {}
 expected_hash:
   HOSTS:

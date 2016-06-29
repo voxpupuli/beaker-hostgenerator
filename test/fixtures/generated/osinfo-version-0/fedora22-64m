@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 fedora22-64m
+arguments_string: "--osinfo-version 0 fedora22-64m"
 environment_variables: {}
 expected_hash:
   HOSTS:

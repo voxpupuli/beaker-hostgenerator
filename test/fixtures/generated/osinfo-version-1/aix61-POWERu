@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 aix61-POWERu
+arguments_string: "--osinfo-version 1 aix61-POWERu"
 environment_variables: {}
 expected_hash:
   HOSTS:

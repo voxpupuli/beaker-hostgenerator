@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 debian6-64aulcdfm
+arguments_string: "--osinfo-version 0 debian6-64aulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:

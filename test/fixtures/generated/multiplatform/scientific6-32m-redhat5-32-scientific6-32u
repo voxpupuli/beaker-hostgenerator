@@ -1,0 +1,42 @@
+---
+arguments_string: scientific6-32m-redhat5-32-scientific6-32u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    scientific6-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-i386
+      template: scientific-6-i386
+      roles:
+      - agent
+      - master
+    redhat5-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-i386
+      template: redhat-5-i386
+      roles:
+      - agent
+    scientific6-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-i386
+      template: scientific-6-i386
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

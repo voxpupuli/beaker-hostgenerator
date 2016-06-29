@@ -323,6 +323,22 @@ module BeakerHostGenerator
             'template' => 'fedora-23-x86_64'
           }
         },
+        'fedora24-32' => {
+          :general => {
+            'platform' => 'fedora-24-i386'
+          },
+          :vmpooler => {
+            'template' => 'fedora-24-i386'
+          }
+        },
+        'fedora24-64' => {
+          :general => {
+            'platform' => 'fedora-24-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-24-x86_64'
+          }
+        },
         'opensuse11-32' => {
           :general => {
             'platform' => 'opensuse-11-i386'

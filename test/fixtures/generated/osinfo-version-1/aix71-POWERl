@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 aix71-POWERl
+arguments_string: "--osinfo-version 1 aix71-POWERl"
 environment_variables: {}
 expected_hash:
   HOSTS:

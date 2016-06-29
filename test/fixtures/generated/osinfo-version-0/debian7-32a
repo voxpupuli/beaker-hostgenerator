@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 debian7-32a
+arguments_string: "--osinfo-version 0 debian7-32a"
 environment_variables: {}
 expected_hash:
   HOSTS:
