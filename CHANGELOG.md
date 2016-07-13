@@ -7,6 +7,9 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.7.2] - 2016-7-13
+- Automatically URL-decode input to support usage in HTTP URLs, such as Jenkins.
+
 ## [0.7.1] - 2016-6-29
 - Add platforms:
   - Fedora 24 x86_64 and i386
