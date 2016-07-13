@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 29 Jun, 2016 (530baa09)](#LATEST)
+* [LATEST - 13 Jul, 2016 (edc8971b)](#LATEST)
+* [0.7.1 - 29 Jun, 2016 (be332325)](#0.7.1)
 * [0.7.0 - 13 Jun, 2016 (f0aafe8d)](#0.7.0)
 * [0.6.0 - 11 May, 2016 (c807eb0d)](#0.6.0)
 * [0.5.0 - 31 Mar, 2016 (fa3ae0c8)](#0.5.0)
@@ -14,7 +15,43 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 29 Jun, 2016 (530baa09)
+### <a name = "LATEST">LATEST - 13 Jul, 2016 (edc8971b)
+
+* (GEM) update beaker-hostgenerator version to 0.7.2 (edc8971b)
+
+* (MAINT) Update CHANGELOG for 0.7.2 release (f1270d44)
+
+* Merge pull request #44 from nwolfe/maint/master/prepare-for-release (eb45282f)
+
+
+```
+Merge pull request #44 from nwolfe/maint/master/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.7.2 release
+```
+* Merge pull request #43 from nwolfe/qeng4034/support-url-encoding (e4e55d3a)
+
+
+```
+Merge pull request #43 from nwolfe/qeng4034/support-url-encoding
+
+(QENG-4034) Automatically URL-decode raw input
+```
+* (QENG-4034) Automatically URL-decode raw input (e6d1c1dc)
+
+
+```
+(QENG-4034) Automatically URL-decode raw input
+
+This commit adds a "pre-processing" step to the Parser that will always
+attempt to URL-decode the input before parsing it. This behavior is
+necessary to support specifying arbitrary settings in the input string
+when the input ends up as part of an HTTP URL, such as almost every
+usage we currently have in Jenkins.
+```
+### <a name = "0.7.1">0.7.1 - 29 Jun, 2016 (be332325)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.7.1 (be332325)
 
 * (GEM) update beaker-hostgenerator version to 0.7.1 (530baa09)
 
