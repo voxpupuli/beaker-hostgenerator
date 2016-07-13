@@ -219,6 +219,59 @@ CONFIG:
   custom_api: http://api.custom.net
 ```
 
+### URL-encoded input
+
+It may be necessary to URL-encode the input in order for it to properly be used
+in certain contexts, such as Jenkins.
+
+In most cases it will only be necessary to escape the characters that support
+arbitrary settings, which means the following three characters: {,}
+
+```
+$ beaker-hostgenerator centos6-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D
+```
+
+Is equivalent to
+
+```
+$ beaker-hostgenerator centos6-64mcd-aix53-POWERfa{hypervisor=aix,vmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net}
+```
+
+And will generate
+
+```yaml
+---
+HOSTS:
+  centos6-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: el-6-x86_64
+    template: centos-6-x86_64
+    roles:
+    - agent
+    - master
+    - dashboard
+    - database
+  aix53-POWER-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    platform: aix-5.3-power
+    hypervisor: aix
+    vmhostname: pe-aix-53-acceptance.delivery.puppetlabs.net
+    roles:
+    - agent
+    - frictionless
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+```
+
 ## Testing
 
 Beaker Host Generator currently uses both rspec and minitest tests. To run both
