@@ -22,6 +22,7 @@ module BeakerHostGenerator
     # @returns [String] A complete YAML map as a string defining the HOSTS and
     #                   CONFIG sections as required by Beaker.
     def generate(layout, options)
+      layout = prepare_layout(layout)
       tokens = tokenize_layout(layout)
       config = {}.deep_merge(BASE_CONFIG)
       nodeid = Hash.new(1)

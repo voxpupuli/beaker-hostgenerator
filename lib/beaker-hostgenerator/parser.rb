@@ -1,5 +1,6 @@
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/exceptions'
+require 'uri'
 
 module BeakerHostGenerator
   # Functions for parsing the raw user input host layout string and turning
@@ -10,8 +11,9 @@ module BeakerHostGenerator
   # further by other functions in this module.
   #
   # For example, given the raw user input string that defines the host layout,
-  # you would first split it into tokens via `tokenize_layout`, and then for
-  # each token you would call `is_ostype_token?` and/or `parse_node_info_token`.
+  # you would first prepare it for tokenization via `prepare_layout`, then split
+  # it into tokens via `tokenize_layout`, and then for each token you would
+  # call `is_ostype_token?` and/or `parse_node_info_token`.
   module Parser
 
     # Parses a single node definition into the following components:
@@ -64,6 +66,17 @@ module BeakerHostGenerator
     NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
+
+    # Prepares the host input string for tokenization, such as URL-decoding.
+    #
+    # @param layout_spec [String] Raw user input; well-formatted string
+    #                             specification of the hosts to generate.
+    #                             For example `"aix53-POWERfa%7Bhypervisor=aix%7D"`.
+    # @returns [String] Input string with transformations necessary for
+    #                   tokenization.
+    def prepare_layout(layout_spec)
+      URI.decode(layout_spec)
+    end
 
     # Breaks apart the host input string into chunks suitable for processing
     # by the generator. Returns an array of substrings of the input spec string.

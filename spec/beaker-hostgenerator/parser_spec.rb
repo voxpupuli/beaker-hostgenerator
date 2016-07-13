@@ -4,6 +4,13 @@ module BeakerHostGenerator
   describe Parser do
     include BeakerHostGenerator::Parser
 
+    describe 'prepare_layout' do
+      it 'Supports URL-encoded input' do
+        expect( prepare_layout('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a') ).
+          to eq('centos6-64m{foo=bar-baz,this=that}-32a')
+      end
+    end
+
     describe 'parse_node_info_token' do
 
       it 'Raises InvalidNodeSpecError for invalid tokens.' do

@@ -1,0 +1,44 @@
+---
+arguments_string: centos6-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D-POWERa%7Bfoo=bar%7D
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos6-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      template: centos-6-x86_64
+      roles:
+      - agent
+      - master
+      - dashboard
+      - database
+    aix53-POWER-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: aix-5.3-power
+      hypervisor: aix
+      vmhostname: pe-aix-53-acceptance.delivery.puppetlabs.net
+      roles:
+      - agent
+      - frictionless
+    aix53-POWER-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vmpooler
+      platform: aix-5.3-power
+      foo: bar
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
