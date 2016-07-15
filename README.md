@@ -14,6 +14,7 @@ host config files using a compact command line SUT specification.
         - [Two hosts with multiple hypervisors and arbitrary host settings](#two-hosts-with-multiple-hypervisors-and-arbitrary-host-settings)
         - [Arbitrary global configuration settings](#arbitrary-global-configuration-settings)
         - [Custom hypervisor](#custom-hypervisor)
+        - [URL-encoded input](#url-encoded-input)
     - [Testing](#testing)
         - [Test Fixtures](#test-fixtures)
             - [Generated Fixtures](#generated-fixtures)
@@ -225,7 +226,13 @@ It may be necessary to URL-encode the input in order for it to properly be used
 in certain contexts, such as Jenkins.
 
 In most cases it will only be necessary to escape the characters that support
-arbitrary settings, which means the following three characters: {,}
+arbitrary settings, which means the following three characters:
+
+- `{` is `%7B`
+- `,` is `%2C`
+- `}` is `%7D`
+
+For a full URL encoding reference see: http://www.w3schools.com/tags/ref_urlencode.asp
 
 ```
 $ beaker-hostgenerator centos6-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D
