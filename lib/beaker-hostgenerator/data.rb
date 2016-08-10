@@ -339,6 +339,11 @@ module BeakerHostGenerator
             'template' => 'fedora-24-x86_64'
           }
         },
+        'huaweios6-POWER' => {
+          :general => {
+            'platform' => 'huaweios-6-powerpc'
+          }
+        },
         'opensuse11-32' => {
           :general => {
             'platform' => 'opensuse-11-i386'
