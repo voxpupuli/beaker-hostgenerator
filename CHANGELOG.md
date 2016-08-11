@@ -7,6 +7,10 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.7.3] - 2016-8-11
+- Add platform:
+  - HuaweiOS 6 powerpc
+
 ## [0.7.2] - 2016-7-13
 - Automatically URL-decode input to support usage in HTTP URLs, such as Jenkins.
 
