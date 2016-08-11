@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 13 Jul, 2016 (edc8971b)](#LATEST)
+* [LATEST - 11 Aug, 2016 (9ad5f770)](#LATEST)
+* [0.7.2 - 13 Jul, 2016 (cee53bcc)](#0.7.2)
 * [0.7.1 - 29 Jun, 2016 (be332325)](#0.7.1)
 * [0.7.0 - 13 Jun, 2016 (f0aafe8d)](#0.7.0)
 * [0.6.0 - 11 May, 2016 (c807eb0d)](#0.6.0)
@@ -15,7 +16,45 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 13 Jul, 2016 (edc8971b)
+### <a name = "LATEST">LATEST - 11 Aug, 2016 (9ad5f770)
+
+* (GEM) update beaker-hostgenerator version to 0.7.3 (9ad5f770)
+
+* (maint) Update CHANGELOG for 0.7.3 release (9e9c1b82)
+
+* Merge pull request #47 from puppetlabs/maint (165cd14a)
+
+
+```
+Merge pull request #47 from puppetlabs/maint
+
+(maint) Update CHANGELOG for 0.7.3 release
+```
+* Merge pull request #46 from puppetlabs/qeng4179/add-huaweios6-platform (3a871959)
+
+
+```
+Merge pull request #46 from puppetlabs/qeng4179/add-huaweios6-platform
+
+(QENG-4179) Add HuaweiOS 6 platform
+```
+* (QENG-4179) Add test HuaweiOS test fixtures (ba951da2)
+
+* (QENG-4179) Add HuaweiOS 6 platform (4c9905c0)
+
+* Merge pull request #45 from puppetlabs/maint (42b2e6f2)
+
+
+```
+Merge pull request #45 from puppetlabs/maint
+
+(MAINT) Add URL encoding references to README
+```
+* (MAINT) Add URL encoding references to README (84dfdb29)
+
+### <a name = "0.7.2">0.7.2 - 13 Jul, 2016 (cee53bcc)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.7.2 (cee53bcc)
 
 * (GEM) update beaker-hostgenerator version to 0.7.2 (edc8971b)
 
