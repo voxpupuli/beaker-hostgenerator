@@ -1,0 +1,45 @@
+---
+arguments_string: solaris11-64aulcdfm-huaweios6-POWER-solaris11-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris11-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11-i386
+      template: solaris-11-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    huaweios6-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: huaweios-6-powerpc
+      roles:
+      - agent
+    solaris11-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11-i386
+      template: solaris-11-x86_64
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
