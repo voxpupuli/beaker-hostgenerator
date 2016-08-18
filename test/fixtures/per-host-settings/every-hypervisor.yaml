@@ -1,5 +1,5 @@
 ---
-arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}
+arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -23,6 +23,17 @@ expected_hash:
       hypervisor: none
       roles:
       - agent
+    redhat7-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: abs
+      platform: el-7-x86_64
+      template: redhat-7-x86_64
+      roles:
+      - agent
+      - frictionless
   CONFIG:
     nfs_server: none
     consoleport: 443
