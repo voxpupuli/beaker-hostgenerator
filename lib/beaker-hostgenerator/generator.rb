@@ -3,24 +3,22 @@ require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/hypervisor'
 require 'beaker-hostgenerator/parser'
 
-require 'yaml'
-
 module BeakerHostGenerator
   class Generator
     include BeakerHostGenerator::Data
     include BeakerHostGenerator::Parser
     include BeakerHostGenerator::Roles
 
-    # Main host generation entry point, returns a YAML map as a string for the
-    # given host specification and optional configuration.
+    # Main host generation entry point, returns a Ruby map for the given host
+    # specification and optional configuration.
     #
     # @param layout [String] The raw hosts specification user input.
     #                        For example `"centos6-64m-redhat7-64a"`.
     # @param options [Hash] Global, optional configuration such as the default
     #                       hypervisor or OS info version.
     #
-    # @returns [String] A complete YAML map as a string defining the HOSTS and
-    #                   CONFIG sections as required by Beaker.
+    # @returns [String] A complete Ruby map as defining the HOSTS and CONFIG
+    #                   sections as required by Beaker.
     def generate(layout, options)
       layout = prepare_layout(layout)
       tokens = tokenize_layout(layout)
@@ -82,7 +80,7 @@ module BeakerHostGenerator
       # Munge non-string scalar values into proper data types
       unstringify_values!(config)
 
-      return config.to_yaml
+      return config
     end
 
     def get_host_roles(node_info)
