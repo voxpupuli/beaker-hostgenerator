@@ -424,6 +424,14 @@ module BeakerHostGenerator
             'template' => 'osx-1011-x86_64'
           }
         },
+        'osx1012-64' => {
+          :general => {
+            'platform' => 'osx-10.12-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'osx-1012-x86_64'
+          }
+        },
         'redhat4-32' => {
           :general => {
             'platform' => 'el-4-i386'
@@ -849,6 +857,24 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2012r2-x86_64'
+          }
+        },
+        'windows2016-64' => {
+          :general => {
+            'platform' => 'windows-2016-64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2016-x86_64'
+          }
+        },
+        'windows2016-6432' => {
+          :general => {
+            'platform' => 'windows-2016-64',
+            'ruby_arch' => 'x86'
+          },
+          :vmpooler => {
+            'template' => 'win-2016-x86_64'
           }
         },
         'windows7-64' => {
