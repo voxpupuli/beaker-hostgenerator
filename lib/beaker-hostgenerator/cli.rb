@@ -2,7 +2,9 @@ require 'beaker-hostgenerator/generator'
 require 'beaker-hostgenerator/hypervisor'
 require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/version'
+require 'beaker-hostgenerator/abs_support'
 require 'optparse'
+require 'yaml'
 
 module BeakerHostGenerator
   class CLI
@@ -64,6 +66,14 @@ Usage: beaker-hostgenerator [options] <layout>
                 'List beaker-hostgenerator supported platforms, roles, and hypervisors. ' <<
                 'Does not produce host config.') do
           @options[:list_supported_values] = true
+        end
+
+        opts.on('--extract-templates-from-file HOSTS_FILE') do |f|
+          @options[:extract_templates] = f
+        end
+
+        opts.on('--templates-only') do
+          @options[:templates_only] = true
         end
 
         opts.on('-t',
@@ -144,9 +154,16 @@ Usage: beaker-hostgenerator [options] <layout>
         BeakerHostGenerator::Version::STRING
       elsif @options[:list_supported_values]
         supported_values_help_text
+      elsif @options[:templates_only]
+        config = BeakerHostGenerator::Generator.new.generate(@layout, @options)
+        BeakerHostGenerator::AbsSupport.extract_templates(config)
+      elsif @options[:extract_templates]
+        config = YAML.load_file(@options[:extract_templates])
+        BeakerHostGenerator::AbsSupport.extract_templates(config)
       else
         print_warnings
-        BeakerHostGenerator::Generator.new.generate(@layout, @options)
+        config = BeakerHostGenerator::Generator.new.generate(@layout, @options)
+        config.to_yaml
       end
     end
 
