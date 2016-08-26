@@ -31,9 +31,10 @@ input. See the [Custom hypervisor](#custom-hypervisor) example for more
 information.
 
 It currently provides built-in configuration for Puppets' internal
-[vmpooler][vmpooler] hypervisor and static (non-provisioned) nodes, and is
-designed in a way that makes it possible to easily add support for additional
-hypervisors (any hypervisor type supported by [beaker][beaker]).
+[vmpooler][vmpooler] hypervisor, [always-be-scheduling][always-be-scheduling]
+hypervisor, static (non-provisioned) nodes, and is designed in a way that makes
+it possible to easily add support for additional hypervisors
+(any hypervisor type supported by [beaker][beaker]).
 
 To see the list of built-in hypervisors you can run:
 ```
@@ -379,3 +380,4 @@ If you have questions or comments, please contact the Beaker team at the
 [license]: LICENSE
 [contributing]: CONTRIBUTING.md
 [apache-v2]: http://www.apache.org/licenses/LICENSE-2.0.html
+[always-be-scheduling]: https://github.com/puppetlabs/always-be-scheduling
