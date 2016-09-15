@@ -7,6 +7,15 @@ Versioning](http://semver.org).
 ## [Unreleased][unreleased]
 ### Changed
 
+## [0.7.4] - 2016-9-26
+- Add platforms:
+  - OSX 10.12
+  - Windows 2016
+- Support for CI.next:
+  - Add AlwaysBeScheduling hypervisor
+  - Add CLI flag '--templates-only' to reduce the generated output to include
+    only the template values from the HOSTS
+
 ## [0.7.3] - 2016-8-11
 - Add platform:
   - HuaweiOS 6 powerpc
