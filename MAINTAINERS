@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "file_format": "This MAINTAINERS file format is described at http://pup.pt/maintainers",
+  "issues": "https://tickets.puppetlabs.com/browse/QENG",
+  "people": [
+    {
+      "github": "nwolfe",
+      "email": "nwolfe@puppet.com",
+      "name": "Nate Wolfe"
+    },
+    {
+      "github": "waynr",
+      "email": "wayne@puppet.com",
+      "name": "Wayne Warren"
+    }
+  ]
+}
