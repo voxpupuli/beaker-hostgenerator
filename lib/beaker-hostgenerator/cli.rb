@@ -152,8 +152,10 @@ Usage: beaker-hostgenerator [options] <layout>
       elsif @options[:list_supported_values]
         supported_values_help_text
       elsif @options[:templates_only]
+        require 'json'
         config = BeakerHostGenerator::Generator.new.generate(@layout, @options)
-        BeakerHostGenerator::AbsSupport.extract_templates(config)
+        templates = BeakerHostGenerator::AbsSupport.extract_templates(config)
+        templates.to_json
       else
         print_warnings
         config = BeakerHostGenerator::Generator.new.generate(@layout, @options)
