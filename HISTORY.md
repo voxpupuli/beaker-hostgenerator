@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 11 Aug, 2016 (9ad5f770)](#LATEST)
+* [LATEST - 26 Sep, 2016 (09c62ae1)](#LATEST)
+* [0.7.3 - 11 Aug, 2016 (87c75523)](#0.7.3)
 * [0.7.2 - 13 Jul, 2016 (cee53bcc)](#0.7.2)
 * [0.7.1 - 29 Jun, 2016 (be332325)](#0.7.1)
 * [0.7.0 - 13 Jun, 2016 (f0aafe8d)](#0.7.0)
@@ -16,7 +17,104 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 11 Aug, 2016 (9ad5f770)
+### <a name = "LATEST">LATEST - 26 Sep, 2016 (09c62ae1)
+
+* (GEM) update beaker-hostgenerator version to 0.7.4 (09c62ae1)
+
+* Merge pull request #56 from puppetlabs/maint (44882551)
+
+
+```
+Merge pull request #56 from puppetlabs/maint
+
+(MAINT) Prepare for 0.7.4 release
+```
+* (QENG-4407) Return proper JSON map (88581c56)
+
+
+```
+(QENG-4407) Return proper JSON map
+
+Previously the --templates-only switch would output a custom CSV-style
+format, plus it repeated platforms rather than tallying them up.
+
+This commit changes the output format to be a JSON map, with the
+platforms as keys and the total counts as values.
+```
+* Merge pull request #53 from puppetlabs/add-maintainers-file (126620cf)
+
+
+```
+Merge pull request #53 from puppetlabs/add-maintainers-file
+
+(MAINT) Add MAINTAINERS file
+```
+* (MAINT) Add MAINTAINERS file (b73a2ede)
+
+* (MAINT) Prepare for 0.7.4 release (1cc9c3fc)
+
+* Merge pull request #51 from puppetlabs/qeng4204/add-templates-only-cli (a7196b52)
+
+
+```
+Merge pull request #51 from puppetlabs/qeng4204/add-templates-only-cli
+
+(QENG-4204) Add CLI flag to only generate templates
+```
+* (QENG-4204) Add CLI flag to only generate templates (7c4342f8)
+
+
+```
+(QENG-4204) Add CLI flag to only generate templates
+
+This adds a CLI switch '--templates-only' that will reduce the generated
+output to include only the template values from the HOSTS.
+```
+* Merge pull request #48 from puppetlabs/qeng4204/create-abs-hypervisor (ec1b80d2)
+
+
+```
+Merge pull request #48 from puppetlabs/qeng4204/create-abs-hypervisor
+
+(QENG-4204) Add AlwaysBeScheduling hypervisor
+```
+* Merge pull request #50 from puppetlabs/qeng-4176 (aecb44a6)
+
+
+```
+Merge pull request #50 from puppetlabs/qeng-4176
+
+(QENG-4176 & QENG-4180) Add OSX 10.12 and Windows 2016
+```
+* (QENG-4176 & QENG-4180) Add OSX 10.12 and Windows 2016 (0d8ad08a)
+
+
+```
+(QENG-4176 & QENG-4180) Add OSX 10.12 and Windows 2016
+
+Added OSX 10.12 (Sierra) and Windows Server 2016 to
+supported beaker-hostgenerator platforms
+```
+* (QENG-4204) Add AlwaysBeScheduling hypervisor (87559142)
+
+
+```
+(QENG-4204) Add AlwaysBeScheduling hypervisor
+
+This commit adds a new hypervisor called 'abs' that will support
+generating configurations necessary for working with CI.next and the
+AlwaysBeScheduling service.
+
+Currently, the behavior of the abs hypervisor is basically the same as
+the vmpooler hypervisor. The only difference is it doesn't fixup the
+nodes to support old PE versions.
+
+Having a built-in hypervisor for ABS alleviates the need for users to
+manually override the hypervisor key on each node.
+```
+### <a name = "0.7.3">0.7.3 - 11 Aug, 2016 (87c75523)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.7.3 (87c75523)
 
 * (GEM) update beaker-hostgenerator version to 0.7.3 (9ad5f770)
 
