@@ -11,9 +11,9 @@ module BeakerHostGenerator
   # further by other functions in this module.
   #
   # For example, given the raw user input string that defines the host layout,
-  # you would first prepare it for tokenization via `prepare_layout`, then split
-  # it into tokens via `tokenize_layout`, and then for each token you would
-  # call `is_ostype_token?` and/or `parse_node_info_token`.
+  # you would first prepare it for tokenization via `prepare`, then split it
+  # into tokens via `tokenize_layout`, and then for each token you would call
+  # `is_ostype_token?` and/or `parse_node_info_token`.
   module Parser
 
     # Parses a single node definition into the following components:
@@ -69,13 +69,13 @@ module BeakerHostGenerator
 
     # Prepares the host input string for tokenization, such as URL-decoding.
     #
-    # @param layout_spec [String] Raw user input; well-formatted string
-    #                             specification of the hosts to generate.
-    #                             For example `"aix53-POWERfa%7Bhypervisor=aix%7D"`.
+    # @param spec [String] Raw user input; well-formatted string specification
+    #                      of the hosts to generate.
+    #                      For example `"aix53-POWERfa%7Bhypervisor=aix%7D"`.
     # @returns [String] Input string with transformations necessary for
     #                   tokenization.
-    def prepare_layout(layout_spec)
-      URI.decode(layout_spec)
+    def prepare(spec)
+      URI.decode(spec)
     end
 
     # Breaks apart the host input string into chunks suitable for processing
@@ -198,7 +198,8 @@ module BeakerHostGenerator
     # configuration.
     #
     # The string is expected to be of the form "{key1=value1,key2=value2,...}".
-    # Any whitespace found in the string will be stripped and ignored.
+    # Whitespace is expected to be properly quoted as it will not be treated
+    # any different than non-whitespace characters.
     #
     # Throws an exception of the string is malformed in any way.
     #
@@ -211,7 +212,6 @@ module BeakerHostGenerator
       settings_pairs =
         host_settings.
         delete('{}').
-        gsub(' ', '').
         split(',').
         map { |keyvalue| keyvalue.split('=') }
 

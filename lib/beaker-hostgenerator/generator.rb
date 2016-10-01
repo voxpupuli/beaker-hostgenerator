@@ -20,7 +20,7 @@ module BeakerHostGenerator
     # @returns [Hash] A complete Ruby map as defining the HOSTS and CONFIG
     #                 sections as required by Beaker.
     def generate(layout, options)
-      layout = prepare_layout(layout)
+      layout = prepare(layout)
       tokens = tokenize_layout(layout)
       config = {}.deep_merge(BASE_CONFIG)
       nodeid = Hash.new(1)
@@ -29,7 +29,8 @@ module BeakerHostGenerator
 
       # Merge in global configuration settings
       if options[:global_config]
-        global_config = settings_string_to_map(options[:global_config])
+        decoded = prepare(options[:global_config])
+        global_config = settings_string_to_map(decoded)
         config['CONFIG'].deep_merge!(global_config)
       end
 

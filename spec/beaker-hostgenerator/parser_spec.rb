@@ -4,9 +4,9 @@ module BeakerHostGenerator
   describe Parser do
     include BeakerHostGenerator::Parser
 
-    describe 'prepare_layout' do
+    describe 'prepare' do
       it 'Supports URL-encoded input' do
-        expect( prepare_layout('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a') ).
+        expect( prepare('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a') ).
           to eq('centos6-64m{foo=bar-baz,this=that}-32a')
       end
     end
@@ -113,17 +113,16 @@ module BeakerHostGenerator
       end
 
       context 'When using arbitrary host settings' do
-        it 'Supports arbitrary whitespace' do
-          expect( parse_node_info_token("64{ k1=v1, k2=v2,  k3 = v3 ,  k4  =v4  }") ).
+        it 'Supports arbitrary whitespace in values' do
+          expect( parse_node_info_token("64{k1=value 1,k2=v2,k3=  v3  }") ).
             to eq({
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "64",
                     "host_settings" => {
-                      "k1" => "v1",
+                      "k1" => "value 1",
                       "k2" => "v2",
-                      "k3" => "v3",
-                      "k4" => "v4"
+                      "k3" => "  v3  "
                     }
                   })
         end
