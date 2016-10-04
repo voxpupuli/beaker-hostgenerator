@@ -5,7 +5,10 @@ This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
-### Changed
+
+## [0.8.0] - 2016-10-4
+- Improved whitespace support in global and host settings. Spaces are no longer
+  removed, so input must be quoted, escaped, or URL-encoded appropriately.
 
 ## [0.7.4] - 2016-9-26
 - Add platforms:
