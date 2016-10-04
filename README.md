@@ -227,11 +227,12 @@ It may be necessary to URL-encode the input in order for it to properly be used
 in certain contexts, such as Jenkins.
 
 In most cases it will only be necessary to escape the characters that support
-arbitrary settings, which means the following three characters:
+arbitrary settings, which means the following four characters:
 
 - `{` is `%7B`
 - `,` is `%2C`
 - `}` is `%7D`
+- ` ` is `%20`
 
 For a full URL encoding reference see: http://www.w3schools.com/tags/ref_urlencode.asp
 

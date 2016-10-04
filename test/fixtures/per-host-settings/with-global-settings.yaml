@@ -1,5 +1,5 @@
 ---
-arguments_string: "--global-config {masterless=true,number=1234} redhat7-64c{type=o-negative}"
+arguments_string: "--global-config {masterless=true,number=1234,key=url%20encoded%20%20white%20space} redhat7-64c{type=o-negative}"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -20,5 +20,6 @@ expected_hash:
     consoleport: 443
     masterless: true
     number: 1234
+    key: url encoded  white space
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
 expected_exception:
