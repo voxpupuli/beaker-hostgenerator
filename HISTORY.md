@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 26 Sep, 2016 (09c62ae1)](#LATEST)
+* [LATEST - 4 Oct, 2016 (291854ec)](#LATEST)
+* [0.7.4 - 26 Sep, 2016 (1e102ccd)](#0.7.4)
 * [0.7.3 - 11 Aug, 2016 (87c75523)](#0.7.3)
 * [0.7.2 - 13 Jul, 2016 (cee53bcc)](#0.7.2)
 * [0.7.1 - 29 Jun, 2016 (be332325)](#0.7.1)
@@ -17,7 +18,44 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 26 Sep, 2016 (09c62ae1)
+### <a name = "LATEST">LATEST - 4 Oct, 2016 (291854ec)
+
+* (GEM) update beaker-hostgenerator version to 0.8.0 (291854ec)
+
+* Merge pull request #58 from puppetlabs/maint (82d9fc2a)
+
+
+```
+Merge pull request #58 from puppetlabs/maint
+
+(MAINT) Prepare for 0.8.0 release
+```
+* (MAINT) Prepare for 0.8.0 release (a6346c24)
+
+* Merge pull request #57 from puppetlabs/bk934/support-whitespace (93abe32c)
+
+
+```
+Merge pull request #57 from puppetlabs/bk934/support-whitespace
+
+(BKR-934) Allow for whitespace in settings
+```
+* (BKR-934) Allow for whitespace in settings (487f3f65)
+
+
+```
+(BKR-934) Allow for whitespace in settings
+
+Previously all whitespace was automatically removed from all input. This
+commit removes that behavior, allowing for values with whitespace in
+them to be properly generated.
+
+This change means users are responsible for properly quoting, escaping,
+or URL-encoding the whitespace as necessary.
+```
+### <a name = "0.7.4">0.7.4 - 26 Sep, 2016 (1e102ccd)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.7.4 (1e102ccd)
 
 * (GEM) update beaker-hostgenerator version to 0.7.4 (09c62ae1)
 
