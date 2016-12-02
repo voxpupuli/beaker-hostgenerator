@@ -5,6 +5,7 @@ junit
 acceptance-tests
 pkg
 Gemfile.lock
+Gemfile.local
 options.rb
 test.cfg
 .yardoc
