@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'beaker-hostgenerator/version'
 
@@ -17,8 +16,8 @@ eos
   s.description = %q{For use for the Beaker acceptance testing tool}
   s.license     = 'Apache2'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec|acceptance)/) }
+  s.test_files    = `git ls-files -- {test,spec}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
