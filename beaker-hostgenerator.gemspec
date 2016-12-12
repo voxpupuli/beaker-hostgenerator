@@ -16,7 +16,7 @@ eos
   s.description = %q{For use for the Beaker acceptance testing tool}
   s.license     = 'Apache2'
 
-  s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec|acceptance)/) }
+  s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
