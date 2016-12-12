@@ -21,6 +21,7 @@ eos
   s.require_paths = ["lib"]
 
   # Testing dependencies
+  s.add_development_dependency 'minitest'
   s.add_development_dependency 'rspec', '~> 3.0'
   s.add_development_dependency 'rspec-its'
   s.add_development_dependency 'fakefs', '~> 0.6'
