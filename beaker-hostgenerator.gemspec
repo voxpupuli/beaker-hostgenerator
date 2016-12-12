@@ -17,7 +17,6 @@ eos
   s.license     = 'Apache2'
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec|acceptance)/) }
-  s.test_files    = `git ls-files -- {test,spec}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
