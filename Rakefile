@@ -30,22 +30,6 @@ namespace :test do
 
   end
 
-  namespace :acceptance do
-
-    desc <<-EOS
-A quick acceptance test, named because it has no pre-suites to run
-    EOS
-    task :quick do
-
-      sh("beaker",
-         "--hosts", ENV['CONFIG'] || "acceptance/config/nodes/vagrant-ubuntu-1404.yml",
-         "--tests", "acceptance/tests",
-         "--log-level", "debug",
-         "--keyfile", ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa")
-    end
-
-  end
-
 end
 
 namespace :generate do
@@ -67,7 +51,6 @@ end
 # these are the default tasks invoked when only the namespace is referenced.
 # they're needed because `task :default` in those blocks doesn't work as expected.
 task 'test:spec' => ['test:spec:run', 'test:spec:minitest']
-task 'test:acceptance' => 'test:acceptance:quick'
 
 # global defaults
 task :test => 'test:spec'
