@@ -6,6 +6,13 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 
+## [0.8.1] - 2016-12-21
+- Add platforms with Japanese language support:
+  - windows2012r2_ja-64
+  - windows2012r2_ja-6432
+- Don't include test files in the gem. This will greatly reduce the overall size
+  of the beaker-hostgenerator gem as it will no longer include the 500+ test fixtures.
+
 ## [0.8.0] - 2016-10-4
 - Improved whitespace support in global and host settings. Spaces are no longer
   removed, so input must be quoted, escaped, or URL-encoded appropriately.
