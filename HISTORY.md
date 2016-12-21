@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 4 Oct, 2016 (291854ec)](#LATEST)
+* [LATEST - 21 Dec, 2016 (5466486c)](#LATEST)
+* [0.8.0 - 4 Oct, 2016 (2e6dc11e)](#0.8.0)
 * [0.7.4 - 26 Sep, 2016 (1e102ccd)](#0.7.4)
 * [0.7.3 - 11 Aug, 2016 (87c75523)](#0.7.3)
 * [0.7.2 - 13 Jul, 2016 (cee53bcc)](#0.7.2)
@@ -18,7 +19,154 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 4 Oct, 2016 (291854ec)
+### <a name = "LATEST">LATEST - 21 Dec, 2016 (5466486c)
+
+* (GEM) update beaker-hostgenerator version to 0.8.1 (5466486c)
+
+* Merge pull request #64 from puppetlabs/maint/prepare-for-release (2dd91be2)
+
+
+```
+Merge pull request #64 from puppetlabs/maint/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.8.1 release
+```
+* (MAINT) Update CHANGELOG for 0.8.1 release (26a6d6a2)
+
+* Merge pull request #63 from glennsarti/add-windows-2012r2-jp (55b13176)
+
+
+```
+Merge pull request #63 from glennsarti/add-windows-2012r2-jp
+
+(BKR-1013) Add Windows 2012R2 Japanese Template
+```
+* (BKR-1013) Add Windows 2012R2 Japanese Template (e72e9401)
+
+
+```
+(BKR-1013) Add Windows 2012R2 Japanese Template
+
+This commit adds the Japanese Windows 2012 R2 VMPooler template in preparation
+of testing non-US English systems in Beaker.
+```
+* Merge pull request #62 from puppetlabs/maint_delete-acceptance-tests (16b0a3b2)
+
+
+```
+Merge pull request #62 from puppetlabs/maint_delete-acceptance-tests
+
+(MAINT) Remove acceptance testing
+```
+* Merge pull request #61 from puppetlabs/maint_exclude-test-files-from-gem (f85e0376)
+
+
+```
+Merge pull request #61 from puppetlabs/maint_exclude-test-files-from-gem
+
+(MAINT) Delete test_files directive to keep fixtures out of the gem
+```
+* (MAINT) Specify all dependencies in gemspec file (e0134744)
+
+
+```
+(MAINT) Specify all dependencies in gemspec file
+
+There was only 1 dependency still being specified in the Gemfile, so to clean
+things up a little bit this commit just moves it over to the gemspec file
+instead.
+
+After all, we're building a gem (not an app) so we should prefer gemspec over
+Gemfile.
+```
+* (MAINT) Remove acceptance testing (39e43aef)
+
+
+```
+(MAINT) Remove acceptance testing
+
+This deletes everything related to acceptance testing.
+
+We had no tests, and we have no intentions of adding any. We started to lay out
+the groundwork for acceptance testing a while ago with the "acceptance/"
+directory, `beaker` test dependency, and the `acceptance` Rake task.
+
+This commit deletes that groundwork, as it is out of date and just getting in
+the way at this point.  If we decide to add acceptance tests in the future, it
+will likely look different than this anyway.
+```
+* (MAINT) Delete test_files directive to keep fixtures out of the gem (60559c93)
+
+
+```
+(MAINT) Delete test_files directive to keep fixtures out of the gem
+
+This gemspec directive `test_files` will cause the files it references to be
+included in the built gem so they can be used during the `gem test` command.
+
+We do not intend to support the ability for users to run `gem test`, and
+furthermore this gem subcommand doesn't even exist anymore.
+```
+* Merge pull request #60 from puppetlabs/maint_exclude-test-files-from-gem (27f0c177)
+
+
+```
+Merge pull request #60 from puppetlabs/maint_exclude-test-files-from-gem
+
+(MAINT) Exclude test files from built gem
+```
+* (MAINT) Exclude test files from built gem (2dba0975)
+
+
+```
+(MAINT) Exclude test files from built gem
+
+This project has a TON of test fixtures that are not necessary in production,
+yet we were still bundling them into the gem.
+
+We don't need to include any of these, they were just making the resulting gem
+significantly larger.
+```
+* (MAINT) Remove 'features' from gemspec test files (3e16db88)
+
+
+```
+(MAINT) Remove 'features' from gemspec test files
+
+There is no 'features' directory or files so it doens't make sense in the
+gemspec.
+```
+* (MAINT) Add Gemfile.local to gitignore (a1f16380)
+
+* (MAINT) Remove file encoding comment from gemspec file (3251469b)
+
+
+```
+(MAINT) Remove file encoding comment from gemspec file
+
+We don't need this for Ruby, it's only for your text editor, and it's annoying
+as it causes some editors to prompt you for confirmation before opening the file
+and parsing the encoding comment.
+```
+* Merge pull request #59 from puppetlabs/theshanx-patch-1 (a365eb7a)
+
+
+```
+Merge pull request #59 from puppetlabs/theshanx-patch-1
+
+(maint) Add internal_list key to MAINTAINERS
+```
+* (maint) Add internal_list key to MAINTAINERS (99fc75ee)
+
+
+```
+(maint) Add internal_list key to MAINTAINERS
+
+This change adds a reference to the Google group the maintainers are associated with.
+```
+### <a name = "0.8.0">0.8.0 - 4 Oct, 2016 (2e6dc11e)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.8.0 (2e6dc11e)
 
 * (GEM) update beaker-hostgenerator version to 0.8.0 (291854ec)
 
