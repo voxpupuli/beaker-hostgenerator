@@ -758,6 +758,22 @@ module BeakerHostGenerator
             'template' => 'ubuntu-1604-x86_64'
           }
         },
+        'ubuntu1610-32' => {
+          :general => {
+            'platform' => 'ubuntu-16.10-i386'
+          },
+          :vmpooler => {
+            'template' => 'ubuntu-1610-i386'
+          }
+        },
+        'ubuntu1610-64' => {
+          :general => {
+            'platform' => 'ubuntu-16.10-amd64'
+          },
+          :vmpooler => {
+            'template' => 'ubuntu-1610-x86_64'
+          }
+        },
         'windows2003-64' => {
           :general => {
             'platform' => 'windows-2003-64',
