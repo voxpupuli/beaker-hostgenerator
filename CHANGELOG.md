@@ -6,6 +6,13 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 
+## [0.8.2] - 2017-1-3
+- Add platforms:
+  - fedora25-32
+  - fedora25-64
+  - ubuntu1610-32
+  - ubuntu1610-64
+
 ## [0.8.1] - 2016-12-21
 - Add platforms with Japanese language support:
   - windows2012r2_ja-64
