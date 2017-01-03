@@ -1,0 +1,42 @@
+---
+arguments_string: ubuntu1004-32m-fedora25-32-ubuntu1004-32u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1004-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-10.04-i386
+      template: ubuntu-1004-i386
+      roles:
+      - agent
+      - master
+    fedora25-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-25-i386
+      template: fedora-25-i386
+      roles:
+      - agent
+    ubuntu1004-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-10.04-i386
+      template: ubuntu-1004-i386
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
