@@ -79,6 +79,11 @@ module BeakerHostGenerator
             'platform' => 'aix-7.1-power'
           }
         },
+        'aix72-POWER' => {
+          :general => {
+            'platform' => 'aix-7.2-power'
+          }
+        },
         'arista4-32' => {
           :general => {
             'platform' => 'eos-4-i386'
