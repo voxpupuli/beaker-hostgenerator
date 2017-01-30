@@ -179,7 +179,7 @@ rather than "el-4-x86_64". It is recommended that you update your project's test
 suites ASAP or be forced to do so when beaker-hostgenerator development moves on
 to the 1.x series. We don't intend to backport features or platforms to 0.x.
 eow
-        STDERR.puts(warning)
+        $stderr.puts(warning)
       end
     end
 

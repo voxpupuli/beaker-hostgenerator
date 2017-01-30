@@ -18,4 +18,9 @@ class TestStdout < Minitest::Test
       assert_match(/.*#{spec_key}.*/, @stdout.string)
     end
   end
+
+  def test_ubuntu_host_generation_output
+    BeakerHostGenerator::CLI.new(['ubuntu1404-64default.mdcal-ubuntu1404-64af']).execute!
+    assert_match(/WARNING: Starting with beaker-hostgenerator 1\.x platform strings for "el" hosts/, @stderr.string)
+  end
 end
