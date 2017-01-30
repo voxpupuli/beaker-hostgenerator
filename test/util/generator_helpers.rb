@@ -7,7 +7,7 @@ module GeneratorTestHelpers
   include BeakerHostGenerator::Data
 
   def run_cli_with_options(options=[])
-    STDERR.reopen("stderr.txt", "w")
+    $stderr.reopen("stderr.txt", "w")
     cli = BeakerHostGenerator::CLI.new(options)
     yaml_string = cli.execute
 
