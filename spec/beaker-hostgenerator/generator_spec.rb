@@ -53,7 +53,6 @@ module BeakerHostGenerator
       arguments = fixture_hash["arguments_string"]
       it "beaker-hostgenerator #{arguments}" do
         arguments = arguments.split
-        STDERR.reopen("stderr.txt", "w")
         fixture_hash['environment_variables'].each do |key, value|
           ENV[key] = value
         end
