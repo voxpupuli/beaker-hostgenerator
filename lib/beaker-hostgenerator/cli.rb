@@ -157,7 +157,6 @@ Usage: beaker-hostgenerator [options] <layout>
         templates = BeakerHostGenerator::AbsSupport.extract_templates(config)
         templates.to_json
       else
-        print_warnings
         config = BeakerHostGenerator::Generator.new.generate(@layout, @options)
         config.to_yaml
       end
@@ -168,20 +167,6 @@ Usage: beaker-hostgenerator [options] <layout>
     end
 
     private
-
-    def print_warnings
-      if @options[:osinfo_version] === 0
-        warning = <<-eow
-WARNING: Starting with beaker-hostgenerator 1.x platform strings for "el" hosts
-will correspond to the actual linux distribution name. ie, the platform string
-corresponding to a host specified as "centos4_64a" will be "centos-4-x86_64"
-rather than "el-4-x86_64". It is recommended that you update your project's test
-suites ASAP or be forced to do so when beaker-hostgenerator development moves on
-to the 1.x series. We don't intend to backport features or platforms to 0.x.
-eow
-        STDERR.puts(warning)
-      end
-    end
 
     # Builds help text with a human-readable listing of all supported values
     # for the following: platforms, architectures, roles, and hypervisors.
