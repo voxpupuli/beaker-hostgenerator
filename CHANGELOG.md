@@ -6,6 +6,12 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 
+## [0.8.3] - 2017-2-7
+- Add platform:
+  - aix-7.2-power
+- Remove warning about changing platform defaults in 1.0 release
+- Change from using STDERR to $stderr for Ruby redirection purposes
+
 ## [0.8.2] - 2017-1-3
 - Add platforms:
   - fedora25-32
