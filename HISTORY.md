@@ -1,6 +1,7 @@
-# default - History
+# worker - History
 ## Tags
-* [LATEST - 3 Jan, 2017 (b1ff2e54)](#LATEST)
+* [LATEST - 7 Feb, 2017 (12bfa089)](#LATEST)
+* [0.8.2 - 3 Jan, 2017 (a61487bf)](#0.8.2)
 * [0.8.1 - 21 Dec, 2016 (2648029d)](#0.8.1)
 * [0.8.0 - 4 Oct, 2016 (2e6dc11e)](#0.8.0)
 * [0.7.4 - 26 Sep, 2016 (1e102ccd)](#0.7.4)
@@ -20,7 +21,67 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 3 Jan, 2017 (b1ff2e54)
+### <a name = "LATEST">LATEST - 7 Feb, 2017 (12bfa089)
+
+* (GEM) update beaker-hostgenerator version to 0.8.3 (12bfa089)
+
+* Merge pull request #72 from puppetlabs/maint/prepare-for-release (cc5a3ce6)
+
+
+```
+Merge pull request #72 from puppetlabs/maint/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.8.3 release
+```
+* (MAINT) Update CHANGELOG for 0.8.3 release (6d3900a9)
+
+* Merge pull request #71 from ferglor/BKR-1032 (cca29c01)
+
+
+```
+Merge pull request #71 from ferglor/BKR-1032
+
+(BKR-1032) Switched from using STDERR to $stderr
+```
+* (BKR-1032) Switched from using STDERR to $stderr (7d4f8197)
+
+* Merge pull request #70 from puppetlabs/qeng4019/remove-warning-message (087df5a5)
+
+
+```
+Merge pull request #70 from puppetlabs/qeng4019/remove-warning-message
+
+(QENG-4019) Remove warning message about changing defaults
+```
+* (QENG-4019) Remove warning message about changing defaults (d3e19a40)
+
+
+```
+(QENG-4019) Remove warning message about changing defaults
+
+This warning message was added a while ago to inform users of an upcoming
+breaking change. We're no longer certain that we'll be making the breaking
+change though, so the warning is a bit misleading.
+
+Furthermore, we're now trying to silence this message when beaker-hostgenerator
+is used programatically within Beaker.
+
+There will likely be more changes that are outlined in the linked ticket, such
+as adding a new CLI switch to toggle between specific & generic platform names.
+```
+* Merge pull request #68 from branan/pa-893-aix-7.2 (48b9eb04)
+
+
+```
+Merge pull request #68 from branan/pa-893-aix-7.2
+
+(PA-893) Add AIX 7.2
+```
+* (PA-893) Add AIX 7.2 (8ff6a8c6)
+
+### <a name = "0.8.2">0.8.2 - 3 Jan, 2017 (a61487bf)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.8.2 (a61487bf)
 
 * (GEM) update beaker-hostgenerator version to 0.8.2 (b1ff2e54)
 
