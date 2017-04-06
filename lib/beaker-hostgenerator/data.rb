@@ -896,6 +896,15 @@ module BeakerHostGenerator
             'template' => 'win-2012r2-x86_64'
           }
         },
+        'windows2012r2_wmf5-64' => {
+          :general => {
+            'platform' => 'windows-2012r2-64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2012r2-wmf5-x86_64'
+          }
+        },
         'windows2012r2_ja-64' => {
           :general => {
             'platform' => 'windows-2012r2-64',
