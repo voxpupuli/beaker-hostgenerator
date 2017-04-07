@@ -1,6 +1,7 @@
 # worker - History
 ## Tags
-* [LATEST - 7 Feb, 2017 (12bfa089)](#LATEST)
+* [LATEST - 6 Apr, 2017 (d80eb358)](#LATEST)
+* [0.8.3 - 7 Feb, 2017 (79e8d717)](#0.8.3)
 * [0.8.2 - 3 Jan, 2017 (a61487bf)](#0.8.2)
 * [0.8.1 - 21 Dec, 2016 (2648029d)](#0.8.1)
 * [0.8.0 - 4 Oct, 2016 (2e6dc11e)](#0.8.0)
@@ -21,7 +22,40 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 7 Feb, 2017 (12bfa089)
+### <a name = "LATEST">LATEST - 6 Apr, 2017 (d80eb358)
+
+* (GEM) update beaker-hostgenerator version to 0.8.4 (d80eb358)
+
+* Merge pull request #74 from puppetlabs/prepare-for-release (43405262)
+
+
+```
+Merge pull request #74 from puppetlabs/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.8.4 release
+```
+* (MAINT) Update CHANGELOG for 0.8.4 release (26cd2eef)
+
+* Merge pull request #73 from glennsarti/2012r2-wmf5 (d00a1d63)
+
+
+```
+Merge pull request #73 from glennsarti/2012r2-wmf5
+
+(MODULES-4667) Add Windows 2012R2 WMF5 VMPooler image
+```
+* (MODULES-4667) Add Windows 2012R2 WMF5 VMPooler image (8b293890)
+
+
+```
+(MODULES-4667) Add Windows 2012R2 WMF5 VMPooler image
+
+This commit adds the win-2012r2-wmf5-x86_64 vmpooler image, which is a variation
+on the Windows Sever 2012R2 64bit image.
+```
+### <a name = "0.8.3">0.8.3 - 7 Feb, 2017 (79e8d717)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.8.3 (79e8d717)
 
 * (GEM) update beaker-hostgenerator version to 0.8.3 (12bfa089)
 
