@@ -6,6 +6,10 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 
+## [0.8.4] - 2017-4-6
+- Add platform:
+  - windows2012r2_wmf5-64
+
 ## [0.8.3] - 2017-2-7
 - Add platform:
   - aix-7.2-power
