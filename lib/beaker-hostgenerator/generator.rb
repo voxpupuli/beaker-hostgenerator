@@ -63,6 +63,7 @@ module BeakerHostGenerator
         # Merge in any arbitrary key-value host settings. Treat the 'hostname'
         # setting specially, and don't merge it in as an arbitrary setting.
         arbitrary_settings = node_info['host_settings']
+        arbitrary_settings['disks'] = [arbitrary_settings['disks'].to_i] if arbitrary_settings['disks']
         host_name = arbitrary_settings.delete('hostname') if
           arbitrary_settings.has_key?('hostname')
         host_config.merge!(arbitrary_settings)
