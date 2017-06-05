@@ -2,7 +2,7 @@ require 'beaker-hostgenerator/generator'
 require 'beaker-hostgenerator/hypervisor'
 require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/version'
-require 'beaker-hostgenerator/abs-support'
+require 'beaker-hostgenerator/abs_support'
 require 'optparse'
 require 'yaml'
 
