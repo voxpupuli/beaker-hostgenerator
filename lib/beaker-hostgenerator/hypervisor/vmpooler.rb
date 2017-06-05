@@ -7,6 +7,7 @@ module BeakerHostGenerator
     class Vmpooler < BeakerHostGenerator::Hypervisor::Interface
       include BeakerHostGenerator::Data
 
+      # default global configuration keys
       def global_config()
         {
           'pooling_api' => 'http://vmpooler.delivery.puppetlabs.net/'

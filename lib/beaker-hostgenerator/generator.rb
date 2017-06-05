@@ -27,13 +27,6 @@ module BeakerHostGenerator
       ostype = nil
       bhg_version = options[:osinfo_version] || 0
 
-      # Merge in global configuration settings
-      if options[:global_config]
-        decoded = prepare(options[:global_config])
-        global_config = settings_string_to_map(decoded)
-        config['CONFIG'].deep_merge!(global_config)
-      end
-
       tokens.each do |token|
         if is_ostype_token?(token, bhg_version)
           if nodeid[ostype] == 1 and ostype != nil
@@ -76,6 +69,13 @@ module BeakerHostGenerator
 
         config['HOSTS'][host_name] = host_config
         nodeid[ostype] += 1
+      end
+
+      # Merge in global configuration settings after the hypervisor defaults
+      if options[:global_config]
+        decoded = prepare(options[:global_config])
+        global_config = settings_string_to_map(decoded)
+        config['CONFIG'].deep_merge!(global_config)
       end
 
       # Munge non-string scalar values into proper data types
