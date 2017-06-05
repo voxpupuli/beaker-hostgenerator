@@ -157,6 +157,49 @@ CONFIG:
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
 
+### Two hosts with arbitrary host settings with arbitrary lists
+
+```
+$ beaker-hostgenerator centos6-64m{disks=\[16\]-redhat7-64a{disks=\[8\,16\]}
+```
+
+Will generate
+
+```yaml
+---
+HOSTS:
+  centos6-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    platform: el-6-x86_64
+    hypervisor: vmpooler
+    disks:
+    - 16
+    roles:
+    - agent
+    - master
+  redhat7-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: el-7-x86_64
+    template: redhat-7-x86_64
+    disks:
+    - 8
+    - 16
+    roles:
+    - agent
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+
+
+
 ### Arbitrary global configuration settings
 
 ```
@@ -227,12 +270,14 @@ It may be necessary to URL-encode the input in order for it to properly be used
 in certain contexts, such as Jenkins.
 
 In most cases it will only be necessary to escape the characters that support
-arbitrary settings, which means the following four characters:
+arbitrary settings, which means the following characters:
 
 - `{` is `%7B`
 - `,` is `%2C`
 - `}` is `%7D`
 - ` ` is `%20`
+- `[` is `%5B`
+- `]` is `%5D`
 
 For a full URL encoding reference see: http://www.w3schools.com/tags/ref_urlencode.asp
 

@@ -60,10 +60,6 @@ module BeakerHostGenerator
           arbitrary_settings.has_key?('hostname')
         host_config.merge!(arbitrary_settings)
 
-        # Merge in any arbitrary lists
-        arbitrary_settings = node_info['host_lists']
-        host_config.merge!(arbitrary_settings)
-
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'
           host_config['install_32'] = true
@@ -122,30 +118,36 @@ module BeakerHostGenerator
     end
 
     # Passes over all the values of config['HOSTS'] and config['CONFIG'] and
-    # converts any numbers and booleans into proper integer and boolean types.
+    # subsequent arrays to convert numbers or booleans into proper integer
+    # or boolean types.
     def unstringify_values!(config)
       config['HOSTS'].each do |host, settings|
         settings.each do |k, v|
-          config['HOSTS'][host][k] = unstringify_number_or_boolean(v)
+          config['HOSTS'][host][k] = unstringify_value(v)
         end
       end
       config['CONFIG'].each do |k, v|
-        config['CONFIG'][k] = unstringify_number_or_boolean(v)
+        config['CONFIG'][k] = unstringify_value(v)
       end
     end
 
     # Attempts to convert numeric strings and boolean strings into proper
-    # integer and boolean types. Returns the input value if it's not a
-    # number string or boolean string.
+    # integer and boolean types. If value is an array, it will recurse
+    # through those values.
+    # Returns the input value if it's not a number string or boolean string.
     # For example "123" would be converted to 123, and "true"/"false" would be
     # converted to true/false.
     # The only valid boolean-strings are "true" and "false".
-    def unstringify_number_or_boolean(value)
+    def unstringify_value(value)
       result = Integer(value) rescue value
       if value == 'true'
         result = true
       elsif value == 'false'
         result = false
+      elsif value.kind_of?(Array)
+        value.each_with_index do |v, i|
+          result[i] = unstringify_value(v)
+        end
       end
       result
     end

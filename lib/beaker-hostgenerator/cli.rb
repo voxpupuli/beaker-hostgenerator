@@ -28,7 +28,7 @@ module BeakerHostGenerator
 Usage: beaker-hostgenerator [options] <layout>
 
  where <layout> takes the following form:
-  <platform>-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}][[<arbirary-list>;[...]]][-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}]][-<layout>]
+  <platform>-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}][-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}]][-<layout>]
 
  examples:
   centos6-64mdca-32a
@@ -54,13 +54,13 @@ Usage: beaker-hostgenerator [options] <layout>
    1 CentOS 6 64 bit node with roles = master, hypervisor = none, node name = static1, and my-key = my-value
    1 CentOS 6 32 bit node with roles = agent and the default hypervisor
 
-example with arbitrary host lists:
-  centos6-64m[disks=8.16;my-list=my-value1]-32a
-   1 CentOS 6 64 bit node with roles = master and lists:
+ example of a list within arbitrary host settings:
+  centos6-64m{hostname=static1\\,disks=[8,16],my-list=[my-value1]}-32a
+   1 CentOS 6 64 bit node with roles = master, node name = static1 and lists:
       disks:
          - 8
          - 16
-       my-key:
+       my-list:
          - my-value1
    1 CentOS 6 32 bit node with roles = agent and the default hypervisor
 

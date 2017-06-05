@@ -28,10 +28,7 @@ module BeakerHostGenerator
     #                      Examples: m, mdca
     #
     #   * host_settings    Any character (see `settings_string_to_map` for details)
-    #                      Examples: {hostname=foo-bar, ip.address=123.4.5.6}
-    #
-    #   * host_lists       Any character (see `settings_string_to_map` for details)
-    #                      Examples: [disks=16,8;other=foo,bar]
+    #                      Examples: {hostname=foo-bar, ip.address=123.4.5.6, foo=[bar,baz]}
     #
     # This regex is the main workhorse for parsing input to beaker-hostgenerator.
     # There is a bit of pre and post parsing that happens before and after this
@@ -66,7 +63,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?(?<host_lists>\[[[:print:]]*\])?\Z/
+    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
@@ -103,11 +100,11 @@ module BeakerHostGenerator
       #   "centos6-64m{hostname=foo|bar}-debian8-32"
       #
       # Which we can then simply split on - into:
-      #   ["centos6", "64{hostname=foo|bar}", "debian8", "32"]
+      #   ["centos6", "64m{hostname=foo|bar}", "debian8", "32"]
       #
       # And then finally turn the | back into - now that we've
       # properly decomposed the spec string:
-      #   ["centos6", "64{hostname=foo-bar}", "debian8", "32"]
+      #   ["centos6", "64m{hostname=foo-bar}", "debian8", "32"]
       #
       # NOTE we've specifically chosen to use the pipe character |
       # due to its unlikely occurrence in the user input string.
@@ -118,10 +115,6 @@ module BeakerHostGenerator
         when '{'
           within_braces = true
         when '}'
-          within_braces = false
-        when '['
-          within_braces = true
-        when ']'
           within_braces = false
         when '-'
           spec[index] = '|' if within_braces
@@ -196,13 +189,6 @@ module BeakerHostGenerator
       else
         node_info['host_settings'] = {}
       end
-      if node_info['host_lists']
-        node_info['host_lists'] =
-          settings_lists_to_map(node_info['host_lists'])
-      else
-        node_info['host_lists'] = {}
-      end
-
       return node_info
     end
 
@@ -210,7 +196,7 @@ module BeakerHostGenerator
     # to a proper hash map data structure for merging into the host
     # configuration.
     #
-    # The string is expected to be of the form "{key1=value1,key2=value2,...}".
+    # The string is expected to be of the form "{key1=value1,key2=[v2,v3],...}".
     # Whitespace is expected to be properly quoted as it will not be treated
     # any different than non-whitespace characters.
     #
@@ -219,15 +205,15 @@ module BeakerHostGenerator
     # @param host_settings [String] Non-nil user input string that defines host
     #                               specific settings.
     #
-    # @returns [Hash{String=>String}] The host_settings string as a map.
+    # @returns [Hash{String=>String|Array}] The host_settings string as a map.
     def settings_string_to_map(host_settings)
       # Strip it down to a list of pairs
+      # Spliting on all commas except inside `[]`
       settings_pairs =
         host_settings.
         delete('{}').
-        split(',').
+        split(/,(?=[^\]]*(?:\[|$))/).
         map { |keyvalue| keyvalue.split('=') }
-
       # Validate they're actually pairs, and that all keys are non-empty
       settings_pairs.each do |pair|
         if pair.length != 2
@@ -239,38 +225,15 @@ module BeakerHostGenerator
                 "Malformed host settings: #{host_settings}"
         end
       end
-
-      Hash[settings_pairs]
-    end
-
-    def settings_lists_to_map(host_lists)
-      # Strip it down to a list of pairs
-      settings_pairs =
-        host_lists.
-        delete('[]').
-        split(';').
-        map { |keyvalue| keyvalue.split('=') }
-      #puts "settings"
-      #puts settings_pairs.inspect
-      # Validate they're actually pairs, and that all keys are non-empty
+      # Replace the remaining `,` to make array for arbitrary list if brackets exist
       settings_pairs.each do |pair|
-
-        if pair[1]
-          pair[1] = pair[1].split(",")
-        else
-          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
-                "Malformed host settings: #{host_lists}"
-        end
-
-        if pair.length != 2
-          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
-                "Malformed host settings: #{host_lists}"
-        end
-        if pair.first.nil? || pair.first.empty?
-          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
-                "Malformed host settings: #{host_lists}"
+        if pair[1].include?("[")
+          pair[1] = pair[1].
+            delete('[]').
+            split(',')
         end
       end
+
       Hash[settings_pairs]
     end
   end
