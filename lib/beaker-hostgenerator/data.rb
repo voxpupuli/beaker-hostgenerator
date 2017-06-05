@@ -62,26 +62,46 @@ module BeakerHostGenerator
       }
     end
 
+    # This is where all the information for all platforms lives, irrespective
+    # of the hypervisor(s).
+    # This hash contains every OS that BHG supports as keys, and the values are
+    # hashes that contain hypervisor-specific data about that OS.
+    # Every OS also has a special "general" section for data that should always
+    # be included regardless of the hypervisor.
+    # Hypervisor implementations will then grab specific bits of data out of
+    # this hash and combine them to produce the generated hosts output.
     def osinfo
       {
         'aix53-POWER' => {
           :general => {
             'platform' => 'aix-5.3-power'
+          },
+          :abs => {
+            'template' => 'aix-5.3-power'
           }
         },
         'aix61-POWER' => {
           :general => {
             'platform' => 'aix-6.1-power'
+          },
+          :abs => {
+            'template' => 'aix-6.1-power'
           }
         },
         'aix71-POWER' => {
           :general => {
             'platform' => 'aix-7.1-power'
+          },
+          :abs => {
+            'template' => 'aix-7.1-power'
           }
         },
         'aix72-POWER' => {
           :general => {
             'platform' => 'aix-7.2-power'
+          },
+          :abs => {
+            'template' => 'aix-7.2-power'
           }
         },
         'arista4-32' => {
@@ -363,6 +383,9 @@ module BeakerHostGenerator
         'huaweios6-POWER' => {
           :general => {
             'platform' => 'huaweios-6-powerpc'
+          },
+          :abs => {
+            'template' => 'huaweios-6-powerpc'
           }
         },
         'opensuse11-32' => {
@@ -628,6 +651,9 @@ module BeakerHostGenerator
         'solaris10-SPARC' => {
           :general => {
             'platform' => 'solaris-10-sparc'
+          },
+          :abs => {
+            'template' => 'solaris-10-sparc'
           }
         },
         'solaris11-32' => {
@@ -649,6 +675,9 @@ module BeakerHostGenerator
         'solaris11-SPARC' => {
           :general => {
             'platform' => 'solaris-11-sparc'
+          },
+          :abs => {
+            'template' => 'solaris-11-sparc'
           }
         },
         'solaris112-32' => {
