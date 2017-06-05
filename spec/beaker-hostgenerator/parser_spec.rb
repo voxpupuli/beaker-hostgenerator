@@ -6,8 +6,8 @@ module BeakerHostGenerator
 
     describe 'prepare' do
       it 'Supports URL-encoded input' do
-        expect( prepare('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a') ).
-          to eq('centos6-64m{foo=bar-baz,this=that}-32a')
+        expect( prepare('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a%5Bfoo=bar,baz%3Bthis=that%5D') ).
+          to eq('centos6-64m{foo=bar-baz,this=that}-32a[foo=bar,baz;this=that]')
       end
     end
 
@@ -24,6 +24,7 @@ module BeakerHostGenerator
                   "roles" => "",
                   "arbitrary_roles" => [],
                   "bits" => "64",
+                  "host_lists" => {},
                   "host_settings" => {}
                 })
       end
@@ -36,6 +37,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "SPARC",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
 
@@ -44,6 +46,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "POWER6",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
 
@@ -52,6 +55,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "S390X",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
 
@@ -63,6 +67,7 @@ module BeakerHostGenerator
                     "roles" => "m",
                     "arbitrary_roles" => [],
                     "bits" => "S390X",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
 
@@ -71,6 +76,7 @@ module BeakerHostGenerator
                     "roles" => "m",
                     "arbitrary_roles" => ["custom"],
                     "bits" => "S390X",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
         end
@@ -90,6 +96,7 @@ module BeakerHostGenerator
                   "roles" => "mad",
                   "arbitrary_roles" => ["compile_master", "ca", "blah"],
                   "bits" => "64",
+                  "host_lists" => {},
                   "host_settings" => {}
                 })
       end
@@ -107,6 +114,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => ["compile_master", "ca", "blah"],
                     "bits" => "64",
+                    "host_lists" => {},
                     "host_settings" => {}
                   })
         end
@@ -119,6 +127,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "64",
+                    "host_lists" => {},
                     "host_settings" => {
                       "k1" => "value 1",
                       "k2" => "v2",
@@ -139,6 +148,40 @@ module BeakerHostGenerator
 
           expect { parse_node_info_token("64{=}") }.
             to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+        end
+
+        context 'When using arbitrary host lists' do
+          it 'Supports arbitrary whitespace in lists' do
+            expect( parse_node_info_token("64[k1=value 1,value 2;k2=v2,v3,v4,v5;k3=  v6  ]") ).
+              to eq({
+                      "roles" => "",
+                      "arbitrary_roles" => [],
+                      "bits" => "64",
+                      "host_settings" => {},
+                      "host_lists" => {
+                        "k1" => ["value 1", "value 2"],
+                        "k2" => ["v2", "v3", "v4", "v5"],
+                        "k3" => ["  v6  "]
+                      }
+                    })
+          end
+
+          it 'Raises InvalidNodeSpecError for malformed key-list pairs' do
+            expect { parse_node_info_token("64[foo=bar=baz]") }.
+              to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+            expect { parse_node_info_token("64[foo=bar,barbar=baz]") }.
+              to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+            expect { parse_node_info_token("64[foo=]") }.
+              to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+            expect { parse_node_info_token("64[=bar,foo]") }.
+              to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+
+            expect { parse_node_info_token("64[=]") }.
+              to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+          end
         end
       end
     end

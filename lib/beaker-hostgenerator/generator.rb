@@ -60,6 +60,10 @@ module BeakerHostGenerator
           arbitrary_settings.has_key?('hostname')
         host_config.merge!(arbitrary_settings)
 
+        # Merge in any arbitrary lists
+        arbitrary_settings = node_info['host_lists']
+        host_config.merge!(arbitrary_settings)
+
         if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
           host_config['ruby_arch'] = 'x86'
           host_config['install_32'] = true

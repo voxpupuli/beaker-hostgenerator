@@ -30,6 +30,9 @@ module BeakerHostGenerator
     #   * host_settings    Any character (see `settings_string_to_map` for details)
     #                      Examples: {hostname=foo-bar, ip.address=123.4.5.6}
     #
+    #   * host_lists       Any character (see `settings_string_to_map` for details)
+    #                      Examples: [disks=16,8;other=foo,bar]
+    #
     # This regex is the main workhorse for parsing input to beaker-hostgenerator.
     # There is a bit of pre and post parsing that happens before and after this
     # regex though.
@@ -63,7 +66,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?(?<host_lists>\[[[:print:]]*\])?\Z/
 
     module_function
 
@@ -115,6 +118,10 @@ module BeakerHostGenerator
         when '{'
           within_braces = true
         when '}'
+          within_braces = false
+        when '['
+          within_braces = true
+        when ']'
           within_braces = false
         when '-'
           spec[index] = '|' if within_braces
@@ -189,6 +196,12 @@ module BeakerHostGenerator
       else
         node_info['host_settings'] = {}
       end
+      if node_info['host_lists']
+        node_info['host_lists'] =
+          settings_lists_to_map(node_info['host_lists'])
+      else
+        node_info['host_lists'] = {}
+      end
 
       return node_info
     end
@@ -227,6 +240,37 @@ module BeakerHostGenerator
         end
       end
 
+      Hash[settings_pairs]
+    end
+
+    def settings_lists_to_map(host_lists)
+      # Strip it down to a list of pairs
+      settings_pairs =
+        host_lists.
+        delete('[]').
+        split(';').
+        map { |keyvalue| keyvalue.split('=') }
+      #puts "settings"
+      #puts settings_pairs.inspect
+      # Validate they're actually pairs, and that all keys are non-empty
+      settings_pairs.each do |pair|
+
+        if pair[1]
+          pair[1] = pair[1].split(",")
+        else
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "Malformed host settings: #{host_lists}"
+        end
+
+        if pair.length != 2
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "Malformed host settings: #{host_lists}"
+        end
+        if pair.first.nil? || pair.first.empty?
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "Malformed host settings: #{host_lists}"
+        end
+      end
       Hash[settings_pairs]
     end
   end
