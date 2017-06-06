@@ -808,6 +808,22 @@ module BeakerHostGenerator
             'template' => 'ubuntu-1610-x86_64'
           }
         },
+        'vro6-64' => {
+          :general => {
+            'platform' => 'sles-11-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'vro-6-x86_64'
+          }
+        },
+        'vro7-64' => {
+          :general => {
+            'platform' => 'sles-11-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'vro-7-x86_64'
+          }
+        },
         'windows2003-64' => {
           :general => {
             'platform' => 'windows-2003-64',
