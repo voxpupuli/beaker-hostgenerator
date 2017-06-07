@@ -1,6 +1,7 @@
 # worker - History
 ## Tags
-* [LATEST - 6 Apr, 2017 (d80eb358)](#LATEST)
+* [LATEST - 7 Jun, 2017 (06b6a0da)](#LATEST)
+* [0.8.4 - 6 Apr, 2017 (77943fb2)](#0.8.4)
 * [0.8.3 - 7 Feb, 2017 (79e8d717)](#0.8.3)
 * [0.8.2 - 3 Jan, 2017 (a61487bf)](#0.8.2)
 * [0.8.1 - 21 Dec, 2016 (2648029d)](#0.8.1)
@@ -22,7 +23,100 @@
 * [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
 
 ## Details
-### <a name = "LATEST">LATEST - 6 Apr, 2017 (d80eb358)
+### <a name = "LATEST">LATEST - 7 Jun, 2017 (06b6a0da)
+
+* (GEM) update beaker-hostgenerator version to 0.9.0 (06b6a0da)
+
+* Merge pull request #80 from puppetlabs/prepare-for-release (b7a83889)
+
+
+```
+Merge pull request #80 from puppetlabs/prepare-for-release
+
+(MAINT) Update CHANGELOG for 0.9.0 release
+```
+* (MAINT) Update CHANGELOG for 0.9.0 release (aae2e698)
+
+* (MAINT) Fix rendering issue in README and update TOC (bc92bd07)
+
+* (QENG-4945) Add support for arbitrary lists (e75f1e7e)
+
+
+```
+(QENG-4945) Add support for arbitrary lists
+
+Before, we had no way to add lists to configurations. This adds
+a new bracket syntax within arbitrary settings in order to parse out any lists the user may want to
+add in.
+```
+* Merge pull request #79 from puppetlabs/qeng-5041 (990b6081)
+
+
+```
+Merge pull request #79 from puppetlabs/qeng-5041
+
+(QENG-5041) Add vRO to support platforms
+```
+* (QENG-5041) Add vRO to support platforms (22b7c670)
+
+
+```
+(QENG-5041) Add vRO to support platforms
+
+This adds both vro-6-x86_64 and vro-7-x86_64. The templates
+already exist within vmpooler
+```
+* Merge pull request #77 from puppetlabs/fix-default-config-hypervisors (988476e1)
+
+
+```
+Merge pull request #77 from puppetlabs/fix-default-config-hypervisors
+
+(maint) The hypervisor defaults are not overwritable
+```
+* Merge pull request #76 from puppetlabs/qeng4965/add-abs-hardware-support (874f473f)
+
+
+```
+Merge pull request #76 from puppetlabs/qeng4965/add-abs-hardware-support
+
+(QENG-4965) Add ABS support for hardware platforms
+```
+* (MAINT) Delete duplicate keys from test helper hash (0fe2c0ac)
+
+* (MAINT) Prefer underscores over dashes in file names (efe8b7b1)
+
+
+```
+(MAINT) Prefer underscores over dashes in file names
+
+Ruby prefers that you not use dashes in your .rb filenames, so this commit
+renames abs-support.rb to abs_support.rb
+```
+* (maint) The hypervisor defaults are not overwritable (1a44141b)
+
+
+```
+(maint) The hypervisor defaults are not overwritable
+Before this change the code would pull and merge the hypervisor defaults on top of any
+user provided --global-config block. This reverses the logic to use defaults only
+if the key is not specified in the --global-config section. This specifically
+enables overwritting the pooling_api for the vmpooler hypervisor, as it is the
+only one with a default global_config() method implementation. Also added it's
+respective test
+```
+* (QENG-4965) Add ABS support for hardware platforms (a9ddf44b)
+
+
+```
+(QENG-4965) Add ABS support for hardware platforms
+
+This commit makes the hardware platforms compatible with the ABS hypervisor and
+the --templates-only switch to enable hardware support in Jenkins via ABS.
+```
+### <a name = "0.8.4">0.8.4 - 6 Apr, 2017 (77943fb2)
+
+* (HISTORY) update beaker-hostgenerator history for gem release 0.8.4 (77943fb2)
 
 * (GEM) update beaker-hostgenerator version to 0.8.4 (d80eb358)
 
