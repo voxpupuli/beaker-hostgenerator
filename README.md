@@ -12,6 +12,7 @@ host config files using a compact command line SUT specification.
         - [Simple two-host layout](#simple-two-host-layout)
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
         - [Two hosts with multiple hypervisors and arbitrary host settings](#two-hosts-with-multiple-hypervisors-and-arbitrary-host-settings)
+        - [Two hosts with arbitrary host settings with arbitrary lists](#two-hosts-with-arbitrary-host-settings-with-arbitrary-lists)
         - [Arbitrary global configuration settings](#arbitrary-global-configuration-settings)
         - [Custom hypervisor](#custom-hypervisor)
         - [URL-encoded input](#url-encoded-input)
@@ -197,7 +198,7 @@ CONFIG:
   nfs_server: none
   consoleport: 443
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
-
+```
 
 
 ### Arbitrary global configuration settings
