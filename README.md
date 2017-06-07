@@ -161,7 +161,7 @@ CONFIG:
 ### Two hosts with arbitrary host settings with arbitrary lists
 
 ```
-$ beaker-hostgenerator centos6-64m{disks=\[16\]-redhat7-64a{disks=\[8\,16\]}
+$ beaker-hostgenerator centos6-64m{disks=\[16\]}-redhat7-64a{disks=\[8\,16\]}
 ```
 
 Will generate
