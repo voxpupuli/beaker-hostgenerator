@@ -113,12 +113,6 @@ module BeakerHostGenerator
       end
 
       context 'When using arbitrary host settings' do
-        it 'Properly tokenize settings and lists' do
-          expect( tokenize_layout("64{k1=v1,k2=v2,k4=[v3,v4,v5]}")).
-            to eq(["64{k1=v1,k2=v2,k4=[v3,v4,v5]}"])
-        end
-
-
         it 'Supports arbitrary whitespace in values' do
           expect( parse_node_info_token("64{k1=value 1,k2=v2,k3=  v3  ,k4=[v4, v5 ,v6]}") ).
             to eq({
@@ -146,7 +140,6 @@ module BeakerHostGenerator
 
           expect { parse_node_info_token("64{=}") }.
             to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
-
         end
       end
     end
