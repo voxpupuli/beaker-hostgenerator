@@ -54,6 +54,16 @@ Usage: beaker-hostgenerator [options] <layout>
    1 CentOS 6 64 bit node with roles = master, hypervisor = none, node name = static1, and my-key = my-value
    1 CentOS 6 32 bit node with roles = agent and the default hypervisor
 
+ example of a list within arbitrary host settings:
+  centos6-64m{hostname=static1\\,disks=[8,16],my-list=[my-value1]}-32a
+   1 CentOS 6 64 bit node with roles = master, node name = static1 and lists:
+      disks:
+         - 8
+         - 16
+       my-list:
+         - my-value1
+   1 CentOS 6 32 bit node with roles = agent and the default hypervisor
+
  Generally, it is expected that beaker-hostgenerator output will be redirected to a file, for example:
   beaker-hostgenerator centos6-64ma > host.cfg
 

@@ -6,8 +6,8 @@ module BeakerHostGenerator
 
     describe 'prepare' do
       it 'Supports URL-encoded input' do
-        expect( prepare('centos6-64m%7Bfoo=bar-baz,this=that%7D-32a') ).
-          to eq('centos6-64m{foo=bar-baz,this=that}-32a')
+        expect( prepare('centos6-64m%7Bfoo=bar-baz,this=that,foo=%5Bbar,baz%5D,this=%5Bthat%5D%7D-32a') ).
+          to eq('centos6-64m{foo=bar-baz,this=that,foo=[bar,baz],this=[that]}-32a')
       end
     end
 
@@ -114,7 +114,7 @@ module BeakerHostGenerator
 
       context 'When using arbitrary host settings' do
         it 'Supports arbitrary whitespace in values' do
-          expect( parse_node_info_token("64{k1=value 1,k2=v2,k3=  v3  }") ).
+          expect( parse_node_info_token("64{k1=value 1,k2=v2,k3=  v3  ,k4=[v4, v5 ,v6]}") ).
             to eq({
                     "roles" => "",
                     "arbitrary_roles" => [],
@@ -122,7 +122,8 @@ module BeakerHostGenerator
                     "host_settings" => {
                       "k1" => "value 1",
                       "k2" => "v2",
-                      "k3" => "  v3  "
+                      "k3" => "  v3  ",
+                      "k4" => ["v4"," v5 ","v6"]
                     }
                   })
         end
