@@ -189,6 +189,7 @@ module BeakerHostGenerator
       else
         node_info['host_settings'] = {}
       end
+
       return node_info
     end
 
@@ -208,12 +209,13 @@ module BeakerHostGenerator
     # @returns [Hash{String=>String|Array}] The host_settings string as a map.
     def settings_string_to_map(host_settings)
       # Strip it down to a list of pairs
-      # Spliting on all commas except inside `[]`
+      # Splitting on all commas except inside `[]`
       settings_pairs =
         host_settings.
         delete('{}').
         split(/,(?=[^\]]*(?:\[|$))/).
         map { |keyvalue| keyvalue.split('=') }
+
       # Validate they're actually pairs, and that all keys are non-empty
       settings_pairs.each do |pair|
         if pair.length != 2
@@ -225,6 +227,7 @@ module BeakerHostGenerator
                 "Malformed host settings: #{host_settings}"
         end
       end
+
       # Replace the remaining `,` to make array for arbitrary list if brackets exist
       settings_pairs.each do |pair|
         if pair[1].include?("[")
