@@ -6,6 +6,16 @@ Versioning](http://semver.org).
 
 ## [Unreleased][unreleased]
 
+## [0.9.0] - 2017-6-7
+- Add list data structure support to arbitrary settings, which previously only
+  supported primitive data types.
+- Add ability to override default hypervisor settings in the global config
+  section.
+- Add support for hardware platforms to the ABS hypervisor.
+- Add platforms:
+  - vro6-64
+  - vro7-64
+
 ## [0.8.4] - 2017-4-6
 - Add platform:
   - windows2012r2_wmf5-64
