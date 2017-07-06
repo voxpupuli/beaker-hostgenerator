@@ -13,6 +13,7 @@ host config files using a compact command line SUT specification.
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
         - [Two hosts with multiple hypervisors and arbitrary host settings](#two-hosts-with-multiple-hypervisors-and-arbitrary-host-settings)
         - [Two hosts with arbitrary host settings with arbitrary lists](#two-hosts-with-arbitrary-host-settings-with-arbitrary-lists)
+        - [Arbitrary nested hashes and arrays](#arbitrary-nested-hashes-and-arrays)
         - [Arbitrary global configuration settings](#arbitrary-global-configuration-settings)
         - [Custom hypervisor](#custom-hypervisor)
         - [URL-encoded input](#url-encoded-input)
@@ -200,6 +201,41 @@ CONFIG:
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
 
+### Arbitrary nested hashes and arrays
+
+```
+$ beaker-hostgenerator --global-config {host_tags={lifetime=4h}\,list=[{listkey=listvalue}]\} redhat7-64m{hostlist=\[string\,{key=value}\,1234\]}
+```
+
+Will generate
+
+```yaml
+---
+HOSTS:
+  redhat7-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: el-7-x86_64
+    template: redhat-7-x86_64
+    hostlist:
+    - string
+    - key: value
+    - 1234
+    roles:
+    - agent
+    - master
+CONFIG:
+  nfs_server: none
+  consoleport: 443
+  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+  host_tags:
+    lifetime: 4h
+  list:
+  - listkey: listvalue
+```
 
 ### Arbitrary global configuration settings
 

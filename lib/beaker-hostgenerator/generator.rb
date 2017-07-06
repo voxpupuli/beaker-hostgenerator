@@ -74,6 +74,11 @@ module BeakerHostGenerator
       # Merge in global configuration settings after the hypervisor defaults
       if options[:global_config]
         decoded = prepare(options[:global_config])
+        # Support for strings without '{}' was introduced, so just double
+        # check here to ensure that we pass in values surrounded by '{}'.
+        if !decoded.start_with?('{')
+          decoded = "{#{decoded}}"
+        end
         global_config = settings_string_to_map(decoded)
         config['CONFIG'].deep_merge!(global_config)
       end

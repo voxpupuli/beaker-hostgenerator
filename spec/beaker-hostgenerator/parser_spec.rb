@@ -113,6 +113,20 @@ module BeakerHostGenerator
       end
 
       context 'When using arbitrary host settings' do
+        it 'Supports arbitrary nested hashes and arrays' do
+          expect( parse_node_info_token("64{foo={bar=baz},foo2={bar2=baz2,bar22=baz22},foo3=bar3,foo4=[[bar4],baz4],list=[{map1=map11,map2=map22},{lastmap=lastmap2}]}") ).
+            to eq({
+                    "roles" => "",
+                    "arbitrary_roles" => [],
+                    "bits" => "64",
+                    "host_settings" =>
+                      {"foo"=>{"bar"=>"baz"},
+                      "foo2"=>{"bar2"=>"baz2", "bar22"=>"baz22"},
+                      "foo3"=>"bar3",
+                      "foo4"=>[["bar4"], "baz4"],
+                      "list"=>[{"map1"=>"map11", "map2"=>"map22"}, {"lastmap"=>"lastmap2"}]}})
+        end
+
         it 'Supports arbitrary whitespace in values' do
           expect( parse_node_info_token("64{k1=value 1,k2=v2,k3=  v3  ,k4=[v4, v5 ,v6]}") ).
             to eq({

@@ -195,9 +195,10 @@ module BeakerHostGenerator
 
     # Transforms the arbitrary host settings map from a string representation
     # to a proper hash map data structure for merging into the host
-    # configuration.
+    # configuration. Supports arbitrary nested hashes and arrays.
     #
     # The string is expected to be of the form "{key1=value1,key2=[v2,v3],...}".
+    # Nesting looks like "{key1={nested_key=nested_value},list=[[list1, list2]]}".
     # Whitespace is expected to be properly quoted as it will not be treated
     # any different than non-whitespace characters.
     #
@@ -206,38 +207,120 @@ module BeakerHostGenerator
     # @param host_settings [String] Non-nil user input string that defines host
     #                               specific settings.
     #
-    # @returns [Hash{String=>String|Array}] The host_settings string as a map.
+    # @returns [Hash{String=>String|Array|Hash}] The host_settings string as a map.
     def settings_string_to_map(host_settings)
-      # Strip it down to a list of pairs
-      # Splitting on all commas except inside `[]`
-      settings_pairs =
-        host_settings.
-        delete('{}').
-        split(/,(?=[^\]]*(?:\[|$))/).
-        map { |keyvalue| keyvalue.split('=') }
 
-      # Validate they're actually pairs, and that all keys are non-empty
-      settings_pairs.each do |pair|
-        if pair.length != 2
-          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
-                "Malformed host settings: #{host_settings}"
+      stringscan = StringScanner.new(host_settings)
+      object = nil
+      object_depth = []
+      current_depth = 0
+
+      # This loop scans until the next delimiter character is found. When
+      # the next delimiter is recognized, there is enough context in the
+      # substring to determine a course of action to modify the primary
+      # object. The `object_depth` object tracks which current object is
+      # being modified, and pops it off the end of the array when that
+      # data structure is completed.
+      #
+      # This algorithm would also support a base array, but since there
+      # is no need for that functionality, we just assume the string is
+      # always a representation of a hash.
+      loop do
+        blob = stringscan.scan_until(/\[|{|}|\]|,/)
+
+        break if blob.nil?
+
+        if stringscan.pos() == 1
+          object = {}
+          object_depth.push(object)
+          next
         end
-        if pair.first.nil? || pair.first.empty?
-          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
-                "Malformed host settings: #{host_settings}"
+
+        current_type = object_depth[current_depth].class
+        current_object = object_depth[current_depth]
+
+        if blob == '['
+          current_object.push([])
+          object_depth.push(current_object.last)
+          current_depth = current_depth.next
+          next
+        end
+
+        if blob.start_with?('{')
+          current_object.push({})
+          object_depth.push(current_object.last)
+          current_depth = current_depth.next
+          next
+        end
+
+
+
+        if blob == ']' or blob == '}'
+          object_depth.pop
+          current_depth = current_depth.pred
+          next
+        end
+        
+        # When there is assignment happening, we need to create a new
+        # corresponding data structure, add it to the object depth, and
+        # then change the current depth
+        if blob[-2] == '='
+          raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{','[')
+          if blob[-1] == '{'
+            current_object[blob[0..-3]] = {}
+          else
+            current_object[blob[0..-3]] = []
+          end
+          object_depth.push(current_object[blob[0..-3]])
+          current_depth = current_depth.next
+          next
+        end
+
+        if blob[-1] == '}'
+          raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if blob.count('=') != 1
+          key_pair = blob[0..-2].split('=')
+          raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if key_pair.size != 2
+          key_pair.each do |element|
+            raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if element.empty?
+          end
+          current_object[key_pair[0]] = key_pair[1]
+          object_depth.pop
+          current_depth = current_depth.pred
+          next
+        end
+
+        if blob == ','
+          next
+        end
+
+        if blob[-1] == ','
+          if current_type == Hash
+            key_pair = blob[0..-2].split('=')
+            raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if key_pair.size != 2
+            key_pair.each do |element|
+              raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if element.empty?
+            end
+            current_object[key_pair[0]] = key_pair[1]
+            next
+          elsif current_type == Array
+            current_object.push(blob[0..-2])
+            next
+          end
+        end
+
+        if blob[-1] == ']'
+          current_object.push(blob[0..-2])
+          object_depth.pop
+          current_depth = current_depth.pred
+          next
         end
       end
 
-      # Replace the remaining `,` to make array for arbitrary list if brackets exist
-      settings_pairs.each do |pair|
-        if pair[1].include?("[")
-          pair[1] = pair[1].
-            delete('[]').
-            split(',')
-        end
-      end
-
-      Hash[settings_pairs]
+      object
+    rescue Exception => e
+      raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+        "Malformed host settings: #{host_settings}"
     end
+
   end
 end
