@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [0.10.1] - 2017-7-7
+- Add platforms:
+  - rhel-7.3-power8
+  - ubuntu-16.04-power8
+
 ## [0.10.0] - 2017-7-7
 - Add map data structure support to arbitrary settings, which previously only
   supported lists and primitives. Maps and lists can be combined.
