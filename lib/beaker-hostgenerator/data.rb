@@ -537,6 +537,14 @@ module BeakerHostGenerator
             'template' => 'redhat-7-x86_64'
           }
         },
+        'redhat7-POWER' => {
+          :general => {
+            'platform' => 'rhel-7.3-power8'
+          },
+          :abs => {
+            'template' => 'rhel-7.3-power8'
+          }
+        },
         'redhat7-S390X' => {
           :general => {
             'platform' => 'el-7-s390x'
@@ -790,6 +798,14 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'ubuntu-1604-x86_64'
+          }
+        },
+        'ubuntu1604-POWER' => {
+          :general => {
+            'platform' => 'ubuntu-16.04-power8'
+          },
+          :abs => {
+            'template' => 'ubuntu-16.04-power8'
           }
         },
         'ubuntu1610-32' => {

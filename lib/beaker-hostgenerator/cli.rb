@@ -192,7 +192,7 @@ Usage: beaker-hostgenerator [options] <layout>
       result << "   32    => 32-bit OS\n"
       result << "   64    => 64-bit OS\n"
       result << "   6432  => 64-bit OS with 32-bit Puppet (Windows Only)\n"
-      result << "   POWER => power or powerpc OS (AIX and Huawei only)\n"
+      result << "   POWER => power or powerpc OS (AIX, Huawei, Redhat and Ubuntu only)\n"
       result << "   SPARC => sparc OS (Solaris only)\n"
       result << "   S390X => s390x OS (RedHat and SLES only)\n"
       result << "\n\n"
