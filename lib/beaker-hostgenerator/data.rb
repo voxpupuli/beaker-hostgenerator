@@ -14,6 +14,8 @@ module BeakerHostGenerator
   module Data
     module_function
 
+    PE_TARBALL_SERVER="http://enterprise.delivery.puppetlabs.net"
+
     def pe_version
       ENV['pe_version']
     end
@@ -31,15 +33,23 @@ module BeakerHostGenerator
     end
 
     def pe_dir(version, family)
-      # If our version is the same as our family, we're installing a
-      # released version. Use the archive path. Otherwise, we want to use
-      # the development build path.
+      # XXX family is no longer used, but it is possible that a job relied on the
+      # behavior that not setting family would return nil for pe_dir(), allowing beaker
+      # to pick up from ENV['BEAKER_PE_DIR'] or ENV['pe_dist_dir']
+      # https://github.com/puppetlabs/beaker/blob/3f52daf76b8b0a47a101a8ea76fbe4ace1e8efaf/lib/beaker/options/presets.rb#L25
       if version && family
-        if version == family
-          "http://enterprise.delivery.puppetlabs.net/archives/releases/#{family}/"
-        else
-          "http://enterprise.delivery.puppetlabs.net/#{family}/ci-ready"
+        base_regex = '(\A\d+\.\d+)\.\d+'
+        source = case version
+        when /#{base_regex}\Z/
+          then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
+        when /#{base_regex}-rc\d+\Z/
+          then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
+        when /#{base_regex}-.*PEZ_.*/
+          then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
+        when /#{base_regex}-.*/
+          then "#{PE_TARBALL_SERVER}/%s/ci-ready"
         end
+        return sprintf(source, $1)
       end
     end
 
