@@ -539,10 +539,10 @@ module BeakerHostGenerator
         },
         'redhat7-POWER' => {
           :general => {
-            'platform' => 'rhel-7.3-power8'
+            'platform' => 'redhat-7.3-power8'
           },
           :abs => {
-            'template' => 'rhel-7.3-power8'
+            'template' => 'redhat-7.3-power8'
           }
         },
         'redhat7-S390X' => {

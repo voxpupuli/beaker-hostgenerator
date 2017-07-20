@@ -9,7 +9,7 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: rhel-7.3-power8
+      platform: redhat-7.3-power8
       roles:
       - agent
       - classifier
