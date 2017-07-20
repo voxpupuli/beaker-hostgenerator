@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [0.10.2] - 2017-7-20
+- Change redhat7-POWER platform and template values from 'rhel-7.3-power8' to
+  'redhat-7.3-power'
+
 ## [0.10.1] - 2017-7-7
 - Add platforms:
   - rhel-7.3-power8
