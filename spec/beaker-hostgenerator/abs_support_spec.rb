@@ -14,7 +14,7 @@ module BeakerHostGenerator
                  'aix-7.1-power' => 1,
                  'aix-7.2-power' => 1,
                  'huaweios-6-powerpc' => 1,
-                 'rhel-7.3-power8' => 1,
+                 'redhat-7.3-power8' => 1,
                  'solaris-10-sparc' => 1,
                  'solaris-11-sparc' => 1,
                  'centos-7-x86_64' => 1,
