@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [0.10.3] - 2017-7-26
+- Change ubuntu1604-POWER platform from 'ubuntu-16.04-power8' to
+  'ubuntu-16.04-ppc64el'
+- Change redhat7-POWER platform from 'redhat-7.3-power8' to 'el-7-ppc64le'
+
 ## [0.10.2] - 2017-7-20
 - Change redhat7-POWER platform and template values from 'rhel-7.3-power8' to
   'redhat-7.3-power8'
