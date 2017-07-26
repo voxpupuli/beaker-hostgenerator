@@ -539,7 +539,7 @@ module BeakerHostGenerator
         },
         'redhat7-POWER' => {
           :general => {
-            'platform' => 'redhat-7.3-power8'
+            'platform' => 'el-7-ppc64le'
           },
           :abs => {
             'template' => 'redhat-7.3-power8'
@@ -802,7 +802,7 @@ module BeakerHostGenerator
         },
         'ubuntu1604-POWER' => {
           :general => {
-            'platform' => 'ubuntu-16.04-power8'
+            'platform' => 'ubuntu-16.04-ppc64el'
           },
           :abs => {
             'template' => 'ubuntu-16.04-power8'

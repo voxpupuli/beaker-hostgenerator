@@ -9,7 +9,7 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: ubuntu-16.04-power8
+      platform: ubuntu-16.04-ppc64el
       roles:
       - agent
       - database
