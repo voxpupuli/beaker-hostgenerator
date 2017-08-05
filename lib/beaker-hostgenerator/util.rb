@@ -7,8 +7,8 @@ module BeakerHostGenerator
   module Utils
     module_function
 
-    def pe_dir(version, family)
-      BeakerHostGenerator::Data.pe_dir(version, family)
+    def pe_dir(version, family = nil)
+      BeakerHostGenerator::Data.pe_dir(version)
     end
 
     def fixup_node(cfg)

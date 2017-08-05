@@ -20,37 +20,25 @@ module BeakerHostGenerator
       ENV['pe_version']
     end
 
-    def pe_family
-      ENV['pe_family']
-    end
-
     def pe_upgrade_version
       ENV['pe_upgrade_version']
     end
 
-    def pe_upgrade_family
-      ENV['pe_upgrade_family']
-    end
+    def pe_dir(version)
+      return if version.nil?
 
-    def pe_dir(version, family)
-      # XXX family is no longer used, but it is possible that a job relied on the
-      # behavior that not setting family would return nil for pe_dir(), allowing beaker
-      # to pick up from ENV['BEAKER_PE_DIR'] or ENV['pe_dist_dir']
-      # https://github.com/puppetlabs/beaker/blob/3f52daf76b8b0a47a101a8ea76fbe4ace1e8efaf/lib/beaker/options/presets.rb#L25
-      if version && family
-        base_regex = '(\A\d+\.\d+)\.\d+'
-        source = case version
-        when /#{base_regex}\Z/
-          then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
-        when /#{base_regex}-rc\d+\Z/
-          then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
-        when /#{base_regex}-.*PEZ_.*/
-          then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
-        when /#{base_regex}-.*/
-          then "#{PE_TARBALL_SERVER}/%s/ci-ready"
-        end
-        return sprintf(source, $1)
+      base_regex = '(\A\d+\.\d+)\.\d+'
+      source = case version
+      when /#{base_regex}\Z/
+        then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
+      when /#{base_regex}-rc\d+\Z/
+        then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
+      when /#{base_regex}-.*PEZ_.*/
+        then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
+      when /#{base_regex}-.*/
+        then "#{PE_TARBALL_SERVER}/%s/ci-ready"
       end
+      return sprintf(source, $1)
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
@@ -65,9 +53,9 @@ module BeakerHostGenerator
 
     def base_host_config(options)
       {
-        'pe_dir' => options[:pe_dir] || pe_dir(pe_version, pe_family),
+        'pe_dir' => options[:pe_dir] || pe_dir(pe_version),
         'pe_ver' => options[:pe_ver] || pe_version,
-        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version, pe_upgrade_family),
+        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version),
         'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
       }
     end
