@@ -14,33 +14,31 @@ module BeakerHostGenerator
   module Data
     module_function
 
+    PE_TARBALL_SERVER="http://enterprise.delivery.puppetlabs.net"
+
     def pe_version
       ENV['pe_version']
-    end
-
-    def pe_family
-      ENV['pe_family']
     end
 
     def pe_upgrade_version
       ENV['pe_upgrade_version']
     end
 
-    def pe_upgrade_family
-      ENV['pe_upgrade_family']
-    end
+    def pe_dir(version)
+      return if version.nil?
 
-    def pe_dir(version, family)
-      # If our version is the same as our family, we're installing a
-      # released version. Use the archive path. Otherwise, we want to use
-      # the development build path.
-      if version && family
-        if version == family
-          "http://enterprise.delivery.puppetlabs.net/archives/releases/#{family}/"
-        else
-          "http://enterprise.delivery.puppetlabs.net/#{family}/ci-ready"
-        end
+      base_regex = '(\A\d+\.\d+)\.\d+'
+      source = case version
+      when /#{base_regex}\Z/
+        then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
+      when /#{base_regex}-rc\d+\Z/
+        then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
+      when /#{base_regex}-.*PEZ_.*/
+        then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
+      when /#{base_regex}-.*/
+        then "#{PE_TARBALL_SERVER}/%s/ci-ready"
       end
+      return sprintf(source, $1)
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
@@ -55,9 +53,9 @@ module BeakerHostGenerator
 
     def base_host_config(options)
       {
-        'pe_dir' => options[:pe_dir] || pe_dir(pe_version, pe_family),
+        'pe_dir' => options[:pe_dir] || pe_dir(pe_version),
         'pe_ver' => options[:pe_ver] || pe_version,
-        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version, pe_upgrade_family),
+        'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version),
         'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
       }
     end
