@@ -116,6 +116,14 @@ module BeakerHostGenerator
       it "returns nil if version is nil" do
         expect(BeakerHostGenerator::Data.pe_dir(nil)).to be_nil
       end
+
+      it "returns nil if version is an empty string" do
+        expect(BeakerHostGenerator::Data.pe_dir('')).to be_nil
+      end
+
+      it "returns an empty string if version isn't parseable" do
+        expect(BeakerHostGenerator::Data.pe_dir('wtf')).to eq('')
+      end
     end
   end
 end
