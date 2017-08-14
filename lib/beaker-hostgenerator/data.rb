@@ -25,7 +25,7 @@ module BeakerHostGenerator
     end
 
     def pe_dir(version)
-      return if version.nil?
+      return if version.nil? || version.empty?
 
       base_regex = '(\A\d+\.\d+)\.\d+'
       source = case version
@@ -37,8 +37,10 @@ module BeakerHostGenerator
         then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
       when /#{base_regex}-.*/
         then "#{PE_TARBALL_SERVER}/%s/ci-ready"
+      else
+        ''
       end
-      return sprintf(source, $1)
+      return sprintf(source, ($1 || ''))
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
