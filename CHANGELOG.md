@@ -4,6 +4,56 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.0.0] - 2017-8-14
+- Rewrite pe_dir() to provide RC builds and to determine build source just from
+  the pe_version format.
+
+  Previously, source was either archives/releases if version and family
+  were the exact same string, otherwise ci-ready.
+
+  Recently we have added archives/internal which houses rc tagged builds
+  long term (ci-ready has a two-week life span).  These internal archive
+  releases let us test rc builds for internal consumption, but introduced
+  a third source.
+
+  Fourth source, actually, I'd forgotten that we already had dev version
+  strings with PEZ in them that need to be sourced from
+  feature/ci-ready...
+
+  The patch bases everything off the version because the four cases are
+  mutually exclusive, and the previous determination of a release source
+  based on version == family doesn't make sense for anything but a release
+  version.  (If you supplied dev builds for both, for example, you
+  would get a host config trying to lookup a dev build in archive/releases
+  where it would not be found...)
+
+  This patch keeps the behavior of returning nil if either version or
+  family is nil so as to preserve a fallback behavior that would have
+  Beaker instead pick up pe_dir from environment variables: BEAKER_PE_DIR
+  or pe_dist_dir.
+
+- Drop use of pe_family/pe_upgrade_family
+
+  The pe_family and pe_upgrade_family environment variables were only
+  being used as a means of signaling that we want pe_dir to be
+  archives/releases. (If pe_version and pe_family were equal, we'd return
+  archives/releases for pe_dir).  This behavior was changed in the
+  previous commit to instead base the tarball source on the version string
+  format.
+
+  The only other behavior that passing family had was that if either
+  verison or family were nil, pe_dir would be nil. So theoretically, if
+  you only set pe_version to some valid version, you would get a beaker
+  config with no pe_dir set, and Beaker could then set pe_dir based on
+  BEAKER_PE_DIR or pe_dist_dir environment variables.
+
+  This commit removes family so that we can clean up pipelines which would
+  otherwise be setting pe_family just for the purpose of avoiding this
+  behavior.
+
+  It is potentially a breaking change if someone was relying on the
+  absence of pe_family to allow Beaker to set pe_dir as mentioned above.
+
 ## [0.10.3] - 2017-7-26
 - Change ubuntu1604-POWER platform from 'ubuntu-16.04-power8' to
   'ubuntu-16.04-ppc64el'
