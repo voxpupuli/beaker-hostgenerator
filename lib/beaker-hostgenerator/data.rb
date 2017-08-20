@@ -640,6 +640,14 @@ module BeakerHostGenerator
             'platform' => 'sles-12-s390x'
           }
         },
+        'sles12-POWER' => {
+          :general => {
+            'platform' => 'sles-12-ppc64le'
+          },
+          :abs => {
+            'template' => 'sles-12-power8'
+          }
+        },
         'solaris10-32' => {
           :general => {
             'platform' => 'solaris-10-i386'
