@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.0.2] - 2017-8-21
+- Add platforms:
+  - sles-12-power8
+  - fedora-26-x86_64
+
 ## [1.0.1] - 2017-8-14
 - Support empty string as the value of version by returning nil from pe_dir()
 - Support unparseable/unknown versions by returning empty string from pe_dir()
