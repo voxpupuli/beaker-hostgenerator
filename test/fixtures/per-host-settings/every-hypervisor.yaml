@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver:
       hypervisor: vmpooler
       platform: el-6-x86_64
+      packaging_platform: el-6-x86_64
       template: centos-6-x86_64
       roles:
       - agent
@@ -20,6 +21,7 @@ expected_hash:
       pe_upgrade_dir:
       pe_upgrade_ver:
       platform: debian-8-i386
+      packaging_platform: debian-8-i386
       hypervisor: none
       roles:
       - agent
@@ -30,6 +32,7 @@ expected_hash:
       pe_upgrade_ver:
       hypervisor: abs
       platform: el-7-x86_64
+      packaging_platform: el-7-x86_64
       template: redhat-7-x86_64
       roles:
       - agent

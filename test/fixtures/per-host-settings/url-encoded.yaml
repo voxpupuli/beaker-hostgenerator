@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver:
       hypervisor: vmpooler
       platform: el-6-x86_64
+      packaging_platform: el-6-x86_64
       template: centos-6-x86_64
       roles:
       - agent
@@ -22,6 +23,7 @@ expected_hash:
       pe_upgrade_dir:
       pe_upgrade_ver:
       platform: aix-5.3-power
+      packaging_platform: aix-5.3-power
       hypervisor: aix
       vmhostname: pe-aix-53-acceptance.delivery.puppetlabs.net
       roles:
@@ -34,6 +36,7 @@ expected_hash:
       pe_upgrade_ver:
       hypervisor: vmpooler
       platform: aix-5.3-power
+      packaging_platform: aix-5.3-power
       foo: bar
       roles:
       - agent
