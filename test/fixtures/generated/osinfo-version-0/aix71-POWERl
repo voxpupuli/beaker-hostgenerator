@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 aix71-POWERl
+arguments_string: "--osinfo-version 0 aix71-POWERl"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-7.1-power
+      packaging_platform: aix-7.1-power
       roles:
       - agent
       - classifier

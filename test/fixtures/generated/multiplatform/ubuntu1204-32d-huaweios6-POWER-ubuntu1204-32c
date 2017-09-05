@@ -1,0 +1,41 @@
+---
+arguments_string: ubuntu1204-32d-huaweios6-POWER-ubuntu1204-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1204-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-12.04-i386
+      template: ubuntu-1204-i386
+      roles:
+      - agent
+      - database
+    huaweios6-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: huaweios-6-powerpc
+      roles:
+      - agent
+    ubuntu1204-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-12.04-i386
+      template: ubuntu-1204-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

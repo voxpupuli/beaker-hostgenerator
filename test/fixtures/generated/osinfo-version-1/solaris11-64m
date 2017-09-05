@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 solaris11-64m
+arguments_string: "--osinfo-version 1 solaris11-64m"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11-i386
+      packaging_platform: solaris-11-i386
       template: solaris-11-x86_64
       roles:
       - agent

@@ -12,6 +12,7 @@ expected_hash:
       pe_upgrade_ver: 6.6.6
       hypervisor: vmpooler
       platform: el-6-i386
+      packaging_platform: el-6-i386
       template: centos-6-i386
       roles:
       - agent

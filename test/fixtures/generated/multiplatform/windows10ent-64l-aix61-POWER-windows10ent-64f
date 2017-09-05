@@ -1,0 +1,46 @@
+---
+arguments_string: windows10ent-64l-aix61-POWER-windows10ent-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows10ent-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-10ent-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-10-ent-x86_64
+      roles:
+      - agent
+      - classifier
+    aix61-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: aix-6.1-power
+      packaging_platform: aix-6.1-power
+      roles:
+      - agent
+    windows10ent-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-10ent-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-10-ent-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

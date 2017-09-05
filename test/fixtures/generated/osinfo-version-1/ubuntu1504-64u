@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 ubuntu1504-64u
+arguments_string: "--osinfo-version 1 ubuntu1504-64u"
 environment_variables: {}
 expected_hash:
   HOSTS:

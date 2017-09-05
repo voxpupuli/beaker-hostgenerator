@@ -1,0 +1,46 @@
+---
+arguments_string: debian8-32c-windows2008-64-debian8-32d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian8-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-8-i386
+      packaging_platform: debian-8-i386
+      template: debian-8-i386
+      roles:
+      - agent
+      - dashboard
+    windows2008-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2008-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2008-x86_64
+      roles:
+      - agent
+    debian8-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: debian-8-i386
+      packaging_platform: debian-8-i386
+      template: debian-8-i386
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

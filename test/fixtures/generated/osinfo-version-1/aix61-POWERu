@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 aix61-POWERu
+arguments_string: "--osinfo-version 1 aix61-POWERu"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-6.1-power
+      packaging_platform: aix-6.1-power
       roles:
       - agent
       - ca

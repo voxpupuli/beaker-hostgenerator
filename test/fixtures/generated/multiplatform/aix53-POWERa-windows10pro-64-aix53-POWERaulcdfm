@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-5.3-power
+      packaging_platform: aix-5.3-power
       roles:
       - agent
     windows10pro-64-1:
@@ -19,6 +20,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-10pro-64
+      packaging_platform: windows-2012-x64
       ruby_arch: x64
       template: win-10-pro-x86_64
       roles:
@@ -30,6 +32,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-5.3-power
+      packaging_platform: aix-5.3-power
       roles:
       - agent
       - ca

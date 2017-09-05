@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 1 ubuntu1404-32m
+arguments_string: "--osinfo-version 1 ubuntu1404-32m"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-14.04-i386
+      packaging_platform: ubuntu-14.04-i386
       template: ubuntu-1404-i386
       roles:
       - agent

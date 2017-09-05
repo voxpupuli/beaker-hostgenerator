@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 solaris11-SPARCaulcdfm
+arguments_string: "--osinfo-version 0 solaris11-SPARCaulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11-sparc
+      packaging_platform: solaris-11-sparc
       roles:
       - agent
       - ca

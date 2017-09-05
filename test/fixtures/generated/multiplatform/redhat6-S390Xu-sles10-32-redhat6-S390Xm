@@ -1,0 +1,42 @@
+---
+arguments_string: redhat6-S390Xu-sles10-32-redhat6-S390Xm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat6-S390X-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-s390x
+      packaging_platform: el-6-s390x
+      roles:
+      - agent
+      - ca
+    sles10-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-10-i386
+      template: sles-10-i386
+      roles:
+      - agent
+    redhat6-S390X-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-s390x
+      packaging_platform: el-6-s390x
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

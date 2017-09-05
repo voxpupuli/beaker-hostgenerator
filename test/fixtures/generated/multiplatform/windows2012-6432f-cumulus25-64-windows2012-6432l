@@ -1,0 +1,47 @@
+---
+arguments_string: windows2012-6432f-cumulus25-64-windows2012-6432l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows2012-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x86
+      template: win-2012-x86_64
+      roles:
+      - agent
+      - frictionless
+    cumulus25-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: cumulus-2.5-x86_64
+      packaging_platform: cumulus-2.2-amd64
+      template: cumulus-vx-25-x86_64
+      roles:
+      - agent
+    windows2012-6432-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x86
+      template: win-2012-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

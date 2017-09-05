@@ -1,0 +1,45 @@
+---
+arguments_string: osx1011-64u-solaris10-32-osx1011-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx1011-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.11-x86_64
+      packaging_platform: osx-10.11-x86_64
+      template: osx-1011-x86_64
+      roles:
+      - agent
+      - ca
+    solaris10-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-i386
+      packaging_platform: solaris-10-i386
+      template: solaris-10-x86_64
+      roles:
+      - agent
+    osx1011-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.11-x86_64
+      packaging_platform: osx-10.11-x86_64
+      template: osx-1011-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

@@ -1,0 +1,46 @@
+---
+arguments_string: centos6-32u-windows2012r2_ja-6432-centos6-32m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos6-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-i386
+      packaging_platform: el-6-i386
+      template: centos-6-i386
+      roles:
+      - agent
+      - ca
+    windows2012r2_ja-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x86
+      template: win-2012r2-ja-x86_64
+      roles:
+      - agent
+    centos6-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-i386
+      packaging_platform: el-6-i386
+      template: centos-6-i386
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

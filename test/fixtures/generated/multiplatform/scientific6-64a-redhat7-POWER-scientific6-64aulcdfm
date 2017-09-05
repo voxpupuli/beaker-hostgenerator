@@ -1,0 +1,48 @@
+---
+arguments_string: scientific6-64a-redhat7-POWER-scientific6-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    scientific6-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      packaging_platform: el-6-x86_64
+      template: scientific-6-x86_64
+      roles:
+      - agent
+    redhat7-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-ppc64le
+      packaging_platform: el-7-ppc64le
+      roles:
+      - agent
+    scientific6-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-6-x86_64
+      packaging_platform: el-6-x86_64
+      template: scientific-6-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

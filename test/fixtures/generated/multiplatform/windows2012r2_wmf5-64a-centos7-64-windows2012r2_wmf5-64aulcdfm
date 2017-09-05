@@ -1,0 +1,51 @@
+---
+arguments_string: windows2012r2_wmf5-64a-centos7-64-windows2012r2_wmf5-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows2012r2_wmf5-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-wmf5-x86_64
+      roles:
+      - agent
+    centos7-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      packaging_platform: el-7-x86_64
+      template: centos-7-x86_64
+      roles:
+      - agent
+    windows2012r2_wmf5-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-wmf5-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
