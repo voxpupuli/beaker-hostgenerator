@@ -1,0 +1,21 @@
+---
+arguments_string: sles12-POWERu
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles12-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-12-ppc64le
+      packaging_platform: sles-12-ppc64le
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

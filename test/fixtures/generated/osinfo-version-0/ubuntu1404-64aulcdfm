@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 ubuntu1404-64aulcdfm
+arguments_string: "--osinfo-version 0 ubuntu1404-64aulcdfm"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-14.04-amd64
+      packaging_platform: ubuntu-14.04-amd64
       template: ubuntu-1404-x86_64
       roles:
       - agent

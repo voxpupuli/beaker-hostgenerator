@@ -1,0 +1,42 @@
+---
+arguments_string: solaris10-SPARCd-osx109-64-solaris10-SPARCc
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris10-SPARC-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-sparc
+      packaging_platform: solaris-10-sparc
+      roles:
+      - agent
+      - database
+    osx109-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.9-x86_64
+      template: osx-109-x86_64
+      roles:
+      - agent
+    solaris10-SPARC-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-10-sparc
+      packaging_platform: solaris-10-sparc
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

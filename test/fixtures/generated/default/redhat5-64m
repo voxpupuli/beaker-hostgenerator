@@ -1,0 +1,22 @@
+---
+arguments_string: redhat5-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat5-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-5-x86_64
+      packaging_platform: el-5-x86_64
+      template: redhat-5-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

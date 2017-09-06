@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 ubuntu1604-64f
+arguments_string: "--osinfo-version 0 ubuntu1604-64f"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-amd64
+      packaging_platform: ubuntu-16.04-amd64
       template: ubuntu-1604-x86_64
       roles:
       - agent

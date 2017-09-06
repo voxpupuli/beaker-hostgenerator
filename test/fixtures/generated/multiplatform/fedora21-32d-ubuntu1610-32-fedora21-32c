@@ -1,0 +1,42 @@
+---
+arguments_string: fedora21-32d-ubuntu1610-32-fedora21-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora21-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-21-i386
+      template: fedora-21-i386
+      roles:
+      - agent
+      - database
+    ubuntu1610-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.10-i386
+      template: ubuntu-1610-i386
+      roles:
+      - agent
+    fedora21-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-21-i386
+      template: fedora-21-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

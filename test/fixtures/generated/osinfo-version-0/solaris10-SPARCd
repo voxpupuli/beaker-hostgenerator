@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 solaris10-SPARCd
+arguments_string: "--osinfo-version 0 solaris10-SPARCd"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-10-sparc
+      packaging_platform: solaris-10-sparc
       roles:
       - agent
       - database

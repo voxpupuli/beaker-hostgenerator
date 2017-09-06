@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 1 aix72-POWERc"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    aix72-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: aix-7.2-power
+      packaging_platform: aix-7.1-power
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

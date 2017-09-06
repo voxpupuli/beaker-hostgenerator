@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-7.1-power
+      packaging_platform: aix-7.1-power
       roles:
       - agent
       - classifier
@@ -20,6 +21,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-10ent-32
+      packaging_platform: windows-2012-x86
       ruby_arch: x86
       template: win-10-ent-i386
       roles:
@@ -31,6 +33,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-7.1-power
+      packaging_platform: aix-7.1-power
       roles:
       - agent
       - frictionless

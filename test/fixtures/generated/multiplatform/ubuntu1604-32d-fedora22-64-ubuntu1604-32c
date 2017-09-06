@@ -1,0 +1,44 @@
+---
+arguments_string: ubuntu1604-32d-fedora22-64-ubuntu1604-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1604-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-i386
+      packaging_platform: ubuntu-16.04-i386
+      template: ubuntu-1604-i386
+      roles:
+      - agent
+      - database
+    fedora22-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-22-x86_64
+      template: fedora-22-x86_64
+      roles:
+      - agent
+    ubuntu1604-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-i386
+      packaging_platform: ubuntu-16.04-i386
+      template: ubuntu-1604-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

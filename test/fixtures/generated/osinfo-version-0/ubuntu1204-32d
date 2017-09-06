@@ -1,5 +1,5 @@
 ---
-arguments_string: --osinfo-version 0 ubuntu1204-32d
+arguments_string: "--osinfo-version 0 ubuntu1204-32d"
 environment_variables: {}
 expected_hash:
   HOSTS:

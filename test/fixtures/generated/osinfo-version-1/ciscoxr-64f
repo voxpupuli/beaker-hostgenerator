@@ -1,0 +1,22 @@
+---
+arguments_string: "--osinfo-version 1 ciscoxr-64f"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ciscoxr-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: cisco_ios_xr-6-x86_64
+      packaging_platform: cisco-wrlinux-7-x86_64
+      template: cisco-exr-9k-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

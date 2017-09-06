@@ -10,6 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-5.3-power
+      packaging_platform: aix-5.3-power
       roles:
       - agent
   CONFIG:

@@ -1,0 +1,42 @@
+---
+arguments_string: fedora20-64c-ubuntu1610-64-fedora20-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora20-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-20-x86_64
+      template: fedora-20-x86_64
+      roles:
+      - agent
+      - dashboard
+    ubuntu1610-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.10-amd64
+      template: ubuntu-1610-x86_64
+      roles:
+      - agent
+    fedora20-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-20-x86_64
+      template: fedora-20-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

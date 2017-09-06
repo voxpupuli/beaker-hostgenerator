@@ -1,0 +1,42 @@
+---
+arguments_string: ubuntu1604-POWERm-fedora21-64-ubuntu1604-POWERu
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1604-POWER-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-ppc64el
+      packaging_platform: ubuntu-16.04-ppc64el
+      roles:
+      - agent
+      - master
+    fedora21-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-21-x86_64
+      template: fedora-21-x86_64
+      roles:
+      - agent
+    ubuntu1604-POWER-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-16.04-ppc64el
+      packaging_platform: ubuntu-16.04-ppc64el
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
