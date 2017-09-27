@@ -108,6 +108,15 @@ module BeakerHostGenerator
             'template' => 'aix-7.2-power'
           }
         },
+        'amazon6-64' => {
+            :general => {
+                'platform'           => 'amazon-6-x86_64',
+                'packaging_platform' => 'amazon-6-x86_64'
+            },
+            :abs => {
+                'template' => 'amazon-6-x86_64'
+            }
+        },
         'arista4-32' => {
           :general => {
             'platform'           => 'eos-4-i386',
