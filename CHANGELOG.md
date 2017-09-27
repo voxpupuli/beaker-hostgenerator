@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.1] - 2017-9-27
+- Add platform:
+  - amazon-6-x86_64
+
 ## [1.1.0] - 2017-9-7
 - Add new 'packaging_platform' value to the OSes we build packages for to
   support new install methods in Beaker.
