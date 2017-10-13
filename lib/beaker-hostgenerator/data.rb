@@ -191,6 +191,19 @@ module BeakerHostGenerator
             'template' => 'cisco-nxos-9k-x86_64'
           }
         },
+        'cisconxhw-64' => {
+          :general => {
+            'platform'           => 'cisco_nexus-7-x86_64',
+            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
+            'vrf' => 'management',
+            'ssh' => {
+              'user' => 'devops'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-nxos_hw-9k-x86_64'
+          }
+        },
         'ciscoxr-64' => {
           :general => {
             'platform'           => 'cisco_ios_xr-6-x86_64',
