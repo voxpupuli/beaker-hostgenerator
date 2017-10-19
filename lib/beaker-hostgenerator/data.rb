@@ -538,6 +538,15 @@ module BeakerHostGenerator
             'template' => 'osx-1012-x86_64'
           }
         },
+        'osx1013-64' => {
+          :general => {
+            'platform'           => 'osx-10.13-x86_64',
+            'packaging_platform' => 'osx-10.13-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'osx-1013-x86_64'
+          }
+        },
         'redhat4-32' => {
           :general => {
             'platform' => 'el-4-i386'
