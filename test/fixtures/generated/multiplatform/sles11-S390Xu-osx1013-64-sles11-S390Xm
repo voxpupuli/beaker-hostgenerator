@@ -1,0 +1,43 @@
+---
+arguments_string: sles11-S390Xu-osx1013-64-sles11-S390Xm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    sles11-S390X-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-11-s390x
+      packaging_platform: sles-11-s390x
+      roles:
+      - agent
+      - ca
+    osx1013-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.13-x86_64
+      packaging_platform: osx-10.13-x86_64
+      template: osx-1013-x86_64
+      roles:
+      - agent
+    sles11-S390X-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: sles-11-s390x
+      packaging_platform: sles-11-s390x
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
