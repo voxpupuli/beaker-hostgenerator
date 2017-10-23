@@ -110,8 +110,8 @@ module BeakerHostGenerator
         },
         'amazon6-64' => {
             :general => {
-                'platform'           => 'amazon-6-x86_64',
-                'packaging_platform' => 'amazon-6-x86_64'
+                'platform'           => 'el-6-x86_64',
+                'packaging_platform' => 'el-6-x86_64'
             },
             :abs => {
                 'template' => 'amazon-6-x86_64'
