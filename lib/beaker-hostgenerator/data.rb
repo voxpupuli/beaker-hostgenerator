@@ -629,6 +629,18 @@ module BeakerHostGenerator
             'packaging_platform' => 'el-7-s390x'
           },
         },
+        'redhat7-AARCH64' => {
+          :general => {
+            'platform'           => 'el-7-aarch64',
+            'packaging_platform' => 'el-7-aarch64'
+          },
+          :abs => {
+            'template' => 'el-7-arm64'
+          },
+          :vmpooler => {
+            'template' => 'redhat-7-x86_64'
+          }
+        },
         'scientific5-32' => {
           :general => {
             'platform'           => 'el-5-i386',

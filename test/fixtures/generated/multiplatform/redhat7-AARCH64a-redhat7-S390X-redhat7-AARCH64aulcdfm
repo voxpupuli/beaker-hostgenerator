@@ -1,0 +1,48 @@
+---
+arguments_string: redhat7-AARCH64a-redhat7-S390X-redhat7-AARCH64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat7-AARCH64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-aarch64
+      packaging_platform: el-7-aarch64
+      template: redhat-7-x86_64
+      roles:
+      - agent
+    redhat7-S390X-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-s390x
+      packaging_platform: el-7-s390x
+      roles:
+      - agent
+    redhat7-AARCH64-3:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-aarch64
+      packaging_platform: el-7-aarch64
+      template: redhat-7-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
