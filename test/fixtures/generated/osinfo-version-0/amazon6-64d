@@ -1,5 +1,5 @@
 ---
-arguments_string: "--osinfo-version 1 amazon6-64a"
+arguments_string: "--osinfo-version 0 amazon6-64d"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -9,10 +9,11 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: amazon-6-x86_64
-      packaging_platform: amazon-6-x86_64
+      platform: el-6-x86_64
+      packaging_platform: el-6-x86_64
       roles:
       - agent
+      - database
   CONFIG:
     nfs_server: none
     consoleport: 443
