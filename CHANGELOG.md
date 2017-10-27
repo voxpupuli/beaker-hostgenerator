@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.3] - 2017-10-27
+- Add platforms:
+  - osx1013-64
+  - redhat7-AARCH64
+  - windows2012r2_core-64
+  - windows2012r2_core-6432
+  - windows2016_core-64
+  - windows2016_core-6432
+- Fix to platform:
+  - amazon6-64
+
 ## [1.1.2] - 2017-10-13
 - Add platform:
   - cisconxhw-64
