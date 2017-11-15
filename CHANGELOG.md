@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.4] - 2017-11-15
+- Update abs template string for AARCH64
+
 ## [1.1.3] - 2017-10-27
 - Add platforms:
   - osx1013-64
