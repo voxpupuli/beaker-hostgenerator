@@ -635,7 +635,7 @@ module BeakerHostGenerator
             'packaging_platform' => 'el-7-aarch64'
           },
           :abs => {
-            'template' => 'el-7-arm64'
+            'template' => 'centos-7-arm64'
           },
           :vmpooler => {
             'template' => 'redhat-7-x86_64'
