@@ -10,7 +10,7 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-vista-64
-      packaging_platform: windows-2012-x64
+      packaging_platform: windows-2012r2-x64
       ruby_arch: x64
       template: win-vista-x86_64
       roles:
