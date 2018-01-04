@@ -1,0 +1,46 @@
+---
+arguments_string: windows8-64u-amazon7-64-windows8-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows8-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-8-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-8-x86_64
+      roles:
+      - agent
+      - ca
+    amazon7-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: el-7-x86_64
+      packaging_platform: el-7-x86_64
+      roles:
+      - agent
+    windows8-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: windows-8-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-8-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
