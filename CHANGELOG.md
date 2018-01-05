@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.5] - 2018-01-05
+- Add support for amazon7 (AmazonLinux v2)
+
 ## [1.1.4] - 2017-11-15
 - Update abs template string for AARCH64
 
