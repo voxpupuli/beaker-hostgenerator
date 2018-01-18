@@ -623,6 +623,15 @@ module BeakerHostGenerator
             'template' => 'redhat-7-x86_64'
           }
         },
+        'redhatfips7-64' => {
+          :general => {
+            'platform'           => 'redhat_fips-7-x86_64',
+            'packaging_platform' => 'redhat-fips-7-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'redhat-fips-7-x86_64'
+          }
+        },
         'redhat7-POWER' => {
           :general => {
             'platform'           => 'el-7-ppc64le',
