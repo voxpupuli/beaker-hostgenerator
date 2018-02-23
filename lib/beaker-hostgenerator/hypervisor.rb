@@ -46,6 +46,7 @@ module BeakerHostGenerator
     def self.builtin_hypervisors()
       {
         'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler,
+        'docker' => BeakerHostGenerator::Hypervisor::Docker,
         'abs' => BeakerHostGenerator::Hypervisor::ABS
       }
     end
@@ -95,4 +96,5 @@ end
 # hypervisor implementation files.
 require 'beaker-hostgenerator/hypervisor/unknown'
 require 'beaker-hostgenerator/hypervisor/vmpooler'
+require 'beaker-hostgenerator/hypervisor/docker'
 require 'beaker-hostgenerator/hypervisor/abs'

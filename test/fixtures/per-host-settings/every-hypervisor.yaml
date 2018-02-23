@@ -1,5 +1,5 @@
 ---
-arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}
+arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian9-64a{hypervisor=docker}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -37,6 +37,24 @@ expected_hash:
       roles:
       - agent
       - frictionless
+    debian9-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: docker
+      docker_cmd:
+      - /sbin/init
+      image: debian:9
+      platform: debian-9-amd64
+      packaging_platform: debian-9-amd64
+      docker_image_commands:
+      - rm -f /usr/sbin/policy-rc.d
+      - systemctl mask getty@tty1.service getty-static.service
+      - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv
+      roles:
+      - agent
+
   CONFIG:
     nfs_server: none
     consoleport: 443
