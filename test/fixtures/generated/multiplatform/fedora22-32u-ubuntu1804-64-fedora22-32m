@@ -1,0 +1,43 @@
+---
+arguments_string: fedora22-32u-ubuntu1804-64-fedora22-32m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora22-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-22-i386
+      template: fedora-22-i386
+      roles:
+      - agent
+      - ca
+    ubuntu1804-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-18.04-amd64
+      packaging_platform: ubuntu-18.04-amd64
+      template: ubuntu-1804-x86_64
+      roles:
+      - agent
+    fedora22-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-22-i386
+      template: fedora-22-i386
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
