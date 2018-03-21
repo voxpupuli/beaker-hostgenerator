@@ -992,6 +992,15 @@ module BeakerHostGenerator
             'template' => 'vro-7-x86_64'
           }
         },
+        'vro73-64' => {
+          :general => {
+            'platform'           => 'sles-11-x86_64',
+            'packaging_platform' => 'sles-11-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'vro-73-x86_64'
+          }
+        },
         'windows2003-64' => {
           :general => {
             'platform'           => 'windows-2003-64',
