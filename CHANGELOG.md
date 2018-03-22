@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.8] - 2018-03-22
+- Add platforms:
+  - ubuntu1804-64
+  - vro73-64
+
+## [1.1.7] - 2018-02-05
+- Add platform:
+  - fedora27-64
+
+## [1.1.6] - 2018-01-19
+- Add platform:
+  - redhatfips7-64
+
 ## [1.1.5] - 2018-01-05
 - Add support for amazon7 (AmazonLinux v2)
 
