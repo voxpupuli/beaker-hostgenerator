@@ -974,6 +974,15 @@ module BeakerHostGenerator
             'template' => 'ubuntu-1610-x86_64'
           }
         },
+        'ubuntu1804-64' => {
+          :general => {
+            'platform'           => 'ubuntu-18.04-amd64',
+            'packaging_platform' => 'ubuntu-18.04-amd64'
+          },
+          :vmpooler => {
+            'template' => 'ubuntu-1804-x86_64'
+          }
+        },
         'vro6-64' => {
           :general => {
             'platform'           => 'sles-11-x86_64',
