@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.9] - 2018-03-29
+- Rename platforms redhat-fips packaging_platform to redhatfips
+
 ## [1.1.8] - 2018-03-22
 - Add platforms:
   - ubuntu1804-64
