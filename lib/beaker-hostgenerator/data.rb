@@ -165,6 +165,12 @@ module BeakerHostGenerator
             'platform'           => 'el-5-x86_64',
             'packaging_platform' => 'el-5-x86_64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
+              'sed -i -e "/mingetty/d" /etc/inittab'
+            ]
+          },
           :vmpooler => {
             'template' => 'centos-5-x86_64'
           }
@@ -183,6 +189,13 @@ module BeakerHostGenerator
             'platform'           => 'el-6-x86_64',
             'packaging_platform' => 'el-6-x86_64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'rm -rf /var/run/network/*',
+              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
+              'rm /etc/init/tty.conf'
+            ]
+          },
           :vmpooler => {
             'template' => 'centos-6-x86_64'
           }
@@ -191,6 +204,12 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'el-7-x86_64',
             'packaging_platform' => 'el-7-x86_64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'systemctl mask getty@tty1.service',
+              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss'
+            ]
           },
           :vmpooler => {
             'template' => 'centos-7-x86_64'
@@ -270,6 +289,11 @@ module BeakerHostGenerator
             'platform'           => 'debian-7-amd64',
             'packaging_platform' => 'debian-7-amd64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'apt-get update && apt-get install -y cron locales-all net-tools wget'
+            ],
+          },
           :vmpooler => {
             'template' => 'debian-7-x86_64'
           }
@@ -288,6 +312,13 @@ module BeakerHostGenerator
             'platform'           => 'debian-8-amd64',
             'packaging_platform' => 'debian-8-amd64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'rm -f /usr/sbin/policy-rc.d',
+              'systemctl mask getty@tty1.service getty-static.service',
+              'apt-get update && apt-get install -y cron locales-all net-tools wget'
+            ]
+          },
           :vmpooler => {
             'template' => 'debian-8-x86_64'
           }
@@ -305,6 +336,13 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'debian-9-amd64',
             'packaging_platform' => 'debian-9-amd64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'rm -f /usr/sbin/policy-rc.d',
+              'systemctl mask getty@tty1.service getty-static.service',
+              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv'
+            ]
           },
           :vmpooler => {
             'template' => 'debian-9-x86_64'
@@ -877,6 +915,12 @@ module BeakerHostGenerator
           :general => {
             'platform' => 'ubuntu-12.04-amd64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'apt-get install -y net-tools wget',
+              'locale-gen en_US.UTF-8'
+            ]
+          },
           :vmpooler => {
             'template' => 'ubuntu-1204-x86_64'
           }
@@ -894,6 +938,15 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'ubuntu-14.04-amd64',
             'packaging_platform' => 'ubuntu-14.04-amd64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'rm /usr/sbin/policy-rc.d',
+              'rm /sbin/initctl; dpkg-divert --rename --remove /sbin/initctl',
+              'apt-get install -y net-tools wget apt-transport-https',
+              'locale-gen en_US.UTF-8',
+              'echo LANG=en_US.UTF-8 > /etc/default/locale'
+            ]
           },
           :vmpooler => {
             'template' => 'ubuntu-1404-x86_64'
@@ -944,6 +997,13 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'ubuntu-16.04-amd64',
             'packaging_platform' => 'ubuntu-16.04-amd64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'systemctl mask getty@tty1.service getty-static.service',
+              'apt-get install -y net-tools wget locales apt-transport-https',
+              'locale-gen en_US.UTF-8'
+            ]
           },
           :vmpooler => {
             'template' => 'ubuntu-1604-x86_64'
