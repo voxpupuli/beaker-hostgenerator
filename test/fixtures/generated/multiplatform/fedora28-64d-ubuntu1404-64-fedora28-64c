@@ -1,0 +1,45 @@
+---
+arguments_string: fedora28-64d-ubuntu1404-64-fedora28-64c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora28-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-28-x86_64
+      packaging_platform: fedora-28-x86_64
+      template: fedora-28-x86_64
+      roles:
+      - agent
+      - database
+    ubuntu1404-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-14.04-amd64
+      packaging_platform: ubuntu-14.04-amd64
+      template: ubuntu-1404-x86_64
+      roles:
+      - agent
+    fedora28-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: fedora-28-x86_64
+      packaging_platform: fedora-28-x86_64
+      template: fedora-28-x86_64
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
