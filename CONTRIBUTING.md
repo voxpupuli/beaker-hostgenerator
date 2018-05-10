@@ -1,6 +1,6 @@
 # How To Contribute To Beaker Host Generator
 
-## Making Changes
+## Making A Change
 
 * Create a topic branch based on `beaker-hostgenerator`'s master branch.
 * Check for unnecessary whitespace with `git diff --check` before committing.
