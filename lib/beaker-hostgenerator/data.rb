@@ -1011,7 +1011,8 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'systemctl mask getty@tty1.service getty-static.service',
               'apt-get install -y net-tools wget locales apt-transport-https',
-              'locale-gen en_US.UTF-8'
+              'locale-gen en_US.UTF-8',
+              'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
           },
           :vmpooler => {
@@ -1047,6 +1048,14 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'ubuntu-18.04-amd64',
             'packaging_platform' => 'ubuntu-18.04-amd64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'systemctl mask getty@tty1.service getty-static.service',
+              'apt-get install -y net-tools wget locales apt-transport-https',
+              'locale-gen en_US.UTF-8',
+              'echo LANG=en_US.UTF-8 > /etc/default/locale'
+            ]
           },
           :vmpooler => {
             'template' => 'ubuntu-1804-x86_64'
