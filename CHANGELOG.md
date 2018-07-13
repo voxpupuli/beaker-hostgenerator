@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+
+## [1.1.14] - 2018-07-13
+- Add docker image commands for Ubuntu 18.04
+- Add platform:
+  - sles15-64
+
+## [1.1.13] - 2018-06-01
+- pin fakefs to < 0.14.0 for ruby 2.2
+- Add platforms:
+  - windows2019-64
+  - windows2019-6432
+
+## [1.1.12] - 2018-04-24
+- Add platforms:
+  - vro71-64
+  - vro74-64
+
+## [1.1.11] - 2018-04-23
+- Add platform:
+  - fedora28-64
+
+## [1.1.10] - 2018-04-09
+- Added docker hypervisor support
+
 ## [1.1.9] - 2018-03-29
 - Rename platforms redhat-fips packaging_platform to redhatfips
 
