@@ -824,6 +824,15 @@ module BeakerHostGenerator
             'template' => 'sles-12-power8'
           }
         },
+        'sles15-64' => {
+          :general => {
+            'platform'           => 'sles-15-x86_64',
+            'packaging_platform' => 'sles-15-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'sles-15-x86_64'
+          }
+        },
         'solaris10-32' => {
           :general => {
             'platform'           => 'solaris-10-i386',
