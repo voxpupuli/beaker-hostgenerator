@@ -1,0 +1,42 @@
+---
+arguments_string: panos61-64f-ubuntu1510-32-panos61-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    panos61-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: palo-alto-6.1.0-x86_64
+      template: palo-alto-6.1.0-x86_64
+      roles:
+      - agent
+      - frictionless
+    ubuntu1510-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.10-i386
+      template: ubuntu-1510-i386
+      roles:
+      - agent
+    panos61-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: palo-alto-6.1.0-x86_64
+      template: palo-alto-6.1.0-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
