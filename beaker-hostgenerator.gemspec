@@ -13,7 +13,6 @@ The beaker-hostgenerator tool will take a Beaker SUT (System Under Test) spec as
 its first positional argument and use that to generate a Beaker host
 configuration file.
 eos
-  s.description = %q{For use for the Beaker acceptance testing tool}
   s.license     = 'Apache2'
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
