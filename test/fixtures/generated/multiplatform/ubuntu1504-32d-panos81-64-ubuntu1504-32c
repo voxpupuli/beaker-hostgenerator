@@ -1,0 +1,42 @@
+---
+arguments_string: ubuntu1504-32d-panos81-64-ubuntu1504-32c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1504-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.04-i386
+      template: ubuntu-1504-i386
+      roles:
+      - agent
+      - database
+    panos81-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: palo-alto-8.1.0-x86_64
+      template: palo-alto-8.1.0-x86_64
+      roles:
+      - agent
+    ubuntu1504-32-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: ubuntu-15.04-i386
+      template: ubuntu-1504-i386
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

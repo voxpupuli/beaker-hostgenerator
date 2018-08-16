@@ -507,6 +507,30 @@ module BeakerHostGenerator
             'template' => 'huaweios-6-powerpc'
           }
         },
+        'panos61-64' => {
+          :general => {
+            'platform' => 'palo-alto-6.1.0-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'palo-alto-6.1.0-x86_64'
+          }
+        },
+        'panos71-64' => {
+          :general => {
+            'platform' => 'palo-alto-7.1.0-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'palo-alto-7.1.0-x86_64'
+          }
+        },
+        'panos81-64' => {
+          :general => {
+            'platform' => 'palo-alto-8.1.0-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'palo-alto-8.1.0-x86_64'
+          }
+        },
         'opensuse11-32' => {
           :general => {
             'platform' => 'opensuse-11-i386'

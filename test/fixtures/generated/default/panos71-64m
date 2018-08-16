@@ -1,0 +1,21 @@
+---
+arguments_string: panos71-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    panos71-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: palo-alto-7.1.0-x86_64
+      template: palo-alto-7.1.0-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
