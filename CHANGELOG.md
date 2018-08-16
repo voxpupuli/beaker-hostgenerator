@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.15] - 2018-08-16
+- Add platforms:
+  - panos61-64
+  - panos71-64
+  - panos81-64
 
 ## [1.1.14] - 2018-07-13
 - Add docker image commands for Ubuntu 18.04
