@@ -93,6 +93,7 @@ module BeakerHostGenerator
       let(:dev_version) { '2017.3.0-rc4-11-g123abcd' }
       let(:dev_version_no_rc) { '2017.3.0-1-g123abcd' }
       let(:pez_version) { '2017.3.0-rc4-11-g123abcd-PEZ_foo' }
+      let(:release_branch_version) { '2018.1.0-rc0-14-g123abcd-release' }
       let(:release_version) { '2017.2.2' }
       let(:rc_version) { '2017.3.0-rc4' }
 
@@ -107,6 +108,10 @@ module BeakerHostGenerator
 
       it "returns archives/internal for an rc version" do
         expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2017\.3})
+      end
+
+      it "returns release/ci-ready for a release branch version" do
+        expect(BeakerHostGenerator::Data.pe_dir(release_branch_version)).to match(%r{2018\.1/release/ci-ready})
       end
 
       it "returns feature/ci-ready for a PEZ version" do

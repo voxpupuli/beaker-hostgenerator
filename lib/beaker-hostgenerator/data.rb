@@ -35,6 +35,8 @@ module BeakerHostGenerator
         then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
       when /#{base_regex}-.*PEZ_.*/
         then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
+      when /#{base_regex}-.*-release/
+        then "#{PE_TARBALL_SERVER}/%s/release/ci-ready"
       when /#{base_regex}-.*/
         then "#{PE_TARBALL_SERVER}/%s/ci-ready"
       else
