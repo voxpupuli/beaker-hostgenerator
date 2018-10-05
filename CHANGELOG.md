@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.17] - 2018-10-05
+- Add platforms:
+  - windows2019_core-64
+  - windows2019_core-6432
+
+## [1.1.16] - 2018-09-04
+- Install iproute2 on ubuntu18.04 for containers
+
 ## [1.1.15] - 2018-08-16
 - Add platforms:
   - panos61-64
