@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.18] - 2018-10-10
+- Add platform:
+  - ubuntu1810-64
+
 ## [1.1.17] - 2018-10-05
 - Add platforms:
   - windows2019_core-64
