@@ -929,6 +929,24 @@ module BeakerHostGenerator
             'template' => 'solaris-112-x86_64'
           }
         },
+        'solaris114-32' => {
+          :general => {
+            'platform'           => 'solaris-11.4-i386',
+            'packaging_platform' => 'solaris-11-i386'
+          },
+          :vmpooler => {
+            'template' => 'solaris-114-x86_64'
+          }
+        },
+        'solaris114-64' => {
+          :general => {
+            'platform'           => 'solaris-11.4-i386',
+            'packaging_platform' => 'solaris-11-i386'
+          },
+          :vmpooler => {
+            'template' => 'solaris-114-x86_64'
+          }
+        },
         'ubuntu1004-32' => {
           :general => {
             'platform' => 'ubuntu-10.04-i386'
