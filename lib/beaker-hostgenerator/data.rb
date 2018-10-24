@@ -1103,7 +1103,7 @@ module BeakerHostGenerator
           :docker => {
             'docker_image_commands' => [
               'systemctl mask getty@tty1.service getty-static.service',
-              'apt-get install -y net-tools wget locales apt-transport-https iproute2',
+              'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
