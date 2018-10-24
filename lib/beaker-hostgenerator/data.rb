@@ -341,7 +341,7 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'rm -f /usr/sbin/policy-rc.d',
               'systemctl mask getty@tty1.service getty-static.service',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv'
+              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg'
             ]
           },
           :vmpooler => {
