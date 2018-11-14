@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.20] - 2018-11-14
+- Add gnupg to docker_image_commands for debian9-64
+- Add platform:
+  - fedora29-64
+
+## [1.1.19] - 2018-10-18
+- Add platforms:
+  - solaris114-32
+  - solaris114-64
+
 ## [1.1.18] - 2018-10-10
 - Add platform:
   - ubuntu1810-64
