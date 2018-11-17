@@ -167,6 +167,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/mingetty',
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
               'sed -i -e "/mingetty/d" /etc/inittab'
             ]
@@ -191,6 +192,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/mingetty',
               'rm -rf /var/run/network/*',
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
               'rm /etc/init/tty.conf'
@@ -207,7 +209,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
-              'systemctl mask getty@tty1.service',
+              'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss'
             ]
           },
@@ -291,6 +293,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/getty',
               'apt-get update && apt-get install -y cron locales-all net-tools wget'
             ],
           },
@@ -314,8 +317,8 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'systemctl mask getty@tty1.service getty-static.service',
               'apt-get update && apt-get install -y cron locales-all net-tools wget'
             ]
           },
@@ -330,6 +333,13 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'debian-9-i386'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'rm -f /usr/sbin/policy-rc.d',
+              'apt-get update && apt-get install -y cron locales-all net-tools wget'
+            ]
           }
         },
         'debian9-64' => {
@@ -339,8 +349,8 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'systemctl mask getty@tty1.service getty-static.service',
               'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg'
             ]
           },
@@ -977,6 +987,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
               'apt-get install -y net-tools wget',
               'locale-gen en_US.UTF-8'
             ]
@@ -1001,6 +1012,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
               'rm /usr/sbin/policy-rc.d',
               'rm /sbin/initctl; dpkg-divert --rename --remove /sbin/initctl',
               'apt-get install -y net-tools wget apt-transport-https',
@@ -1060,7 +1072,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
-              'systemctl mask getty@tty1.service getty-static.service',
+              'cp /bin/true /sbin/agetty',
               'apt-get install -y net-tools wget locales apt-transport-https',
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
@@ -1102,7 +1114,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
-              'systemctl mask getty@tty1.service getty-static.service',
+              'cp /bin/true /sbin/agetty',
               'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
@@ -1119,7 +1131,7 @@ module BeakerHostGenerator
           },
           :docker => {
             'docker_image_commands' => [
-              'systemctl mask getty@tty1.service getty-static.service',
+              'cp /bin/true /sbin/agetty',
               'apt-get install -y net-tools wget locales apt-transport-https iproute2',
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
