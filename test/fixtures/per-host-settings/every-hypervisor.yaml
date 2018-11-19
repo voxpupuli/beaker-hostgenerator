@@ -49,8 +49,8 @@ expected_hash:
       platform: debian-9-amd64
       packaging_platform: debian-9-amd64
       docker_image_commands:
+      - cp /bin/true /sbin/agetty
       - rm -f /usr/sbin/policy-rc.d
-      - systemctl mask getty@tty1.service getty-static.service
       - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg
       roles:
       - agent
