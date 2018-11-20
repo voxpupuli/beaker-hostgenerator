@@ -1,5 +1,5 @@
 ---
-arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian9-64a{hypervisor=docker}
+arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian9-64a{hypervisor=docker}-ubuntu1804-64{hypervisor=vagrant}-debian7-64{hypervisor=vagrant_libvirt}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -52,6 +52,30 @@ expected_hash:
       - cp /bin/true /sbin/agetty
       - rm -f /usr/sbin/policy-rc.d
       - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg
+      roles:
+      - agent
+    ubuntu1804-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vagrant
+      box: generic/ubuntu1804
+      synced_folder: disabled
+      platform: ubuntu-18.04-amd64
+      packaging_platform: ubuntu-18.04-amd64
+      roles:
+      - agent
+    debian7-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      hypervisor: vagrant_libvirt
+      box: debian/wheezy64
+      synced_folder: disabled
+      platform: debian-7-amd64
+      packaging_platform: debian-7-amd64
       roles:
       - agent
 

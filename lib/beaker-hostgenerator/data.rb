@@ -297,6 +297,9 @@ module BeakerHostGenerator
               'apt-get update && apt-get install -y cron locales-all net-tools wget'
             ],
           },
+          :vagrant => {
+            'box' => 'debian/wheezy64',
+          },
           :vmpooler => {
             'template' => 'debian-7-x86_64'
           }
@@ -321,6 +324,9 @@ module BeakerHostGenerator
               'rm -f /usr/sbin/policy-rc.d',
               'apt-get update && apt-get install -y cron locales-all net-tools wget'
             ]
+          },
+          :vagrant => {
+            'box' => 'debian/jessie64',
           },
           :vmpooler => {
             'template' => 'debian-8-x86_64'
@@ -353,6 +359,9 @@ module BeakerHostGenerator
               'rm -f /usr/sbin/policy-rc.d',
               'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg'
             ]
+          },
+          :vagrant => {
+            'box' => 'debian/stretch64',
           },
           :vmpooler => {
             'template' => 'debian-9-x86_64'
