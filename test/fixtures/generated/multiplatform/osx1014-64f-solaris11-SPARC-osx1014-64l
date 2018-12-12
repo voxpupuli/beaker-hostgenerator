@@ -1,0 +1,44 @@
+---
+arguments_string: osx1014-64f-solaris11-SPARC-osx1014-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx1014-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.14-x86_64
+      packaging_platform: osx-10.14-x86_64
+      template: osx-1014-x86_64
+      roles:
+      - agent
+      - frictionless
+    solaris11-SPARC-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: solaris-11-sparc
+      packaging_platform: solaris-11-sparc
+      roles:
+      - agent
+    osx1014-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      hypervisor: vmpooler
+      platform: osx-10.14-x86_64
+      packaging_platform: osx-10.14-x86_64
+      template: osx-1014-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
