@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.23] - 2018-12-13
+- Add platforms:
+  - redhat8-64
+  - osx1014-64
+
+## [1.1.22] - 2018-11-21
+- Add vagrant hypervisor for debian plaforms
+
+## [1.1.21] - 2018-11-19
+- Disable getty when using docker
+
 ## [1.1.20] - 2018-11-14
 - Add gnupg to docker_image_commands for debian9-64
 - Add platform:
