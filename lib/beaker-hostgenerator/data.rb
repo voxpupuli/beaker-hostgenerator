@@ -767,6 +767,15 @@ module BeakerHostGenerator
             'template' => 'redhat-7-x86_64'
           }
         },
+        'redhat8-64' => {
+          :general => {
+            'platform'           => 'el-8-x86_64',
+            'packaging_platform' => 'el-8-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'redhat-8-x86_64'
+          }
+        },
         'scientific5-32' => {
           :general => {
             'platform'           => 'el-5-i386',
