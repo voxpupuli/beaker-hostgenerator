@@ -26,12 +26,8 @@ module BeakerHostGenerator
     #                          create.
     def self.create(node_info, options)
       name = node_info['host_settings']['hypervisor'] || options[:hypervisor]
-      hypervisor = builtin_hypervisors[name]
-      if hypervisor
-        hypervisor.new
-      else
-        BeakerHostGenerator::Hypervisor::Unknown.new(name)
-      end
+      hypervisor = builtin_hypervisors[name] || BeakerHostGenerator::Hypervisor::Unknown
+      hypervisor.new(name)
     end
 
     # Returns a map of all built-in hypervisor implementations, where the keys
@@ -54,6 +50,10 @@ module BeakerHostGenerator
     end
 
     class Interface
+      def initialize(name)
+        @name = name
+      end
+
       # Returns a map containing any general configuration required by this
       # hypervisor. This map will be merged into the 'CONFIG' section of the
       # final hosts configuration output.
@@ -87,6 +87,19 @@ module BeakerHostGenerator
       #                              up the node definition.
       def generate_node(node_info, base_config, bhg_version)
         raise "Method 'generate_node' not implemented!"
+      end
+
+      private
+
+      def base_generate_node(node_info, base_config, bhg_version, *hypervisors)
+        platform = node_info['platform']
+        hypervisors.map do |hypervisor|
+          base_config.deep_merge! get_platform_info(bhg_version, platform, hypervisor)
+        end
+
+        base_config['hypervisor'] = @name
+
+        return base_config
       end
     end
   end

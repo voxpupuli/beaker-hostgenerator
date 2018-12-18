@@ -15,21 +15,12 @@ module BeakerHostGenerator
       include BeakerHostGenerator::Data
 
       def generate_node(node_info, base_config, bhg_version)
-        base_config['hypervisor'] = 'abs'
-
         # Grab vmpooler data for this platform and any hardware (ABS) data.
         # The assumption here is that these are mutually exclusive; that is,
         # any given platform will have *either* :vmpooler data or :abs data
         # so we're not worried about one overriding the other when we merge
         # the hashes together.
-        platform = node_info['platform']
-        vmpooler_platform_info = get_platform_info(bhg_version, platform, :vmpooler)
-        abs_platform_info = get_platform_info(bhg_version, platform, :abs)
-
-        base_config.deep_merge! vmpooler_platform_info
-        base_config.deep_merge! abs_platform_info
-
-        return base_config
+        return base_generate_node(node_info, base_config, bhg_version, :vmpooler, :abs)
       end
     end
   end
