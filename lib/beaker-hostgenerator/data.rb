@@ -126,6 +126,15 @@ module BeakerHostGenerator
                 'template' => 'amazon-7-x86_64'
             }
         },
+        'amazon7-ARM64' => {
+          :general => {
+            'platform'           => 'el-7-arm64',
+            'packaging_platform' => 'el-7-arm64'
+          },
+          :abs => {
+            'template' => 'amazon-7-arm64'
+          }
+        },
         'arista4-32' => {
           :general => {
             'platform'           => 'eos-4-i386',
