@@ -15,12 +15,7 @@ module BeakerHostGenerator
       end
 
       def generate_node(node_info, base_config, bhg_version)
-        # set hypervisor
-        base_config['hypervisor'] = 'vmpooler'
-
-        platform = node_info['platform']
-        platform_info = get_platform_info(bhg_version, platform, :vmpooler)
-        base_config.deep_merge! platform_info
+        base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler)
 
         # Some vmpooler/vsphere platforms have special requirements.
         # We munge the node host config here if that is necessary.
