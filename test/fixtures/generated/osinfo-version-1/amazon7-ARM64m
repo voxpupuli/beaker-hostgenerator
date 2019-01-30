@@ -1,5 +1,5 @@
 ---
-arguments_string: amazon7-ARM64m
+arguments_string: "--osinfo-version 1 amazon7-ARM64m"
 environment_variables: {}
 expected_hash:
   HOSTS:
