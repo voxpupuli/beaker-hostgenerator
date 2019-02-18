@@ -376,6 +376,24 @@ module BeakerHostGenerator
             'template' => 'debian-9-x86_64'
           }
         },
+        'debian10-64' => {
+          :general => {
+            'platform'           => 'debian-10-amd64',
+            'packaging_platform' => 'debian-10-amd64'
+          },
+          :vmpooler => {
+            'template' => 'debian-10-x86_64'
+          }
+        },
+        'debian10-32' => {
+          :general => {
+            'platform'           => 'debian-10-i386',
+            'packaging_platform' => 'debian-10-i386'
+          },
+          :vmpooler => {
+            'template' => 'debian-10-i386'
+          }
+        },
         'fedora14-32' => {
           :general => {
             'platform' => 'fedora-14-i386'

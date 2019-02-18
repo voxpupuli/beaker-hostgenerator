@@ -1,0 +1,22 @@
+---
+arguments_string: debian10-64c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian10-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: debian-10-amd64
+      packaging_platform: debian-10-amd64
+      template: debian-10-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
