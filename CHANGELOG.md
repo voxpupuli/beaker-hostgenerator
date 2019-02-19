@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 This project makes a strong effort to adhere to [Semantic
 Versioning](http://semver.org).
 
+## [1.1.25] - 2019-02-19
+- Add platform
+  - debian10-64
+  - debian10-32
+- Change amazon7-ARM64 to use el-7-aarch64 platform
+
+## [1.1.24] - 2019-01-03
+- Add platform:
+  - amazon7-ARM64
+
 ## [1.1.23] - 2018-12-13
 - Add platforms:
   - redhat8-64
