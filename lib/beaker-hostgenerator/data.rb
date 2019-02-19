@@ -128,8 +128,8 @@ module BeakerHostGenerator
         },
         'amazon7-ARM64' => {
           :general => {
-            'platform'           => 'el-7-arm64',
-            'packaging_platform' => 'el-7-arm64'
+            'platform'           => 'el-7-aarch64',
+            'packaging_platform' => 'el-7-aarch64'
           },
           :abs => {
             'template' => 'amazon-7-arm64'
