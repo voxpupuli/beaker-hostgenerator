@@ -1491,6 +1491,28 @@ module BeakerHostGenerator
             'template' => 'win-2016-core-x86_64'
           }
         },
+        'windows2016_fr-64' => {
+          :general => {
+            'platform'           => 'windows-2016-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2016-fr-x86_64',
+            'user'     => 'Administrateur'
+          }
+        },
+        'windows2016_fr-6432' => {
+          :general => {
+            'platform'           => 'windows-2016-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x86'
+          },
+          :vmpooler => {
+            'template' => 'win-2016-fr-x86_64',
+            'user'     => 'Administrateur'
+          }
+        },
         'windows2019-64' => {
           :general => {
             'platform'           => 'windows-2019-64',
