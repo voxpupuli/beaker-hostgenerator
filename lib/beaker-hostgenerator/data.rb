@@ -252,6 +252,28 @@ module BeakerHostGenerator
             'template' => 'cisco-nxos_hw-9k-x86_64'
           }
         },
+        'ciscoios-32' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-ios-12-arm'
+          }
+        },
+        'ciscoiosxe-32' => {
+          :general => {
+            'platform' => 'cisco_iosxe-3-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosxe-3-arm'
+          }
+        },
         'ciscoxr-64' => {
           :general => {
             'platform'           => 'cisco_ios_xr-6-x86_64',
