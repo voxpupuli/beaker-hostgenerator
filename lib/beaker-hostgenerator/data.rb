@@ -252,7 +252,7 @@ module BeakerHostGenerator
             'template' => 'cisco-nxos_hw-9k-x86_64'
           }
         },
-        'ciscoios-32' => {
+        'ciscoiosc2960-ARM32' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -260,10 +260,65 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-ios-12-arm'
+            'template' => 'cisco-iosc2960-arm'
           }
         },
-        'ciscoiosxe-32' => {
+        'ciscoiosc3750-ARM32' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosc3750-arm'
+          }
+        },
+        'ciscoiosc4507r-ARM32' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosc4507r-arm'
+          }
+        },
+        'ciscoiosc4948-ARM32' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosc4948-arm'
+          }
+        },
+        'ciscoiosc6503-ARM32' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosc6503-arm'
+          }
+        },
+        'ciscoiosxec3605-ARM32' => {
+          :general => {
+            'platform' => 'cisco_iosxec3605-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-iosxec3605-arm'
+          }
+        },
+        'ciscoiosxec4503-ARM32' => {
           :general => {
             'platform' => 'cisco_iosxe-3-arm32',
             'ssh' => {
@@ -271,7 +326,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosxe-3-arm'
+            'template' => 'cisco-iosxec4503-arm'
           }
         },
         'ciscoxr-64' => {

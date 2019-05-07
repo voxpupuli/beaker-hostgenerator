@@ -1,0 +1,22 @@
+---
+arguments_string: "--osinfo-version 1 ciscoiosxec3605-ARM32m"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ciscoiosxec3605-ARM32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cisco_iosxec3605-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
