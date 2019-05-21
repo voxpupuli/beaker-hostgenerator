@@ -631,6 +631,15 @@ module BeakerHostGenerator
             'template' => 'fedora-29-x86_64'
           }
         },
+        'fedora30-64' => {
+          :general => {
+            'platform'           => 'fedora-30-x86_64',
+            'packaging_platform' => 'fedora-30-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'fedora-30-x86_64'
+          }
+        },
         'huaweios6-POWER' => {
           :general => {
             'platform' => 'huaweios-6-powerpc'
