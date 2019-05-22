@@ -1,14 +1,14 @@
 ---
-arguments_string: "--osinfo-version 0 ciscoiosxec3605-ARM32m"
+arguments_string: ciscoiosxec3650-ARM32m
 environment_variables: {}
 expected_hash:
   HOSTS:
-    ciscoiosxec3605-ARM32-1:
+    ciscoiosxec3650-ARM32-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
-      platform: cisco_iosxec3605-arm32
+      platform: cisco_iosxec3650-arm32
       ssh:
         user: admin
       hypervisor: vmpooler
