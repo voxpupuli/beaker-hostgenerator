@@ -307,15 +307,15 @@ module BeakerHostGenerator
             'template' => 'cisco-iosc6503-arm'
           }
         },
-        'ciscoiosxec3605-ARM32' => {
+        'ciscoiosxec3650-ARM32' => {
           :general => {
-            'platform' => 'cisco_iosxec3605-arm32',
+            'platform' => 'cisco_iosxec3650-arm32',
             'ssh' => {
               'user' => 'admin'
             }
           },
           :abs => {
-            'template' => 'cisco-iosxec3605-arm'
+            'template' => 'cisco-iosxec3650-arm'
           }
         },
         'ciscoiosxec4503-ARM32' => {

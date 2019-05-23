@@ -1,14 +1,14 @@
 ---
-arguments_string: ciscoiosxec3605-ARM32m-windows2012r2_ja-64-ciscoiosxec3605-ARM32u
+arguments_string: ciscoiosxec3650-ARM32m-windows2012r2_ja-64-ciscoiosxec3650-ARM32u
 environment_variables: {}
 expected_hash:
   HOSTS:
-    ciscoiosxec3605-ARM32-1:
+    ciscoiosxec3650-ARM32-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
-      platform: cisco_iosxec3605-arm32
+      platform: cisco_iosxec3650-arm32
       ssh:
         user: admin
       hypervisor: vmpooler
@@ -27,12 +27,12 @@ expected_hash:
       hypervisor: vmpooler
       roles:
       - agent
-    ciscoiosxec3605-ARM32-2:
+    ciscoiosxec3650-ARM32-2:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
-      platform: cisco_iosxec3605-arm32
+      platform: cisco_iosxec3650-arm32
       ssh:
         user: admin
       hypervisor: vmpooler
