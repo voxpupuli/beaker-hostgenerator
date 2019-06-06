@@ -260,7 +260,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc2960-arm'
+            'template' => 'cisco-iosc2960-12-arm'
           }
         },
         'ciscoiosc3750-ARM32' => {
@@ -271,7 +271,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc3750-arm'
+            'template' => 'cisco-iosc3750-12-arm'
           }
         },
         'ciscoiosc4507r-ARM32' => {
@@ -282,7 +282,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc4507r-arm'
+            'template' => 'cisco-iosc4507r-12-arm'
           }
         },
         'ciscoiosc4948-ARM32' => {
@@ -293,7 +293,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc4948-arm'
+            'template' => 'cisco-iosc4948-12-arm'
           }
         },
         'ciscoiosc6503-ARM32' => {
@@ -304,7 +304,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc6503-arm'
+            'template' => 'cisco-iosc6503-12-arm'
           }
         },
         'ciscoiosxec3650-ARM32' => {
@@ -315,7 +315,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosxec3650-arm'
+            'template' => 'cisco-iosxec3650-3-arm'
           }
         },
         'ciscoiosxec4503-ARM32' => {
@@ -326,7 +326,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosxec4503-arm'
+            'template' => 'cisco-iosxec4503-3-arm'
           }
         },
         'ciscoxr-64' => {
