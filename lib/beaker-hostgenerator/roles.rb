@@ -11,13 +11,15 @@ module BeakerHostGenerator
       'm' => 'master',
     }
 
+    CM_CONFIG = { 'main' => {
+                    'dns_alt_names' => 'puppet',
+                    'environmentpath' => '/etc/puppetlabs/puppet/environments',
+                  }
+                }
+
     ROLE_CONFIG = {
-      'compile_master' => {
-        'main' => {
-          'dns_alt_names' => 'puppet',
-          'environmentpath' => '/etc/puppetlabs/puppet/environments',
-        }
-      }
+      'compile_master' => CM_CONFIG,
+      'pe_compiler' => CM_CONFIG,
     }
 
     module_function
