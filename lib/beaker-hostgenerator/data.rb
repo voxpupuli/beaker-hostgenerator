@@ -1335,56 +1335,6 @@ module BeakerHostGenerator
             'template' => 'vro-74-x86_64'
           }
         },
-        'windows2003-64' => {
-          :general => {
-            'platform'           => 'windows-2003-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
-          },
-          :vmpooler => {
-            'template' => 'win-2003-x86_64'
-          }
-        },
-        'windows2003-6432' => {
-          :general => {
-            'platform'           => 'windows-2003-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
-          },
-          :vmpooler => {
-            'template' => 'win-2003-x86_64'
-          }
-        },
-        'windows2003r2-32' => {
-          :general => {
-            'platform'           => 'windows-2003r2-32',
-            'packaging_platform' => 'windows-2012-x86',
-            'ruby_arch' => 'x86'
-          },
-          :vmpooler => {
-            'template' => 'win-2003r2-i386'
-          }
-        },
-        'windows2003r2-64' => {
-          :general => {
-            'platform'           => 'windows-2003r2-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
-          },
-          :vmpooler => {
-            'template' => 'win-2003r2-x86_64'
-          }
-        },
-        'windows2003r2-6432' => {
-          :general => {
-            'platform'           => 'windows-2003r2-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
-          },
-          :vmpooler => {
-            'template' => 'win-2003r2-x86_64'
-          }
-        },
         'windows2008-64' => {
           :general => {
             'platform'           => 'windows-2008-64',
@@ -1619,6 +1569,48 @@ module BeakerHostGenerator
             'template' => 'win-2019-x86_64'
           }
         },
+        'windows2019_ja-64' => {
+          :general => {
+            'platform'           => 'windows-2019-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2019-ja-x86_64'
+          }
+        },
+        'windows2019_ja-6432' => {
+          :general => {
+            'platform'           => 'windows-2019-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x86'
+          },
+          :vmpooler => {
+            'template' => 'win-2019-ja-x86_64'
+          }
+        },
+        'windows2019_fr-64' => {
+          :general => {
+            'platform'           => 'windows-2019-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2019-fr-x86_64',
+            'user'     => 'Administrateur'
+          }
+        },
+        'windows2019_fr-6432' => {
+          :general => {
+            'platform'           => 'windows-2019-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x86'
+          },
+          :vmpooler => {
+            'template' => 'win-2019-fr-x86_64',
+            'user'     => 'Administrateur'
+          }
+        },
         'windows2019_core-64' => {
           :general => {
             'platform'           => 'windows-2019-64',
@@ -1649,16 +1641,6 @@ module BeakerHostGenerator
             'template' => 'win-7-x86_64'
           }
         },
-        'windows8-64' => {
-          :general => {
-            'platform'           => 'windows-8-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
-          },
-          :vmpooler => {
-            'template' => 'win-8-x86_64'
-          }
-        },
         'windows81-64' => {
           :general => {
             'platform'           => 'windows-8.1-64',
@@ -1667,16 +1649,6 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-81-x86_64'
-          }
-        },
-        'windowsvista-64' => {
-          :general => {
-            'platform'           => 'windows-vista-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
-          },
-          :vmpooler => {
-            'template' => 'win-vista-x86_64'
           }
         },
         'windows10ent-32' => {
@@ -1699,6 +1671,26 @@ module BeakerHostGenerator
             'template' => 'win-10-ent-x86_64'
           }
         },
+        'windows10next-32' => {
+          :general => {
+            'platform'           => 'windows-10ent-32',
+            'packaging_platform' => 'windows-2012-x86',
+            'ruby_arch' => 'x86'
+          },
+          :vmpooler => {
+            'template' => 'win-10-next-i386'
+          }
+        },
+        'windows10next-64' => {
+          :general => {
+            'platform'           => 'windows-10ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-10-next-x86_64'
+          }
+        },
         'windows10pro-64' => {
           :general => {
             'platform'           => 'windows-10pro-64',
@@ -1707,7 +1699,37 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-10-pro-x86_64'
+          }
+        },
+        'windows10_1511-64' => {
+          :general => {
+            'platform'           => 'windows-10ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
           },
+          :vmpooler => {
+            'template' => 'win-10-1511-x86_64'
+          }
+        },
+        'windows10_1607-64' => {
+          :general => {
+            'platform'           => 'windows-10ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-10-1607-x86_64'
+          }
+        },
+        'windows10_1809-64' => {
+          :general => {
+            'platform'           => 'windows-10ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-10-1809-x86_64'
+          }
         }
       }
     end

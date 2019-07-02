@@ -1,21 +1,20 @@
 ---
-arguments_string: windows2003r2-32f
+arguments_string: windows10next-32a
 environment_variables: {}
 expected_hash:
   HOSTS:
-    windows2003r2-32-1:
+    windows10next-32-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: windows-2003r2-32
+      platform: windows-10ent-32
       packaging_platform: windows-2012-x86
       ruby_arch: x86
-      template: win-2003r2-i386
+      template: win-10-next-i386
       roles:
       - agent
-      - frictionless
   CONFIG:
     nfs_server: none
     consoleport: 443
