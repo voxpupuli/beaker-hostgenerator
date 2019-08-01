@@ -458,6 +458,13 @@ module BeakerHostGenerator
             'platform'           => 'debian-10-amd64',
             'packaging_platform' => 'debian-10-amd64'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'rm -f /usr/sbin/policy-rc.d',
+              'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg'
+            ]
+          },
           :vmpooler => {
             'template' => 'debian-10-x86_64'
           }
@@ -466,6 +473,13 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'debian-10-i386',
             'packaging_platform' => 'debian-10-i386'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'rm -f /usr/sbin/policy-rc.d',
+              'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg'
+            ]
           },
           :vmpooler => {
             'template' => 'debian-10-i386'
