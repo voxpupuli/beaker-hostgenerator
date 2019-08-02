@@ -13,6 +13,7 @@ expected_hash:
       packaging_platform: windows-2012-x64
       ruby_arch: x64
       template: win-2019-ja-x86_64
+      locale: ja
       roles:
       - agent
       - dashboard

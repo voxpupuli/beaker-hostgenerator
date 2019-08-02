@@ -26,6 +26,7 @@ expected_hash:
       template: win-2016-fr-x86_64
       user: Administrateur
       hypervisor: vmpooler
+      locale: fr
       roles:
       - agent
     centos5-64-2:

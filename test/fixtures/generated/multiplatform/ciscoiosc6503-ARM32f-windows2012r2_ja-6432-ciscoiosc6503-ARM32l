@@ -25,6 +25,7 @@ expected_hash:
       ruby_arch: x86
       template: win-2012r2-ja-x86_64
       hypervisor: vmpooler
+      locale: ja
       roles:
       - agent
     ciscoiosc6503-ARM32-2:
