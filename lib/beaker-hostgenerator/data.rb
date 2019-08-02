@@ -1446,7 +1446,8 @@ module BeakerHostGenerator
             'ruby_arch' => 'x64'
           },
           :vmpooler => {
-            'template' => 'win-2012r2-ja-x86_64'
+            'template' => 'win-2012r2-ja-x86_64',
+            'locale'   => 'ja'
           }
         },
         'windows2012r2_ja-6432' => {
@@ -1456,7 +1457,8 @@ module BeakerHostGenerator
             'ruby_arch' => 'x86'
           },
           :vmpooler => {
-            'template' => 'win-2012r2-ja-x86_64'
+            'template' => 'win-2012r2-ja-x86_64',
+            'locale'   => 'ja'
           }
         },
         'windows2012r2_fr-64' => {
@@ -1467,7 +1469,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2012r2-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2012r2_fr-6432' => {
@@ -1478,7 +1481,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2012r2-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2012r2_core-64' => {
@@ -1549,7 +1553,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2016-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2016_fr-6432' => {
@@ -1560,7 +1565,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2016-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2019-64' => {
@@ -1590,7 +1596,8 @@ module BeakerHostGenerator
             'ruby_arch' => 'x64'
           },
           :vmpooler => {
-            'template' => 'win-2019-ja-x86_64'
+            'template' => 'win-2019-ja-x86_64',
+            'locale'   => 'ja'
           }
         },
         'windows2019_ja-6432' => {
@@ -1600,7 +1607,8 @@ module BeakerHostGenerator
             'ruby_arch' => 'x86'
           },
           :vmpooler => {
-            'template' => 'win-2019-ja-x86_64'
+            'template' => 'win-2019-ja-x86_64',
+            'locale'   => 'ja'
           }
         },
         'windows2019_fr-64' => {
@@ -1611,7 +1619,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2019-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2019_fr-6432' => {
@@ -1622,7 +1631,8 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-2019-fr-x86_64',
-            'user'     => 'Administrateur'
+            'user'     => 'Administrateur',
+            'locale'   => 'fr'
           }
         },
         'windows2019_core-64' => {

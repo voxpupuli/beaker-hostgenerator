@@ -26,6 +26,7 @@ expected_hash:
       template: win-2012r2-fr-x86_64
       user: Administrateur
       hypervisor: vmpooler
+      locale: fr
       roles:
       - agent
     ciscoiosc4507r-ARM32-2:

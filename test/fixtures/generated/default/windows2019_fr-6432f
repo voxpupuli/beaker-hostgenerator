@@ -14,6 +14,7 @@ expected_hash:
       ruby_arch: x86
       template: win-2019-fr-x86_64
       user: Administrateur
+      locale: fr
       roles:
       - agent
       - frictionless
