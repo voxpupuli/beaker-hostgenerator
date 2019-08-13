@@ -882,7 +882,7 @@ module BeakerHostGenerator
         },
         'redhatfips7-64' => {
           :general => {
-            'platform'           => 'el-7-x86_64',
+            'platform'           => 'redhatfips-7-x86_64',
             'packaging_platform' => 'redhatfips-7-x86_64'
           },
           :vmpooler => {
