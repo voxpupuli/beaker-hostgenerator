@@ -1,0 +1,46 @@
+---
+arguments_string: cumulus25-64u-windows2012r2fips-6432-cumulus25-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    cumulus25-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cumulus-2.5-x86_64
+      packaging_platform: cumulus-2.2-amd64
+      template: cumulus-vx-25-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+    windows2012r2fips-6432-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-fips-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    cumulus25-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cumulus-2.5-x86_64
+      packaging_platform: cumulus-2.2-amd64
+      template: cumulus-vx-25-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
