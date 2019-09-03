@@ -1432,6 +1432,26 @@ module BeakerHostGenerator
             'template' => 'win-2012r2-x86_64'
           }
         },
+        'windows2012r2fips-64' => {
+          :general => {
+            'platform'           => 'windows-2012r2-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2012r2-fips-x86_64'
+          }
+        },
+        'windows2012r2fips-6432' => {
+          :general => {
+            'platform'           => 'windows-2012r2-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2012r2-fips-x86_64'
+          }
+        },
         'windows2012r2-6432' => {
           :general => {
             'platform'           => 'windows-2012r2-64',
