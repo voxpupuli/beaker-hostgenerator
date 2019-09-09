@@ -1,21 +1,21 @@
 ---
-arguments_string: windows2012r2fips-6432u
+arguments_string: "--osinfo-version 0 windowsfips2012r2-64d"
 environment_variables: {}
 expected_hash:
   HOSTS:
-    windows2012r2fips-6432-1:
+    windowsfips2012r2-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       platform: windows-2012r2-64
-      packaging_platform: windows-2012-x64
+      packaging_platform: windowsfips-2012r2-x64
       ruby_arch: x64
       template: win-2012r2-fips-x86_64
       hypervisor: vmpooler
       roles:
       - agent
-      - ca
+      - database
   CONFIG:
     nfs_server: none
     consoleport: 443

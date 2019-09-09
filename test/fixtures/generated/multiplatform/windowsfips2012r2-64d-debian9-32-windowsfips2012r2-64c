@@ -1,49 +1,45 @@
 ---
-arguments_string: windows2012r2fips-64a-cumulus25-64-windows2012r2fips-64aulcdfm
+arguments_string: windowsfips2012r2-64d-debian9-32-windowsfips2012r2-64c
 environment_variables: {}
 expected_hash:
   HOSTS:
-    windows2012r2fips-64-1:
+    windowsfips2012r2-64-1:
       pe_dir: 
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       platform: windows-2012r2-64
-      packaging_platform: windows-2012-x64
+      packaging_platform: windowsfips-2012r2-x64
       ruby_arch: x64
       template: win-2012r2-fips-x86_64
       hypervisor: vmpooler
       roles:
       - agent
-    cumulus25-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      platform: cumulus-2.5-x86_64
-      packaging_platform: cumulus-2.2-amd64
-      template: cumulus-vx-25-x86_64
-      hypervisor: vmpooler
-      roles:
-      - agent
-    windows2012r2fips-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      platform: windows-2012r2-64
-      packaging_platform: windows-2012-x64
-      ruby_arch: x64
-      template: win-2012r2-fips-x86_64
-      hypervisor: vmpooler
-      roles:
-      - agent
-      - ca
-      - classifier
-      - dashboard
       - database
-      - frictionless
-      - master
+    debian9-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: debian-9-i386
+      packaging_platform: debian-9-i386
+      template: debian-9-i386
+      hypervisor: vmpooler
+      roles:
+      - agent
+    windowsfips2012r2-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: windows-2012r2-64
+      packaging_platform: windowsfips-2012r2-x64
+      ruby_arch: x64
+      template: win-2012r2-fips-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
   CONFIG:
     nfs_server: none
     consoleport: 443
