@@ -30,7 +30,6 @@ eos
 
   # Documentation dependencies
   s.add_development_dependency 'yard'
-  s.add_development_dependency 'markdown'
   s.add_development_dependency 'thin'
 
   # Run time dependencies
