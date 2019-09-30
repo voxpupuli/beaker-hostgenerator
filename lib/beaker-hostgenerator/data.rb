@@ -1435,7 +1435,7 @@ module BeakerHostGenerator
         'windowsfips2012r2-64' => {
           :general => {
             'platform'           => 'windows-2012r2-64',
-            'packaging_platform' => 'windowsfips-2012r2-x64',
+            'packaging_platform' => 'windowsfips-2012-x64',
             'ruby_arch' => 'x64'
           },
           :vmpooler => {
@@ -1445,7 +1445,7 @@ module BeakerHostGenerator
         'windowsfips2012r2-6432' => {
           :general => {
             'platform'           => 'windows-2012r2-64',
-            'packaging_platform' => 'windowsfips-2012r2-x64',
+            'packaging_platform' => 'windowsfips-2012-x64',
             'ruby_arch' => 'x64'
           },
           :vmpooler => {
