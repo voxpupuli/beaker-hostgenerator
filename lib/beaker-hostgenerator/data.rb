@@ -241,6 +241,7 @@ module BeakerHostGenerator
             'template' => 'centos-8-x86_64'
           }
         },
+        # Deprecated
         'cisconx-64' => {
           :general => {
             'platform'           => 'cisco_nexus-7-x86_64',
@@ -254,6 +255,7 @@ module BeakerHostGenerator
             'template' => 'cisco-nxos-9k-x86_64'
           }
         },
+        # Deprecated
         'ciscon7k-64' => {
           :general => {
             'platform'           => 'cisco_nexus-7k-x86_64',
@@ -267,6 +269,7 @@ module BeakerHostGenerator
             'template' => 'cisco-n7k-7k-x86_64'
           }
         },
+        # Deprecated
         'cisconxhw-64' => {
           :general => {
             'platform'           => 'cisco_nexus-7-x86_64',
@@ -280,7 +283,59 @@ module BeakerHostGenerator
             'template' => 'cisco-nxos_hw-9k-x86_64'
           }
         },
-        'ciscoiosc2960-ARM32' => {
+        'cisco_n9k-VM' => {
+          :general => {
+            'platform'           => 'cisco_nexus-7-x86_64',
+            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
+            'vrf' => 'management',
+            'ssh' => {
+              'user' => 'beaker'
+            }
+          },
+          :vmpooler => {
+            'template' => 'cisco-nxos-9k-x86_64'
+          }
+        },
+        'cisco_n7k-HW' => {
+          :general => {
+            'platform'           => 'cisco_nexus-7k-x86_64',
+            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
+            'vrf' => 'management',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-n7k-x86_64'
+          }
+        },
+        'cisco_n7k_vdc-HW' => {
+          :general => {
+            'platform'           => 'cisco_nexus-7k-x86_64',
+            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
+            'vrf' => 'management',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-n7k_vdc-x86_64'
+          }
+        },
+        'cisco_n9k-HW' => {
+          :general => {
+            'platform'           => 'cisco_nexus-7-x86_64',
+            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
+            'vrf' => 'management',
+            'ssh' => {
+              'user' => 'devops'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-9k-x86_64'
+          }
+        },
+        'cisco_ios_c2960-HW' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -288,10 +343,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc2960-12-arm'
+            'template' => 'cisco-ios_c2960-arm'
           }
         },
-        'ciscoiosc3750-ARM32' => {
+        'cisco_ios_c3560-HW' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -299,10 +354,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc3750-12-arm'
+            'template' => 'cisco-ios_c3560-arm'
           }
         },
-        'ciscoiosc4507r-ARM32' => {
+        'cisco_ios_c3750-HW' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -310,10 +365,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc4507r-12-arm'
+            'template' => 'cisco-ios_c3750-arm'
           }
         },
-        'ciscoiosc4948-ARM32' => {
+        'cisco_ios_c4507r-HW' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -321,10 +376,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc4948-12-arm'
+            'template' => 'cisco-ios_c4507r-arm'
           }
         },
-        'ciscoiosc6503-ARM32' => {
+        'cisco_ios_c4948-HW' => {
           :general => {
             'platform' => 'cisco_ios-12-arm32',
             'ssh' => {
@@ -332,10 +387,21 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosc6503-12-arm'
+            'template' => 'cisco-ios_c4948-arm'
           }
         },
-        'ciscoiosxec3650-ARM32' => {
+        'cisco_ios_c6503-HW' => {
+          :general => {
+            'platform' => 'cisco_ios-12-arm32',
+            'ssh' => {
+              'user' => 'admin'
+            }
+          },
+          :abs => {
+            'template' => 'cisco-ios_c6503-arm'
+          }
+        },
+        'cisco_iosxe_c3650-HW' => {
           :general => {
             'platform' => 'cisco_iosxec3650-arm32',
             'ssh' => {
@@ -343,10 +409,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosxec3650-3-arm'
+            'template' => 'cisco-iosxe_c3650-arm'
           }
         },
-        'ciscoiosxec4503-ARM32' => {
+        'cisco_iosxe_c4503-HW' => {
           :general => {
             'platform' => 'cisco_iosxe-3-arm32',
             'ssh' => {
@@ -354,10 +420,10 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-iosxec4503-3-arm'
+            'template' => 'cisco-iosxe_c4503-arm'
           }
         },
-        'ciscoxr-64' => {
+        'cisco_xr_9k-VM' => {
           :general => {
             'platform'           => 'cisco_ios_xr-6-x86_64',
             'packaging_platform' => 'cisco-wrlinux-7-x86_64'
