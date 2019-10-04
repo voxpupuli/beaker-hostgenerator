@@ -1,0 +1,24 @@
+---
+arguments_string: cisconxhw-64u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    cisconxhw-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cisco_nexus-7-x86_64
+      packaging_platform: cisco-wrlinux-5-x86_64
+      vrf: management
+      ssh:
+        user: devops
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
