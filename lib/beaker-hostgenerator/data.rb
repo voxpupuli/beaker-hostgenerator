@@ -226,6 +226,21 @@ module BeakerHostGenerator
             'template' => 'centos-7-x86_64'
           }
         },
+        'centos8-64' => {
+          :general => {
+            'platform'           => 'el-8-x86_64',
+            'packaging_platform' => 'el-8-x86_64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss'
+            ]
+          },
+          :vmpooler => {
+            'template' => 'centos-8-x86_64'
+          }
+        },
         'cisconx-64' => {
           :general => {
             'platform'           => 'cisco_nexus-7-x86_64',
