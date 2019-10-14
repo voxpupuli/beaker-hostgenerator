@@ -1,0 +1,50 @@
+---
+arguments_string: cisco_ios_c3560-HWaulcdfm-windows2016-64-cisco_ios_c3560-HWa
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    cisco_ios_c3560-HW-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cisco_ios-12-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    windows2016-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: windows-2016-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2016-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    cisco_ios_c3560-HW-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cisco_ios-12-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 

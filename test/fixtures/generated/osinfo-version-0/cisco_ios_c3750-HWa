@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 0 cisco_ios_c3750-HWa"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    cisco_ios_c3750-HW-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: cisco_ios-12-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
