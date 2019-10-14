@@ -14,7 +14,7 @@ module BeakerHostGenerator
   module Data
     module_function
 
-    PE_TARBALL_SERVER="http://enterprise.delivery.puppetlabs.net"
+    PE_TARBALL_SERVER="https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
 
     def pe_version
       ENV['pe_version']
