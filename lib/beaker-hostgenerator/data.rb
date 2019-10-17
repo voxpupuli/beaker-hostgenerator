@@ -234,7 +234,7 @@ module BeakerHostGenerator
           :docker => {
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
-              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss'
+              'yum install -y crontabs initscripts iproute openssl wget which'
             ]
           },
           :vmpooler => {
