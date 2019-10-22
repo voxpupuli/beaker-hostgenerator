@@ -332,7 +332,7 @@ module BeakerHostGenerator
             }
           },
           :abs => {
-            'template' => 'cisco-9k-x86_64'
+            'template' => 'cisco-n9k-x86_64'
           }
         },
         'cisco_ios_c2960-HW' => {
