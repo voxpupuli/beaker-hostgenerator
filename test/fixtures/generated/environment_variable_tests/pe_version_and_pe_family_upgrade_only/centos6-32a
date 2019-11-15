@@ -8,7 +8,7 @@ expected_hash:
     centos6-32-1:
       pe_dir: 
       pe_ver: 
-      pe_upgrade_dir: http://enterprise.delivery.puppetlabs.net/archives/releases/6.6.6/
+      pe_upgrade_dir: https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local/archives/releases/6.6.6/
       pe_upgrade_ver: 6.6.6
       hypervisor: vmpooler
       platform: el-6-i386
