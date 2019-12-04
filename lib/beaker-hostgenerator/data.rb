@@ -40,7 +40,10 @@ module BeakerHostGenerator
       else
         ''
       end
-      return sprintf(source, ($1 || ''))
+
+      pe_branch = Gem::Version.new($1) < Gem::Version.new('2019.4') || version =~ /#{base_regex}-rc\d+\Z/ ? $1 : 'master'
+
+      return sprintf(source, ("#{pe_branch}" || ''))
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
