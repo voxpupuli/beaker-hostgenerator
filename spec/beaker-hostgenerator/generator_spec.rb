@@ -89,7 +89,7 @@ module BeakerHostGenerator
       end
     end
 
-    context "pe_dir" do
+    context "pe_dir for versions < 2019.4" do
       let(:dev_version) { '2017.3.0-rc4-11-g123abcd' }
       let(:dev_version_no_rc) { '2017.3.0-1-g123abcd' }
       let(:pez_version) { '2017.3.0-rc4-11-g123abcd-PEZ_foo' }
@@ -123,6 +123,31 @@ module BeakerHostGenerator
 
       it "returns an empty string if version isn't parseable" do
         expect(BeakerHostGenerator::Data.pe_dir('wtf')).to eq('')
+      end
+    end
+
+    context "pe_dir for versions >= 2019.4" do
+      let(:dev_version) { '2019.4.0-rc4-11-g123abcd' }
+      let(:dev_version_no_rc) { '2019.4.0-1-g123abcd' }
+      let(:pez_version) { '2019.4.0-rc4-11-g123abcd-PEZ_foo' }
+      let(:release_version) { '2019.4.0' }
+      let(:rc_version) { '2019.4.0-rc4' }
+
+      it "returns master/ci-ready for a dev version" do
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{master/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{master/ci-ready})
+      end
+
+      it "returns archives/releases/<version> for a release version" do
+        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2019\.4\.0})
+      end
+
+      it "returns archives/internal/master for an rc version" do
+        expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2019.4})
+      end
+
+      it "returns master/feature/ci-ready for a PEZ version" do
+        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match(%r{master/feature/ci-ready})
       end
     end
   end
