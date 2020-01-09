@@ -147,7 +147,7 @@ module BeakerHostGenerator
       end
 
       it "returns master/feature/ci-ready for a PEZ version" do
-        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match(%r{master/feature/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match('master/feature')
       end
     end
   end
