@@ -13,7 +13,7 @@ module BeakerHostGenerator
   # `include BeakerHostGenerator::Data` and then `<function>()`.
   module Data
     module_function
-    MASTER_PE_VERSION=2019.4
+    MASTER_PE_VERSION=2019.5
     PE_TARBALL_SERVER="https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
 
     def pe_version
