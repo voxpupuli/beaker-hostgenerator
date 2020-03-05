@@ -514,7 +514,7 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget'
+              'apt-get update && apt-get install -y cron locales-all net-tools wget apt-transport-https'
             ]
           },
           :vagrant => {
@@ -536,7 +536,7 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget'
+              'apt-get update && apt-get install -y cron locales-all net-tools wget apt-transport-https'
             ]
           }
         },
@@ -549,7 +549,7 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg'
+              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg apt-transport-https'
             ]
           },
           :vagrant => {
