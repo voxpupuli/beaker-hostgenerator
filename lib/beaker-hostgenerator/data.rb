@@ -571,6 +571,9 @@ module BeakerHostGenerator
               'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg'
             ]
           },
+          :vagrant => {
+            'box' => 'debian/buster64',
+          },
           :vmpooler => {
             'template' => 'debian-10-x86_64'
           }
