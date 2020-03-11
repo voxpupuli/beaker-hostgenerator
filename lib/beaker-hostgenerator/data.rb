@@ -1431,6 +1431,23 @@ module BeakerHostGenerator
             'template' => 'ubuntu-1810-x86_64'
           }
         },
+        'ubuntu2004-64' => {
+          :general => {
+            'platform'           => 'ubuntu-20.04-amd64',
+            'packaging_platform' => 'ubuntu-20.04-amd64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
+              'locale-gen en_US.UTF-8',
+              'echo LANG=en_US.UTF-8 > /etc/default/locale'
+            ]
+          },
+          :vmpooler => {
+            'template' => 'ubuntu-2004-x86_64'
+          }
+        },
         'vro6-64' => {
           :general => {
             'platform'           => 'sles-11-x86_64',

@@ -1,0 +1,48 @@
+---
+arguments_string: ubuntu2004-64a-fedora20-32-ubuntu2004-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2004-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: ubuntu-20.04-amd64
+      packaging_platform: ubuntu-20.04-amd64
+      template: ubuntu-2004-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    fedora20-32-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: fedora-20-i386
+      template: fedora-20-i386
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2004-64-2:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      platform: ubuntu-20.04-amd64
+      packaging_platform: ubuntu-20.04-amd64
+      template: ubuntu-2004-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception: 
