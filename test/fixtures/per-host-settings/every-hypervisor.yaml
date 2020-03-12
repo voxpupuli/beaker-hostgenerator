@@ -51,7 +51,7 @@ expected_hash:
       docker_image_commands:
       - cp /bin/true /sbin/agetty
       - rm -f /usr/sbin/policy-rc.d
-      - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg
+      - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg apt-transport-https
       roles:
       - agent
     ubuntu1804-64-1:
