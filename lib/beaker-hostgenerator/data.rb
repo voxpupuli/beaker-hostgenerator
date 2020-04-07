@@ -808,6 +808,12 @@ module BeakerHostGenerator
           :general => {
             'platform' => 'opensuse-42-i386'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'zypper install -y cron iproute2 tar wget which'
+            ]
+          },
           :vmpooler => {
             'template' => 'opensuse-42-i386'
           }
@@ -815,6 +821,12 @@ module BeakerHostGenerator
         'opensuse42-64' => {
           :general => {
             'platform' => 'opensuse-42-x86_64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'zypper install -y cron iproute2 tar wget which'
+            ]
           },
           :vmpooler => {
             'template' => 'opensuse-42-x86_64'
@@ -824,6 +836,12 @@ module BeakerHostGenerator
           :general => {
             'platform' => 'opensuse-15-i386'
           },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'zypper install -y cron iproute2 tar wget which'
+            ]
+          },
           :vmpooler => {
             'template' => 'opensuse-15-i386'
           }
@@ -831,6 +849,12 @@ module BeakerHostGenerator
         'opensuse15-64' => {
           :general => {
             'platform' => 'opensuse-15-x86_64'
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'zypper install -y cron iproute2 tar wget which'
+            ]
           },
           :vmpooler => {
             'template' => 'opensuse-15-x86_64'
