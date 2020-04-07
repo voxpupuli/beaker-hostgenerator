@@ -804,6 +804,38 @@ module BeakerHostGenerator
             'template' => 'palo-alto-8.1.0-x86_64'
           }
         },
+        'opensuse42-32' => {
+          :general => {
+            'platform' => 'opensuse-42-i386'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-42-i386'
+          }
+        },
+        'opensuse42-64' => {
+          :general => {
+            'platform' => 'opensuse-42-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-42-x86_64'
+          }
+        },
+        'opensuse15-32' => {
+          :general => {
+            'platform' => 'opensuse-15-i386'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-15-i386'
+          }
+        },
+        'opensuse15-64' => {
+          :general => {
+            'platform' => 'opensuse-15-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'opensuse-15-x86_64'
+          }
+        },
         'oracle5-32' => {
           :general => {
             'platform'           => 'el-5-i386',
