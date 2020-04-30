@@ -1,0 +1,27 @@
+---
+arguments_string: fedora32-64aulcdfm{hypervisor=vagrant}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora32-64-1:
+      pe_dir: 
+      pe_ver: 
+      pe_upgrade_dir: 
+      pe_upgrade_ver: 
+      box: fedora/32-cloud-base
+      synced_folder: disabled
+      platform: fedora-32-x86_64
+      packaging_platform: fedora-32-x86_64
+      hypervisor: vagrant
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+expected_exception:
