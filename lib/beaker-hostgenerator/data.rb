@@ -246,7 +246,7 @@ module BeakerHostGenerator
           :docker => {
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
-              'yum install -y crontabs initscripts iproute openssl wget which'
+              'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
             ]
           },
           :vmpooler => {
