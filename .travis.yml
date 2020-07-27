@@ -1,0 +1,10 @@
+before_install:
+  - gem update
+  - gem --version
+language: ruby
+script: "bundle exec rake test:spec"
+notifications:
+  email: false
+rvm:
+  - 2.6
+  - 2.4
