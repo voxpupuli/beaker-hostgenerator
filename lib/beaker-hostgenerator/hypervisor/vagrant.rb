@@ -11,7 +11,7 @@ module BeakerHostGenerator
         if node_info['ostype'] =~ /^centos/
           base_config['box'] = node_info['ostype'].sub(/(\d)/, '/\1')
         elsif node_info['ostype'] =~ /^fedora/
-          base_config['box'] = node_info['ostype'].sub(/(\d)/, '/\1') + 'cloud-base'
+          base_config['box'] = node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
         else
           base_config['box'] = "generic/#{node_info['ostype']}"
         end
