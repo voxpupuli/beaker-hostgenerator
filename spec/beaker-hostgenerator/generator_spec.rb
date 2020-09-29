@@ -150,5 +150,30 @@ module BeakerHostGenerator
         expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match('master/feature')
       end
     end
+
+    context "pe_dir for versions >= 2021.0" do
+      let(:dev_version) { '2021.0.0-rc4-11-g123abcd' }
+      let(:dev_version_no_rc) { '2021.0.0-1-g123abcd' }
+      let(:pez_version) { '2021.0.0-rc4-11-g123abcd-PEZ_foo' }
+      let(:release_version) { '2021.0.0' }
+      let(:rc_version) { '2021.0.0-rc4' }
+
+      it "returns main/ci-ready for a dev version" do
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{main/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{main/ci-ready})
+      end
+
+      it "returns archives/releases/<version> for a release version" do
+        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2021\.0\.0})
+      end
+
+      it "returns archives/internal/main for an rc version" do
+        expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2021.0})
+      end
+
+      it "returns main/feature/ci-ready for a PEZ version" do
+        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match('main/feature')
+      end
+    end
   end
 end
