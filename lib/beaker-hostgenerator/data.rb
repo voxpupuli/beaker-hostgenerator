@@ -14,6 +14,7 @@ module BeakerHostGenerator
   module Data
     module_function
     MASTER_PE_VERSION=2019.5
+    MAIN_PE_VERSION=2021.0
     PE_TARBALL_SERVER="https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
 
     def pe_version
@@ -41,14 +42,22 @@ module BeakerHostGenerator
         ''
       end
 
-      if(Gem::Version.new($1) < Gem::Version.new("#{MASTER_PE_VERSION}") || version =~ /#{base_regex}-rc\d+\Z/)
+      gem_version = Gem::Version.new($1)
+      if(gem_version < Gem::Version.new("#{MASTER_PE_VERSION}") || version =~ /#{base_regex}-rc\d+\Z/)
         pe_branch = $1
-      else
+      elsif gem_version < Gem::Version.new("#{MAIN_PE_VERSION}")
         #Is this a Master PEZ build?
         if(version =~ /.*(PEZ|pez)_.*/)
           pe_branch = "master/feature"
         else
           pe_branch = 'master'
+        end
+      else
+        #Is this a Main PEZ build?
+        if(version =~ /.*(PEZ|pez)_.*/)
+          pe_branch = "main/feature"
+        else
+          pe_branch = 'main'
         end
       end
 
