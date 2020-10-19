@@ -188,26 +188,17 @@ module BeakerHostGenerator
         'centos4-32' => {
           :general => {
             'platform' => 'el-4-i386'
-          },
-          :vmpooler => {
-            'template' => 'centos-4-i386'
           }
         },
         'centos4-64' => {
           :general => {
             'platform' => 'el-4-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'centos-4-x86_64'
           }
         },
         'centos5-32' => {
           :general => {
             'platform'           => 'el-5-i386',
             'packaging_platform' => 'el-5-i386'
-          },
-          :vmpooler => {
-            'template' => 'centos-5-i386'
           }
         },
         'centos5-64' => {
@@ -221,18 +212,12 @@ module BeakerHostGenerator
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
               'sed -i -e "/mingetty/d" /etc/inittab'
             ]
-          },
-          :vmpooler => {
-            'template' => 'centos-5-x86_64'
           }
         },
         'centos6-32' => {
           :general => {
             'platform'           => 'el-6-i386',
             'packaging_platform' => 'el-6-i386'
-          },
-          :vmpooler => {
-            'template' => 'centos-6-i386'
           }
         },
         'centos6-64' => {
@@ -247,9 +232,6 @@ module BeakerHostGenerator
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
               'rm /etc/init/tty.conf'
             ]
-          },
-          :vmpooler => {
-            'template' => 'centos-6-x86_64'
           }
         },
         'centos7-64' => {
@@ -262,9 +244,6 @@ module BeakerHostGenerator
               'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss'
             ]
-          },
-          :vmpooler => {
-            'template' => 'centos-7-x86_64'
           }
         },
         'centos8-64' => {
@@ -277,9 +256,6 @@ module BeakerHostGenerator
               'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
             ]
-          },
-          :vmpooler => {
-            'template' => 'centos-8-x86_64'
           }
         },
         # Deprecated
