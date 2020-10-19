@@ -22,7 +22,6 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-25-x86_64
-      packaging_platform: fedora-25-x86_64
       template: fedora-25-x86_64
       roles:
       - agent

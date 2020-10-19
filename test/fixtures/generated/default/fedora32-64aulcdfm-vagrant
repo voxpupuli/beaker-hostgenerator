@@ -11,7 +11,6 @@ expected_hash:
       box: fedora/32-cloud-base
       synced_folder: disabled
       platform: fedora-32-x86_64
-      packaging_platform: fedora-32-x86_64
       hypervisor: vagrant
       roles:
       - agent

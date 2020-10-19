@@ -21,7 +21,6 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       platform: fedora-31-x86_64
-      packaging_platform: fedora-31-x86_64
       template: fedora-31-x86_64
       hypervisor: vmpooler
       roles:

@@ -20,7 +20,14 @@ module BeakerHostGenerator
         # any given platform will have *either* :vmpooler data or :abs data
         # so we're not worried about one overriding the other when we merge
         # the hashes together.
-        return base_generate_node(node_info, base_config, bhg_version, :vmpooler, :abs)
+        base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler, :abs)
+
+        case node_info['ostype']
+        when /^fedora/
+          base_config['template'] = base_config['platform']
+        end
+
+        base_config
       end
     end
   end

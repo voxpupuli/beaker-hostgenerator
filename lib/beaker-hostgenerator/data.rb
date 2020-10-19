@@ -92,7 +92,27 @@ module BeakerHostGenerator
     # Hypervisor implementations will then grab specific bits of data out of
     # this hash and combine them to produce the generated hosts output.
     def osinfo
-      {
+      result = {}
+
+      # Fedora
+      (19..32).each do |release|
+        # 32 bit support was dropped in Fedora 31
+        if release < 31
+          result["fedora#{release}-32"] = {
+            :general => {
+              'platform' => "fedora-#{release}-i386"
+            }
+          }
+        end
+
+        result["fedora#{release}-64"] = {
+          :general => {
+            'platform' => "fedora-#{release}-x86_64"
+          }
+        }
+      end
+
+      result.merge!({
         'aix53-POWER' => {
           :general => {
             'platform'           => 'aix-5.3-power',
@@ -606,188 +626,6 @@ module BeakerHostGenerator
         'fedora14-32' => {
           :general => {
             'platform' => 'fedora-14-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-14-i386'
-          }
-        },
-        'fedora19-32' => {
-          :general => {
-            'platform' => 'fedora-19-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-19-i386'
-          }
-        },
-        'fedora19-64' => {
-          :general => {
-            'platform' => 'fedora-19-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-19-x86_64'
-          }
-        },
-        'fedora20-32' => {
-          :general => {
-            'platform' => 'fedora-20-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-20-i386'
-          }
-        },
-        'fedora20-64' => {
-          :general => {
-            'platform' => 'fedora-20-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-20-x86_64'
-          }
-        },
-        'fedora21-32' => {
-          :general => {
-            'platform' => 'fedora-21-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-21-i386'
-          }
-        },
-        'fedora21-64' => {
-          :general => {
-            'platform' => 'fedora-21-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-21-x86_64'
-          }
-        },
-        'fedora22-32' => {
-          :general => {
-            'platform' => 'fedora-22-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-22-i386'
-          }
-        },
-        'fedora22-64' => {
-          :general => {
-            'platform' => 'fedora-22-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-22-x86_64'
-          }
-        },
-        'fedora23-32' => {
-          :general => {
-            'platform' => 'fedora-23-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-23-i386'
-          }
-        },
-        'fedora23-64' => {
-          :general => {
-            'platform' => 'fedora-23-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-23-x86_64'
-          }
-        },
-        'fedora24-32' => {
-          :general => {
-            'platform'           => 'fedora-24-i386',
-            'packaging_platform' => 'fedora-24-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-24-i386'
-          }
-        },
-        'fedora24-64' => {
-          :general => {
-            'platform'           => 'fedora-24-x86_64',
-            'packaging_platform' => 'fedora-24-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-24-x86_64'
-          }
-        },
-        'fedora25-32' => {
-          :general => {
-            'platform'           => 'fedora-25-i386',
-            'packaging_platform' => 'fedora-25-i386'
-          },
-          :vmpooler => {
-            'template' => 'fedora-25-i386'
-          }
-        },
-        'fedora25-64' => {
-          :general => {
-            'platform'           => 'fedora-25-x86_64',
-            'packaging_platform' => 'fedora-25-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-25-x86_64'
-          }
-        },
-        'fedora26-64' => {
-          :general => {
-            'platform'           => 'fedora-26-x86_64',
-            'packaging_platform' => 'fedora-26-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-26-x86_64'
-          }
-        },
-        'fedora27-64' => {
-          :general => {
-            'platform'           => 'fedora-27-x86_64',
-            'packaging_platform' => 'fedora-27-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-27-x86_64'
-          }
-        },
-        'fedora28-64' => {
-          :general => {
-            'platform'           => 'fedora-28-x86_64',
-            'packaging_platform' => 'fedora-28-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-28-x86_64'
-          }
-        },
-        'fedora29-64' => {
-          :general => {
-            'platform'           => 'fedora-29-x86_64',
-            'packaging_platform' => 'fedora-29-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-29-x86_64'
-          }
-        },
-        'fedora30-64' => {
-          :general => {
-            'platform'           => 'fedora-30-x86_64',
-            'packaging_platform' => 'fedora-30-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-30-x86_64'
-          }
-        },
-        'fedora31-64' => {
-          :general => {
-            'platform'           => 'fedora-31-x86_64',
-            'packaging_platform' => 'fedora-31-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-31-x86_64'
-          }
-        },
-        'fedora32-64' => {
-          :general => {
-            'platform'           => 'fedora-32-x86_64',
-            'packaging_platform' => 'fedora-32-x86_64'
-          },
-          :vmpooler => {
-            'template' => 'fedora-32-x86_64'
           }
         },
         'huaweios6-POWER' => {
@@ -1949,7 +1787,9 @@ module BeakerHostGenerator
             'template' => 'win-10-1809-x86_64'
           }
         }
-      }
+      })
+
+      result
     end
 
     def osinfo_bhgv1
