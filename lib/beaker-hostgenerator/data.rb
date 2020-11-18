@@ -1478,6 +1478,15 @@ module BeakerHostGenerator
             'template' => 'ubuntu-2004-x86_64'
           }
         },
+        'ubuntu2004-AARCH64' => {
+          :general => {
+            'platform'           => 'ubuntu-20.04-aarch64',
+            'packaging_platform' => 'ubuntu-20.04-aarch64'
+          },
+          :abs => {
+            'template' => 'ubuntu-2004-arm64'
+          },
+        },
         'vro6-64' => {
           :general => {
             'platform'           => 'sles-11-x86_64',
