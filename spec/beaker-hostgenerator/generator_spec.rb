@@ -129,7 +129,7 @@ module BeakerHostGenerator
     context "pe_dir for versions >= 2021.0" do
       let(:dev_version) { '2021.0.0-rc4-11-g123abcd' }
       let(:dev_version_no_rc) { '2021.0.0-1-g123abcd' }
-      let(:pez_version) { '2021.0.0-rc4-11-g123abcd-PEZ_foo' }
+      let(:pez_version) { '2021.0.0-rc4-11-g123abcd-pez_foo' } # Some jobs use "PEZ" and some "pez"
       let(:release_version) { '2021.0.0' }
       let(:rc_version) { '2021.0.0-rc4' }
 
