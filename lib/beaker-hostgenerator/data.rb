@@ -83,7 +83,7 @@ module BeakerHostGenerator
       result = {}
 
       # Fedora
-      (19..32).each do |release|
+      (19..33).each do |release|
         # 32 bit support was dropped in Fedora 31
         if release < 31
           result["fedora#{release}-32"] = {
