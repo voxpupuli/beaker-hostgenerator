@@ -8,7 +8,7 @@ expected_hash:
       pe_ver:
       pe_upgrade_dir:
       pe_upgrade_ver:
-      box: centos/6
+      box: generic/centos6
       synced_folder: disabled
       platform: el-6-x86_64
       packaging_platform: el-6-x86_64

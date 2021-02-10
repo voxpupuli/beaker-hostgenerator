@@ -8,7 +8,7 @@ module BeakerHostGenerator
       include BeakerHostGenerator::Data
 
       def generate_node(node_info, base_config, bhg_version)
-        if node_info['ostype'] =~ /^centos/
+        if node_info['ostype'] =~ /^centos/ and not node_info['ostype'] =~ /6/
           base_config['box'] = node_info['ostype'].sub(/(\d)/, '/\1')
         elsif node_info['ostype'] =~ /^fedora/
           base_config['box'] = node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
