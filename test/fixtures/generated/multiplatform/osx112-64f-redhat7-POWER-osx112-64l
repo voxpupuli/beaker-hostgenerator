@@ -1,0 +1,44 @@
+---
+arguments_string: osx112-64f-redhat7-POWER-osx112-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx112-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: osx-11.2-x86_64
+      packaging_platform: osx-11.2-x86_64
+      template: macos-112-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+    redhat7-POWER-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-7-ppc64le
+      packaging_platform: el-7-ppc64le
+      hypervisor: vmpooler
+      roles:
+      - agent
+    osx112-64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: osx-11.2-x86_64
+      packaging_platform: osx-11.2-x86_64
+      template: macos-112-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

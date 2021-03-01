@@ -803,6 +803,15 @@ module BeakerHostGenerator
             'template' => 'osx-1015-x86_64'
           }
         },
+        'osx112-64' => {
+          :general => {
+            'platform'           => 'osx-11.2-x86_64',
+            'packaging_platform' => 'osx-11.2-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'macos-112-x86_64'
+          }
+        },
         'redhat4-32' => {
           :general => {
             'platform' => 'el-4-i386'
