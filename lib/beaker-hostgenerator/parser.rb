@@ -1,6 +1,6 @@
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/exceptions'
-require 'uri'
+require 'cgi'
 
 module BeakerHostGenerator
   # Functions for parsing the raw user input host layout string and turning
@@ -75,7 +75,7 @@ module BeakerHostGenerator
     # @returns [String] Input string with transformations necessary for
     #                   tokenization.
     def prepare(spec)
-      URI.decode(spec)
+      CGI.unescape(spec)
     end
 
     # Breaks apart the host input string into chunks suitable for processing
@@ -260,7 +260,7 @@ module BeakerHostGenerator
           current_depth = current_depth.pred
           next
         end
-        
+
         # When there is assignment happening, we need to create a new
         # corresponding data structure, add it to the object depth, and
         # then change the current depth
