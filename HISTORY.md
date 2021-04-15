@@ -1,29 +1,56 @@
-# worker - History
-## Tags
-* [LATEST - 7 Jun, 2017 (06b6a0da)](#LATEST)
-* [0.8.4 - 6 Apr, 2017 (77943fb2)](#0.8.4)
-* [0.8.3 - 7 Feb, 2017 (79e8d717)](#0.8.3)
-* [0.8.2 - 3 Jan, 2017 (a61487bf)](#0.8.2)
-* [0.8.1 - 21 Dec, 2016 (2648029d)](#0.8.1)
-* [0.8.0 - 4 Oct, 2016 (2e6dc11e)](#0.8.0)
-* [0.7.4 - 26 Sep, 2016 (1e102ccd)](#0.7.4)
-* [0.7.3 - 11 Aug, 2016 (87c75523)](#0.7.3)
-* [0.7.2 - 13 Jul, 2016 (cee53bcc)](#0.7.2)
-* [0.7.1 - 29 Jun, 2016 (be332325)](#0.7.1)
-* [0.7.0 - 13 Jun, 2016 (f0aafe8d)](#0.7.0)
-* [0.6.0 - 11 May, 2016 (c807eb0d)](#0.6.0)
-* [0.5.0 - 31 Mar, 2016 (fa3ae0c8)](#0.5.0)
-* [0.4.0 - 10 Feb, 2016 (dc333b1c)](#0.4.0)
-* [0.3.3 - 3 Feb, 2016 (41051da9)](#0.3.3)
-* [0.3.2 - 28 Jan, 2016 (299df8ec)](#0.3.2)
-* [0.3.1 - 30 Dec, 2015 (7a3f10ca)](#0.3.1)
-* [0.3.0 - 30 Dec, 2015 (4b03eaf4)](#0.3.0)
-* [0.2.0 - 22 Dec, 2015 (dfa33e5f)](#0.2.0)
-* [0.1.0 - 21 Dec, 2015 (474f4ccb)](#0.1.0)
-* [0.0.1 - 7 Oct, 2015 (d99251e6)](#0.0.1)
+## [1.1.26](https://github.com/voxpupuli/modulesync/tree/1.1.26) (2019-02-19)
+- Add platform
+  - debian10-64
+  - debian10-32
+- Change amazon7-ARM64 to use el-7-aarch64 platform
 
+## [1.1.25] - 2019-01-07
+- Fix --hypervisor vagrant_libvirt
+
+## [1.1.24] - 2019-01-03
+- Add platform:
+  - amazon7-ARM64
+
+## [1.1.23] - 2018-12-13
+- Add platforms:
+  - redhat8-64
+  - osx1014-64
+
+## [1.1.22] - 2018-11-21
+- Add vagrant hypervisor for debian plaforms
+
+## [1.1.21] - 2018-11-19
+- Disable getty when using docker
+
+## [1.1.20] - 2018-11-14
+- Add gnupg to docker_image_commands for debian9-64
+- Add platform:
+  - fedora29-64
+
+## [1.1.19] - 2018-10-18
+- Add platforms:
+  - solaris114-32
+  - solaris114-64
+
+## [1.1.18] - 2018-10-10
+- Add platform:
+  - ubuntu1810-64
+
+## [1.1.17] - 2018-10-05
+- Add platforms:
+  - windows2019_core-64
+  - windows2019_core-6432
+
+## [1.1.16] - 2018-09-04
+- Install iproute2 on ubuntu18.04 for containers
+
+## [1.1.15] - 2018-08-16
+- Add platforms:
+  - panos61-64
+  - panos71-64
 ## Details
-### <a name = "LATEST">LATEST - 7 Jun, 2017 (06b6a0da)
+
+### 0.9.0 - 7 Jun, 2017 (06b6a0da)
 
 * (GEM) update beaker-hostgenerator version to 0.9.0 (06b6a0da)
 
@@ -1747,6 +1774,6 @@ This commit updates the code to use the new constant name.
 
 * README typo fixed (ba88e07e)
 
-### <a name = "0.0.1">0.0.1 - 7 Oct, 2015 (d99251e6)
+### 0.0.1 - 7 Oct, 2015 (d99251e6)
 
 * Initial release.

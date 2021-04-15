@@ -453,6 +453,20 @@ contribute.
 If you have questions or comments, please contact the Beaker team at the
 `#puppet-dev` IRC channel on chat.freenode.org
 
+## Make a new release
+
+To make a new release:
+
+* Switch to a new git branch
+* Update `lib/beaker-hostgenerator/version.rb` to the new version
+* export `CHANGELOG_GITHUB_TOKEN` with a GitHub access token
+* run `bundle exec rake changelog`
+* Review the CHANGELOG.md
+* Create a PR
+* Get it reviewed and merged
+* Create a signed git tag with the same version number and push it
+* GitHub actions will do the release
+
 ## License
 
 `beaker-hostgenerator` is distributed under the
