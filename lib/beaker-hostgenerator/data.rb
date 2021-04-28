@@ -1949,7 +1949,10 @@ module BeakerHostGenerator
     #         }
     def get_platform_info(bhg_version, platform, hypervisor)
       info = get_osinfo(bhg_version)[platform]
-      {}.deep_merge!(info[:general]).deep_merge!(info[hypervisor])
+      result = {}
+      result.deep_merge!(info[:general]) if info[:general]
+      result.deep_merge!(info[hypervisor]) if info[hypervisor]
+      result
     end
 
     # Perform any adjustments or modifications necessary to the given node
