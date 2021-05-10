@@ -587,6 +587,18 @@ module BeakerHostGenerator
             'template' => 'debian-10-i386'
           }
         },
+        'debian11-64' => {
+          :general => {
+            'platform'           => 'debian-11-amd64',
+            'packaging_platform' => 'debian-11-amd64'
+          },
+          :vagrant => {
+            'box' => 'debian/bullseye64',
+          },
+          :vmpooler => {
+            'template' => 'debian-11-x86_64'
+          }
+        },
         'fedora14-32' => {
           :general => {
             'platform' => 'fedora-14-i386'
