@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.4.0) (2021-05-11)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.3.0...1.4.0)
+
+**Implemented enhancements:**
+
+- \(IMAGES-1273\) add support for Debian 11 amd64 [\#210](https://github.com/voxpupuli/beaker-hostgenerator/pull/210) ([ciprianbadescu](https://github.com/ciprianbadescu))
+- Add support for redhat8-POWER \(el-8-ppc64le\) [\#208](https://github.com/voxpupuli/beaker-hostgenerator/pull/208) ([GabrielNagy](https://github.com/GabrielNagy))
+
+**Merged pull requests:**
+
+- Deal with nil when merging [\#209](https://github.com/voxpupuli/beaker-hostgenerator/pull/209) ([ekohl](https://github.com/ekohl))
+
 ## [1.3.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.3.0) (2021-04-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.2.10...1.3.0)
