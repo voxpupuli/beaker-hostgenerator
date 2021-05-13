@@ -94,7 +94,7 @@ module BeakerHostGenerator
       def base_generate_node(node_info, base_config, bhg_version, *hypervisors)
         platform = node_info['platform']
         hypervisors.map do |hypervisor|
-          base_config.deep_merge! get_platform_info(bhg_version, platform, hypervisor)
+          base_config.deeper_merge! get_platform_info(bhg_version, platform, hypervisor)
         end
 
         base_config['hypervisor'] = @name

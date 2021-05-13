@@ -1,7 +1,7 @@
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/roles'
 require 'beaker-hostgenerator/hypervisor/vmpooler'
-require 'deep_merge'
+require 'deep_merge/rails_compat'
 
 module BeakerHostGenerator
   module Utils
@@ -18,8 +18,8 @@ module BeakerHostGenerator
     def dump_hosts(hosts, path)
       vmpooler_hypervisor = BeakerHostGenerator::Hypervisor::Vmpooler.new
       config = {}
-      config.deep_merge! BeakerHostGenerator::Data.BASE_CONFIG
-      config['CONFIG'].deep_merge! vmpooler_hypervisor.global_config()
+      config.deeper_merge! BeakerHostGenerator::Data.BASE_CONFIG
+      config['CONFIG'].deeper_merge! vmpooler_hypervisor.global_config()
 
       hosts.each do |host|
         config['HOSTS'][host.node_name] = {
