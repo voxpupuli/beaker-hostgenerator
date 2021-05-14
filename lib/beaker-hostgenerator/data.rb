@@ -1924,9 +1924,9 @@ module BeakerHostGenerator
     def get_osinfo(bhg_version)
       case bhg_version
       when 0
-        {}.deep_merge!(osinfo)
+        {}.deeper_merge!(osinfo)
       when 1
-        {}.deep_merge!(osinfo).deep_merge!(osinfo_bhgv1)
+        {}.deeper_merge!(osinfo).deeper_merge!(osinfo_bhgv1)
       else
         raise "Invalid beaker-hostgenerator version: #{bhg_version}"
       end
@@ -1970,10 +1970,7 @@ module BeakerHostGenerator
     #         }
     def get_platform_info(bhg_version, platform, hypervisor)
       info = get_osinfo(bhg_version)[platform]
-      result = {}
-      result.deep_merge!(info[:general]) if info[:general]
-      result.deep_merge!(info[hypervisor]) if info[hypervisor]
-      result
+      {}.deeper_merge!(info[:general]).deeper_merge!(info[hypervisor])
     end
 
     # Perform any adjustments or modifications necessary to the given node

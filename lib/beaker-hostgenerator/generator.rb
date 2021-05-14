@@ -22,7 +22,7 @@ module BeakerHostGenerator
     def generate(layout, options)
       layout = prepare(layout)
       tokens = tokenize_layout(layout)
-      config = {}.deep_merge(BASE_CONFIG)
+      config = {}.deeper_merge(BASE_CONFIG)
       nodeid = Hash.new(1)
       ostype = nil
       bhg_version = options[:osinfo_version] || 0
@@ -51,7 +51,7 @@ module BeakerHostGenerator
         # Delegate to the hypervisor
         hypervisor = BeakerHostGenerator::Hypervisor.create(node_info, options)
         host_config = hypervisor.generate_node(node_info, host_config, bhg_version)
-        config['CONFIG'].deep_merge!(hypervisor.global_config())
+        config['CONFIG'].deeper_merge!(hypervisor.global_config())
 
         # Merge in any arbitrary key-value host settings. Treat the 'hostname'
         # setting specially, and don't merge it in as an arbitrary setting.
@@ -80,7 +80,7 @@ module BeakerHostGenerator
           decoded = "{#{decoded}}"
         end
         global_config = settings_string_to_map(decoded)
-        config['CONFIG'].deep_merge!(global_config)
+        config['CONFIG'].deeper_merge!(global_config)
       end
 
       # Munge non-string scalar values into proper data types
@@ -117,7 +117,7 @@ module BeakerHostGenerator
 
       if not options[:disable_role_config]
         host_config['roles'].each do |role|
-          host_config.deep_merge! get_role_config(role)
+          host_config.deeper_merge! get_role_config(role)
         end
       end
     end

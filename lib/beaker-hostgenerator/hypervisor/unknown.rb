@@ -1,6 +1,6 @@
 require 'beaker-hostgenerator/hypervisor'
 require 'beaker-hostgenerator/data'
-require 'deep_merge'
+require 'deep_merge/rails_compat'
 
 module BeakerHostGenerator::Hypervisor
   class Unknown < BeakerHostGenerator::Hypervisor::Interface
