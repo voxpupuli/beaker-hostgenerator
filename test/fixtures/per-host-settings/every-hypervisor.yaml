@@ -45,7 +45,7 @@ expected_hash:
       hypervisor: docker
       docker_cmd:
       - /sbin/init
-      image: debian:9
+      image: amd64/debian:9
       platform: debian-9-amd64
       packaging_platform: debian-9-amd64
       docker_image_commands:
