@@ -1,0 +1,54 @@
+arguments_string: --hypervisor=docker oracle7-64-opensuse15-64-ubuntu2004-64
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle7-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      docker_cmd:
+      - "/sbin/init"
+      image: amd64/oraclelinux:7
+      platform: el-7-x86_64
+      packaging_platform: el-7-x86_64
+      hypervisor: docker
+      roles:
+      - agent
+    opensuse15-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      docker_cmd:
+      - "/sbin/init"
+      image: amd64/opensuse/leap:15
+      platform: opensuse-15-x86_64
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - zypper install -y cron iproute2 tar wget which
+      hypervisor: docker
+      roles:
+      - agent
+    ubuntu2004-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      docker_cmd:
+      - "/sbin/init"
+      image: amd64/ubuntu:20.04
+      platform: ubuntu-20.04-amd64
+      packaging_platform: ubuntu-20.04-amd64
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg
+      - locale-gen en_US.UTF-8
+      - echo LANG=en_US.UTF-8 > /etc/default/locale
+      hypervisor: docker
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+expected_exception:
