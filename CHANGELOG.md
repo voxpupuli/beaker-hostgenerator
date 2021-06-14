@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.5.0) (2021-06-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.4.0...1.5.0)
+
+**Implemented enhancements:**
+
+- Ensure amd64 containers are pulled when needed [\#214](https://github.com/voxpupuli/beaker-hostgenerator/pull/214) ([genebean](https://github.com/genebean))
+- Add Fedora 34 support [\#212](https://github.com/voxpupuli/beaker-hostgenerator/pull/212) ([GabrielNagy](https://github.com/GabrielNagy))
+
+**Fixed bugs:**
+
+- Fix oracle image name [\#215](https://github.com/voxpupuli/beaker-hostgenerator/pull/215) ([genebean](https://github.com/genebean))
+- Avoid activesupport deep\_merge conflict [\#213](https://github.com/voxpupuli/beaker-hostgenerator/pull/213) ([GabrielNagy](https://github.com/GabrielNagy))
+
 ## [1.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.4.0) (2021-05-11)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.3.0...1.4.0)
