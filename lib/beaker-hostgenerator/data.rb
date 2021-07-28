@@ -1168,25 +1168,16 @@ module BeakerHostGenerator
         'ubuntu1004-32' => {
           :general => {
             'platform' => 'ubuntu-10.04-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1004-i386'
           }
         },
         'ubuntu1004-64' => {
           :general => {
             'platform' => 'ubuntu-10.04-amd64'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1004-x86_64'
           }
         },
         'ubuntu1204-32' => {
           :general => {
             'platform' => 'ubuntu-12.04-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1204-i386'
           }
         },
         'ubuntu1204-64' => {
@@ -1199,24 +1190,16 @@ module BeakerHostGenerator
               'apt-get install -y net-tools wget',
               'locale-gen en_US.UTF-8'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1204-x86_64'
           }
         },
         'ubuntu1404-32' => {
           :general => {
-            'platform'           => 'ubuntu-14.04-i386',
-            'packaging_platform' => 'ubuntu-14.04-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1404-i386'
+            'platform' => 'ubuntu-14.04-i386'
           }
         },
         'ubuntu1404-64' => {
           :general => {
-            'platform'           => 'ubuntu-14.04-amd64',
-            'packaging_platform' => 'ubuntu-14.04-amd64'
+            'platform' => 'ubuntu-14.04-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -1227,56 +1210,36 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1404-x86_64'
           }
         },
         'ubuntu1504-32' => {
           :general => {
             'platform' => 'ubuntu-15.04-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1504-i386'
           }
         },
         'ubuntu1504-64' => {
           :general => {
             'platform' => 'ubuntu-15.04-amd64'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1504-x86_64'
           }
         },
         'ubuntu1510-32' => {
           :general => {
             'platform' => 'ubuntu-15.10-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1510-i386'
           }
         },
         'ubuntu1510-64' => {
           :general => {
             'platform' => 'ubuntu-15.10-amd64'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1510-x86_64'
           }
         },
         'ubuntu1604-32' => {
           :general => {
-            'platform'           => 'ubuntu-16.04-i386',
-            'packaging_platform' => 'ubuntu-16.04-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1604-i386'
+            'platform' => 'ubuntu-16.04-i386'
           }
         },
         'ubuntu1604-64' => {
           :general => {
-            'platform'           => 'ubuntu-16.04-amd64',
-            'packaging_platform' => 'ubuntu-16.04-amd64'
+            'platform' => 'ubuntu-16.04-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -1285,40 +1248,26 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1604-x86_64'
           }
         },
         'ubuntu1604-POWER' => {
           :general => {
-            'platform'           => 'ubuntu-16.04-ppc64el',
-            'packaging_platform' => 'ubuntu-16.04-ppc64el'
-          },
-          :abs => {
-            'template' => 'ubuntu-16.04-power8'
+            'platform' => 'ubuntu-16.04-ppc64el'
           }
         },
         'ubuntu1610-32' => {
           :general => {
             'platform' => 'ubuntu-16.10-i386'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1610-i386'
           }
         },
         'ubuntu1610-64' => {
           :general => {
             'platform' => 'ubuntu-16.10-amd64'
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1610-x86_64'
           }
         },
         'ubuntu1804-64' => {
           :general => {
-            'platform'           => 'ubuntu-18.04-amd64',
-            'packaging_platform' => 'ubuntu-18.04-amd64'
+            'platform' => 'ubuntu-18.04-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -1327,15 +1276,11 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1804-x86_64'
           }
         },
         'ubuntu1810-64' => {
           :general => {
-            'platform'           => 'ubuntu-18.10-amd64',
-            'packaging_platform' => 'ubuntu-18.10-amd64'
+            'platform' => 'ubuntu-18.10-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -1344,15 +1289,11 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-1810-x86_64'
           }
         },
         'ubuntu2004-64' => {
           :general => {
-            'platform'           => 'ubuntu-20.04-amd64',
-            'packaging_platform' => 'ubuntu-20.04-amd64'
+            'platform' => 'ubuntu-20.04-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -1361,18 +1302,11 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          },
-          :vmpooler => {
-            'template' => 'ubuntu-2004-x86_64'
           }
         },
         'ubuntu2004-AARCH64' => {
           :general => {
-            'platform'           => 'ubuntu-20.04-aarch64',
-            'packaging_platform' => 'ubuntu-20.04-aarch64'
-          },
-          :abs => {
-            'template' => 'ubuntu-2004-arm64'
+            'platform' => 'ubuntu-20.04-aarch64'
           },
         },
         'vro6-64' => {

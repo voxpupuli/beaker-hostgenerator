@@ -39,7 +39,6 @@ expected_hash:
       - "/sbin/init"
       image: amd64/ubuntu:20.04
       platform: ubuntu-20.04-amd64
-      packaging_platform: ubuntu-20.04-amd64
       docker_image_commands:
       - cp /bin/true /sbin/agetty
       - apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg

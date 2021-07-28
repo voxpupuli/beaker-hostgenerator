@@ -10,7 +10,6 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-i386
-      packaging_platform: ubuntu-16.04-i386
       template: ubuntu-1604-i386
       roles:
       - agent
