@@ -1165,33 +1165,6 @@ module BeakerHostGenerator
             'template' => 'solaris-114-x86_64'
           }
         },
-        'ubuntu1004-32' => {
-          :general => {
-            'platform' => 'ubuntu-10.04-i386'
-          }
-        },
-        'ubuntu1004-64' => {
-          :general => {
-            'platform' => 'ubuntu-10.04-amd64'
-          }
-        },
-        'ubuntu1204-32' => {
-          :general => {
-            'platform' => 'ubuntu-12.04-i386'
-          }
-        },
-        'ubuntu1204-64' => {
-          :general => {
-            'platform' => 'ubuntu-12.04-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'apt-get install -y net-tools wget',
-              'locale-gen en_US.UTF-8'
-            ]
-          }
-        },
         'ubuntu1404-32' => {
           :general => {
             'platform' => 'ubuntu-14.04-i386'
@@ -1210,26 +1183,6 @@ module BeakerHostGenerator
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
-          }
-        },
-        'ubuntu1504-32' => {
-          :general => {
-            'platform' => 'ubuntu-15.04-i386'
-          }
-        },
-        'ubuntu1504-64' => {
-          :general => {
-            'platform' => 'ubuntu-15.04-amd64'
-          }
-        },
-        'ubuntu1510-32' => {
-          :general => {
-            'platform' => 'ubuntu-15.10-i386'
-          }
-        },
-        'ubuntu1510-64' => {
-          :general => {
-            'platform' => 'ubuntu-15.10-amd64'
           }
         },
         'ubuntu1604-32' => {
@@ -1273,19 +1226,6 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
-              'locale-gen en_US.UTF-8',
-              'echo LANG=en_US.UTF-8 > /etc/default/locale'
-            ]
-          }
-        },
-        'ubuntu1810-64' => {
-          :general => {
-            'platform' => 'ubuntu-18.10-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'apt-get install -y net-tools wget locales apt-transport-https iproute2',
               'locale-gen en_US.UTF-8',
               'echo LANG=en_US.UTF-8 > /etc/default/locale'
             ]
