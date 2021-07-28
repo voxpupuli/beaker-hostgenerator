@@ -1,0 +1,43 @@
+---
+arguments_string: ubuntu2104-64c-vro71-64-ubuntu2104-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2104-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-21.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2104-x86_64
+      roles:
+      - agent
+      - dashboard
+    vro71-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: sles-11-x86_64
+      packaging_platform: sles-11-x86_64
+      template: vro-71-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2104-64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-21.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2104-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

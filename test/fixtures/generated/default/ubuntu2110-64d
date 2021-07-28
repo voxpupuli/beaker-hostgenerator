@@ -1,0 +1,21 @@
+---
+arguments_string: ubuntu2110-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2110-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-21.10-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2110-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

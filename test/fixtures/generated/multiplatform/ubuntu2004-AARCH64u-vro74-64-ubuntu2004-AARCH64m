@@ -1,0 +1,41 @@
+---
+arguments_string: ubuntu2004-AARCH64u-vro74-64-ubuntu2004-AARCH64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2004-AARCH64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-20.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+    vro74-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: sles-11-x86_64
+      packaging_platform: sles-11-x86_64
+      template: vro-74-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2004-AARCH64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-20.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

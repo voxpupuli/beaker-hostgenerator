@@ -1,0 +1,20 @@
+---
+arguments_string: "--osinfo-version 1 ubuntu1604-POWERl"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1604-POWER-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-16.04-ppc64el
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
