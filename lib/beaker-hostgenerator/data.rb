@@ -100,6 +100,55 @@ module BeakerHostGenerator
         }
       end
 
+      # Ubuntu
+      #
+      # Generate LTS platforms
+      (14..20).select(&:even?).each do |release|
+        # 32 bit support was dropped in Ubuntu 18.04
+        if release < 18
+          result["ubuntu#{release}04-32"] = {
+            :general => {
+              'platform' => "ubuntu-#{release}.04-i386"
+            }
+          }
+        end
+
+        result["ubuntu#{release}04-64"] = {
+          :general => {
+            'platform' => "ubuntu-#{release}.04-amd64"
+          }
+        }
+
+        result["ubuntu#{release}04-POWER"] = {
+          :general => {
+            'platform' => "ubuntu-#{release}.04-ppc64el"
+          }
+        }
+
+        result["ubuntu#{release}04-AARCH64"] = {
+          :general => {
+            'platform' => "ubuntu-#{release}.04-aarch64"
+          }
+        }
+      end
+
+      # Generate STS platforms
+      [20, 21].each do |release|
+        unless release.even?
+          result["ubuntu#{release}04-64"] = {
+            :general => {
+              'platform' => "ubuntu-#{release}.04-amd64"
+            }
+          }
+        end
+
+        result["ubuntu#{release}10-64"] = {
+          :general => {
+            'platform' => "ubuntu-#{release}.10-amd64"
+          }
+        }
+      end
+
       result.merge!({
         'aix53-POWER' => {
           :general => {
@@ -1164,90 +1213,6 @@ module BeakerHostGenerator
           :vmpooler => {
             'template' => 'solaris-114-x86_64'
           }
-        },
-        'ubuntu1404-32' => {
-          :general => {
-            'platform' => 'ubuntu-14.04-i386'
-          }
-        },
-        'ubuntu1404-64' => {
-          :general => {
-            'platform' => 'ubuntu-14.04-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'rm /usr/sbin/policy-rc.d',
-              'rm /sbin/initctl; dpkg-divert --rename --remove /sbin/initctl',
-              'apt-get install -y net-tools wget apt-transport-https',
-              'locale-gen en_US.UTF-8',
-              'echo LANG=en_US.UTF-8 > /etc/default/locale'
-            ]
-          }
-        },
-        'ubuntu1604-32' => {
-          :general => {
-            'platform' => 'ubuntu-16.04-i386'
-          }
-        },
-        'ubuntu1604-64' => {
-          :general => {
-            'platform' => 'ubuntu-16.04-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'apt-get install -y net-tools wget locales apt-transport-https',
-              'locale-gen en_US.UTF-8',
-              'echo LANG=en_US.UTF-8 > /etc/default/locale'
-            ]
-          }
-        },
-        'ubuntu1604-POWER' => {
-          :general => {
-            'platform' => 'ubuntu-16.04-ppc64el'
-          }
-        },
-        'ubuntu1610-32' => {
-          :general => {
-            'platform' => 'ubuntu-16.10-i386'
-          }
-        },
-        'ubuntu1610-64' => {
-          :general => {
-            'platform' => 'ubuntu-16.10-amd64'
-          }
-        },
-        'ubuntu1804-64' => {
-          :general => {
-            'platform' => 'ubuntu-18.04-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
-              'locale-gen en_US.UTF-8',
-              'echo LANG=en_US.UTF-8 > /etc/default/locale'
-            ]
-          }
-        },
-        'ubuntu2004-64' => {
-          :general => {
-            'platform' => 'ubuntu-20.04-amd64'
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'apt-get install -y net-tools wget locales apt-transport-https iproute2 gnupg',
-              'locale-gen en_US.UTF-8',
-              'echo LANG=en_US.UTF-8 > /etc/default/locale'
-            ]
-          }
-        },
-        'ubuntu2004-AARCH64' => {
-          :general => {
-            'platform' => 'ubuntu-20.04-aarch64'
-          },
         },
         'vro6-64' => {
           :general => {
