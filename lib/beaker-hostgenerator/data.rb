@@ -1332,6 +1332,15 @@ module BeakerHostGenerator
             'template' => 'ubuntu-1804-x86_64'
           }
         },
+        'ubuntu1804-AARCH64' => {
+          :general => {
+            'platform'           => 'ubuntu-18.04-aarch64',
+            'packaging_platform' => 'ubuntu-18.04-aarch64'
+          },
+          :abs => {
+            'template' => 'ubuntu-1804-arm64'
+          },
+        },
         'ubuntu1810-64' => {
           :general => {
             'platform'           => 'ubuntu-18.10-amd64',

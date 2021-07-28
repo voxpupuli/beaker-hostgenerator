@@ -1,0 +1,49 @@
+---
+arguments_string: ubuntu1804-AARCH64aulcdfm-cisco_n7k_vdc-HW-ubuntu1804-AARCH64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1804-AARCH64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-18.04-aarch64
+      packaging_platform: ubuntu-18.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    cisco_n7k_vdc-HW-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: cisco_nexus-7k-x86_64
+      packaging_platform: cisco-wrlinux-5-x86_64
+      vrf: management
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu1804-AARCH64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-18.04-aarch64
+      packaging_platform: ubuntu-18.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
