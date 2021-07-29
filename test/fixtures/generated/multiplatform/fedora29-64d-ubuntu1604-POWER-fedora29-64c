@@ -21,7 +21,6 @@ expected_hash:
       pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-ppc64el
-      packaging_platform: ubuntu-16.04-ppc64el
       roles:
       - agent
     fedora29-64-2:

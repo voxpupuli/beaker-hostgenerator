@@ -63,7 +63,6 @@ expected_hash:
       box: generic/ubuntu1804
       synced_folder: disabled
       platform: ubuntu-18.04-amd64
-      packaging_platform: ubuntu-18.04-amd64
       roles:
       - agent
     debian7-64-1:

@@ -9,7 +9,6 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       platform: ubuntu-20.04-aarch64
-      packaging_platform: ubuntu-20.04-aarch64
       hypervisor: vmpooler
       roles:
       - agent
@@ -30,7 +29,6 @@ expected_hash:
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       platform: ubuntu-20.04-aarch64
-      packaging_platform: ubuntu-20.04-aarch64
       hypervisor: vmpooler
       roles:
       - agent

@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 0 ubuntu2104-64c"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2104-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: ubuntu-21.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2104-x86_64
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
