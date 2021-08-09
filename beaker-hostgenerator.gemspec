@@ -34,7 +34,4 @@ eos
 
   # Run time dependencies
   s.add_runtime_dependency 'deep_merge', '~> 1.0'
-  s.add_runtime_dependency 'stringify-hash', '~> 0.0.0'
-
 end
-
