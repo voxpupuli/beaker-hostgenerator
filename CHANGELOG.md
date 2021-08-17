@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.6.0) (2021-08-17)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.5.0...1.6.0)
+
+**Implemented enhancements:**
+
+- Generate Ubuntu ABS, vmpooler, and Docker templates on the fly [\#218](https://github.com/voxpupuli/beaker-hostgenerator/pull/218) ([ekohl](https://github.com/ekohl))
+
+**Fixed bugs:**
+
+- Set up Debian 11 on Docker [\#220](https://github.com/voxpupuli/beaker-hostgenerator/pull/220) ([ekohl](https://github.com/ekohl))
+
 ## [1.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.5.0) (2021-06-14)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.4.0...1.5.0)
