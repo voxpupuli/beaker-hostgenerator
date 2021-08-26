@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.6.1) (2021-08-26)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.6.0...1.6.1)
+
+**Fixed bugs:**
+
+- Debian 11 docker: Install iproute2 [\#222](https://github.com/voxpupuli/beaker-hostgenerator/pull/222) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.6.0) (2021-08-17)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.5.0...1.6.0)
