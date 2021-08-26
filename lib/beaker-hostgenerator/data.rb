@@ -645,7 +645,7 @@ module BeakerHostGenerator
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg'
+              'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg iproute2'
             ]
           },
           :vagrant => {
