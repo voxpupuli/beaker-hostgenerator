@@ -992,6 +992,15 @@ module BeakerHostGenerator
             'template' => 'redhat-8-x86_64'
           }
         },
+        'redhatfips8-64' => {
+          :general => {
+            'platform'           => 'el-8-x86_64',
+            'packaging_platform' => 'redhatfips-8-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'redhat-fips-8-x86_64'
+          }
+        },
         'redhat8-AARCH64' => {
           :general => {
             'platform'           => 'el-8-aarch64',
