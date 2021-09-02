@@ -1,0 +1,22 @@
+---
+arguments_string: "--osinfo-version 0 redhatfips8-64m"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhatfips8-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-8-x86_64
+      packaging_platform: redhatfips-8-x86_64
+      template: redhat-fips-8-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:

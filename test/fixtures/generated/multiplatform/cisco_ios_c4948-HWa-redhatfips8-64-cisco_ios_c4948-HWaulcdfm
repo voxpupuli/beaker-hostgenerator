@@ -1,0 +1,49 @@
+---
+arguments_string: cisco_ios_c4948-HWa-redhatfips8-64-cisco_ios_c4948-HWaulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    cisco_ios_c4948-HW-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: cisco_ios-12-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhatfips8-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-8-x86_64
+      packaging_platform: redhatfips-8-x86_64
+      template: redhat-fips-8-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    cisco_ios_c4948-HW-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: cisco_ios-12-arm32
+      ssh:
+        user: admin
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
