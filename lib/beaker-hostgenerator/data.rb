@@ -304,6 +304,18 @@ module BeakerHostGenerator
             ]
           }
         },
+        'centos9-64' => {
+          :general => {
+            'platform' => 'el-9-x86_64'
+          },
+          :docker => {
+            'image'                 => 'quay.io/centos/centos:stream9',
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
+            ]
+          }
+        },
         # Deprecated
         'cisconx-64' => {
           :general => {
