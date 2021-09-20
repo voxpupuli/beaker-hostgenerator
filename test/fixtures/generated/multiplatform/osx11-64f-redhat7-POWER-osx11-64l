@@ -22,6 +22,7 @@ expected_hash:
       pe_upgrade_ver: 
       platform: el-7-ppc64le
       packaging_platform: el-7-ppc64le
+      template: redhat-7-ppc64le
       hypervisor: vmpooler
       roles:
       - agent
