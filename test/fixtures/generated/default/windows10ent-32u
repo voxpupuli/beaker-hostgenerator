@@ -4,15 +4,15 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windows10ent-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      hypervisor: vmpooler
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       platform: windows-10ent-32
       packaging_platform: windows-2012-x86
       ruby_arch: x86
       template: win-10-ent-i386
+      hypervisor: vmpooler
       roles:
       - agent
       - ca
@@ -20,4 +20,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:

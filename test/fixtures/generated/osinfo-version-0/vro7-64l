@@ -4,14 +4,14 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     vro7-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      hypervisor: vmpooler
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       platform: sles-11-x86_64
       packaging_platform: sles-11-x86_64
       template: vro-7-x86_64
+      hypervisor: vmpooler
       roles:
       - agent
       - classifier
@@ -19,4 +19,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:

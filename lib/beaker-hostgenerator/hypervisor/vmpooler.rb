@@ -18,10 +18,10 @@ module BeakerHostGenerator
         base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler)
 
         case node_info['ostype']
-        when /^centos/
-          base_config['template'] = base_config['platform'].gsub(/^el/, 'centos')
+        when /^(almalinux|centos|redhat|rocky)/
+          base_config['template'] ||= base_config['platform'].gsub(/^el/, $1)
         when /^fedora/
-          base_config['template'] = base_config['platform']
+          base_config['template'] ||= base_config['platform']
         when /^ubuntu/
           arch = case node_info['bits']
                  when '64'
@@ -32,7 +32,7 @@ module BeakerHostGenerator
                    nil
                  end
 
-          base_config['template'] = "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
+          base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
         end
 
         # Some vmpooler/vsphere platforms have special requirements.

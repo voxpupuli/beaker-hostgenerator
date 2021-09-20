@@ -186,6 +186,17 @@ module BeakerHostGenerator
             'template' => 'aix-7.2-power'
           }
         },
+        'almalinux8-64' => {
+          :general => {
+            'platform' => 'el-8-x86_64',
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
+            ]
+          }
+        },
         'amazon6-64' => {
             :general => {
                 'platform'           => 'el-6-x86_64',
@@ -1020,6 +1031,17 @@ module BeakerHostGenerator
           },
           :abs => {
             'template' => 'redhat-8-power8'
+          }
+        },
+        'rocky8-64' => {
+          :general => {
+            'platform' => 'el-8-x86_64',
+          },
+          :docker => {
+            'docker_image_commands' => [
+              'cp /bin/true /sbin/agetty',
+              'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
+            ]
           }
         },
         'scientific5-32' => {

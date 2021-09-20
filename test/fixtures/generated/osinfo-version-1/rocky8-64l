@@ -1,0 +1,21 @@
+---
+arguments_string: "--osinfo-version 1 rocky8-64l"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    rocky8-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: rocky-8-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
