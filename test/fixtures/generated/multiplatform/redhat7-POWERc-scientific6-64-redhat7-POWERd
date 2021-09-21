@@ -11,6 +11,7 @@ expected_hash:
       hypervisor: vmpooler
       platform: el-7-ppc64le
       packaging_platform: el-7-ppc64le
+      template: redhat-7-ppc64le
       roles:
       - agent
       - dashboard
@@ -33,6 +34,7 @@ expected_hash:
       hypervisor: vmpooler
       platform: el-7-ppc64le
       packaging_platform: el-7-ppc64le
+      template: redhat-7-ppc64le
       roles:
       - agent
       - database

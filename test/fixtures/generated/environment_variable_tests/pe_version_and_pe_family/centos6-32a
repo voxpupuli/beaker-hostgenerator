@@ -12,9 +12,9 @@ expected_hash:
       pe_ver: 6.6.6
       pe_upgrade_dir: https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local/archives/releases/6.6.6/
       pe_upgrade_ver: 6.6.6
-      hypervisor: vmpooler
       platform: el-6-i386
       packaging_platform: el-6-i386
+      hypervisor: vmpooler
       template: centos-6-i386
       roles:
       - agent
@@ -22,4 +22,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:

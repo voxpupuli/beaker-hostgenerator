@@ -4,13 +4,13 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora30-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       platform: fedora-30-x86_64
-      template: fedora-30-x86_64
       hypervisor: vmpooler
+      template: fedora-30-x86_64
       roles:
       - agent
       - ca
@@ -23,4 +23,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:

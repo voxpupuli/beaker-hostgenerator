@@ -4,13 +4,14 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat7-S390X-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      hypervisor: vmpooler
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       platform: el-7-s390x
       packaging_platform: el-7-s390x
+      hypervisor: vmpooler
+      template: redhat-7-s390x
       roles:
       - agent
       - database
@@ -18,4 +19,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:

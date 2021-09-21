@@ -1,0 +1,43 @@
+---
+arguments_string: almalinux8-64u-solaris112-32-almalinux8-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    almalinux8-64-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: almalinux-8-x86_64
+      roles:
+      - agent
+      - ca
+    solaris112-32-1:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: solaris-11.2-i386
+      packaging_platform: solaris-11-i386
+      template: solaris-112-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    almalinux8-64-2:
+      pe_dir:
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: almalinux-8-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+expected_exception:
