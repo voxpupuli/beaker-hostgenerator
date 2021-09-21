@@ -45,18 +45,19 @@ module HostHelpers
   end
 
   def make_opts
-    opts = StringifyHash.new
-    opts.merge( { :logger => logger,
-                                               :host_config => 'sample.config',
-                                               :type => nil,
-                                               :pooling_api => 'http://vcloud.delivery.puppetlabs.net/',
-                                               :datastore => 'instance0',
-                                               :folder => 'Delivery/Quality Assurance/Staging/Dynamic',
-                                               :resourcepool => 'delivery/Quality Assurance/Staging/Dynamic',
-                                               :gce_project => 'beaker-compute',
-                                               :gce_keyfile => '/path/to/keyfile.p12',
-                                               :gce_password => 'notasecret',
-                                               :gce_email => '12345678910@developer.gserviceaccount.com' } )
+    {
+      :logger => logger,
+      :host_config => 'sample.config',
+      :type => nil,
+      :pooling_api => 'http://vcloud.delivery.puppetlabs.net/',
+      :datastore => 'instance0',
+      :folder => 'Delivery/Quality Assurance/Staging/Dynamic',
+      :resourcepool => 'delivery/Quality Assurance/Staging/Dynamic',
+      :gce_project => 'beaker-compute',
+      :gce_keyfile => '/path/to/keyfile.p12',
+      :gce_password => 'notasecret',
+      :gce_email => '12345678910@developer.gserviceaccount.com',
+    }
   end
 
   def generate_result (name, opts )
@@ -76,7 +77,7 @@ module HostHelpers
   end
 
   def make_host name, host_hash
-    host_hash = StringifyHash.new.merge(HOST_DEFAULTS.merge(host_hash))
+    host_hash = HOST_DEFAULTS.merge(host_hash)
 
     host = make_opts.merge(host_hash)
 
