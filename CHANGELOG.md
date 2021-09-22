@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.7.1) (2021-09-22)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.7.0...1.7.1)
+
+**Fixed bugs:**
+
+- Add ABS support for Rocky and Alma 8 [\#228](https://github.com/voxpupuli/beaker-hostgenerator/pull/228) ([GabrielNagy](https://github.com/GabrielNagy))
+
 ## [1.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.7.0) (2021-09-22)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.6.1...1.7.0)
