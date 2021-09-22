@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.7.0) (2021-09-22)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.6.1...1.7.0)
+
+**Implemented enhancements:**
+
+- \(IMAGES-1302\) Add Alma and Rocky 8 support [\#226](https://github.com/voxpupuli/beaker-hostgenerator/pull/226) ([GabrielNagy](https://github.com/GabrielNagy))
+- Add RedHat 8 FIPS platform definition [\#224](https://github.com/voxpupuli/beaker-hostgenerator/pull/224) ([GabrielNagy](https://github.com/GabrielNagy))
+- Remove stringify-hash as a dependency [\#219](https://github.com/voxpupuli/beaker-hostgenerator/pull/219) ([ekohl](https://github.com/ekohl))
+
 ## [1.6.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.6.1) (2021-08-26)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.6.0...1.6.1)
