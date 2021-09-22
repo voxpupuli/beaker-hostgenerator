@@ -37,7 +37,7 @@ module BeakerHostGenerator
                  when 'AARCH64'
                    'arm64'
                  when 'POWER'
-                   base_template = node_info['ostype'].sub(/ubuntu(\d\d)/, 'ubuntu-\1.')
+                   base_template.sub!(/ubuntu-(\d\d)/, 'ubuntu-\1.')
                    'power8'
                  else
                    raise "Unknown bits '#{node_info['bits']}' for '#{node_info['ostype']}'"
