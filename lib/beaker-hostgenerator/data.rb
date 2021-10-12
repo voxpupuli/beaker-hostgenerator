@@ -1623,6 +1623,16 @@ module BeakerHostGenerator
             'template' => 'win-2019-core-x86_64'
           }
         },
+        'windows2022-64' => {
+          :general => {
+            'platform'           => 'windows-2022-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-2022-x86_64'
+          }
+        },
         'windows7-64' => {
           :general => {
             'platform'           => 'windows-7-64',
