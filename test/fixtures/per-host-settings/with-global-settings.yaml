@@ -22,5 +22,5 @@ expected_hash:
     masterless: true
     number: 1234
     key: url encoded  white space
-    pooling_api: http://vmpooler.delivery.puppetlabs.net/
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
 expected_exception:
