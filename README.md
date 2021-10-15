@@ -1,5 +1,13 @@
 # Beaker Host Generator
 
+[![License](https://img.shields.io/github/license/voxpupuli/beaker-hostgenerator.svg)](https://github.com/voxpupuli/beaker-hostgenerator/blob/master/LICENSE)
+[![Test](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/test.yml/badge.svg)](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/voxpupuli/beaker-hostgenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/voxpupuli/beaker-hostgenerator)
+[![Release](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/release.yml)
+[![RubyGem Version](https://img.shields.io/gem/v/beaker-hostgenerator.svg)](https://rubygems.org/gems/beaker-hostgenerator)
+[![RubyGem Downloads](https://img.shields.io/gem/dt/beaker-hostgenerator.svg)](https://rubygems.org/gems/beaker-hostgenerator)
+[![Donated by Puppet Inc](https://img.shields.io/badge/donated%20by-Puppet%20Inc-fb7047.svg)](#transfer-notice)
+
 `beaker-hostgenerator` is a command line utility designed to generate beaker
 host config files using a compact command line SUT specification.
 
@@ -452,6 +460,14 @@ contribute.
 
 If you have questions or comments, please contact the Beaker team at the
 `#puppet-dev` IRC channel on chat.freenode.org
+
+## Transfer Notice
+
+This plugin was originally authored by [Puppet Inc](http://puppet.com).
+The maintainer preferred that Vox Pupuli take ownership of the module for future improvement and maintenance.
+Existing pull requests and issues were transferred over, please fork and continue to contribute at https://github.com/voxpupuli/beaker-hostgenerator
+
+Previously: https://github.com/puppetlabs/beaker-hostgenerator
 
 ## Make a new release
 

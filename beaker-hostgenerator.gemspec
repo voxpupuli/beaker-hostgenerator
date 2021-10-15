@@ -25,7 +25,6 @@ eos
   s.add_development_dependency 'rspec-its'
   s.add_development_dependency 'fakefs', '>= 0.6', '< 2.0'
   s.add_development_dependency 'rake', '~> 13.0'
-  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'pry', '~> 0.10'
 
   # Documentation dependencies
