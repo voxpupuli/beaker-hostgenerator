@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.8.0) (2021-10-25)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.7.1...1.8.0)
+
+**Implemented enhancements:**
+
+- Implement coverage reports [\#233](https://github.com/voxpupuli/beaker-hostgenerator/pull/233) ([bastelfreak](https://github.com/bastelfreak))
+- Align github actions/publish gem to github as well [\#232](https://github.com/voxpupuli/beaker-hostgenerator/pull/232) ([bastelfreak](https://github.com/bastelfreak))
+- Add Windows Server 2022 64-bit support and update default vmpooler API [\#231](https://github.com/voxpupuli/beaker-hostgenerator/pull/231) ([GabrielNagy](https://github.com/GabrielNagy))
+
+**Closed issues:**
+
+- vmpooler API endpoint has changed [\#230](https://github.com/voxpupuli/beaker-hostgenerator/issues/230)
+
 ## [1.7.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.7.1) (2021-09-22)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.7.0...1.7.1)
