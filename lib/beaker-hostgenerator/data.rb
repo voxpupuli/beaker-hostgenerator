@@ -1033,6 +1033,15 @@ module BeakerHostGenerator
             'template' => 'redhat-8-power8'
           }
         },
+        'redhat9-64' => {
+          :general => {
+            'platform'           => 'el-9-x86_64',
+            'packaging_platform' => 'el-9-x86_64'
+          },
+          :vmpooler => {
+            'template' => 'redhat-9-x86_64'
+          }
+        },
         'rocky8-64' => {
           :general => {
             'platform' => 'el-8-x86_64',
