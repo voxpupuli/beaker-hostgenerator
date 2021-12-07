@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.9.0) (2021-12-07)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.8.0...1.9.0)
+
+**Implemented enhancements:**
+
+- \(IMAGES-1323\) Adds RedHat 9 support [\#235](https://github.com/voxpupuli/beaker-hostgenerator/pull/235) ([mhashizume](https://github.com/mhashizume))
+
 ## [1.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.8.0) (2021-10-25)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.7.1...1.8.0)
