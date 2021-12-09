@@ -224,6 +224,17 @@ module BeakerHostGenerator
             'template' => 'amazon-7-arm64'
           }
         },
+        'archlinuxrolling-64' => {
+          :general => {
+            'platform' => 'archlinux-rolling-x64',
+          },
+          :vagrant => {
+            'box' => 'archlinux/archlinux',
+          },
+          :docker => {
+            'image' => 'archlinux/archlinux',
+          }
+        },
         'arista4-32' => {
           :general => {
             'platform'           => 'eos-4-i386',
@@ -1744,6 +1755,7 @@ module BeakerHostGenerator
         }
       })
 
+      result['archlinux-64'] = result['archlinuxrolling-64']
       result
     end
 
