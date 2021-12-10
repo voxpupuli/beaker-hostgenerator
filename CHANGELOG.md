@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.9.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.9.0) (2021-12-07)
+## [1.10.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.10.0) (2021-12-10)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.9.0...1.10.0)
+
+**Implemented enhancements:**
+
+- Add Arch Linux support [\#191](https://github.com/voxpupuli/beaker-hostgenerator/pull/191) ([ekohl](https://github.com/ekohl))
+
+## [1.9.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.9.0) (2021-12-08)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.8.0...1.9.0)
 
