@@ -68,7 +68,7 @@ module BeakerHostGenerator
         'pe_ver' => options[:pe_ver] || pe_version,
         'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version),
         'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
-      }
+      }.reject { |key, value| value.nil? }
     end
 
     # This is where all the information for all platforms lives, irrespective
