@@ -68,7 +68,7 @@ module BeakerHostGenerator
         'pe_ver' => options[:pe_ver] || pe_version,
         'pe_upgrade_dir' => options[:pe_upgrade_dir] || pe_dir(pe_upgrade_version),
         'pe_upgrade_ver' => options[:pe_upgrade_ver] || pe_upgrade_version,
-      }
+      }.reject { |key, value| value.nil? }
     end
 
     # This is where all the information for all platforms lives, irrespective
@@ -152,8 +152,7 @@ module BeakerHostGenerator
       result.merge!({
         'aix53-POWER' => {
           :general => {
-            'platform'           => 'aix-5.3-power',
-            'packaging_platform' => 'aix-5.3-power'
+            'platform' => 'aix-5.3-power'
           },
           :abs => {
             'template' => 'aix-5.3-power'
@@ -161,8 +160,7 @@ module BeakerHostGenerator
         },
         'aix61-POWER' => {
           :general => {
-            'platform'           => 'aix-6.1-power',
-            'packaging_platform' => 'aix-6.1-power'
+            'platform' => 'aix-6.1-power'
           },
           :abs => {
             'template' => 'aix-6.1-power'
@@ -170,8 +168,7 @@ module BeakerHostGenerator
         },
         'aix71-POWER' => {
           :general => {
-            'platform'           => 'aix-7.1-power',
-            'packaging_platform' => 'aix-7.1-power'
+            'platform' => 'aix-7.1-power'
           },
           :abs => {
             'template' => 'aix-7.1-power'
@@ -199,8 +196,7 @@ module BeakerHostGenerator
         },
         'amazon6-64' => {
             :general => {
-                'platform'           => 'el-6-x86_64',
-                'packaging_platform' => 'el-6-x86_64'
+                'platform' => 'el-6-x86_64'
             },
             :abs => {
                 'template' => 'amazon-6-x86_64'
@@ -208,8 +204,7 @@ module BeakerHostGenerator
         },
         'amazon7-64' => {
             :general => {
-                'platform'           => 'el-7-x86_64',
-                'packaging_platform' => 'el-7-x86_64'
+                'platform' => 'el-7-x86_64'
             },
             :abs => {
                 'template' => 'amazon-7-x86_64'
@@ -217,8 +212,7 @@ module BeakerHostGenerator
         },
         'amazon7-ARM64' => {
           :general => {
-            'platform'           => 'el-7-aarch64',
-            'packaging_platform' => 'el-7-aarch64'
+            'platform' => 'el-7-aarch64'
           },
           :abs => {
             'template' => 'amazon-7-arm64'
@@ -237,8 +231,7 @@ module BeakerHostGenerator
         },
         'arista4-32' => {
           :general => {
-            'platform'           => 'eos-4-i386',
-            'packaging_platform' => 'eos-4-i386'
+            'platform' => 'eos-4-i386'
           },
           :vmpooler => {
             'template' => 'arista-4-i386'
@@ -256,14 +249,12 @@ module BeakerHostGenerator
         },
         'centos5-32' => {
           :general => {
-            'platform'           => 'el-5-i386',
-            'packaging_platform' => 'el-5-i386'
+            'platform' => 'el-5-i386'
           }
         },
         'centos5-64' => {
           :general => {
-            'platform'           => 'el-5-x86_64',
-            'packaging_platform' => 'el-5-x86_64'
+            'platform' => 'el-5-x86_64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -275,14 +266,12 @@ module BeakerHostGenerator
         },
         'centos6-32' => {
           :general => {
-            'platform'           => 'el-6-i386',
-            'packaging_platform' => 'el-6-i386'
+            'platform' => 'el-6-i386'
           }
         },
         'centos6-64' => {
           :general => {
-            'platform'           => 'el-6-x86_64',
-            'packaging_platform' => 'el-6-x86_64'
+            'platform' => 'el-6-x86_64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -295,8 +284,7 @@ module BeakerHostGenerator
         },
         'centos7-64' => {
           :general => {
-            'platform'           => 'el-7-x86_64',
-            'packaging_platform' => 'el-7-x86_64'
+            'platform' => 'el-7-x86_64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -307,8 +295,7 @@ module BeakerHostGenerator
         },
         'centos8-64' => {
           :general => {
-            'platform'           => 'el-8-x86_64',
-            'packaging_platform' => 'el-8-x86_64'
+            'platform' => 'el-8-x86_64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -535,8 +522,7 @@ module BeakerHostGenerator
         },
         'debian7-32' => {
           :general => {
-            'platform'           => 'debian-7-i386',
-            'packaging_platform' => 'debian-7-i386'
+            'platform' => 'debian-7-i386'
           },
           :vmpooler => {
             'template' => 'debian-7-i386'
@@ -544,8 +530,7 @@ module BeakerHostGenerator
         },
         'debian7-64' => {
           :general => {
-            'platform'           => 'debian-7-amd64',
-            'packaging_platform' => 'debian-7-amd64'
+            'platform' => 'debian-7-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -562,8 +547,7 @@ module BeakerHostGenerator
         },
         'debian8-32' => {
           :general => {
-            'platform'           => 'debian-8-i386',
-            'packaging_platform' => 'debian-8-i386'
+            'platform' => 'debian-8-i386'
           },
           :vmpooler => {
             'template' => 'debian-8-i386'
@@ -571,8 +555,7 @@ module BeakerHostGenerator
         },
         'debian8-64' => {
           :general => {
-            'platform'           => 'debian-8-amd64',
-            'packaging_platform' => 'debian-8-amd64'
+            'platform' => 'debian-8-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -590,8 +573,7 @@ module BeakerHostGenerator
         },
         'debian9-32' => {
           :general => {
-            'platform'           => 'debian-9-i386',
-            'packaging_platform' => 'debian-9-i386'
+            'platform' => 'debian-9-i386'
           },
           :vmpooler => {
             'template' => 'debian-9-i386'
@@ -606,8 +588,7 @@ module BeakerHostGenerator
         },
         'debian9-64' => {
           :general => {
-            'platform'           => 'debian-9-amd64',
-            'packaging_platform' => 'debian-9-amd64'
+            'platform' => 'debian-9-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -625,8 +606,7 @@ module BeakerHostGenerator
         },
         'debian10-64' => {
           :general => {
-            'platform'           => 'debian-10-amd64',
-            'packaging_platform' => 'debian-10-amd64'
+            'platform' => 'debian-10-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -644,8 +624,7 @@ module BeakerHostGenerator
         },
         'debian10-32' => {
           :general => {
-            'platform'           => 'debian-10-i386',
-            'packaging_platform' => 'debian-10-i386'
+            'platform' => 'debian-10-i386'
           },
           :docker => {
             'docker_image_commands' => [
@@ -660,8 +639,7 @@ module BeakerHostGenerator
         },
         'debian11-64' => {
           :general => {
-            'platform'           => 'debian-11-amd64',
-            'packaging_platform' => 'debian-11-amd64'
+            'platform' => 'debian-11-amd64'
           },
           :docker => {
             'docker_image_commands' => [
@@ -788,8 +766,7 @@ module BeakerHostGenerator
         },
         'oracle5-32' => {
           :general => {
-            'platform'           => 'el-5-i386',
-            'packaging_platform' => 'el-5-i386'
+            'platform' => 'el-5-i386'
           },
           :vmpooler => {
             'template' => 'oracle-5-i386'
@@ -797,8 +774,7 @@ module BeakerHostGenerator
         },
         'oracle5-64' => {
           :general => {
-            'platform'           => 'el-5-x86_64',
-            'packaging_platform' => 'el-5-x86_64'
+            'platform' => 'el-5-x86_64'
           },
           :vmpooler => {
             'template' => 'oracle-5-x86_64'
@@ -806,8 +782,7 @@ module BeakerHostGenerator
         },
         'oracle6-32' => {
           :general => {
-            'platform'           => 'el-6-i386',
-            'packaging_platform' => 'el-6-i386'
+            'platform' => 'el-6-i386'
           },
           :vmpooler => {
             'template' => 'oracle-6-i386'
@@ -815,8 +790,7 @@ module BeakerHostGenerator
         },
         'oracle6-64' => {
           :general => {
-            'platform'           => 'el-6-x86_64',
-            'packaging_platform' => 'el-6-x86_64'
+            'platform' => 'el-6-x86_64'
           },
           :vmpooler => {
             'template' => 'oracle-6-x86_64'
@@ -824,8 +798,7 @@ module BeakerHostGenerator
         },
         'oracle7-64' => {
           :general => {
-            'platform'           => 'el-7-x86_64',
-            'packaging_platform' => 'el-7-x86_64'
+            'platform' => 'el-7-x86_64'
           },
           :vmpooler => {
             'template' => 'oracle-7-x86_64'
@@ -841,8 +814,7 @@ module BeakerHostGenerator
         },
         'osx1010-64' => {
           :general => {
-            'platform'           => 'osx-10.10-x86_64',
-            'packaging_platform' => 'osx-10.10-x86_64'
+            'platform' => 'osx-10.10-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1010-x86_64'
@@ -850,8 +822,7 @@ module BeakerHostGenerator
         },
         'osx1011-64' => {
           :general => {
-            'platform'           => 'osx-10.11-x86_64',
-            'packaging_platform' => 'osx-10.11-x86_64'
+            'platform' => 'osx-10.11-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1011-x86_64'
@@ -859,8 +830,7 @@ module BeakerHostGenerator
         },
         'osx1012-64' => {
           :general => {
-            'platform'           => 'osx-10.12-x86_64',
-            'packaging_platform' => 'osx-10.12-x86_64'
+            'platform' => 'osx-10.12-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1012-x86_64'
@@ -868,8 +838,7 @@ module BeakerHostGenerator
         },
         'osx1013-64' => {
           :general => {
-            'platform'           => 'osx-10.13-x86_64',
-            'packaging_platform' => 'osx-10.13-x86_64'
+            'platform' => 'osx-10.13-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1013-x86_64'
@@ -877,8 +846,7 @@ module BeakerHostGenerator
         },
         'osx1014-64' => {
           :general => {
-            'platform'           => 'osx-10.14-x86_64',
-            'packaging_platform' => 'osx-10.14-x86_64'
+            'platform' => 'osx-10.14-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1014-x86_64'
@@ -886,8 +854,7 @@ module BeakerHostGenerator
         },
         'osx1015-64' => {
           :general => {
-            'platform'           => 'osx-10.15-x86_64',
-            'packaging_platform' => 'osx-10.15-x86_64'
+            'platform' => 'osx-10.15-x86_64'
           },
           :vmpooler => {
             'template' => 'osx-1015-x86_64'
@@ -895,8 +862,7 @@ module BeakerHostGenerator
         },
         'osx11-64' => {
           :general => {
-            'platform'           => 'osx-11-x86_64',
-            'packaging_platform' => 'osx-11-x86_64'
+            'platform' => 'osx-11-x86_64'
           },
           :vmpooler => {
             'template' => 'macos-112-x86_64'
@@ -920,8 +886,7 @@ module BeakerHostGenerator
         },
         'redhat5-32' => {
           :general => {
-            'platform'          => 'el-5-i386',
-            'packaging_platform' => 'el-5-i386'
+            'platform' => 'el-5-i386'
           },
           :vmpooler => {
             'template' => 'redhat-5-i386'
@@ -929,8 +894,7 @@ module BeakerHostGenerator
         },
         'redhat5-64' => {
           :general => {
-            'platform'          => 'el-5-x86_64',
-            'packaging_platform' => 'el-5-x86_64'
+            'platform' => 'el-5-x86_64'
           },
           :vmpooler => {
             'template' => 'redhat-5-x86_64'
@@ -938,8 +902,7 @@ module BeakerHostGenerator
         },
         'redhat6-32' => {
           :general => {
-            'platform'          => 'el-6-i386',
-            'packaging_platform' => 'el-6-i386'
+            'platform' => 'el-6-i386',
           },
           :vmpooler => {
             'template' => 'redhat-6-i386'
@@ -947,8 +910,7 @@ module BeakerHostGenerator
         },
         'redhat6-64' => {
           :general => {
-            'platform'           => 'el-6-x86_64',
-            'packaging_platform' => 'el-6-x86_64'
+            'platform' => 'el-6-x86_64'
           },
           :vmpooler => {
             'template' => 'redhat-6-x86_64'
@@ -956,14 +918,12 @@ module BeakerHostGenerator
         },
         'redhat6-S390X' => {
           :general => {
-            'platform'          => 'el-6-s390x',
-            'packaging_platform' => 'el-6-s390x'
+            'platform' => 'el-6-s390x'
           },
         },
         'redhat7-64' => {
           :general => {
-            'platform'           => 'el-7-x86_64',
-            'packaging_platform' => 'el-7-x86_64'
+            'platform' => 'el-7-x86_64'
           },
           :vmpooler => {
             'template' => 'redhat-7-x86_64'
@@ -980,8 +940,7 @@ module BeakerHostGenerator
         },
         'redhat7-POWER' => {
           :general => {
-            'platform'           => 'el-7-ppc64le',
-            'packaging_platform' => 'el-7-ppc64le'
+            'platform' => 'el-7-ppc64le',
           },
           :abs => {
             'template' => 'redhat-7.3-power8'
@@ -989,14 +948,12 @@ module BeakerHostGenerator
         },
         'redhat7-S390X' => {
           :general => {
-            'platform'           => 'el-7-s390x',
-            'packaging_platform' => 'el-7-s390x'
+            'platform' => 'el-7-s390x'
           },
         },
         'redhat7-AARCH64' => {
           :general => {
-            'platform'           => 'el-7-aarch64',
-            'packaging_platform' => 'el-7-aarch64'
+            'platform' => 'el-7-aarch64'
           },
           :abs => {
             'template' => 'centos-7-arm64'
@@ -1007,8 +964,7 @@ module BeakerHostGenerator
         },
         'redhat8-64' => {
           :general => {
-            'platform'           => 'el-8-x86_64',
-            'packaging_platform' => 'el-8-x86_64'
+            'platform' => 'el-8-x86_64'
           },
           :vmpooler => {
             'template' => 'redhat-8-x86_64'
@@ -1025,8 +981,7 @@ module BeakerHostGenerator
         },
         'redhat8-AARCH64' => {
           :general => {
-            'platform'           => 'el-8-aarch64',
-            'packaging_platform' => 'el-8-aarch64'
+            'platform' => 'el-8-aarch64'
           },
           :abs => {
             'template' => 'redhat-8-arm64'
@@ -1037,8 +992,7 @@ module BeakerHostGenerator
         },
         'redhat8-POWER' => {
           :general => {
-            'platform'           => 'el-8-ppc64le',
-            'packaging_platform' => 'el-8-ppc64le'
+            'platform' => 'el-8-ppc64le'
           },
           :abs => {
             'template' => 'redhat-8-power8'
@@ -1046,8 +1000,7 @@ module BeakerHostGenerator
         },
         'redhat9-64' => {
           :general => {
-            'platform'           => 'el-9-x86_64',
-            'packaging_platform' => 'el-9-x86_64'
+            'platform' => 'el-9-x86_64'
           },
           :vmpooler => {
             'template' => 'redhat-9-x86_64'
@@ -1066,8 +1019,7 @@ module BeakerHostGenerator
         },
         'scientific5-32' => {
           :general => {
-            'platform'           => 'el-5-i386',
-            'packaging_platform' => 'el-5-i386'
+            'platform' => 'el-5-i386'
           },
           :vmpooler => {
             'template' => 'scientific-5-i386'
@@ -1075,8 +1027,7 @@ module BeakerHostGenerator
         },
         'scientific5-64' => {
           :general => {
-            'platform'           => 'el-5-x86_64',
-            'packaging_platform' => 'el-5-x86_64'
+            'platform' => 'el-5-x86_64'
           },
           :vmpooler => {
             'template' => 'scientific-5-x86_64'
@@ -1084,8 +1035,7 @@ module BeakerHostGenerator
         },
         'scientific6-32' => {
           :general => {
-            'platform'          => 'el-6-i386',
-            'packaging_platform' => 'el-6-i386'
+            'platform' => 'el-6-i386'
           },
           :vmpooler => {
             'template' => 'scientific-6-i386'
@@ -1093,8 +1043,7 @@ module BeakerHostGenerator
         },
         'scientific6-64' => {
           :general => {
-            'platform'           => 'el-6-x86_64',
-            'packaging_platform' => 'el-6-x86_64'
+            'platform' => 'el-6-x86_64'
           },
           :vmpooler => {
             'template' => 'scientific-6-x86_64'
@@ -1102,8 +1051,7 @@ module BeakerHostGenerator
         },
         'scientific7-64' => {
           :general => {
-            'platform'          => 'el-7-x86_64',
-            'packaging_platform' => 'el-7-x86_64'
+            'platform' => 'el-7-x86_64'
           },
           :vmpooler => {
             'template' => 'scientific-7-x86_64'
@@ -1127,8 +1075,7 @@ module BeakerHostGenerator
         },
         'sles11-32' => {
           :general => {
-            'platform'           => 'sles-11-i386',
-            'packaging_platform' => 'sles-11-i386'
+            'platform' => 'sles-11-i386'
           },
           :vmpooler => {
             'template' => 'sles-11-i386'
@@ -1136,8 +1083,7 @@ module BeakerHostGenerator
         },
         'sles11-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'sles-11-x86_64'
@@ -1145,14 +1091,12 @@ module BeakerHostGenerator
         },
         'sles11-S390X' => {
           :general => {
-            'platform'           => 'sles-11-s390x',
-            'packaging_platform' => 'sles-11-s390x'
+            'platform' => 'sles-11-s390x'
           },
         },
         'sles12-64' => {
           :general => {
-            'platform'           => 'sles-12-x86_64',
-            'packaging_platform' => 'sles-12-x86_64'
+            'platform' => 'sles-12-x86_64'
           },
           :vmpooler => {
             'template' => 'sles-12-x86_64'
@@ -1160,14 +1104,12 @@ module BeakerHostGenerator
         },
         'sles12-S390X' => {
           :general => {
-            'platform'           => 'sles-12-s390x',
-            'packaging_platform' => 'sles-12-s390x'
+            'platform' => 'sles-12-s390x'
           }
         },
         'sles12-POWER' => {
           :general => {
-            'platform'           => 'sles-12-ppc64le',
-            'packaging_platform' => 'sles-12-ppc64le'
+            'platform' => 'sles-12-ppc64le'
           },
           :abs => {
             'template' => 'sles-12-power8'
@@ -1175,8 +1117,7 @@ module BeakerHostGenerator
         },
         'sles15-64' => {
           :general => {
-            'platform'           => 'sles-15-x86_64',
-            'packaging_platform' => 'sles-15-x86_64'
+            'platform' => 'sles-15-x86_64'
           },
           :vmpooler => {
             'template' => 'sles-15-x86_64'
@@ -1184,8 +1125,7 @@ module BeakerHostGenerator
         },
         'solaris10-32' => {
           :general => {
-            'platform'           => 'solaris-10-i386',
-            'packaging_platform' => 'solaris-10-i386'
+            'platform' => 'solaris-10-i386'
           },
           :vmpooler => {
             'template' => 'solaris-10-x86_64'
@@ -1193,8 +1133,7 @@ module BeakerHostGenerator
         },
         'solaris10-64' => {
           :general => {
-            'platform'           => 'solaris-10-i386',
-            'packaging_platform' => 'solaris-10-i386'
+            'platform' => 'solaris-10-i386'
           },
           :vmpooler => {
             'template' => 'solaris-10-x86_64'
@@ -1202,8 +1141,7 @@ module BeakerHostGenerator
         },
         'solaris10-SPARC' => {
           :general => {
-            'platform'           => 'solaris-10-sparc',
-            'packaging_platform' => 'solaris-10-sparc'
+            'platform' => 'solaris-10-sparc'
           },
           :abs => {
             'template' => 'solaris-10-sparc'
@@ -1211,8 +1149,7 @@ module BeakerHostGenerator
         },
         'solaris11-32' => {
           :general => {
-            'platform'           => 'solaris-11-i386',
-            'packaging_platform' => 'solaris-11-i386'
+            'platform' => 'solaris-11-i386'
           },
           :vmpooler => {
             'template' => 'solaris-11-x86_64'
@@ -1220,8 +1157,7 @@ module BeakerHostGenerator
         },
         'solaris11-64' => {
           :general => {
-            'platform'           => 'solaris-11-i386',
-            'packaging_platform' => 'solaris-11-i386'
+            'platform' => 'solaris-11-i386'
           },
           :vmpooler => {
             'template' => 'solaris-11-x86_64'
@@ -1229,8 +1165,7 @@ module BeakerHostGenerator
         },
         'solaris11-SPARC' => {
           :general => {
-            'platform'           => 'solaris-11-sparc',
-            'packaging_platform' => 'solaris-11-sparc'
+            'platform' => 'solaris-11-sparc'
           },
           :abs => {
             'template' => 'solaris-11-sparc'
@@ -1274,8 +1209,7 @@ module BeakerHostGenerator
         },
         'vro6-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'vro-6-x86_64'
@@ -1283,8 +1217,7 @@ module BeakerHostGenerator
         },
         'vro7-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'vro-7-x86_64'
@@ -1292,8 +1225,7 @@ module BeakerHostGenerator
         },
         'vro71-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'vro-71-x86_64'
@@ -1301,8 +1233,7 @@ module BeakerHostGenerator
         },
         'vro73-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'vro-73-x86_64'
@@ -1310,8 +1241,7 @@ module BeakerHostGenerator
         },
         'vro74-64' => {
           :general => {
-            'platform'           => 'sles-11-x86_64',
-            'packaging_platform' => 'sles-11-x86_64'
+            'platform' => 'sles-11-x86_64'
           },
           :vmpooler => {
             'template' => 'vro-74-x86_64'

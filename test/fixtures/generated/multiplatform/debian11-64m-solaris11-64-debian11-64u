@@ -4,35 +4,20 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     debian11-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: debian-11-amd64
-      packaging_platform: debian-11-amd64
       template: debian-11-x86_64
       hypervisor: vmpooler
       roles:
       - agent
       - master
     solaris11-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: solaris-11-i386
-      packaging_platform: solaris-11-i386
       template: solaris-11-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     debian11-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: debian-11-amd64
-      packaging_platform: debian-11-amd64
       template: debian-11-x86_64
       hypervisor: vmpooler
       roles:

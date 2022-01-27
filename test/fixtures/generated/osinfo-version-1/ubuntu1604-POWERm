@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     ubuntu1604-POWER-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-ppc64el
       roles:

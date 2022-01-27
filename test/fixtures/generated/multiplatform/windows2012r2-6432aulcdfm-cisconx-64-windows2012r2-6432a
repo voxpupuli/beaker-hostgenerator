@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windows2012r2-6432-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012r2-64
       packaging_platform: windows-2012-x64
@@ -22,10 +18,6 @@ expected_hash:
       - frictionless
       - master
     cisconx-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: cisco_nexus-7-x86_64
       packaging_platform: cisco-wrlinux-5-x86_64
@@ -36,10 +28,6 @@ expected_hash:
       roles:
       - agent
     windows2012r2-6432-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012r2-64
       packaging_platform: windows-2012-x64

@@ -4,34 +4,20 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     vro73-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: sles-11-x86_64
-      packaging_platform: sles-11-x86_64
       template: vro-73-x86_64
       hypervisor: vmpooler
       roles:
       - agent
       - dashboard
     ubuntu2010-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-20.10-amd64
       hypervisor: vmpooler
       template: ubuntu-2010-x86_64
       roles:
       - agent
     vro73-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: sles-11-x86_64
-      packaging_platform: sles-11-x86_64
       template: vro-73-x86_64
       hypervisor: vmpooler
       roles:

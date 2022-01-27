@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     solaris112-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11.2-i386
       packaging_platform: solaris-11-i386
@@ -16,21 +12,12 @@ expected_hash:
       - agent
       - ca
     oracle5-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-5-i386
-      packaging_platform: el-5-i386
       template: oracle-5-i386
       roles:
       - agent
     solaris112-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11.2-i386
       packaging_platform: solaris-11-i386

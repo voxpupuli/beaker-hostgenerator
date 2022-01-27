@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     osx1015-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: osx-10.15-x86_64
-      packaging_platform: osx-10.15-x86_64
       template: osx-1015-x86_64
       hypervisor: vmpooler
       roles:
@@ -19,4 +14,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
-expected_exception: 
+expected_exception:

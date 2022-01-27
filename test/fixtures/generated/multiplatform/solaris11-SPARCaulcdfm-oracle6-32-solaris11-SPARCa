@@ -4,13 +4,8 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     solaris11-SPARC-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11-sparc
-      packaging_platform: solaris-11-sparc
       roles:
       - agent
       - ca
@@ -20,24 +15,14 @@ expected_hash:
       - frictionless
       - master
     oracle6-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-i386
-      packaging_platform: el-6-i386
       template: oracle-6-i386
       roles:
       - agent
     solaris11-SPARC-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11-sparc
-      packaging_platform: solaris-11-sparc
       roles:
       - agent
   CONFIG:

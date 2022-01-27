@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cisco_ios_c4507r-HW-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: cisco_ios-12-arm32
       ssh:
         user: admin
@@ -15,21 +11,12 @@ expected_hash:
       roles:
       - agent
     redhat9-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-9-x86_64
-      packaging_platform: el-9-x86_64
       template: redhat-9-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     cisco_ios_c4507r-HW-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: cisco_ios-12-arm32
       ssh:
         user: admin

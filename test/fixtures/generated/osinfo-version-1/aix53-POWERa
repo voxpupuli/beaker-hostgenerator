@@ -4,13 +4,8 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     aix53-POWER-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-5.3-power
-      packaging_platform: aix-5.3-power
       roles:
       - agent
   CONFIG:

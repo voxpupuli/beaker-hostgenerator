@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora14-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-14-i386
       template: fedora-14-i386

@@ -4,21 +4,12 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     amazon7-ARM64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: el-7-aarch64
-      packaging_platform: el-7-aarch64
       hypervisor: vmpooler
       roles:
       - agent
       - master
     windows7-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: windows-7-64
       packaging_platform: windows-2012-x64
       ruby_arch: x64
@@ -27,12 +18,7 @@ expected_hash:
       roles:
       - agent
     amazon7-ARM64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: el-7-aarch64
-      packaging_platform: el-7-aarch64
       hypervisor: vmpooler
       roles:
       - agent

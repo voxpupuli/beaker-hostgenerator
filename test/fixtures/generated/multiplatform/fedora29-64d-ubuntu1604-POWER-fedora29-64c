@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora29-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-29-x86_64
       template: fedora-29-x86_64
@@ -15,19 +11,11 @@ expected_hash:
       - agent
       - database
     ubuntu1604-POWER-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-ppc64el
       roles:
       - agent
     fedora29-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-29-x86_64
       template: fedora-29-x86_64

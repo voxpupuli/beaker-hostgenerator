@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     almalinux8-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-8-x86_64
       hypervisor: vmpooler
       template: almalinux-8-x86_64
@@ -15,10 +11,6 @@ expected_hash:
       - agent
       - ca
     solaris112-32-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: solaris-11.2-i386
       packaging_platform: solaris-11-i386
       template: solaris-112-x86_64
@@ -26,10 +18,6 @@ expected_hash:
       roles:
       - agent
     almalinux8-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-8-x86_64
       hypervisor: vmpooler
       template: almalinux-8-x86_64

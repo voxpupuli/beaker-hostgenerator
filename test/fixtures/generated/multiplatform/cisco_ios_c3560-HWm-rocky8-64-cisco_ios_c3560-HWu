@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cisco_ios_c3560-HW-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: cisco_ios-12-arm32
       ssh:
         user: admin
@@ -16,20 +12,12 @@ expected_hash:
       - agent
       - master
     rocky8-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-8-x86_64
       hypervisor: vmpooler
       template: rocky-8-x86_64
       roles:
       - agent
     cisco_ios_c3560-HW-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: cisco_ios-12-arm32
       ssh:
         user: admin

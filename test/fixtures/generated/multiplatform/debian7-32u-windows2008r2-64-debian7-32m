@@ -4,22 +4,13 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     debian7-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: debian-7-i386
-      packaging_platform: debian-7-i386
       template: debian-7-i386
       roles:
       - agent
       - ca
     windows2008r2-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2008r2-64
       packaging_platform: windows-2012-x64
@@ -28,13 +19,8 @@ expected_hash:
       roles:
       - agent
     debian7-32-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: debian-7-i386
-      packaging_platform: debian-7-i386
       template: debian-7-i386
       roles:
       - agent

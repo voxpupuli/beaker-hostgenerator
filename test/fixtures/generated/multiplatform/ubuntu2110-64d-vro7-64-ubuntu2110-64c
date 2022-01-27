@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     ubuntu2110-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-21.10-amd64
       hypervisor: vmpooler
       template: ubuntu-2110-x86_64
@@ -15,21 +11,12 @@ expected_hash:
       - agent
       - database
     vro7-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: sles-11-x86_64
-      packaging_platform: sles-11-x86_64
       template: vro-7-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     ubuntu2110-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-21.10-amd64
       hypervisor: vmpooler
       template: ubuntu-2110-x86_64

@@ -4,36 +4,21 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     oracle6-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: oracle-6-x86_64
       roles:
       - agent
       - frictionless
     solaris11-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11-i386
-      packaging_platform: solaris-11-i386
       template: solaris-11-x86_64
       roles:
       - agent
     oracle6-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: oracle-6-x86_64
       roles:
       - agent

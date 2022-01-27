@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cisco_n9k-VM-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: cisco_nexus-7-x86_64
       packaging_platform: cisco-wrlinux-5-x86_64
       vrf: management
@@ -22,4 +18,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
-expected_exception: 
+expected_exception:

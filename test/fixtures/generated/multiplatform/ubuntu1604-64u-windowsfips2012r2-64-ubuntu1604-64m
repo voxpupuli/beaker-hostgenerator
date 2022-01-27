@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     ubuntu1604-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-16.04-amd64
       hypervisor: vmpooler
       template: ubuntu-1604-x86_64
@@ -15,10 +11,6 @@ expected_hash:
       - agent
       - ca
     windowsfips2012r2-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: windows-2012r2-64
       packaging_platform: windowsfips-2012-x64
       ruby_arch: x64
@@ -27,10 +19,6 @@ expected_hash:
       roles:
       - agent
     ubuntu1604-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-16.04-amd64
       hypervisor: vmpooler
       template: ubuntu-1604-x86_64

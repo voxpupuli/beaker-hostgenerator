@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora31-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: fedora-31-x86_64
       template: fedora-31-x86_64
       hypervisor: vmpooler
@@ -20,10 +16,6 @@ expected_hash:
       - frictionless
       - master
     solaris114-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: solaris-11.4-i386
       packaging_platform: solaris-11-i386
       template: solaris-114-x86_64
@@ -31,10 +23,6 @@ expected_hash:
       roles:
       - agent
     fedora31-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: fedora-31-x86_64
       template: fedora-31-x86_64
       hypervisor: vmpooler

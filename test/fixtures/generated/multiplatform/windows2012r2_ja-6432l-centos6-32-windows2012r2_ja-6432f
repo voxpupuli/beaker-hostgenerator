@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windows2012r2_ja-6432-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012r2-64
       packaging_platform: windows-2012-x64
@@ -18,21 +14,12 @@ expected_hash:
       - agent
       - classifier
     centos6-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-i386
-      packaging_platform: el-6-i386
       template: centos-6-i386
       roles:
       - agent
     windows2012r2_ja-6432-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012r2-64
       packaging_platform: windows-2012-x64

@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     solaris112-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: solaris-11.2-i386
       packaging_platform: solaris-11-i386

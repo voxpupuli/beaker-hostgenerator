@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     centos4-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: centos-4-x86_64
       template: centos-4-x86_64
       hypervisor: vmpooler

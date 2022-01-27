@@ -4,34 +4,19 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat6-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: redhat-6-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     redhat8-AARCH64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-8-aarch64
-      packaging_platform: el-8-aarch64
       template: redhat-8-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     redhat6-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: redhat-6-x86_64
       hypervisor: vmpooler
       roles:

@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora34-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: fedora-34-x86_64
       hypervisor: vmpooler
       template: fedora-34-x86_64
@@ -15,10 +11,6 @@ expected_hash:
       - agent
       - dashboard
     windows2012r2_fr-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: windows-2012r2-64
       packaging_platform: windows-2012-x64
       ruby_arch: x64
@@ -29,10 +21,6 @@ expected_hash:
       roles:
       - agent
     fedora34-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: fedora-34-x86_64
       hypervisor: vmpooler
       template: fedora-34-x86_64

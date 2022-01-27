@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     ubuntu2004-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-20.04-amd64
       hypervisor: vmpooler
       template: ubuntu-2004-x86_64
@@ -20,10 +16,6 @@ expected_hash:
       - frictionless
       - master
     windows2008-6432-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: windows-2008-64
       packaging_platform: windows-2012-x64
       ruby_arch: x86
@@ -32,10 +24,6 @@ expected_hash:
       roles:
       - agent
     ubuntu2004-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: ubuntu-20.04-amd64
       hypervisor: vmpooler
       template: ubuntu-2004-x86_64
