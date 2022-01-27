@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.11.0) (2022-01-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.10.0...1.11.0)
+
+**Implemented enhancements:**
+
+- Use CentOS Stream 8 instead of CentOS Linux 8 [\#240](https://github.com/voxpupuli/beaker-hostgenerator/pull/240) ([ekohl](https://github.com/ekohl))
+- Add CentOS 9 support [\#225](https://github.com/voxpupuli/beaker-hostgenerator/pull/225) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- Drop redundant attributes from generated data [\#239](https://github.com/voxpupuli/beaker-hostgenerator/pull/239) ([ekohl](https://github.com/ekohl))
+
 ## [1.10.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.10.0) (2021-12-10)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.9.0...1.10.0)
