@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora22-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-22-x86_64
       template: fedora-22-x86_64
@@ -20,20 +16,12 @@ expected_hash:
       - frictionless
       - master
     ubuntu1604-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: ubuntu-16.04-i386
       template: ubuntu-1604-i386
       roles:
       - agent
     fedora22-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-22-x86_64
       template: fedora-22-x86_64

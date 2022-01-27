@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     sles10-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: sles-10-x86_64
       template: sles-10-x86_64
@@ -15,21 +11,12 @@ expected_hash:
       - agent
       - dashboard
     redhat6-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: redhat-6-x86_64
       roles:
       - agent
     sles10-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: sles-10-x86_64
       template: sles-10-x86_64

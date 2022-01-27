@@ -4,17 +4,12 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     sles12-S390X-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      hypervisor: vmpooler
       platform: sles-12-s390x
-      packaging_platform: sles-12-s390x
+      hypervisor: vmpooler
       roles:
       - agent
   CONFIG:
     nfs_server: none
     consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
-expected_exception: 
+expected_exception:

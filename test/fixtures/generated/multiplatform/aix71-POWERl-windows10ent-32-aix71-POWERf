@@ -4,21 +4,12 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     aix71-POWER-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-7.1-power
-      packaging_platform: aix-7.1-power
       roles:
       - agent
       - classifier
     windows10ent-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-10ent-32
       packaging_platform: windows-2012-x86
@@ -27,13 +18,8 @@ expected_hash:
       roles:
       - agent
     aix71-POWER-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: aix-7.1-power
-      packaging_platform: aix-7.1-power
       roles:
       - agent
       - frictionless

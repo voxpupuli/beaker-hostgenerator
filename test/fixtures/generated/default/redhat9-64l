@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat9-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-9-x86_64
-      packaging_platform: el-9-x86_64
       template: redhat-9-x86_64
       hypervisor: vmpooler
       roles:

@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora20-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: fedora-20-i386
       template: fedora-20-i386
       hypervisor: vmpooler
@@ -15,19 +11,11 @@ expected_hash:
       - agent
       - master
     ubuntu2004-AARCH64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: ubuntu-20.04-aarch64
       hypervisor: vmpooler
       roles:
       - agent
     fedora20-32-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: fedora-20-i386
       template: fedora-20-i386
       hypervisor: vmpooler

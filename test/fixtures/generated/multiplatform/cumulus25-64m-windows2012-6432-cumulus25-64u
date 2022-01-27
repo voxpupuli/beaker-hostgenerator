@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cumulus25-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: cumulus-2.5-x86_64
       packaging_platform: cumulus-2.2-amd64
@@ -16,10 +12,6 @@ expected_hash:
       - agent
       - master
     windows2012-6432-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012-64
       packaging_platform: windows-2012-x64
@@ -28,10 +20,6 @@ expected_hash:
       roles:
       - agent
     cumulus25-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: cumulus-2.5-x86_64
       packaging_platform: cumulus-2.2-amd64

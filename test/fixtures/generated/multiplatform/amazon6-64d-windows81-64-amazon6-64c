@@ -4,21 +4,12 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     amazon6-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       roles:
       - agent
       - database
     windows81-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-8.1-64
       packaging_platform: windows-2012-x64
@@ -27,13 +18,8 @@ expected_hash:
       roles:
       - agent
     amazon6-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       roles:
       - agent
       - dashboard

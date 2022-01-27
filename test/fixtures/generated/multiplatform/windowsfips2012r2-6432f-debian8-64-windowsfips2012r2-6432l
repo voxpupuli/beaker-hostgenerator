@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windowsfips2012r2-6432-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: windows-2012r2-64
       packaging_platform: windowsfips-2012-x64
       ruby_arch: x64
@@ -17,21 +13,12 @@ expected_hash:
       - agent
       - frictionless
     debian8-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: debian-8-amd64
-      packaging_platform: debian-8-amd64
       template: debian-8-x86_64
       hypervisor: vmpooler
       roles:
       - agent
     windowsfips2012r2-6432-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: windows-2012r2-64
       packaging_platform: windowsfips-2012-x64
       ruby_arch: x64

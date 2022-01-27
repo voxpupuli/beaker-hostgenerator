@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     debian9-32-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: debian-9-i386
-      packaging_platform: debian-9-i386
       template: debian-9-i386
       hypervisor: vmpooler
       roles:

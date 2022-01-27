@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora32-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       box: fedora/32-cloud-base
       synced_folder: disabled
       platform: fedora-32-x86_64

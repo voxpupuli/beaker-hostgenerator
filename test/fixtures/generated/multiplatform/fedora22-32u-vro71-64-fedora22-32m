@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     fedora22-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-22-i386
       template: fedora-22-i386
@@ -15,21 +11,12 @@ expected_hash:
       - agent
       - ca
     vro71-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: sles-11-x86_64
-      packaging_platform: sles-11-x86_64
       template: vro-71-x86_64
       roles:
       - agent
     fedora22-32-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: fedora-22-i386
       template: fedora-22-i386

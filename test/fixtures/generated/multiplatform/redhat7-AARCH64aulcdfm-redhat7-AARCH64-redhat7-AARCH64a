@@ -4,13 +4,8 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat7-AARCH64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-7-aarch64
-      packaging_platform: el-7-aarch64
       template: redhat-7-x86_64
       roles:
       - agent
@@ -21,24 +16,14 @@ expected_hash:
       - frictionless
       - master
     redhat7-AARCH64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-7-aarch64
-      packaging_platform: el-7-aarch64
       template: redhat-7-x86_64
       roles:
       - agent
     redhat7-AARCH64-3:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-7-aarch64
-      packaging_platform: el-7-aarch64
       template: redhat-7-x86_64
       roles:
       - agent

@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     debian6-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: debian-6-i386
       template: debian-6-i386
@@ -20,10 +16,6 @@ expected_hash:
       - frictionless
       - master
     windows2012-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-2012-64
       packaging_platform: windows-2012-x64
@@ -32,10 +24,6 @@ expected_hash:
       roles:
       - agent
     debian6-32-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: debian-6-i386
       template: debian-6-i386

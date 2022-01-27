@@ -4,13 +4,9 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat4-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
-      hypervisor: vmpooler
       platform: el-4-i386
       template: redhat-4-i386
+      hypervisor: vmpooler
       roles:
       - agent
       - dashboard
@@ -18,4 +14,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
-expected_exception: 
+expected_exception:

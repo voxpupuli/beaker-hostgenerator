@@ -4,34 +4,19 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     centos6-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: el-6-x86_64
-      packaging_platform: el-6-x86_64
       template: centos-6-x86_64
       roles:
       - agent
       - master
     debian8-32-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: debian-8-i386
-      packaging_platform: debian-8-i386
       hypervisor: none
       roles:
       - agent
     redhat7-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-7-x86_64
-      packaging_platform: el-7-x86_64
       hypervisor: custom
       roles:
       - agent

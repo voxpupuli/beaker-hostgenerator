@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cisco_n9k-VM-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: cisco_nexus-7-x86_64
       packaging_platform: cisco-wrlinux-5-x86_64
       vrf: management
@@ -19,10 +15,6 @@ expected_hash:
       - agent
       - classifier
     windows2016_fr-6432-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: windows-2016-64
       packaging_platform: windows-2012-x64
       ruby_arch: x86
@@ -33,10 +25,6 @@ expected_hash:
       roles:
       - agent
     cisco_n9k-VM-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: cisco_nexus-7-x86_64
       packaging_platform: cisco-wrlinux-5-x86_64
       vrf: management

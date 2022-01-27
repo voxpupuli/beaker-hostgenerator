@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat7-S390X-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-7-s390x
-      packaging_platform: el-7-s390x
       hypervisor: vmpooler
       template: redhat-7-s390x
       roles:

@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     debian8-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: debian-8-amd64
-      packaging_platform: debian-8-amd64
       template: debian-8-x86_64
       hypervisor: vmpooler
       roles:

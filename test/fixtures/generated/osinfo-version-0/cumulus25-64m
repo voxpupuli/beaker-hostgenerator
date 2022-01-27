@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cumulus25-64-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: cumulus-2.5-x86_64
       packaging_platform: cumulus-2.2-amd64
       template: cumulus-vx-25-x86_64

@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     cisco_ios_c3750-HW-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: cisco_ios-12-arm32
       ssh:
         user: admin
@@ -18,4 +14,4 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
-expected_exception: 
+expected_exception:

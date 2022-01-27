@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windows7-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-7-64
       packaging_platform: windows-2012-x64
@@ -17,20 +13,12 @@ expected_hash:
       - agent
       - frictionless
     centos4-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: el-4-x86_64
       template: centos-4-x86_64
       roles:
       - agent
     windows7-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-7-64
       packaging_platform: windows-2012-x64

@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     redhat:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: el-7-x86_64
-      packaging_platform: el-7-x86_64
       hypervisor: none
       vmhostname: vm-redhat
       ip: 1.2.3.4
@@ -19,20 +14,12 @@ expected_hash:
       - role_a
       - role_b
     sles10-32-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: sles-10-i386
       template: sles-10-i386
       roles:
       - agent
     sles10-64-2:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: sles-10-x86_64
       template: sles-10-x86_64
@@ -40,10 +27,6 @@ expected_hash:
       roles:
       - agent
     sles10-64-3:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: sles-10-x86_64
       template: sles-10-x86_64

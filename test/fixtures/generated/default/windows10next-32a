@@ -4,10 +4,6 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     windows10next-32-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       hypervisor: vmpooler
       platform: windows-10ent-32
       packaging_platform: windows-2012-x86

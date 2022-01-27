@@ -4,12 +4,7 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     arista4-32-1:
-      pe_dir:
-      pe_ver:
-      pe_upgrade_dir:
-      pe_upgrade_ver:
       platform: eos-4-i386
-      packaging_platform: eos-4-i386
       template: arista-4-i386
       hypervisor: vmpooler
       roles:

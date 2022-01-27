@@ -4,35 +4,20 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     osx11-64-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: osx-11-x86_64
-      packaging_platform: osx-11-x86_64
       template: macos-112-x86_64
       hypervisor: vmpooler
       roles:
       - agent
       - frictionless
     redhat7-POWER-1:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: el-7-ppc64le
-      packaging_platform: el-7-ppc64le
       template: redhat-7-ppc64le
       hypervisor: vmpooler
       roles:
       - agent
     osx11-64-2:
-      pe_dir: 
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
       platform: osx-11-x86_64
-      packaging_platform: osx-11-x86_64
       template: macos-112-x86_64
       hypervisor: vmpooler
       roles:
