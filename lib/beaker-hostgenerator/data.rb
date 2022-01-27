@@ -297,7 +297,11 @@ module BeakerHostGenerator
           :general => {
             'platform' => 'el-8-x86_64'
           },
+          :vagrant => {
+            'box' => 'centos/stream8',
+          },
           :docker => {
+            'image'                 => 'quay.io/centos/centos:stream8',
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
