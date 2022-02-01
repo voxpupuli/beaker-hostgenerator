@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.11.1) (2022-02-01)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.11.0...1.11.1)
+
+**Fixed bugs:**
+
+- Install hostname on CentOS 8 Stream in docker [\#242](https://github.com/voxpupuli/beaker-hostgenerator/pull/242) ([ekohl](https://github.com/ekohl))
+
 ## [1.11.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.11.0) (2022-01-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.10.0...1.11.0)
