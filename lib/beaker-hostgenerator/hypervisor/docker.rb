@@ -32,9 +32,9 @@ module BeakerHostGenerator
                                       when /1404/
                                         ['apt-transport-https']
                                       when /1604/
-                                        ['locales']
+                                        ['locales', 'lsb-release']
                                       else
-                                        ['locales', 'iproute2', 'gnupg']
+                                        ['locales', 'iproute2', 'gnupg', 'lsb-release']
                                       end
 
           docker_commands << "apt-get install -y net-tools wget #{extra_packages_to_install.join(' ')}"
