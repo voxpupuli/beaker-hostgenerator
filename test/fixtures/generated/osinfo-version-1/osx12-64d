@@ -1,0 +1,17 @@
+---
+arguments_string: "--osinfo-version 1 osx12-64d"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx12-64-1:
+      platform: osx-12-x86_64
+      template: macos-12-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception: 

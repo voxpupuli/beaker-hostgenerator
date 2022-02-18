@@ -1,0 +1,30 @@
+---
+arguments_string: osx12-64d-debian10-32-osx12-64c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx12-64-1:
+      platform: osx-12-x86_64
+      template: macos-12-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+    debian10-32-1:
+      platform: debian-10-i386
+      template: debian-10-i386
+      hypervisor: vmpooler
+      roles:
+      - agent
+    osx12-64-2:
+      platform: osx-12-x86_64
+      template: macos-12-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception: 
