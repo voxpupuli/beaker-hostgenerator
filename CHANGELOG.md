@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.12.0) (2022-02-21)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.11.1...1.12.0)
+
+**Implemented enhancements:**
+
+- \(IMAGES-1334\) Add support for macOS 12 [\#245](https://github.com/voxpupuli/beaker-hostgenerator/pull/245) ([AriaXLi](https://github.com/AriaXLi))
+
+**Merged pull requests:**
+
+- Add Ruby 3.1 to CI matrix [\#246](https://github.com/voxpupuli/beaker-hostgenerator/pull/246) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.11.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.11.1) (2022-02-01)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.11.0...1.11.1)
@@ -17,11 +29,8 @@ All notable changes to this project will be documented in this file.
 **Implemented enhancements:**
 
 - Use CentOS Stream 8 instead of CentOS Linux 8 [\#240](https://github.com/voxpupuli/beaker-hostgenerator/pull/240) ([ekohl](https://github.com/ekohl))
-- Add CentOS 9 support [\#225](https://github.com/voxpupuli/beaker-hostgenerator/pull/225) ([ekohl](https://github.com/ekohl))
-
-**Merged pull requests:**
-
 - Drop redundant attributes from generated data [\#239](https://github.com/voxpupuli/beaker-hostgenerator/pull/239) ([ekohl](https://github.com/ekohl))
+- Add CentOS 9 support [\#225](https://github.com/voxpupuli/beaker-hostgenerator/pull/225) ([ekohl](https://github.com/ekohl))
 
 ## [1.10.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.10.0) (2021-12-10)
 
