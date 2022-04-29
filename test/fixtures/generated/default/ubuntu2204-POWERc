@@ -1,0 +1,16 @@
+---
+arguments_string: ubuntu2204-POWERc
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2204-POWER-1:
+      platform: ubuntu-22.04-ppc64el
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception: 
