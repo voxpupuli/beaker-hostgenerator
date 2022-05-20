@@ -103,7 +103,7 @@ module BeakerHostGenerator
       # Ubuntu
       #
       # Generate LTS platforms
-      (14..20).select(&:even?).each do |release|
+      (14..22).select(&:even?).each do |release|
         # 32 bit support was dropped in Ubuntu 18.04
         if release < 18
           result["ubuntu#{release}04-32"] = {
