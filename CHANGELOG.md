@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.13.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.13.0) (2022-05-25)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.12.0...1.13.0)
+
+**Merged pull requests:**
+
+- \(IMAGES-1339\) Add Ubuntu 22.04 support [\#249](https://github.com/voxpupuli/beaker-hostgenerator/pull/249) ([cthorn42](https://github.com/cthorn42))
+
 ## [1.12.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.12.0) (2022-02-21)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.11.1...1.12.0)
