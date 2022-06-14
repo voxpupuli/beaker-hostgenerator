@@ -1,0 +1,32 @@
+---
+arguments_string: fedora19-64u-windows11ent-64-fedora19-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora19-64-1:
+      platform: fedora-19-x86_64
+      hypervisor: vmpooler
+      template: fedora-19-x86_64
+      roles:
+      - agent
+      - ca
+    windows11ent-64-1:
+      platform: windows-11ent-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-11-ent-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    fedora19-64-2:
+      platform: fedora-19-x86_64
+      hypervisor: vmpooler
+      template: fedora-19-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

@@ -1,0 +1,34 @@
+---
+arguments_string: fedora36-64f-windows2012r2_fr-6432-fedora36-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora36-64-1:
+      platform: fedora-36-x86_64
+      hypervisor: vmpooler
+      template: fedora-36-x86_64
+      roles:
+      - agent
+      - frictionless
+    windows2012r2_fr-6432-1:
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x86
+      template: win-2012r2-fr-x86_64
+      user: Administrateur
+      locale: fr
+      hypervisor: vmpooler
+      roles:
+      - agent
+    fedora36-64-2:
+      platform: fedora-36-x86_64
+      hypervisor: vmpooler
+      template: fedora-36-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
