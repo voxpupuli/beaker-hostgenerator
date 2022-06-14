@@ -83,7 +83,7 @@ module BeakerHostGenerator
       result = {}
 
       # Fedora
-      (19..34).each do |release|
+      (19..36).each do |release|
         # 32 bit support was dropped in Fedora 31
         if release < 31
           result["fedora#{release}-32"] = {
@@ -884,12 +884,28 @@ module BeakerHostGenerator
             'template' => 'macos-112-x86_64'
           }
         },
+	'osx11-arm64' => {
+          :general => {
+            'platform' => 'osx-11-arm64'
+          },
+          :vmpooler => {
+            'template' => 'macos-11-arm64'
+          }
+        },
         'osx12-64' => {
           :general => {
             'platform' => 'osx-12-x86_64'
           },
           :vmpooler => {
             'template' => 'macos-12-x86_64'
+          }
+        },
+        'osx12-arm64' => {
+          :general => {
+            'platform' => 'osx-12-arm64'
+          },
+          :vmpooler => {
+            'template' => 'macos-12-arm64'
           }
         },
         'redhat4-32' => {
@@ -1705,6 +1721,16 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'win-10-1809-x86_64'
+          }
+        },
+        'windows11ent-64' => {
+          :general => {
+            'platform'           => 'windows-11ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch' => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-11-ent-x86_64'
           }
         }
       })
