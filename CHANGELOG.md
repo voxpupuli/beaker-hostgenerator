@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.15.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.15.0) (2022-06-23)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.14.0...1.15.0)
+
+**Implemented enhancements:**
+
+- Add Windows 11 Enterprise, Fedora 36 [\#253](https://github.com/voxpupuli/beaker-hostgenerator/pull/253) ([mhashizume](https://github.com/mhashizume))
+
 ## [1.14.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.14.0) (2022-05-30)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.13.0...1.14.0)
