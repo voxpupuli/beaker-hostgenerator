@@ -1,0 +1,17 @@
+---
+arguments_string: "--osinfo-version 0 fedora36-64f"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora36-64-1:
+      platform: fedora-36-x86_64
+      hypervisor: vmpooler
+      template: fedora-36-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

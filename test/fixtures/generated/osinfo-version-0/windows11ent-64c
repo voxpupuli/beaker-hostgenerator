@@ -1,0 +1,19 @@
+---
+arguments_string: "--osinfo-version 0 windows11ent-64c"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windows11ent-64-1:
+      platform: windows-11ent-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-11-ent-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    nfs_server: none
+    consoleport: 443
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

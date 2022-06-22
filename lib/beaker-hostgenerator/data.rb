@@ -83,7 +83,7 @@ module BeakerHostGenerator
       result = {}
 
       # Fedora
-      (19..34).each do |release|
+      (19..36).each do |release|
         # 32 bit support was dropped in Fedora 31
         if release < 31
           result["fedora#{release}-32"] = {
@@ -1275,7 +1275,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2008-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2008-x86_64'
@@ -1285,7 +1285,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2008-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2008-x86_64'
@@ -1295,7 +1295,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2008r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2008r2-x86_64'
@@ -1305,7 +1305,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2008r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2008r2-x86_64'
@@ -1315,7 +1315,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012-x86_64'
@@ -1325,7 +1325,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2012-x86_64'
@@ -1335,7 +1335,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-x86_64'
@@ -1345,7 +1345,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windowsfips-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-fips-x86_64'
@@ -1355,7 +1355,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windowsfips-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-fips-x86_64'
@@ -1365,7 +1365,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2012r2-x86_64'
@@ -1375,7 +1375,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-wmf5-x86_64'
@@ -1385,7 +1385,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-ja-x86_64',
@@ -1396,7 +1396,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2012r2-ja-x86_64',
@@ -1407,7 +1407,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-fr-x86_64',
@@ -1419,7 +1419,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2012r2-fr-x86_64',
@@ -1431,7 +1431,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2012r2-core-x86_64'
@@ -1441,7 +1441,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2012r2-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2012r2-core-x86_64'
@@ -1451,7 +1451,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2016-x86_64'
@@ -1461,7 +1461,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2016-x86_64'
@@ -1471,7 +1471,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2016-core-x86_64'
@@ -1481,7 +1481,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2016-core-x86_64'
@@ -1491,7 +1491,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2016-fr-x86_64',
@@ -1503,7 +1503,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2016-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2016-fr-x86_64',
@@ -1515,7 +1515,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2019-x86_64'
@@ -1525,7 +1525,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2019-x86_64'
@@ -1535,7 +1535,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2019-ja-x86_64',
@@ -1546,7 +1546,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2019-ja-x86_64',
@@ -1557,7 +1557,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2019-fr-x86_64',
@@ -1569,7 +1569,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2019-fr-x86_64',
@@ -1581,7 +1581,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2019-core-x86_64'
@@ -1591,7 +1591,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2019-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-2019-core-x86_64'
@@ -1601,7 +1601,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-2022-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-2022-x86_64'
@@ -1611,7 +1611,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-7-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-7-x86_64'
@@ -1621,7 +1621,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-8.1-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-81-x86_64'
@@ -1631,7 +1631,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-32',
             'packaging_platform' => 'windows-2012-x86',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-10-ent-i386'
@@ -1641,7 +1641,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-ent-x86_64'
@@ -1651,7 +1651,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-32',
             'packaging_platform' => 'windows-2012-x86',
-            'ruby_arch' => 'x86'
+            'ruby_arch'          => 'x86'
           },
           :vmpooler => {
             'template' => 'win-10-next-i386'
@@ -1661,7 +1661,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-next-x86_64'
@@ -1671,7 +1671,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10pro-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-pro-x86_64'
@@ -1681,7 +1681,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-1511-x86_64'
@@ -1691,7 +1691,7 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-1607-x86_64'
@@ -1701,10 +1701,20 @@ module BeakerHostGenerator
           :general => {
             'platform'           => 'windows-10ent-64',
             'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch' => 'x64'
+            'ruby_arch'          => 'x64'
           },
           :vmpooler => {
             'template' => 'win-10-1809-x86_64'
+          }
+        },
+        'windows11ent-64' => {
+          :general => {
+            'platform'           => 'windows-11ent-64',
+            'packaging_platform' => 'windows-2012-x64',
+            'ruby_arch'          => 'x64'
+          },
+          :vmpooler => {
+            'template' => 'win-11-ent-x86_64'
           }
         }
       })
