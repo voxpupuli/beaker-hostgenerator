@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.16.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.16.0) (2022-06-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.15.0...1.16.0)
+
+**Implemented enhancements:**
+
+- \(IMAGES-1297\) Adds macOS 11/12 M1 support [\#255](https://github.com/voxpupuli/beaker-hostgenerator/pull/255) ([mhashizume](https://github.com/mhashizume))
+
 ## [1.15.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.15.0) (2022-06-23)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.14.0...1.15.0)
