@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.17.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.17.0) (2022-09-12)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.16.0...1.17.0)
+
+**Merged pull requests:**
+
+- \(PE-34537\) Update main PE version to 2023.0 [\#257](https://github.com/voxpupuli/beaker-hostgenerator/pull/257) ([nmburgan](https://github.com/nmburgan))
+
 ## [1.16.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.16.0) (2022-06-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.15.0...1.16.0)
