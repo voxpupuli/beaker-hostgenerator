@@ -42,9 +42,10 @@ information.
 
 It currently provides built-in configuration for Puppets' internal
 [vmpooler][vmpooler] hypervisor, [always-be-scheduling][always-be-scheduling]
-hypervisor, static (non-provisioned) nodes, and is designed in a way that makes
-it possible to easily add support for additional hypervisors
-(any hypervisor type supported by [beaker][beaker]).
+hypervisor, Vagrant with Virtualbox and Libvirt backend,
+[Hetzner cloud](https://www.hetzner.com/cloud), static (non-provisioned) nodes,
+and is designed in a way that makes it possible to easily add support for
+additional hypervisors (any hypervisor type supported by [beaker][beaker]).
 
 To see the list of built-in hypervisors you can run:
 ```
