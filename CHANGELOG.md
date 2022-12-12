@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.18.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.18.0) (2022-12-12)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.17.0...1.18.0)
+
+**Implemented enhancements:**
+
+- Add Almalinux/Rocky 9 support [\#262](https://github.com/voxpupuli/beaker-hostgenerator/pull/262) ([bastelfreak](https://github.com/bastelfreak))
+- Add hcloud support [\#261](https://github.com/voxpupuli/beaker-hostgenerator/pull/261) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.17.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.17.0) (2022-09-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.16.0...1.17.0)
