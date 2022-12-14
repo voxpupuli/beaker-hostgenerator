@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.18.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.18.1) (2022-12-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.18.0...1.18.1)
+
+**Fixed bugs:**
+
+- AlmaLinux: Fix docker image names [\#265](https://github.com/voxpupuli/beaker-hostgenerator/pull/265) ([bastelfreak](https://github.com/bastelfreak))
+- RockyLinux: Fix docker image names [\#264](https://github.com/voxpupuli/beaker-hostgenerator/pull/264) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.18.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.18.0) (2022-12-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.17.0...1.18.0)
