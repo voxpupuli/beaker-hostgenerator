@@ -10,9 +10,19 @@ module BeakerHostGenerator
       def generate_node(node_info, base_config, bhg_version)
         base_config['docker_cmd'] = ['/sbin/init']
         base_config['image'] = node_info['ostype'].sub(/(\d)/, ':\1')
-        base_config['image'].sub!(/\w+/, 'oraclelinux') if node_info['ostype'] =~ /^oracle/
-        base_config['image'].sub!(/(\w+)/, '\1/leap') if node_info['ostype'] =~ /^opensuse/
-        base_config['image'].sub!(/(\d{2})/, '\1.') if node_info['ostype'] =~ /^ubuntu/
+        case node_info['ostype']
+        when /^oracle/
+          base_config['image'].sub!(/\w+/, 'oraclelinux')
+        when /^opensuse/
+          base_config['image'].sub!(/(\w+)/, '\1/leap')
+        when /^ubuntu/
+          base_config['image'].sub!(/(\d{2})/, '\1.')
+        when /^rocky/
+          base_config['image'].sub!(/(\w+)/, 'rockylinux')
+        when /^alma/
+          base_config['image'].sub!(/(\w+)/, 'almalinux')
+        end
+
         if node_info['bits'] == '64'
           base_config['image'] = "amd64/#{base_config['image']}"
         end
