@@ -1062,6 +1062,7 @@ module BeakerHostGenerator
             'platform' => 'el-8-x86_64',
           },
           :docker => {
+            'image' => 'rockylinux:8',
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
@@ -1073,6 +1074,7 @@ module BeakerHostGenerator
             'platform' => 'el-9-x86_64',
           },
           :docker => {
+            'image' => 'rockylinux:9',
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
               'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en'
