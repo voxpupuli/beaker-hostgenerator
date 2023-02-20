@@ -11,10 +11,6 @@ module BeakerHostGenerator
       BeakerHostGenerator::Data.pe_dir(version)
     end
 
-    def fixup_node(cfg)
-      BeakerHostGenerator::Data.fixup_node(cfg)
-    end
-
     def dump_hosts(hosts, path)
       vmpooler_hypervisor = BeakerHostGenerator::Hypervisor::Vmpooler.new
       config = {}
