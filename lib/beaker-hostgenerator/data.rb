@@ -56,10 +56,7 @@ module BeakerHostGenerator
 
     BASE_CONFIG = {
       'HOSTS' => {},
-      'CONFIG' => {
-        'nfs_server' => 'none',
-        'consoleport' => 443,
-      }
+      'CONFIG' => {},
     }
 
     def base_host_config(options)
