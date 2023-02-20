@@ -14,3 +14,11 @@ group :coverage, optional: ENV['COVERAGE']!='yes' do
   gem 'simplecov-console', :require => false
   gem 'codecov', :require => false
 end
+
+group :rubocop do
+  gem 'rubocop', '~> 1.12.0'
+  gem 'rubocop-minitest'
+  gem 'rubocop-performance'
+  gem 'rubocop-rake'
+  gem 'rubocop-rspec'
+end
