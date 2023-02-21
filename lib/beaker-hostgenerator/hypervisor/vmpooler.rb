@@ -10,7 +10,7 @@ module BeakerHostGenerator
       # default global configuration keys
       def global_config
         {
-          'pooling_api' => 'https://vmpooler-prod.k8s.infracore.puppet.net/'
+          'pooling_api' => 'https://vmpooler-prod.k8s.infracore.puppet.net/',
         }
       end
 

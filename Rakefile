@@ -2,9 +2,7 @@ require 'rspec/core/rake_task'
 require 'rake/testtask'
 
 namespace :test do
-
   namespace :spec do
-
     task :minitest do
       desc "Run minitest tests"
       Rake::TestTask.new do |task|
@@ -27,9 +25,7 @@ namespace :test do
       t.rspec_opts = ['--color']
       t.pattern = 'spec/'
     end
-
   end
-
 end
 
 namespace :generate do
@@ -37,7 +33,7 @@ namespace :generate do
   task :fixtures do
     $LOAD_PATH.unshift(
       File.join(Dir.pwd, 'lib'),
-      File.join(Dir.pwd, 'test')
+      File.join(Dir.pwd, 'test'),
     )
     require 'beaker-hostgenerator'
     require 'util/generator_helpers'

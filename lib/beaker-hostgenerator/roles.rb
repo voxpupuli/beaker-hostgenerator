@@ -1,6 +1,5 @@
 module BeakerHostGenerator
   module Roles
-
     ROLES = {
       'a' => 'agent',
       'u' => 'ca',
@@ -14,7 +13,7 @@ module BeakerHostGenerator
     CM_CONFIG = { 'main' => {
                     'dns_alt_names' => 'puppet',
                     'environmentpath' => '/etc/puppetlabs/puppet/environments',
-                  }
+                  },
                 }
 
     ROLE_CONFIG = {

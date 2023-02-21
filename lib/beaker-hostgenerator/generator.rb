@@ -32,6 +32,7 @@ module BeakerHostGenerator
           if nodeid[ostype] == 1 and ostype != nil
             raise "Error: no nodes generated for #{ostype}"
           end
+
           ostype = token
           next
         end
