@@ -10,7 +10,7 @@ class TestGenerator < Minitest::Test
 
   def setup
     @default_options = [
-      'centos6-64mdca',
+      'centos9-64mdca',
     ]
   end
 
@@ -18,11 +18,11 @@ class TestGenerator < Minitest::Test
     hash = run_cli_with_options(@default_options)
     hosts = hash['HOSTS']
 
-    assert_includes(hosts, "centos6-64-1")
-    centos6 = hosts['centos6-64-1']
+    assert_includes(hosts, "centos9-64-1")
+    centos9 = hosts['centos9-64-1']
 
     ["master", "database", "dashboard", "agent"].each do |role|
-      assert_includes(centos6['roles'], role)
+      assert_includes(centos9['roles'], role)
     end
   end
 end

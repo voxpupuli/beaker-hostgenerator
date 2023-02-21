@@ -59,7 +59,7 @@ Below are some example usages of `beaker-hostgenerator`.
 ### Simple two-host layout
 
 ```
-$ beaker-hostgenerator centos6-64mdca-32a
+$ beaker-hostgenerator centos9-64mdca-64a
 ```
 
 Will generate
@@ -67,27 +67,27 @@ Will generate
 ```yaml
 ---
 HOSTS:
-  centos6-64-1:
+  centos9-64-1:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
     hypervisor: vmpooler
-    platform: el-6-x86_64
-    template: centos-6-x86_64
+    platform: el-9-x86_64
+    template: centos-9-x86_64
     roles:
     - agent
     - master
     - database
     - dashboard
-  centos6-32-2:
+  centos9-64-2:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
     hypervisor: vmpooler
-    platform: el-6-i386
-    template: centos-6-i386
+    platform: el-9-x86_64
+    template: centos-9-x86_64
     roles:
     - agent
 CONFIG:
@@ -99,7 +99,7 @@ CONFIG:
 ### Single host with Arbitrary Roles
 
 ```
-$ beaker-hostgenerator centos6-32compile_master,another_role.ma
+$ beaker-hostgenerator centos9-64compile_master,another_role.ma
 ```
 
 Will generate
@@ -107,14 +107,14 @@ Will generate
 ```yaml
 ---
 HOSTS:
-  centos6-32-1:
+  centos9-64-1:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
     hypervisor: vmpooler
-    platform: el-6-i386
-    template: centos-6-i386
+    platform: el-9-x86_64
+    template: centos-9-x86_64
     roles:
     - agent
     - master
@@ -133,7 +133,7 @@ CONFIG:
 ### Two hosts with multiple hypervisors and arbitrary host settings
 
 ```
-$ beaker-hostgenerator centos6-64m{hypervisor=none\,hostname=static-master}-redhat7-64a{somekey=some-value}
+$ beaker-hostgenerator centos9-64m{hypervisor=none\,hostname=static-master}-redhat7-64a{somekey=some-value}
 ```
 
 Will generate
@@ -146,7 +146,7 @@ HOSTS:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
-    platform: el-6-x86_64
+    platform: el-9-x86_64
     hypervisor: none
     roles:
     - agent
@@ -171,7 +171,7 @@ CONFIG:
 ### Two hosts with arbitrary host settings with arbitrary lists
 
 ```
-$ beaker-hostgenerator centos6-64m{disks=\[16\]}-redhat7-64a{disks=\[8\,16\]}
+$ beaker-hostgenerator centos9-64m{disks=\[16\]}-redhat7-64a{disks=\[8\,16\]}
 ```
 
 Will generate
@@ -179,12 +179,12 @@ Will generate
 ```yaml
 ---
 HOSTS:
-  centos6-64-1:
+  centos9-64-1:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
-    platform: el-6-x86_64
+    platform: el-9-x86_64
     hypervisor: vmpooler
     disks:
     - 16
@@ -287,7 +287,7 @@ The term "custom" in this case signifies that it's not a built-in hypervisor
 ourselves as there isn't any built-in configuration for our hypervisor.
 
 ```
-$ beaker-hostgenerator --hypervisor=custom --global={custom_api=http://api.custom.net} centos6-64
+$ beaker-hostgenerator --hypervisor=custom --global={custom_api=http://api.custom.net} centos9-64
 ```
 
 Will generate
@@ -295,12 +295,12 @@ Will generate
 ```yaml
 ---
 HOSTS:
-  centos6-64-1:
+  centos9-64-1:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
-    platform: el-6-x86_64
+    platform: el-9-x86_64
     hypervisor: custom
     roles:
     - agent
@@ -328,13 +328,13 @@ arbitrary settings, which means the following characters:
 For a full URL encoding reference see: http://www.w3schools.com/tags/ref_urlencode.asp
 
 ```
-$ beaker-hostgenerator centos6-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D
+$ beaker-hostgenerator centos9-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D
 ```
 
 Is equivalent to
 
 ```
-$ beaker-hostgenerator centos6-64mcd-aix53-POWERfa{hypervisor=aix,vmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net}
+$ beaker-hostgenerator centos9-64mcd-aix53-POWERfa{hypervisor=aix,vmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net}
 ```
 
 And will generate
@@ -342,14 +342,14 @@ And will generate
 ```yaml
 ---
 HOSTS:
-  centos6-64-1:
+  centos9-64-1:
     pe_dir:
     pe_ver:
     pe_upgrade_dir:
     pe_upgrade_ver:
     hypervisor: vmpooler
-    platform: el-6-x86_64
-    template: centos-6-x86_64
+    platform: el-9-x86_64
+    template: centos-9-x86_64
     roles:
     - agent
     - master
@@ -388,18 +388,18 @@ follows:
 
 ```yaml
 ---
-arguments_string: "--pe_dir /opt/hello centos6-64mdc"
+arguments_string: "--pe_dir /opt/hello centos9-64mdc"
 environment_variables: {}
 expected_hash:
   HOSTS:
-    centos6-64-1:
+    centos9-64-1:
       pe_dir: "/opt/hello"
       pe_ver: 
       pe_upgrade_dir: 
       pe_upgrade_ver: 
       hypervisor: vmpooler
-      platform: centos-6-x86_64
-      template: centos-6-x86_64
+      platform: el-9-x86_64
+      template: centos-9-x86_64
       roles:
       - agent
       - master

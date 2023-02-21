@@ -101,16 +101,7 @@ module BeakerHostGenerator
       # Ubuntu
       #
       # Generate LTS platforms
-      (14..22).select(&:even?).each do |release|
-        # 32 bit support was dropped in Ubuntu 18.04
-        if release < 18
-          result["ubuntu#{release}04-32"] = {
-            :general => {
-              'platform' => "ubuntu-#{release}.04-i386",
-            },
-          }
-        end
-
+      (18..22).select(&:even?).each do |release|
         result["ubuntu#{release}04-64"] = {
           :general => {
             'platform' => "ubuntu-#{release}.04-amd64",
@@ -157,22 +148,6 @@ module BeakerHostGenerator
       end
 
       result.merge!({
-        'aix53-POWER' => {
-          :general => {
-            'platform' => 'aix-5.3-power',
-          },
-          :abs => {
-            'template' => 'aix-5.3-power',
-          },
-        },
-        'aix61-POWER' => {
-          :general => {
-            'platform' => 'aix-6.1-power',
-          },
-          :abs => {
-            'template' => 'aix-6.1-power',
-          },
-        },
         'aix71-POWER' => {
           :general => {
             'platform' => 'aix-7.1-power',
@@ -247,59 +222,6 @@ module BeakerHostGenerator
             'image' => 'archlinux/archlinux',
           },
         },
-        'arista4-32' => {
-          :general => {
-            'platform' => 'eos-4-i386',
-          },
-          :vmpooler => {
-            'template' => 'arista-4-i386',
-          },
-        },
-        'centos4-32' => {
-          :general => {
-            'platform' => 'el-4-i386',
-          },
-        },
-        'centos4-64' => {
-          :general => {
-            'platform' => 'el-4-x86_64',
-          },
-        },
-        'centos5-32' => {
-          :general => {
-            'platform' => 'el-5-i386',
-          },
-        },
-        'centos5-64' => {
-          :general => {
-            'platform' => 'el-5-x86_64',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/mingetty',
-              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
-              'sed -i -e "/mingetty/d" /etc/inittab',
-            ],
-          },
-        },
-        'centos6-32' => {
-          :general => {
-            'platform' => 'el-6-i386',
-          },
-        },
-        'centos6-64' => {
-          :general => {
-            'platform' => 'el-6-x86_64',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/mingetty',
-              'rm -rf /var/run/network/*',
-              'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which',
-              'rm /etc/init/tty.conf',
-            ],
-          },
-        },
         'centos7-64' => {
           :general => {
             'platform' => 'el-7-x86_64',
@@ -336,306 +258,6 @@ module BeakerHostGenerator
               'cp /bin/true /sbin/agetty',
               'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
             ],
-          },
-        },
-        # Deprecated
-        'cisconx-64' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'beaker',
-            },
-          },
-          :vmpooler => {
-            'template' => 'cisco-nxos-9k-x86_64',
-          },
-        },
-        # Deprecated
-        'ciscon7k-64' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7k-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-n7k-7k-x86_64',
-          },
-        },
-        # Deprecated
-        'cisconxhw-64' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'devops',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-nxos_hw-9k-x86_64',
-          },
-        },
-        'cisco_n9k-VM' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'beaker',
-            },
-          },
-          :vmpooler => {
-            'template' => 'cisco-nxos-9k-x86_64',
-          },
-        },
-        'cisco_n7k-HW' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7k-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-n7k-x86_64',
-          },
-        },
-        'cisco_n7k_vdc-HW' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7k-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-n7k_vdc-x86_64',
-          },
-        },
-        'cisco_n9k-HW' => {
-          :general => {
-            'platform'           => 'cisco_nexus-7-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-5-x86_64',
-            'vrf' => 'management',
-            'ssh' => {
-              'user' => 'devops',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-n9k-x86_64',
-          },
-        },
-        'cisco_ios_c2960-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c2960-arm',
-          },
-        },
-        'cisco_ios_c3560-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c3560-arm',
-          },
-        },
-        'cisco_ios_c3750-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c3750-arm',
-          },
-        },
-        'cisco_ios_c4507r-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c4507r-arm',
-          },
-        },
-        'cisco_ios_c4948-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c4948-arm',
-          },
-        },
-        'cisco_ios_c6503-HW' => {
-          :general => {
-            'platform' => 'cisco_ios-12-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-ios_c6503-arm',
-          },
-        },
-        'cisco_iosxe_c3650-HW' => {
-          :general => {
-            'platform' => 'cisco_iosxec3650-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-iosxe_c3650-arm',
-          },
-        },
-        'cisco_iosxe_c4503-HW' => {
-          :general => {
-            'platform' => 'cisco_iosxe-3-arm32',
-            'ssh' => {
-              'user' => 'admin',
-            },
-          },
-          :abs => {
-            'template' => 'cisco-iosxe_c4503-arm',
-          },
-        },
-        'cisco_xr_9k-VM' => {
-          :general => {
-            'platform'           => 'cisco_ios_xr-6-x86_64',
-            'packaging_platform' => 'cisco-wrlinux-7-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'cisco-exr-9k-x86_64',
-          },
-        },
-        'cumulus25-64' => {
-          :general => {
-            'platform'           => 'cumulus-2.5-x86_64',
-            'packaging_platform' => 'cumulus-2.2-amd64',
-          },
-          :vmpooler => {
-            'template' => 'cumulus-vx-25-x86_64',
-          },
-        },
-        'debian6-32' => {
-          :general => {
-            'platform' => 'debian-6-i386',
-          },
-          :vmpooler => {
-            'template' => 'debian-6-i386',
-          },
-        },
-        'debian6-64' => {
-          :general => {
-            'platform' => 'debian-6-amd64',
-          },
-          :vmpooler => {
-            'template' => 'debian-6-x86_64',
-          },
-        },
-        'debian7-32' => {
-          :general => {
-            'platform' => 'debian-7-i386',
-          },
-          :vmpooler => {
-            'template' => 'debian-7-i386',
-          },
-        },
-        'debian7-64' => {
-          :general => {
-            'platform' => 'debian-7-amd64',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/getty',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget',
-            ],
-          },
-          :vagrant => {
-            'box' => 'debian/wheezy64',
-          },
-          :vmpooler => {
-            'template' => 'debian-7-x86_64',
-          },
-        },
-        'debian8-32' => {
-          :general => {
-            'platform' => 'debian-8-i386',
-          },
-          :vmpooler => {
-            'template' => 'debian-8-i386',
-          },
-        },
-        'debian8-64' => {
-          :general => {
-            'platform' => 'debian-8-amd64',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget apt-transport-https',
-            ],
-          },
-          :vagrant => {
-            'box' => 'debian/jessie64',
-          },
-          :vmpooler => {
-            'template' => 'debian-8-x86_64',
-          },
-        },
-        'debian9-32' => {
-          :general => {
-            'platform' => 'debian-9-i386',
-          },
-          :vmpooler => {
-            'template' => 'debian-9-i386',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget apt-transport-https',
-            ],
-          },
-        },
-        'debian9-64' => {
-          :general => {
-            'platform' => 'debian-9-amd64',
-          },
-          :docker => {
-            'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'rm -f /usr/sbin/policy-rc.d',
-              'apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg apt-transport-https',
-            ],
-          },
-          :vagrant => {
-            'box' => 'debian/stretch64',
-          },
-          :vmpooler => {
-            'template' => 'debian-9-x86_64',
           },
         },
         'debian10-64' => {
@@ -689,19 +311,6 @@ module BeakerHostGenerator
             'template' => 'debian-11-x86_64',
           },
         },
-        'fedora14-32' => {
-          :general => {
-            'platform' => 'fedora-14-i386',
-          },
-        },
-        'huaweios6-POWER' => {
-          :general => {
-            'platform' => 'huaweios-6-powerpc',
-          },
-          :abs => {
-            'template' => 'huaweios-6-powerpc',
-          },
-        },
         'panos61-64' => {
           :general => {
             'platform' => 'palo-alto-6.1.0-x86_64',
@@ -724,22 +333,6 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'palo-alto-8.1.0-x86_64',
-          },
-        },
-        'opensuse11-32' => {
-          :general => {
-            'platform' => 'opensuse-11-i386',
-          },
-          :vmpooler => {
-            'template' => 'opensuse-11-i386',
-          },
-        },
-        'opensuse11-64' => {
-          :general => {
-            'platform' => 'opensuse-11-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'opensuse-11-x86_64',
           },
         },
         'opensuse15-32' => {
@@ -798,22 +391,6 @@ module BeakerHostGenerator
             'template' => 'opensuse-42-x86_64',
           },
         },
-        'oracle5-32' => {
-          :general => {
-            'platform' => 'el-5-i386',
-          },
-          :vmpooler => {
-            'template' => 'oracle-5-i386',
-          },
-        },
-        'oracle5-64' => {
-          :general => {
-            'platform' => 'el-5-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'oracle-5-x86_64',
-          },
-        },
         'oracle6-32' => {
           :general => {
             'platform' => 'el-6-i386',
@@ -836,54 +413,6 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'oracle-7-x86_64',
-          },
-        },
-        'osx109-64' => {
-          :general => {
-            'platform' => 'osx-10.9-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-109-x86_64',
-          },
-        },
-        'osx1010-64' => {
-          :general => {
-            'platform' => 'osx-10.10-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-1010-x86_64',
-          },
-        },
-        'osx1011-64' => {
-          :general => {
-            'platform' => 'osx-10.11-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-1011-x86_64',
-          },
-        },
-        'osx1012-64' => {
-          :general => {
-            'platform' => 'osx-10.12-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-1012-x86_64',
-          },
-        },
-        'osx1013-64' => {
-          :general => {
-            'platform' => 'osx-10.13-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-1013-x86_64',
-          },
-        },
-        'osx1014-64' => {
-          :general => {
-            'platform' => 'osx-10.14-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'osx-1014-x86_64',
           },
         },
         'osx1015-64' => {
@@ -932,38 +461,6 @@ module BeakerHostGenerator
           },
           :vmpooler => {
             'template' => 'macos-13-x86_64',
-          },
-        },
-        'redhat4-32' => {
-          :general => {
-            'platform' => 'el-4-i386',
-          },
-          :vmpooler => {
-            'template' => 'redhat-4-i386',
-          },
-        },
-        'redhat4-64' => {
-          :general => {
-            'platform' => 'el-4-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'redhat-4-x86_64',
-          },
-        },
-        'redhat5-32' => {
-          :general => {
-            'platform' => 'el-5-i386',
-          },
-          :vmpooler => {
-            'template' => 'redhat-5-i386',
-          },
-        },
-        'redhat5-64' => {
-          :general => {
-            'platform' => 'el-5-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'redhat-5-x86_64',
           },
         },
         'redhat6-32' => {
@@ -1094,60 +591,12 @@ module BeakerHostGenerator
             ],
           },
         },
-        'scientific5-32' => {
-          :general => {
-            'platform' => 'el-5-i386',
-          },
-          :vmpooler => {
-            'template' => 'scientific-5-i386',
-          },
-        },
-        'scientific5-64' => {
-          :general => {
-            'platform' => 'el-5-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'scientific-5-x86_64',
-          },
-        },
-        'scientific6-32' => {
-          :general => {
-            'platform' => 'el-6-i386',
-          },
-          :vmpooler => {
-            'template' => 'scientific-6-i386',
-          },
-        },
-        'scientific6-64' => {
-          :general => {
-            'platform' => 'el-6-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'scientific-6-x86_64',
-          },
-        },
         'scientific7-64' => {
           :general => {
             'platform' => 'el-7-x86_64',
           },
           :vmpooler => {
             'template' => 'scientific-7-x86_64',
-          },
-        },
-        'sles10-32' => {
-          :general => {
-            'platform' => 'sles-10-i386',
-          },
-          :vmpooler => {
-            'template' => 'sles-10-i386',
-          },
-        },
-        'sles10-64' => {
-          :general => {
-            'platform' => 'sles-10-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'sles-10-x86_64',
           },
         },
         'sles11-32' => {
@@ -1660,26 +1109,6 @@ module BeakerHostGenerator
             'template' => 'win-2022-x86_64',
           },
         },
-        'windows7-64' => {
-          :general => {
-            'platform'           => 'windows-7-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch'          => 'x64',
-          },
-          :vmpooler => {
-            'template' => 'win-7-x86_64',
-          },
-        },
-        'windows81-64' => {
-          :general => {
-            'platform'           => 'windows-8.1-64',
-            'packaging_platform' => 'windows-2012-x64',
-            'ruby_arch'          => 'x64',
-          },
-          :vmpooler => {
-            'template' => 'win-81-x86_64',
-          },
-        },
         'windows10ent-32' => {
           :general => {
             'platform'           => 'windows-10ent-32',
@@ -1778,54 +1207,6 @@ module BeakerHostGenerator
 
     def osinfo_bhgv1
       {
-        'centos4-32' => {
-          :general => {
-            'platform' => 'centos-4-i386',
-          },
-          :vmpooler => {
-            'template' => 'centos-4-i386',
-          },
-        },
-        'centos4-64' => {
-          :general => {
-            'platform' => 'centos-4-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'centos-4-x86_64',
-          },
-        },
-        'centos5-32' => {
-          :general => {
-            'platform' => 'centos-5-i386',
-          },
-          :vmpooler => {
-            'template' => 'centos-5-i386',
-          },
-        },
-        'centos5-64' => {
-          :general => {
-            'platform' => 'centos-5-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'centos-5-x86_64',
-          },
-        },
-        'centos6-32' => {
-          :general => {
-            'platform' => 'centos-6-i386',
-          },
-          :vmpooler => {
-            'template' => 'centos-6-i386',
-          },
-        },
-        'centos6-64' => {
-          :general => {
-            'platform' => 'centos-6-x86_64',
-          },
-          :vmpooler => {
-            'template' => 'centos-6-x86_64',
-          },
-        },
         'centos7-64' => {
           :general => {
             'platform' => 'centos-7-x86_64',
@@ -1882,13 +1263,13 @@ module BeakerHostGenerator
     # @example Getting CentOS 6 64-bit information for the VMPooler hypervisor
     #     Given the OS info map looks like:
     #         ...
-    #         'centos6-64' => {
-    #           :general => { 'platform' => 'el-6-x86_64' },
-    #           :vmpooler => { 'template' => 'centos-6-x86_64' }
+    #         'centos9-64' => {
+    #           :general => { 'platform' => 'el-9-x86_64' },
+    #           :vmpooler => { 'template' => 'centos-9-x86_64' }
     #         }
     #         ...
     #
-    #     Then get_platform_info(0, 'centos6-64', :vmpooler) returns:
+    #     Then get_platform_info(0, 'centos9-64', :vmpooler) returns:
     #         {
     #           'platform' => 'el-6-x86_64',
     #           'template' => 'centos-6-x86_64'

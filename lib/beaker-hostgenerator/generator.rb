@@ -13,7 +13,7 @@ module BeakerHostGenerator
     # specification and optional configuration.
     #
     # @param layout [String] The raw hosts specification user input.
-    #                        For example `"centos6-64m-redhat7-64a"`.
+    #                        For example `"centos9-64m-redhat7-64a"`.
     # @param options [Hash] Global, optional configuration such as the default
     #                       hypervisor or OS info version.
     #

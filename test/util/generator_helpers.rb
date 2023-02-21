@@ -99,7 +99,7 @@ class FixtureGenerator
     ].each do |fixture_hash|
       generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
                        [],
-                       'centos6-32a',
+                       'centos9-64a',
                        fixture_hash['environment_variables'])
     end
 
@@ -118,22 +118,22 @@ class FixtureGenerator
       {
         'path' => ['pe_upgrade_ver'],
         'options' => ['--pe_upgrade_ver', '2020.7.3'],
-        'spec' => 'centos6-64mdc',
+        'spec' => 'centos9-64mdc',
         },
       {
         'path' => ['pe_ver'],
         'options' => ['--pe_ver', '2020.7'],
-        'spec' => 'centos6-64mdc',
+        'spec' => 'centos9-64mdc',
         },
       {
         'path' => ['pe_upgrade_dir'],
         'options' => ['--pe_upgrade_dir', '/opt/whatever'],
-        'spec' => 'centos6-64mdc',
+        'spec' => 'centos9-64mdc',
         },
       {
         'path' => ['pe_dir'],
         'options' => ['--pe_dir', '/opt/hello'],
-        'spec' => 'centos6-64mdc',
+        'spec' => 'centos9-64mdc',
         },
       ].each do |fixture_info|
       generate_fixture(fixture_info['path'],
