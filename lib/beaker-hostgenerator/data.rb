@@ -13,8 +13,8 @@ module BeakerHostGenerator
   # `include BeakerHostGenerator::Data` and then `<function>()`.
   module Data
     module_function
-    MAIN_PE_VERSION='2023.0'
-    PE_TARBALL_SERVER="https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
+    MAIN_PE_VERSION = '2023.0'
+    PE_TARBALL_SERVER = "https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
 
     def pe_version
       ENV['pe_version']
@@ -43,7 +43,7 @@ module BeakerHostGenerator
 
       pe_family = $1
       gem_version = Gem::Version.new(pe_family)
-      if(gem_version < Gem::Version.new("#{MAIN_PE_VERSION}") || version =~ /#{base_regex}-rc\d+\Z/)
+      if gem_version < Gem::Version.new("#{MAIN_PE_VERSION}") || version =~ /#{base_regex}-rc\d+\Z/
         pe_branch = pe_family
       else
         pe_branch = 'main'

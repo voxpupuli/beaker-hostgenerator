@@ -6,7 +6,7 @@ require 'beaker-hostgenerator/data'
 module GeneratorTestHelpers
   include BeakerHostGenerator::Data
 
-  def run_cli_with_options(options=[])
+  def run_cli_with_options(options = [])
     cli = BeakerHostGenerator::CLI.new(options)
     yaml_string = cli.execute
 
@@ -24,11 +24,11 @@ module GeneratorTestHelpers
     return File.open(filename, "w")
   end
 
-  def generate_fixture(relative_path, options, spec, environment_variables={})
+  def generate_fixture(relative_path, options, spec, environment_variables = {})
     specopts = options + [spec]
     arguments_string = specopts.join(" ")
 
-    environment_variables.each do |key, value| 
+    environment_variables.each do |key, value|
       ENV[key] = value
     end
     generated_hash = run_cli_with_options(specopts)
@@ -50,8 +50,8 @@ module GeneratorTestHelpers
 
   def generate_fixtures_using_osinfo(relative_path,
                                      role_enumerator,
-                                     options=[],
-                                     bhg_version=0)
+                                     options = [],
+                                     bhg_version = 0)
     platforms = get_platforms(bhg_version)
     platforms.each do |platform_info|
       role = role_enumerator.next
@@ -77,22 +77,22 @@ class FixtureGenerator
 
     # Validates the use of environment variables to set various pe options.
     [
-      {'case_name' => 'pe_version_and_pe_family',
-       'environment_variables' => {
+      { 'case_name' => 'pe_version_and_pe_family',
+        'environment_variables' => {
          'pe_version' => '6.6.6',
          'pe_upgrade_version' => '6.6.6',
          'pe_family' => '6.6.6',
          'pe_upgrade_family' => '6.6.6',
        }
       },
-      {'case_name' => 'pe_version_and_pe_family_upgrade_only',
-       'environment_variables' => {
+      { 'case_name' => 'pe_version_and_pe_family_upgrade_only',
+        'environment_variables' => {
         'pe_upgrade_version' => '6.6.6',
         'pe_upgrade_family' => '6.6.6',
        }
       },
-      {'case_name' => 'pe_version_and_pe_family_no_upgrade',
-       'environment_variables' => {
+      { 'case_name' => 'pe_version_and_pe_family_no_upgrade',
+        'environment_variables' => {
          'pe_version' => '6.6.6',
          'pe_family' => '6.6.6',
        }

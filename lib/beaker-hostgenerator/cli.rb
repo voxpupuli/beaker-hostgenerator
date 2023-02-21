@@ -198,7 +198,7 @@ Usage: beaker-hostgenerator [options] <layout>
       result << "\n\n"
 
       result << "built-in beaker-hostgenerator host roles:\n"
-      BeakerHostGenerator::Roles::ROLES.each do |k,v|
+      BeakerHostGenerator::Roles::ROLES.each do |k, v|
         result << "   #{k} => #{v}\n"
       end
       result << "\n\n"

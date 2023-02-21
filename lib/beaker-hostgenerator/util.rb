@@ -30,7 +30,7 @@ module BeakerHostGenerator
       end
     end
 
-    def get_platforms(hypervisor_type='vmpooler', bhg_version=0)
+    def get_platforms(hypervisor_type = 'vmpooler', bhg_version = 0)
       BeakerHostGenerator::Data.get_platforms(bhg_version)
     end
 

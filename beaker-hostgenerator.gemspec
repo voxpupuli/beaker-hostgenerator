@@ -16,7 +16,7 @@ eos
   s.license     = 'Apache2'
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ["lib"]
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.4')

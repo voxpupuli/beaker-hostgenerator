@@ -13,7 +13,7 @@ module BeakerHostGenerator
         os, version = node_info['ostype'].split(/(\D+)/).reject!(&:empty?)
         base_config['image'] = case os
         when 'ubuntu'
-          "#{os}-#{version[0, 2]}.#{version[2,2]}"
+          "#{os}-#{version[0, 2]}.#{version[2, 2]}"
         when 'centos'
           version.to_i == 7 ? "#{os}-#{version}" : "#{os}-stream-#{version}"
         else

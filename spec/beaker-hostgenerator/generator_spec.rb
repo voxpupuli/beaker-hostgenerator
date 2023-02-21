@@ -26,7 +26,7 @@ module BeakerHostGenerator
           ],
           {
             "roles" => "a",
-            "arbitrary_roles" => ["meow","hello","compile_master"],
+            "arbitrary_roles" => ["meow", "hello", "compile_master"],
           } => [
             'agent',
             'meow',
@@ -44,7 +44,7 @@ module BeakerHostGenerator
             "arbitrary_roles" => [],
           } => [],
         }.each do |node_info, roles|
-          expect( generator.get_host_roles(node_info) ).to eq( roles )
+          expect(generator.get_host_roles(node_info)).to eq(roles)
         end
       end
     end

@@ -63,7 +63,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX=/\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
@@ -169,7 +169,7 @@ module BeakerHostGenerator
       node_info = NODE_REGEX.match(token)
 
       if node_info
-        node_info = Hash[ node_info.names.zip( node_info.captures ) ]
+        node_info = Hash[node_info.names.zip(node_info.captures)]
       else
         raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError.new,
               "Invalid node_info token: #{token}"
@@ -265,7 +265,7 @@ module BeakerHostGenerator
         # corresponding data structure, add it to the object depth, and
         # then change the current depth
         if blob[-2] == '='
-          raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{','[')
+          raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{', '[')
           if blob[-1] == '{'
             current_object[blob[0..-3]] = {}
           else
