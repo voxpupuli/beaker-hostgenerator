@@ -33,7 +33,7 @@ namespace :generate do
   task :fixtures do
     $LOAD_PATH.unshift(
       File.join(Dir.pwd, 'lib'),
-      File.join(Dir.pwd, 'test')
+      File.join(Dir.pwd, 'test'),
     )
     require 'beaker-hostgenerator'
     require 'util/generator_helpers'

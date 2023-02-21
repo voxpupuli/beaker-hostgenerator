@@ -23,7 +23,7 @@ module BeakerHostGenerator
                   "roles" => "",
                   "arbitrary_roles" => [],
                   "bits" => "64",
-                  "host_settings" => {}
+                  "host_settings" => {},
                 })
       end
 
@@ -34,7 +34,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "SPARC",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
 
           expect(parse_node_info_token("POWER6")).
@@ -42,7 +42,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "POWER6",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
 
           expect(parse_node_info_token("S390X")).
@@ -50,7 +50,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => [],
                     "bits" => "S390X",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
         end
 
@@ -60,7 +60,7 @@ module BeakerHostGenerator
                     "roles" => "m",
                     "arbitrary_roles" => [],
                     "bits" => "S390X",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
 
           expect(parse_node_info_token("S390Xcustom.m")).
@@ -68,7 +68,7 @@ module BeakerHostGenerator
                     "roles" => "m",
                     "arbitrary_roles" => ["custom"],
                     "bits" => "S390X",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
         end
 
@@ -87,7 +87,7 @@ module BeakerHostGenerator
                   "roles" => "mad",
                   "arbitrary_roles" => ["compile_master", "ca", "blah"],
                   "bits" => "64",
-                  "host_settings" => {}
+                  "host_settings" => {},
                 })
       end
 
@@ -103,7 +103,7 @@ module BeakerHostGenerator
                     "roles" => "",
                     "arbitrary_roles" => ["compile_master", "ca", "blah"],
                     "bits" => "64",
-                    "host_settings" => {}
+                    "host_settings" => {},
                   })
         end
       end
@@ -120,7 +120,7 @@ module BeakerHostGenerator
                       "foo2" => { "bar2" => "baz2", "bar22" => "baz22" },
                       "foo3" => "bar3",
                       "foo4" => [["bar4"], "baz4"],
-                      "list" => [{ "map1" => "map11", "map2" => "map22" }, { "lastmap" => "lastmap2" }] } })
+                      "list" => [{ "map1" => "map11", "map2" => "map22" }, { "lastmap" => "lastmap2" }], }, })
         end
 
         it 'Supports arbitrary whitespace in values' do
@@ -133,8 +133,8 @@ module BeakerHostGenerator
                       "k1" => "value 1",
                       "k2" => "v2",
                       "k3" => "  v3  ",
-                      "k4" => ["v4", " v5 ", "v6"]
-                    }
+                      "k4" => ["v4", " v5 ", "v6"],
+                    },
                   })
         end
 

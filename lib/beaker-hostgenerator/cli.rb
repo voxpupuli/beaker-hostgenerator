@@ -74,55 +74,55 @@ Usage: beaker-hostgenerator [options] <layout>
         opts.on('-l',
                 '--list',
                 'List beaker-hostgenerator supported platforms, roles, and hypervisors. ' <<
-                'Does not produce host config.') do
+                'Does not produce host config.',) do
           @options[:list_supported_values] = true
         end
 
         opts.on('--templates-only',
-               'Generate a reduced output including only the templates from each host.') do
+               'Generate a reduced output including only the templates from each host.',) do
           @options[:templates_only] = true
         end
 
         opts.on('-t',
                 '--hypervisor HYPERVISOR',
-                'Set beaker-hostgenerator default hypervisor. ') do |h|
+                'Set beaker-hostgenerator default hypervisor. ',) do |h|
           @options[:hypervisor] = h
         end
 
         opts.on('--pe_upgrade_dir UPGRADE_PATH',
-                'Explicitly set pe_upgrade_dir attribute on generated hosts. ') do |p|
+                'Explicitly set pe_upgrade_dir attribute on generated hosts. ',) do |p|
           @options[:pe_upgrade_dir] = p
         end
 
         opts.on('--pe_upgrade_ver UPGRADE_VERSION',
-                'Explicitly set pe_upgrade_ver attribute on generated hosts. ') do |p|
+                'Explicitly set pe_upgrade_ver attribute on generated hosts. ',) do |p|
           @options[:pe_upgrade_ver] = p
         end
 
         opts.on('--pe_dir PATH',
-                'Explicitly set pe_dir attribute on generated hosts. ') do |p|
+                'Explicitly set pe_dir attribute on generated hosts. ',) do |p|
           @options[:pe_dir] = p
         end
 
         opts.on('--pe_ver VERSION',
-                'Explicitly set pe_ver attribute on generated hosts. ') do |p|
+                'Explicitly set pe_ver attribute on generated hosts. ',) do |p|
           @options[:pe_ver] = p
         end
 
         opts.on('--disable-role-config',
-                "Do not include role-specific configuration.") do
+                "Do not include role-specific configuration.",) do
           @options[:disable_role_config] = true
         end
 
         opts.on('--disable-default-role',
-                "Do not include the default 'agent' role.") do
+                "Do not include the default 'agent' role.",) do
           @options[:disable_default_role] = true
         end
 
         opts.on('--osinfo-version MAJOR_VERSION',
                 "Use OSINFO for specified beaker-hostgenerator version. " <<
                 "Allows early access to future version of OSINFO data structure " <<
-                "used to generate host configs.") do |version|
+                "used to generate host configs.",) do |version|
           version = version.to_i
           if not [0, 1].include? version
               raise "Invalid beaker-hostgenerator version: #{version}"
@@ -133,19 +133,19 @@ Usage: beaker-hostgenerator [options] <layout>
 
         opts.on('--global-config KEYVALUE_STRING',
                 "General configuration settings to be included as-is in the " <<
-                "CONFIG section. Value should be in the form '{key=value,...}'.") do |p|
+                "CONFIG section. Value should be in the form '{key=value,...}'.",) do |p|
           @options[:global_config] = p
         end
 
         opts.on('-h',
                 '--help',
-                'Display command help.') do
+                'Display command help.',) do
           @options[:help] = opts.to_s
         end
 
         opts.on('-v',
                 '--version',
-                'Display beaker-hostgenerator version number.') do
+                'Display beaker-hostgenerator version number.',) do
           @options[:version] = true
         end
       end

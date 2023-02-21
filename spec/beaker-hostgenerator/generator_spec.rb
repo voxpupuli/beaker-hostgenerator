@@ -37,7 +37,7 @@ module BeakerHostGenerator
             "roles" => "",
             "arbitrary_roles" => ["compile_master"],
           } => [
-            'compile_master'
+            'compile_master',
           ],
           {
             "roles" => "",

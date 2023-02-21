@@ -9,6 +9,6 @@ class TestUtil < Minitest::Test
 
   def test_version_option
     assert_equal(BeakerHostGenerator::Version::STRING,
-                 BeakerHostGenerator::CLI.new(['--version']).execute)
+                 BeakerHostGenerator::CLI.new(['--version']).execute,)
   end
 end

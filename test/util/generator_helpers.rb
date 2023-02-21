@@ -82,19 +82,19 @@ class FixtureGenerator
          'pe_upgrade_version' => '6.6.6',
          'pe_family' => '6.6.6',
          'pe_upgrade_family' => '6.6.6',
-       }
+       },
       },
       { 'case_name' => 'pe_version_and_pe_family_upgrade_only',
         'environment_variables' => {
         'pe_upgrade_version' => '6.6.6',
         'pe_upgrade_family' => '6.6.6',
-       }
+       },
       },
       { 'case_name' => 'pe_version_and_pe_family_no_upgrade',
         'environment_variables' => {
          'pe_version' => '6.6.6',
          'pe_family' => '6.6.6',
-       }
+       },
       },
     ].each do |fixture_hash|
       case_name = fixture_hash['case_name']
@@ -102,7 +102,7 @@ class FixtureGenerator
       generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
                        [],
                        'centos6-32a',
-                       fixture_hash['environment_variables'])
+                       fixture_hash['environment_variables'],)
     end
 
     # Validates single-host scenarios using all short-form role aliases with the
@@ -112,7 +112,7 @@ class FixtureGenerator
       generate_fixtures_using_osinfo(["osinfo-version-#{bhg_version}"],
                                      @simple_roles.cycle,
                                      ["--osinfo-version", "#{bhg_version}"],
-                                     bhg_version)
+                                     bhg_version,)
     end
 
     # Validates the use of the pe ver/dir type options.
@@ -120,27 +120,27 @@ class FixtureGenerator
       {
         'path' => ['pe_upgrade_ver'],
         'options' => ['--pe_upgrade_ver', '2020.7.3'],
-        'spec' => 'centos6-64mdc'
+        'spec' => 'centos6-64mdc',
         },
       {
         'path' => ['pe_ver'],
         'options' => ['--pe_ver', '2020.7'],
-        'spec' => 'centos6-64mdc'
+        'spec' => 'centos6-64mdc',
         },
       {
         'path' => ['pe_upgrade_dir'],
         'options' => ['--pe_upgrade_dir', '/opt/whatever'],
-        'spec' => 'centos6-64mdc'
+        'spec' => 'centos6-64mdc',
         },
       {
         'path' => ['pe_dir'],
         'options' => ['--pe_dir', '/opt/hello'],
-        'spec' => 'centos6-64mdc'
-        }
+        'spec' => 'centos6-64mdc',
+        },
       ].each do |fixture_info|
       generate_fixture(fixture_info['path'],
                        fixture_info['options'],
-                       fixture_info['spec'])
+                       fixture_info['spec'],)
     end
 
     # Validates multi-platform specs
@@ -148,7 +148,7 @@ class FixtureGenerator
       get_platforms(1).reverse,
       get_platforms(0),
       @simple_roles.cycle,
-      @simple_roles.reverse.cycle
+      @simple_roles.reverse.cycle,
     ) do |p1, p2, p3, r1, r2|
       generate_fixture(["multiplatform"], [], "#{p1}#{r1}-#{p2}-#{p3}#{r2}")
     end
