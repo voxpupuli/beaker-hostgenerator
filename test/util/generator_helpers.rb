@@ -102,7 +102,7 @@ class FixtureGenerator
       generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
                        [],
                        'centos6-32a',
-                       fixture_hash['environment_variables'],)
+                       fixture_hash['environment_variables'])
     end
 
     # Validates single-host scenarios using all short-form role aliases with the
@@ -112,7 +112,7 @@ class FixtureGenerator
       generate_fixtures_using_osinfo(["osinfo-version-#{bhg_version}"],
                                      @simple_roles.cycle,
                                      ["--osinfo-version", "#{bhg_version}"],
-                                     bhg_version,)
+                                     bhg_version)
     end
 
     # Validates the use of the pe ver/dir type options.
@@ -140,7 +140,7 @@ class FixtureGenerator
       ].each do |fixture_info|
       generate_fixture(fixture_info['path'],
                        fixture_info['options'],
-                       fixture_info['spec'],)
+                       fixture_info['spec'])
     end
 
     # Validates multi-platform specs
