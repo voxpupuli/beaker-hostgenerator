@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'beaker-hostgenerator/cli'
 
 class TestUtil < Minitest::Test
-
   def test_new_with_list_option
     assert_instance_of(String, BeakerHostGenerator::CLI.new(['--list']).execute)
   end

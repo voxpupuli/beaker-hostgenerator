@@ -59,7 +59,6 @@ module GeneratorTestHelpers
       generate_fixture(relative_path, options, spec)
     end
   end
-
 end
 
 class FixtureGenerator

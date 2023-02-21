@@ -21,7 +21,6 @@ module TestFileHelpers
                     :vsphere_username => "vsphere@labs.com",
                     :vsphere_password => "supersekritpassword" } }
   end
-
 end
 
 module HostHelpers
@@ -104,5 +103,4 @@ module HostHelpers
   def make_instance instance_data = {}
     OpenStruct.new instance_data
   end
-
 end

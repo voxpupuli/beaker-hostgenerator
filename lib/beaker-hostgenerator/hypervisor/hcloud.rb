@@ -3,7 +3,6 @@ require 'beaker-hostgenerator/hypervisor'
 
 module BeakerHostGenerator
   module Hypervisor
-
     class Hcloud < BeakerHostGenerator::Hypervisor::Interface
       include BeakerHostGenerator::Data
 

@@ -1,6 +1,5 @@
 module BeakerHostGenerator
   module Roles
-
     ROLES = {
       'a' => 'agent',
       'u' => 'ca',

@@ -15,7 +15,6 @@ module BeakerHostGenerator
   # into tokens via `tokenize_layout`, and then for each token you would call
   # `is_ostype_token?` and/or `parse_node_info_token`.
   module Parser
-
     # Parses a single node definition into the following components:
     #
     #   * bits             Uppercase-only alphanumeric
@@ -209,7 +208,6 @@ module BeakerHostGenerator
     #
     # @returns [Hash{String=>String|Array|Hash}] The host_settings string as a map.
     def settings_string_to_map(host_settings)
-
       stringscan = StringScanner.new(host_settings)
       object = nil
       object_depth = []
@@ -253,8 +251,6 @@ module BeakerHostGenerator
           next
         end
 
-
-
         if blob == ']' or blob == '}'
           object_depth.pop
           current_depth = current_depth.pred
@@ -266,6 +262,7 @@ module BeakerHostGenerator
         # then change the current depth
         if blob[-2] == '='
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{', '[')
+
           if blob[-1] == '{'
             current_object[blob[0..-3]] = {}
           else
@@ -278,8 +275,10 @@ module BeakerHostGenerator
 
         if blob[-1] == '}'
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if blob.count('=') != 1
+
           key_pair = blob[0..-2].split('=')
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if key_pair.size != 2
+
           key_pair.each do |element|
             raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if element.empty?
           end
@@ -297,6 +296,7 @@ module BeakerHostGenerator
           if current_type == Hash
             key_pair = blob[0..-2].split('=')
             raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if key_pair.size != 2
+
             key_pair.each do |element|
               raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError if element.empty?
             end
@@ -321,6 +321,5 @@ module BeakerHostGenerator
       raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
         "Malformed host settings: #{host_settings}"
     end
-
   end
 end

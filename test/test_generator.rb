@@ -20,6 +20,7 @@ class TestGenerator < Minitest::Test
 
     assert_includes(hosts, "centos6-64-1")
     centos6 = hosts['centos6-64-1']
+
     ["master", "database", "dashboard", "agent"].each do |role|
       assert_includes(centos6['roles'], role)
     end

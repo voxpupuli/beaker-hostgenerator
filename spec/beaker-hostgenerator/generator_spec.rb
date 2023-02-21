@@ -84,6 +84,7 @@ module BeakerHostGenerator
           if File.directory?(f)
             next
           end
+
           include_examples "fixtures", YAML.load_file(f)
         end
       end

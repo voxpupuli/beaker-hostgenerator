@@ -12,7 +12,6 @@ module BeakerHostGenerator
     end
 
     describe 'parse_node_info_token' do
-
       it 'Raises InvalidNodeSpecError for invalid tokens.' do
         expect { parse_node_info_token("64compile_master") }.
           to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
@@ -29,7 +28,6 @@ module BeakerHostGenerator
       end
 
       context 'When specifying architecture bits' do
-
         it 'Supports uppercase alphanumeric architecture bits' do
           expect(parse_node_info_token("SPARC")).
             to eq({
@@ -54,7 +52,6 @@ module BeakerHostGenerator
                     "bits" => "S390X",
                     "host_settings" => {}
                   })
-
         end
 
         it 'Trailing lowercase characters are parsed as roles' do
@@ -95,7 +92,6 @@ module BeakerHostGenerator
       end
 
       context 'When using arbitrary roles' do
-
         it 'Fails without a role-type delimiter (a period)' do
           expect { parse_node_info_token("64compile_master,ca,blah") }.
             to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)

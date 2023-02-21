@@ -1,5 +1,4 @@
 module BeakerHostGenerator
-
   # Defines an Interface for the implementation of a hypervisor, and provides
   # a static module function `create(node_info, options)` for instantiating
   # the appropriate hypervisor implementation.
@@ -13,7 +12,6 @@ module BeakerHostGenerator
   # Generator will instantiate the appropriate hypervisor via
   # `BeakerHostGenerator::Hypervisor.create`.
   module Hypervisor
-
     # Static factory method to instantiate the appropriate hypervisor for the
     # given node. If no hypervisor is specified in the node info, then the
     # hypervisor specified in the options will be created. If the hypervisor is
