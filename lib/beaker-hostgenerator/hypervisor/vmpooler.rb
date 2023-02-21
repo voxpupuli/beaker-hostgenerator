@@ -35,10 +35,6 @@ module BeakerHostGenerator
           base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
         end
 
-        # Some vmpooler/vsphere platforms have special requirements.
-        # We munge the node host config here if that is necessary.
-        fixup_node base_config
-
         return base_config
       end
     end

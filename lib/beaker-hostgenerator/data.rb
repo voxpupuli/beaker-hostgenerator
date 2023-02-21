@@ -1882,19 +1882,5 @@ module BeakerHostGenerator
       info = get_osinfo(bhg_version)[platform]
       {}.deeper_merge!(info[:general]).deeper_merge!(info[hypervisor])
     end
-
-    # Perform any adjustments or modifications necessary to the given node
-    # configuration map, taking things like platform and PE version into
-    # account.
-    #
-    # This is intended to capture any oddities that are necessary for a node
-    # to be used in a particular context.
-    def fixup_node(cfg)
-      # PE 2.8 doesn't exist for EL 4. We use 2.0 instead.
-      if cfg['platform'] =~ /el-4/ and pe_version =~ /2\.8/
-        cfg['pe_ver'] = "2.0.3"
-      end
-    end
-
   end
 end
