@@ -12,7 +12,5 @@ expected_hash:
       - agent
       - ca
   CONFIG:
-    nfs_server: none
-    consoleport: 443
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
 expected_exception:

@@ -34,7 +34,5 @@ expected_hash:
       hypervisor: docker
       roles:
       - agent
-  CONFIG:
-    nfs_server: none
-    consoleport: 443
+  CONFIG: {}
 expected_exception:
