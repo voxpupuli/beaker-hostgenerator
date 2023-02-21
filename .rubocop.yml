@@ -1,0 +1,18 @@
+---
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.4
+
+Style/HashSyntax:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  Enabled: false
