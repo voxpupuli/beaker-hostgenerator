@@ -9,10 +9,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.4
-
-Style/HashSyntax:
-  Enabled: false
+  TargetRubyVersion: 2.7
 
 Layout/FirstArrayElementIndentation:
   Enabled: false
@@ -28,3 +25,6 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInArguments:
   Enabled: True
   EnforcedStyleForMultiline: comma
+
+Gemspec/RequireMFA:
+  Enabled: false
