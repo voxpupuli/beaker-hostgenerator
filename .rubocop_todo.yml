@@ -363,12 +363,6 @@ Style/FetchEnvVar:
   Exclude:
     - 'lib/beaker-hostgenerator/data.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/FileWrite:
-  Exclude:
-    - 'lib/beaker-hostgenerator/util.rb'
-
 # Offense count: 30
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.

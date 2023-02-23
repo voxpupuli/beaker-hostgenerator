@@ -25,9 +25,7 @@ module BeakerHostGenerator
         }
       end
 
-      File.open(path, 'w') do |file|
-        file.write(config.to_yaml)
-      end
+      File.write(path, config.to_yaml)
     end
 
     def get_platforms(hypervisor_type = 'vmpooler', bhg_version = 0)
