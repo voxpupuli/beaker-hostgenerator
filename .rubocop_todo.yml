@@ -44,14 +44,6 @@ Layout/HashAlignment:
     - 'lib/beaker-hostgenerator/data.rb'
     - 'spec/beaker-hostgenerator/parser_spec.rb'
 
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Width, AllowedPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'lib/beaker-hostgenerator.rb'
-    - 'lib/beaker-hostgenerator/cli.rb'
-
 # Offense count: 6
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
