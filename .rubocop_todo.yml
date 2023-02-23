@@ -483,12 +483,6 @@ Style/NegatedIf:
     - 'lib/beaker-hostgenerator/generator.rb'
 
 # Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/NegatedIfElseCondition:
-  Exclude:
-    - 'lib/beaker-hostgenerator/generator.rb'
-
-# Offense count: 1
 Style/OpenStructUse:
   Exclude:
     - 'spec/helpers.rb'

@@ -107,10 +107,10 @@ module BeakerHostGenerator
     private
 
     def generate_host_roles!(host_config, node_info, options)
-      if !(options[:disable_default_role])
-        host_config['roles'] = ['agent']
-      else
+      if options[:disable_default_role]
         host_config['roles'] = []
+      else
+        host_config['roles'] = ['agent']
       end
 
       host_config['roles'].concat get_host_roles(node_info)
