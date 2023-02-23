@@ -172,20 +172,18 @@ module BeakerHostGenerator
               "Invalid node_info token: #{token}"
       end
 
-      if node_info['arbitrary_roles']
-        node_info['arbitrary_roles'] =
-          node_info['arbitrary_roles'].split(',') || ''
-      else
-        # Default to empty list to avoid having to check for nil elsewhere
-        node_info['arbitrary_roles'] = []
-      end
+      node_info['arbitrary_roles'] = if node_info['arbitrary_roles']
+                                       node_info['arbitrary_roles'].split(',') || ''
+                                     else
+                                       # Default to empty list to avoid having to check for nil elsewhere
+                                       []
+                                     end
 
-      if node_info['host_settings']
-        node_info['host_settings'] =
-          settings_string_to_map(node_info['host_settings'])
-      else
-        node_info['host_settings'] = {}
-      end
+      node_info['host_settings'] = if node_info['host_settings']
+                                     settings_string_to_map(node_info['host_settings'])
+                                   else
+                                     {}
+                                   end
 
       node_info
     end
@@ -261,11 +259,11 @@ module BeakerHostGenerator
         if blob[-2] == '='
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{', '[')
 
-          if blob[-1] == '{'
-            current_object[blob[0..-3]] = {}
-          else
-            current_object[blob[0..-3]] = []
-          end
+          current_object[blob[0..-3]] = if blob[-1] == '{'
+                                          {}
+                                        else
+                                          []
+                                        end
           object_depth.push(current_object[blob[0..-3]])
           current_depth = current_depth.next
           next
