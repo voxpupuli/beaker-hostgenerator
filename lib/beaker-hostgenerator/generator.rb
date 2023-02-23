@@ -29,7 +29,7 @@ module BeakerHostGenerator
 
       tokens.each do |token|
         if is_ostype_token?(token, bhg_version)
-          if nodeid[ostype] == 1 and ostype != nil
+          if nodeid[ostype] == 1 and !ostype.nil?
             raise "Error: no nodes generated for #{ostype}"
           end
 
