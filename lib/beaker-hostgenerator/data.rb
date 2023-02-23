@@ -42,7 +42,7 @@ module BeakerHostGenerator
                  ''
                end
 
-      pe_family = $1
+      pe_family = ::Regexp.last_match(1)
       gem_version = Gem::Version.new(pe_family)
       if gem_version < Gem::Version.new("#{MAIN_PE_VERSION}") || version =~ /#{base_regex}-rc\d+\Z/
         pe_branch = pe_family
