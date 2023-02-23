@@ -112,10 +112,10 @@ module BeakerHostGenerator
       host_config['roles'].concat get_host_roles(node_info)
       host_config['roles'].uniq!
 
-      unless options[:disable_role_config]
-        host_config['roles'].each do |role|
-          host_config.deeper_merge! get_role_config(role)
-        end
+      return if options[:disable_role_config]
+
+      host_config['roles'].each do |role|
+        host_config.deeper_merge! get_role_config(role)
       end
     end
 
