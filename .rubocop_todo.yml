@@ -300,12 +300,6 @@ Style/ConditionalAssignment:
     - 'lib/beaker-hostgenerator/hypervisor/vagrant.rb'
     - 'lib/beaker-hostgenerator/parser.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Style/DefWithParentheses:
-  Exclude:
-    - 'lib/beaker-hostgenerator/hypervisor.rb'
-
 # Offense count: 11
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
