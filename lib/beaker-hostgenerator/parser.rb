@@ -308,12 +308,12 @@ module BeakerHostGenerator
           end
         end
 
-        if blob[-1] == ']'
-          current_object.push(blob[0..-2])
-          object_depth.pop
-          current_depth = current_depth.pred
-          next
-        end
+        next unless blob[-1] == ']'
+
+        current_object.push(blob[0..-2])
+        object_depth.pop
+        current_depth = current_depth.pred
+        next
       end
 
       object
