@@ -69,7 +69,7 @@ Usage: beaker-hostgenerator [options] <layout>
 
  This can then be used in a Beaker call instead of a static Beaker config.
 
-            eos
+        eos
 
         opts.on('-l',
                 '--list',
