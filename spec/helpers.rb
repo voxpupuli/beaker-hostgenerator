@@ -1,5 +1,5 @@
 module TestFileHelpers
-  def create_files file_array
+  def create_files(file_array)
     file_array.each do |f|
       FileUtils.mkdir_p File.dirname(f)
       FileUtils.touch f
@@ -71,11 +71,11 @@ module HostHelpers
     result
   end
 
-  def make_host_opts name, opts
+  def make_host_opts(name, opts)
     make_opts.merge({ 'HOSTS' => { name => opts } }).merge(opts)
   end
 
-  def make_host name, host_hash
+  def make_host(name, host_hash)
     host_hash = HOST_DEFAULTS.merge(host_hash)
 
     host = make_opts.merge(host_hash)
@@ -86,7 +86,7 @@ module HostHelpers
     host
   end
 
-  def make_hosts preset_opts = {}, amt = 3
+  def make_hosts(preset_opts = {}, amt = 3)
     hosts = []
     (1..amt).each do |num|
       name = HOST_NAME % num
@@ -100,7 +100,7 @@ module HostHelpers
     hosts
   end
 
-  def make_instance instance_data = {}
+  def make_instance(instance_data = {})
     OpenStruct.new instance_data
   end
 end
