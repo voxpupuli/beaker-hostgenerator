@@ -350,12 +350,6 @@ Style/EmptyElse:
   Exclude:
     - 'lib/beaker-hostgenerator/hypervisor/vmpooler.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/ExpandPathArguments:
-  Exclude:
-    - 'beaker-hostgenerator.gemspec'
-
 # Offense count: 30
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
