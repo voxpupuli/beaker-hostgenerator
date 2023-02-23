@@ -504,14 +504,6 @@ Style/PercentLiteralDelimiters:
   Exclude:
     - 'Rakefile'
 
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-Style/PerlBackrefs:
-  Exclude:
-    - 'lib/beaker-hostgenerator/data.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/abs.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/vmpooler.rb'
-
 # Offense count: 4
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
