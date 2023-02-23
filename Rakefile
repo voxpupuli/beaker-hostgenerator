@@ -6,7 +6,7 @@ namespace :test do
     task :minitest do
       desc "Run minitest tests"
       Rake::TestTask.new do |task|
-        task.libs << %w(test lib)
+        task.libs << %w[test lib]
         task.test_files = FileList['test/test*.rb']
         task.verbose = true
       end
