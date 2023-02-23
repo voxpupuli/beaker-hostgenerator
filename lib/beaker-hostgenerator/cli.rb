@@ -125,7 +125,7 @@ module BeakerHostGenerator
                 "used to generate host configs.") do |version|
           version = version.to_i
           if not [0, 1].include? version
-              raise "Invalid beaker-hostgenerator version: #{version}"
+            raise "Invalid beaker-hostgenerator version: #{version}"
           end
 
           @options[:osinfo_version] = version
