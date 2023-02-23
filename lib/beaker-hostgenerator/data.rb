@@ -40,7 +40,7 @@ module BeakerHostGenerator
         then "#{PE_TARBALL_SERVER}/%s/ci-ready"
                else
                  ''
-      end
+               end
 
       pe_family = $1
       gem_version = Gem::Version.new(pe_family)
