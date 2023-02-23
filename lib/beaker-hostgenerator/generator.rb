@@ -52,7 +52,7 @@ module BeakerHostGenerator
         # Delegate to the hypervisor
         hypervisor = BeakerHostGenerator::Hypervisor.create(node_info, options)
         host_config = hypervisor.generate_node(node_info, host_config, bhg_version)
-        config['CONFIG'].deeper_merge!(hypervisor.global_config())
+        config['CONFIG'].deeper_merge!(hypervisor.global_config)
 
         # Merge in any arbitrary key-value host settings. Treat the 'hostname'
         # setting specially, and don't merge it in as an arbitrary setting.

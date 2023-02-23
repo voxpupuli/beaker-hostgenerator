@@ -228,7 +228,7 @@ module BeakerHostGenerator
 
         break if blob.nil?
 
-        if stringscan.pos() == 1
+        if stringscan.pos == 1
           object = {}
           object_depth.push(object)
           next

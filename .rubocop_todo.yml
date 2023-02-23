@@ -435,16 +435,6 @@ Style/LineEndConcatenation:
   Exclude:
     - 'lib/beaker-hostgenerator/cli.rb'
 
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowedMethods, AllowedPatterns.
-Style/MethodCallWithoutArgsParentheses:
-  Exclude:
-    - 'lib/beaker-hostgenerator/cli.rb'
-    - 'lib/beaker-hostgenerator/generator.rb'
-    - 'lib/beaker-hostgenerator/parser.rb'
-    - 'lib/beaker-hostgenerator/util.rb'
-
 # Offense count: 15
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
