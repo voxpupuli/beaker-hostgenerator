@@ -580,12 +580,6 @@ Style/RedundantInterpolation:
     - 'test/util/generator_helpers.rb'
 
 # Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/RescueModifier:
-  Exclude:
-    - 'lib/beaker-hostgenerator/generator.rb'
-
-# Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: Mode.
 Style/StringConcatenation:
