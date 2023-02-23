@@ -62,7 +62,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 

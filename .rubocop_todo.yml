@@ -581,12 +581,6 @@ Style/RedundantInterpolation:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Style/RedundantRegexpEscape:
-  Exclude:
-    - 'lib/beaker-hostgenerator/parser.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
 Style/RescueModifier:
   Exclude:
     - 'lib/beaker-hostgenerator/generator.rb'
