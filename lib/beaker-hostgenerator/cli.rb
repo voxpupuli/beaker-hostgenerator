@@ -79,7 +79,7 @@ Usage: beaker-hostgenerator [options] <layout>
         end
 
         opts.on('--templates-only',
-               'Generate a reduced output including only the templates from each host.') do
+                'Generate a reduced output including only the templates from each host.') do
           @options[:templates_only] = true
         end
 
