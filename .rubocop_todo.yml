@@ -485,13 +485,6 @@ Style/NonNilCheck:
   Exclude:
     - 'lib/beaker-hostgenerator/generator.rb'
 
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-Style/Not:
-  Exclude:
-    - 'lib/beaker-hostgenerator/cli.rb'
-    - 'lib/beaker-hostgenerator/generator.rb'
-
 # Offense count: 1
 Style/OpenStructUse:
   Exclude:
