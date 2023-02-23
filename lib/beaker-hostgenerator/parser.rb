@@ -166,7 +166,7 @@ module BeakerHostGenerator
       node_info = NODE_REGEX.match(token)
 
       if node_info
-        node_info = Hash[node_info.names.zip(node_info.captures)]
+        node_info = node_info.names.zip(node_info.captures).to_h
       else
         raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError.new,
               "Invalid node_info token: #{token}"
