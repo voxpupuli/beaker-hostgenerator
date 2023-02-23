@@ -204,7 +204,7 @@ module BeakerHostGenerator
       result << "\n\n"
 
       result << "built-in beaker-hostgenerator hypervisors:\n"
-      BeakerHostGenerator::Hypervisor.builtin_hypervisors().keys.each do |k|
+      BeakerHostGenerator::Hypervisor.builtin_hypervisors.keys.each do |k|
         result << "   #{k}\n"
       end
 

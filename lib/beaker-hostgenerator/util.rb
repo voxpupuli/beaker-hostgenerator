@@ -15,7 +15,7 @@ module BeakerHostGenerator
       vmpooler_hypervisor = BeakerHostGenerator::Hypervisor::Vmpooler.new
       config = {}
       config.deeper_merge! BeakerHostGenerator::Data.BASE_CONFIG
-      config['CONFIG'].deeper_merge! vmpooler_hypervisor.global_config()
+      config['CONFIG'].deeper_merge! vmpooler_hypervisor.global_config
 
       hosts.each do |host|
         config['HOSTS'][host.node_name] = {
