@@ -14,15 +14,6 @@ Gemspec/DevelopmentDependencies:
   Exclude:
     - 'beaker-hostgenerator.gemspec'
 
-# Offense count: 6
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'lib/beaker-hostgenerator/data.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/hcloud.rb'
-
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
 Layout/ClosingHeredocIndentation:
