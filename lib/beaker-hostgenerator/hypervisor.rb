@@ -98,7 +98,7 @@ module BeakerHostGenerator
 
         base_config['hypervisor'] = @name
 
-        return base_config
+        base_config
       end
     end
   end

@@ -19,7 +19,7 @@ module BeakerHostGenerator
         # We don't use this by default
         base_config['synced_folder'] = 'disabled'
 
-        return base_generate_node(node_info, base_config, bhg_version, :vagrant)
+        base_generate_node(node_info, base_config, bhg_version, :vagrant)
       end
     end
   end

@@ -87,7 +87,7 @@ module BeakerHostGenerator
       # Munge non-string scalar values into proper data types
       unstringify_values!(config)
 
-      return config
+      config
     end
 
     def get_host_roles(node_info)
@@ -101,7 +101,7 @@ module BeakerHostGenerator
         roles << role
       end
 
-      return roles
+      roles
     end
 
     private

@@ -10,8 +10,7 @@ module GeneratorTestHelpers
     cli = BeakerHostGenerator::CLI.new(options)
     yaml_string = cli.execute
 
-    hash = YAML.load(yaml_string)
-    return hash
+    YAML.load(yaml_string)
   end
 
   def open_file(path)
@@ -21,7 +20,7 @@ module GeneratorTestHelpers
     dirname = File.join(path[1, path.length - 2]) # wtf
     filename = File.join(path)
     FileUtils.mkdir_p(dirname)
-    return File.open(filename, "w")
+    File.open(filename, "w")
   end
 
   def generate_fixture(relative_path, options, spec, environment_variables = {})

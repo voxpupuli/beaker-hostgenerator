@@ -35,7 +35,7 @@ module BeakerHostGenerator
           base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
         end
 
-        return base_config
+        base_config
       end
     end
   end
