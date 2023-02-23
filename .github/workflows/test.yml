@@ -36,7 +36,7 @@ jobs:
       COVERAGE: ${{ matrix.coverage }}
       BUNDLE_WITHOUT: release:rubocop
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
