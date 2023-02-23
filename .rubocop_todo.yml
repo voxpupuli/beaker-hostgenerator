@@ -276,14 +276,6 @@ Style/ClassAndModuleChildren:
     - 'lib/beaker-hostgenerator/hypervisor/unknown.rb'
 
 # Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: is_a?, kind_of?
-Style/ClassCheck:
-  Exclude:
-    - 'lib/beaker-hostgenerator/generator.rb'
-
-# Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/CollectionCompact:
   Exclude:
