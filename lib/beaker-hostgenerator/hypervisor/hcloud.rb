@@ -18,7 +18,7 @@ module BeakerHostGenerator
                                else
                                  "#{os}-#{version}"
         end
-        return base_generate_node(node_info, base_config, bhg_version, :hcloud)
+        base_generate_node(node_info, base_config, bhg_version, :hcloud)
       end
     end
   end

@@ -7,7 +7,7 @@ module BeakerHostGenerator::Hypervisor
     include BeakerHostGenerator::Data
 
     def generate_node(node_info, base_config, bhg_version)
-      return base_generate_node(node_info, base_config, bhg_version, :general)
+      base_generate_node(node_info, base_config, bhg_version, :general)
     end
   end
 end

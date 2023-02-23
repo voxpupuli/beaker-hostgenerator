@@ -143,7 +143,7 @@ module BeakerHostGenerator
           return true
         end
       end
-      return false
+      false
     end
 
     # Converts a string token that represents a node (and not an OS type) into
@@ -189,7 +189,7 @@ module BeakerHostGenerator
         node_info['host_settings'] = {}
       end
 
-      return node_info
+      node_info
     end
 
     # Transforms the arbitrary host settings map from a string representation

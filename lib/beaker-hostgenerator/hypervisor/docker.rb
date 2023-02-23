@@ -37,7 +37,7 @@ module BeakerHostGenerator
           ]
         end
 
-        return base_generate_node(node_info, base_config, bhg_version, :docker)
+        base_generate_node(node_info, base_config, bhg_version, :docker)
       end
     end
   end
