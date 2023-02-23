@@ -342,14 +342,6 @@ Style/Documentation:
     - 'lib/beaker-hostgenerator/roles.rb'
     - 'lib/beaker-hostgenerator/util.rb'
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, AllowComments.
-# SupportedStyles: empty, nil, both
-Style/EmptyElse:
-  Exclude:
-    - 'lib/beaker-hostgenerator/hypervisor/vmpooler.rb'
-
 # Offense count: 30
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.

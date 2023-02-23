@@ -28,8 +28,6 @@ module BeakerHostGenerator
                    'x86_64'
                  when '32'
                    'i386'
-                 else
-                   nil
                  end
 
           base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
