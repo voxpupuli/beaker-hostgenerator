@@ -145,7 +145,11 @@ module BeakerHostGenerator
     # converted to true/false.
     # The only valid boolean-strings are "true" and "false".
     def unstringify_value(value)
-      result = Integer(value) rescue value
+      result = begin
+        Integer(value)
+      rescue StandardError
+        value
+      end
       if value == 'true'
         result = true
       elsif value == 'false'
