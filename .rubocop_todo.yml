@@ -400,17 +400,6 @@ Style/HashSyntax:
     - 'lib/beaker-hostgenerator/data.rb'
     - 'spec/helpers.rb'
 
-# Offense count: 8
-# This cop supports safe autocorrection (--autocorrect).
-Style/IfUnlessModifier:
-  Exclude:
-    - 'Gemfile'
-    - 'lib/beaker-hostgenerator/cli.rb'
-    - 'lib/beaker-hostgenerator/generator.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/docker.rb'
-    - 'lib/beaker-hostgenerator/parser.rb'
-    - 'spec/beaker-hostgenerator/generator_spec.rb'
-
 # Offense count: 4
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/LineEndConcatenation:

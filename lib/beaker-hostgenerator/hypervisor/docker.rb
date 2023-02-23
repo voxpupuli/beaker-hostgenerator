@@ -23,9 +23,7 @@ module BeakerHostGenerator
           base_config['image'].sub!(/(\w+)/, 'almalinux')
         end
 
-        if node_info['bits'] == '64'
-          base_config['image'] = "amd64/#{base_config['image']}"
-        end
+        base_config['image'] = "amd64/#{base_config['image']}" if node_info['bits'] == '64'
 
         case node_info['ostype']
         when /^ubuntu/

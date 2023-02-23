@@ -139,9 +139,7 @@ module BeakerHostGenerator
     def is_ostype_token?(token, bhg_version)
       BeakerHostGenerator::Data.get_platforms(bhg_version).each do |platform|
         ostype = platform.split('-')[0]
-        if ostype == token
-          return true
-        end
+        return true if ostype == token
       end
       false
     end
@@ -288,9 +286,7 @@ module BeakerHostGenerator
           next
         end
 
-        if blob == ','
-          next
-        end
+        next if blob == ','
 
         if blob[-1] == ','
           if current_type == Hash
