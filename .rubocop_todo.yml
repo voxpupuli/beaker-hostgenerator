@@ -44,13 +44,6 @@ Layout/HashAlignment:
     - 'lib/beaker-hostgenerator/data.rb'
     - 'spec/beaker-hostgenerator/parser_spec.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Layout/HeredocIndentation:
-  Exclude:
-    - 'beaker-hostgenerator.gemspec'
-    - 'lib/beaker-hostgenerator/cli.rb'
-
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: Width, AllowedPatterns.
