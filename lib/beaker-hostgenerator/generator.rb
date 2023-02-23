@@ -77,7 +77,7 @@ module BeakerHostGenerator
         decoded = prepare(options[:global_config])
         # Support for strings without '{}' was introduced, so just double
         # check here to ensure that we pass in values surrounded by '{}'.
-        if !decoded.start_with?('{')
+        unless decoded.start_with?('{')
           decoded = "{#{decoded}}"
         end
         global_config = settings_string_to_map(decoded)
@@ -116,7 +116,7 @@ module BeakerHostGenerator
       host_config['roles'].concat get_host_roles(node_info)
       host_config['roles'].uniq!
 
-      if !(options[:disable_role_config])
+      unless options[:disable_role_config]
         host_config['roles'].each do |role|
           host_config.deeper_merge! get_role_config(role)
         end

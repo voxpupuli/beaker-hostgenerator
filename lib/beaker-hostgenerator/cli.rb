@@ -124,7 +124,7 @@ module BeakerHostGenerator
                 "Allows early access to future version of OSINFO data structure " <<
                 "used to generate host configs.") do |version|
           version = version.to_i
-          if ![0, 1].include? version
+          unless [0, 1].include? version
             raise "Invalid beaker-hostgenerator version: #{version}"
           end
 
