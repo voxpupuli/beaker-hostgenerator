@@ -81,9 +81,7 @@ module BeakerHostGenerator
     context "Fixtures" do
       Find.find 'test/fixtures' do |f|
         context "#{f}" do
-          if File.directory?(f)
-            next
-          end
+          next if File.directory?(f)
 
           include_examples "fixtures", YAML.load_file(f)
         end

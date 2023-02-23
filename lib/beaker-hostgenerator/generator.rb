@@ -29,9 +29,7 @@ module BeakerHostGenerator
 
       tokens.each do |token|
         if is_ostype_token?(token, bhg_version)
-          if nodeid[ostype] == 1 and !ostype.nil?
-            raise "Error: no nodes generated for #{ostype}"
-          end
+          raise "Error: no nodes generated for #{ostype}" if nodeid[ostype] == 1 and !ostype.nil?
 
           ostype = token
           next
@@ -77,9 +75,7 @@ module BeakerHostGenerator
         decoded = prepare(options[:global_config])
         # Support for strings without '{}' was introduced, so just double
         # check here to ensure that we pass in values surrounded by '{}'.
-        unless decoded.start_with?('{')
-          decoded = "{#{decoded}}"
-        end
+        decoded = "{#{decoded}}" unless decoded.start_with?('{')
         global_config = settings_string_to_map(decoded)
         config['CONFIG'].deeper_merge!(global_config)
       end
