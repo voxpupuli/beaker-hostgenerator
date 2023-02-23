@@ -22,16 +22,16 @@ eos
   s.required_ruby_version = Gem::Requirement.new('>= 2.7')
 
   # Testing dependencies
+  s.add_development_dependency 'fakefs', '>= 0.6', '< 3.0'
   s.add_development_dependency 'minitest'
+  s.add_development_dependency 'pry', '~> 0.10'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.0'
   s.add_development_dependency 'rspec-its'
-  s.add_development_dependency 'fakefs', '>= 0.6', '< 3.0'
-  s.add_development_dependency 'rake', '~> 13.0'
-  s.add_development_dependency 'pry', '~> 0.10'
 
   # Documentation dependencies
-  s.add_development_dependency 'yard'
   s.add_development_dependency 'thin'
+  s.add_development_dependency 'yard'
 
   # Run time dependencies
   s.add_runtime_dependency 'deep_merge', '~> 1.0'
