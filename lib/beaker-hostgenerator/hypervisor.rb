@@ -37,7 +37,7 @@ module BeakerHostGenerator
     #
     # @returns [Hash{String=>Hypervisor::Interface}] A map of hypervisor names
     #                                                and their implementations.
-    def self.builtin_hypervisors()
+    def self.builtin_hypervisors
       {
         'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler,
         'vagrant' => BeakerHostGenerator::Hypervisor::Vagrant,
@@ -60,7 +60,7 @@ module BeakerHostGenerator
       # This will only be called if the hypervisor is used for a node, in which
       # case the returned map will be merged in with global configuration from
       # other hypervisors.
-      def global_config()
+      def global_config
         {}
       end
 
