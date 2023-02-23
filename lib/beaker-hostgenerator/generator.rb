@@ -150,7 +150,7 @@ module BeakerHostGenerator
         result = true
       elsif value == 'false'
         result = false
-      elsif value.kind_of?(Array)
+      elsif value.is_a?(Array)
         value.each_with_index do |v, i|
           result[i] = unstringify_value(v)
         end
