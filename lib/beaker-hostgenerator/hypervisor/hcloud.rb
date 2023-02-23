@@ -17,7 +17,7 @@ module BeakerHostGenerator
                                  version.to_i == 7 ? "#{os}-#{version}" : "#{os}-stream-#{version}"
                                else
                                  "#{os}-#{version}"
-        end
+                               end
         base_generate_node(node_info, base_config, bhg_version, :hcloud)
       end
     end

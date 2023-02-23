@@ -23,15 +23,6 @@ Layout/DotPosition:
     - 'spec/beaker-hostgenerator/abs_support_spec.rb'
     - 'spec/beaker-hostgenerator/parser_spec.rb'
 
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyleAlignWith, Severity.
-# SupportedStylesAlignWith: keyword, variable, start_of_line
-Layout/EndAlignment:
-  Exclude:
-    - 'lib/beaker-hostgenerator/data.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/hcloud.rb'
-
 # Offense count: 20
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, IndentationWidth.
