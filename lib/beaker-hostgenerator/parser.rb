@@ -251,7 +251,7 @@ module BeakerHostGenerator
           next
         end
 
-        if blob == ']' or blob == '}'
+        if [']', '}'].include?(blob)
           object_depth.pop
           current_depth = current_depth.pred
           next
