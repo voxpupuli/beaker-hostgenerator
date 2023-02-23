@@ -50,7 +50,7 @@ module BeakerHostGenerator
         pe_branch = 'main'
       end
 
-      sprintf(source, ("#{pe_branch}" || ''))
+      format(source, ("#{pe_branch}" || ''))
     end
 
     PE_USE_WIN32 = ENV['pe_use_win32']
