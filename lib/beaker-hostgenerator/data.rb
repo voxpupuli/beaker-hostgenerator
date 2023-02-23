@@ -18,11 +18,11 @@ module BeakerHostGenerator
     PE_TARBALL_SERVER = "https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local"
 
     def pe_version
-      ENV['pe_version']
+      ENV.fetch('pe_version', nil)
     end
 
     def pe_upgrade_version
-      ENV['pe_upgrade_version']
+      ENV.fetch('pe_upgrade_version', nil)
     end
 
     def pe_dir(version)
@@ -53,7 +53,7 @@ module BeakerHostGenerator
       format(source, ("#{pe_branch}" || ''))
     end
 
-    PE_USE_WIN32 = ENV['pe_use_win32']
+    PE_USE_WIN32 = ENV.fetch('pe_use_win32', nil)
 
     BASE_CONFIG = {
       'HOSTS' => {},
