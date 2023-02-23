@@ -31,13 +31,13 @@ module BeakerHostGenerator
       base_regex = '(\A\d+\.\d+)\.\d+'
       source = case version
                when /#{base_regex}\Z/
-        then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
+                 "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
                when /#{base_regex}-rc\d+\Z/
-        then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
+                 "#{PE_TARBALL_SERVER}/archives/internal/%s/"
                when /#{base_regex}-.*(PEZ|pez)_.*/
-        then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
+                 "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
                when /#{base_regex}-.*/
-        then "#{PE_TARBALL_SERVER}/%s/ci-ready"
+                 "#{PE_TARBALL_SERVER}/%s/ci-ready"
                else
                  ''
                end
