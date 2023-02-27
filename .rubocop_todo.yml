@@ -183,11 +183,15 @@ Metrics/CyclomaticComplexity:
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 Metrics/MethodLength:
   Max: 1659
+  Exclude:
+    - 'lib/beaker-hostgenerator/data.rb'
 
 # Offense count: 4
 # Configuration parameters: CountComments, CountAsOne.
 Metrics/ModuleLength:
   Max: 1784
+  Exclude:
+    - 'lib/beaker-hostgenerator/data.rb'
 
 # Offense count: 3
 # Configuration parameters: AllowedMethods, AllowedPatterns.

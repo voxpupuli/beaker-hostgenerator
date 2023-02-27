@@ -147,6 +147,15 @@ module BeakerHostGenerator
         }
       end
 
+      # FreeBSD
+      (12..13).each do |release|
+        result["freebsd#{release}-64"] = {
+          :general => {
+            'platform' => "freebsd-#{release}-amd64",
+          },
+        }
+      end
+
       result.merge!({
         'aix53-POWER' => {
           :general => {
