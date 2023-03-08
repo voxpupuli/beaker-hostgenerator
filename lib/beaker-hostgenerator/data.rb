@@ -334,7 +334,7 @@ module BeakerHostGenerator
             'image'                 => 'quay.io/centos/centos:stream9',
             'docker_image_commands' => [
               'cp /bin/true /sbin/agetty',
-              'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
+              'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
             ],
           },
         },
