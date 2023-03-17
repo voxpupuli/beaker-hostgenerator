@@ -30,16 +30,16 @@ module BeakerHostGenerator
 
       base_regex = '(\A\d+\.\d+)\.\d+'
       source = case version
-      when /#{base_regex}\Z/
+               when /#{base_regex}\Z/
         then "#{PE_TARBALL_SERVER}/archives/releases/#{version}/"
-      when /#{base_regex}-rc\d+\Z/
+               when /#{base_regex}-rc\d+\Z/
         then "#{PE_TARBALL_SERVER}/archives/internal/%s/"
-      when /#{base_regex}-.*(PEZ|pez)_.*/
+               when /#{base_regex}-.*(PEZ|pez)_.*/
         then "#{PE_TARBALL_SERVER}/%s/feature/ci-ready"
-      when /#{base_regex}-.*/
+               when /#{base_regex}-.*/
         then "#{PE_TARBALL_SERVER}/%s/ci-ready"
-      else
-        ''
+               else
+                 ''
       end
 
       pe_family = $1
@@ -157,14 +157,14 @@ module BeakerHostGenerator
       end
 
       result.merge!({
-        'aix53-POWER' => {
-          :general => {
-            'platform' => 'aix-5.3-power',
-          },
-          :abs => {
-            'template' => 'aix-5.3-power',
-          },
-        },
+                      'aix53-POWER' => {
+                        :general => {
+                          'platform' => 'aix-5.3-power',
+                        },
+                        :abs => {
+                          'template' => 'aix-5.3-power',
+                        },
+                      },
         'aix61-POWER' => {
           :general => {
             'platform' => 'aix-6.1-power',
@@ -213,19 +213,19 @@ module BeakerHostGenerator
           },
         },
         'amazon6-64' => {
-            :general => {
-                'platform' => 'el-6-x86_64',
-            },
+          :general => {
+            'platform' => 'el-6-x86_64',
+          },
             :abs => {
-                'template' => 'amazon-6-x86_64',
+              'template' => 'amazon-6-x86_64',
             },
         },
         'amazon7-64' => {
-            :general => {
-                'platform' => 'el-7-x86_64',
-            },
+          :general => {
+            'platform' => 'el-7-x86_64',
+          },
             :abs => {
-                'template' => 'amazon-7-x86_64',
+              'template' => 'amazon-7-x86_64',
             },
         },
         'amazon7-ARM64' => {
@@ -1762,7 +1762,7 @@ module BeakerHostGenerator
             'template' => 'win-11-ent-x86_64',
           },
         },
-      })
+                    })
 
       result['archlinux-64'] = result['archlinuxrolling-64']
       result

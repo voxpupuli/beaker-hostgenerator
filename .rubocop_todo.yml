@@ -15,22 +15,6 @@ Layout/ArgumentAlignment:
     - 'lib/beaker-hostgenerator/cli.rb'
     - 'lib/beaker-hostgenerator/parser.rb'
 
-# Offense count: 6
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'lib/beaker-hostgenerator/data.rb'
-    - 'lib/beaker-hostgenerator/hypervisor/hcloud.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Layout/ClosingHeredocIndentation:
-  Exclude:
-    - 'beaker-hostgenerator.gemspec'
-    - 'lib/beaker-hostgenerator/cli.rb'
-
 # Offense count: 20
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
@@ -49,16 +33,6 @@ Layout/EndAlignment:
     - 'lib/beaker-hostgenerator/data.rb'
     - 'lib/beaker-hostgenerator/hypervisor/hcloud.rb'
 
-# Offense count: 20
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: special_inside_parentheses, consistent, align_braces
-Layout/FirstHashElementIndentation:
-  Exclude:
-    - 'lib/beaker-hostgenerator/data.rb'
-    - 'lib/beaker-hostgenerator/roles.rb'
-    - 'test/util/generator_helpers.rb'
-
 # Offense count: 124
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowMultipleStyles, EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
@@ -69,21 +43,6 @@ Layout/HashAlignment:
   Exclude:
     - 'lib/beaker-hostgenerator/data.rb'
     - 'spec/beaker-hostgenerator/parser_spec.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Layout/HeredocIndentation:
-  Exclude:
-    - 'beaker-hostgenerator.gemspec'
-    - 'lib/beaker-hostgenerator/cli.rb'
-
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: Width, AllowedPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'lib/beaker-hostgenerator.rb'
-    - 'lib/beaker-hostgenerator/cli.rb'
 
 # Offense count: 6
 # This cop supports safe autocorrection (--autocorrect).

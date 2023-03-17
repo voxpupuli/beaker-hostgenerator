@@ -78,23 +78,23 @@ class FixtureGenerator
     [
       { 'case_name' => 'pe_version_and_pe_family',
         'environment_variables' => {
-         'pe_version' => '6.6.6',
-         'pe_upgrade_version' => '6.6.6',
-         'pe_family' => '6.6.6',
-         'pe_upgrade_family' => '6.6.6',
-       },
+          'pe_version' => '6.6.6',
+          'pe_upgrade_version' => '6.6.6',
+          'pe_family' => '6.6.6',
+          'pe_upgrade_family' => '6.6.6',
+        },
       },
       { 'case_name' => 'pe_version_and_pe_family_upgrade_only',
         'environment_variables' => {
-        'pe_upgrade_version' => '6.6.6',
-        'pe_upgrade_family' => '6.6.6',
-       },
+          'pe_upgrade_version' => '6.6.6',
+          'pe_upgrade_family' => '6.6.6',
+        },
       },
       { 'case_name' => 'pe_version_and_pe_family_no_upgrade',
         'environment_variables' => {
-         'pe_version' => '6.6.6',
-         'pe_family' => '6.6.6',
-       },
+          'pe_version' => '6.6.6',
+          'pe_family' => '6.6.6',
+        },
       },
     ].each do |fixture_hash|
       case_name = fixture_hash['case_name']
@@ -121,22 +121,22 @@ class FixtureGenerator
         'path' => ['pe_upgrade_ver'],
         'options' => ['--pe_upgrade_ver', '2020.7.3'],
         'spec' => 'centos6-64mdc',
-        },
+      },
       {
         'path' => ['pe_ver'],
         'options' => ['--pe_ver', '2020.7'],
         'spec' => 'centos6-64mdc',
-        },
+      },
       {
         'path' => ['pe_upgrade_dir'],
         'options' => ['--pe_upgrade_dir', '/opt/whatever'],
         'spec' => 'centos6-64mdc',
-        },
+      },
       {
         'path' => ['pe_dir'],
         'options' => ['--pe_dir', '/opt/hello'],
         'spec' => 'centos6-64mdc',
-        },
+      },
       ].each do |fixture_info|
       generate_fixture(fixture_info['path'],
                        fixture_info['options'],

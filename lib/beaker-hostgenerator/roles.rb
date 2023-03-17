@@ -11,9 +11,9 @@ module BeakerHostGenerator
     }
 
     CM_CONFIG = { 'main' => {
-                    'dns_alt_names' => 'puppet',
-                    'environmentpath' => '/etc/puppetlabs/puppet/environments',
-                  },
+      'dns_alt_names' => 'puppet',
+      'environmentpath' => '/etc/puppetlabs/puppet/environments',
+    },
                 }
 
     ROLE_CONFIG = {
