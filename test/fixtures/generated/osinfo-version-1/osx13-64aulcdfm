@@ -1,0 +1,20 @@
+---
+arguments_string: "--osinfo-version 1 osx13-64aulcdfm"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx13-64-1:
+      platform: osx-13-x86_64
+      template: macos-13-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
