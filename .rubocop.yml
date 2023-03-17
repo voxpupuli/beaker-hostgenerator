@@ -11,6 +11,9 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.7
 
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
 Layout/FirstArrayElementIndentation:
   Enabled: false
 
