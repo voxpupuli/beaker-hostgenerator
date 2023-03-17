@@ -17,7 +17,7 @@ end
 
 group :rubocop do
   gem 'rubocop', '~> 1.48.1'
-  gem 'rubocop-minitest', '~> 0.28.0'
+  gem 'rubocop-minitest', '~> 0.29.0'
   gem 'rubocop-performance', '~> 1.16.0'
   gem 'rubocop-rake', '~> 0.6.0'
   gem 'rubocop-rspec', '~> 2.19.0'
