@@ -85,25 +85,25 @@ module BeakerHostGenerator
     # which are used to define arbitrary key-values on a node.
     #
     # @param spec [String] Well-formatted string specification of the hosts to
-    #                      generate. For example `"centos6-64m-debian8-32a"`.
+    #                      generate. For example `"centos9-64m-debian11-64a"`.
     # @returns [Array<String>] Input string split into substrings suitable for
     #                          processing by the generator. For example
-    #                          `["centos6", "64m", "debian8", "32a"]`.
+    #                          `["centos9", "64m", "debian11", "64a"]`.
     def tokenize_layout(layout_spec)
       # Here we allow dashes in certain parts of the spec string
-      # i.e. "centos6-64m{hostname=foo-bar}-debian8-32"
+      # i.e. "centos9-64m{hostname=foo-bar}-debian11-64"
       # by first replacing all occurrences of - with | that exist within
       # the braces {...}.
       #
       # So we'd end up with:
-      #   "centos6-64m{hostname=foo|bar}-debian8-32"
+      #   "centos9-64m{hostname=foo|bar}-debian11-64"
       #
       # Which we can then simply split on - into:
-      #   ["centos6", "64m{hostname=foo|bar}", "debian8", "32"]
+      #   ["centos9", "64m{hostname=foo|bar}", "debian11", "64"]
       #
       # And then finally turn the | back into - now that we've
       # properly decomposed the spec string:
-      #   ["centos6", "64m{hostname=foo-bar}", "debian8", "32"]
+      #   ["centos9", "64m{hostname=foo-bar}", "debian11", "64"]
       #
       # NOTE we've specifically chosen to use the pipe character |
       # due to its unlikely occurrence in the user input string.
@@ -123,8 +123,8 @@ module BeakerHostGenerator
       tokens.map { |t| t.gsub('|', '-') }
     end
 
-    # Tests if a string token represents an OS platform (i.e. "centos6" or
-    # "debian8") and not another part of the host specification like the
+    # Tests if a string token represents an OS platform (i.e. "centos9" or
+    # "debian11") and not another part of the host specification like the
     # architecture bit (i.e. "32" or "64").
     #
     # This is used when parsing the host generator input string to determine
@@ -132,7 +132,7 @@ module BeakerHostGenerator
     # host for a current platform.
     #
     # @param [String] token A piece of the host generator input that might refer
-    #                 to an OS platform. For example `"centos6"` or `"debian8"`.
+    #                 to an OS platform. For example `"centos9"` or `"debian11"`.
     #
     # @param [Integer] bhg_version The version of OS info to use when testing
     #                  for whether the token represent an OS platform.
@@ -317,7 +317,7 @@ module BeakerHostGenerator
       end
 
       object
-    rescue Exception => e
+    rescue Exception
       raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
         "Malformed host settings: #{host_settings}"
     end

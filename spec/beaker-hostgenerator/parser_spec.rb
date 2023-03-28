@@ -6,8 +6,8 @@ module BeakerHostGenerator
 
     describe 'prepare' do
       it 'Supports URL-encoded input' do
-        expect(prepare('centos6-64m%7Bfoo=bar-baz,this=that,foo=%5Bbar,baz%5D,this=%5Bthat%5D%7D-32a')).
-          to eq('centos6-64m{foo=bar-baz,this=that,foo=[bar,baz],this=[that]}-32a')
+        expect(prepare('centos9-64m%7Bfoo=bar-baz,this=that,foo=%5Bbar,baz%5D,this=%5Bthat%5D%7D-32a')).
+          to eq('centos9-64m{foo=bar-baz,this=that,foo=[bar,baz],this=[that]}-32a')
       end
     end
 

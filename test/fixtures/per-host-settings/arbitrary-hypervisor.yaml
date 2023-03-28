@@ -1,17 +1,17 @@
 ---
-arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64a{hypervisor=custom}
+arguments_string: centos9-64m{hypervisor=vmpooler}-debian11-64a{hypervisor=none}-redhat7-64a{hypervisor=custom}
 environment_variables: {}
 expected_hash:
   HOSTS:
-    centos6-64-1:
+    centos9-64-1:
       hypervisor: vmpooler
-      platform: el-6-x86_64
-      template: centos-6-x86_64
+      platform: el-9-x86_64
+      template: centos-9-x86_64
       roles:
       - agent
       - master
-    debian8-32-1:
-      platform: debian-8-i386
+    debian11-64-1:
+      platform: debian-11-amd64
       hypervisor: none
       roles:
       - agent

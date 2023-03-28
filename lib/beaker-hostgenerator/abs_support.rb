@@ -8,17 +8,17 @@ module BeakerHostGenerator
     #
     # For example, given the following config (parts omitted for brevity):
     #    {"HOSTS"=>
-    #     {"centos6-64-1"=>
-    #        {"template"=>"centos-6-x86_64", ...},
+    #     {"centos9-64-1"=>
+    #        {"template"=>"centos-9-x86_64", ...},
     #      "redhat7-64-1"=>
     #        {"template"=>"redhat-7-x86_64", ...},
-    #      "centos6-64-2"=>
-    #        {"template"=>"centos-6-x86_64", ...}},
+    #      "centos9-64-2"=>
+    #        {"template"=>"centos-9-x86_64", ...}},
     #     ...
     #    }}
     #
     # Returns the following map:
-    #     {"centos-6-x86_64"=>2, "redhat-7-x86_64"=>1}
+    #     {"centos-9-x86_64"=>2, "redhat-7-x86_64"=>1}
     #
     def extract_templates(config)
       templates_hosts = config['HOSTS'].values.group_by { |h| h['template'] }

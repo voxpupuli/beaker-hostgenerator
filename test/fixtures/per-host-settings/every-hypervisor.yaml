@@ -1,17 +1,17 @@
 ---
-arguments_string: centos6-64m{hypervisor=vmpooler}-debian8-32a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian9-64a{hypervisor=docker}-ubuntu1804-64{hypervisor=vagrant}-debian7-64{hypervisor=vagrant_libvirt}
+arguments_string: centos9-64m{hypervisor=vmpooler}-debian11-64a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian10-64a{hypervisor=docker}-ubuntu1804-64{hypervisor=vagrant}-debian11-64{hypervisor=vagrant_libvirt}
 environment_variables: {}
 expected_hash:
   HOSTS:
-    centos6-64-1:
+    centos9-64-1:
       hypervisor: vmpooler
-      platform: el-6-x86_64
-      template: centos-6-x86_64
+      platform: el-9-x86_64
+      template: centos-9-x86_64
       roles:
       - agent
       - master
-    debian8-32-1:
-      platform: debian-8-i386
+    debian11-64-1:
+      platform: debian-11-amd64
       hypervisor: none
       roles:
       - agent
@@ -22,16 +22,16 @@ expected_hash:
       roles:
       - agent
       - frictionless
-    debian9-64-1:
+    debian10-64-1:
       hypervisor: docker
       docker_cmd:
       - /sbin/init
-      image: amd64/debian:9
-      platform: debian-9-amd64
+      image: amd64/debian:10
+      platform: debian-10-amd64
       docker_image_commands:
       - cp /bin/true /sbin/agetty
       - rm -f /usr/sbin/policy-rc.d
-      - apt-get update && apt-get install -y cron locales-all net-tools wget systemd-sysv gnupg apt-transport-https
+      - apt-get update && apt-get install -y cron locales-all net-tools wget gnupg
       roles:
       - agent
     ubuntu1804-64-1:
@@ -41,11 +41,11 @@ expected_hash:
       platform: ubuntu-18.04-amd64
       roles:
       - agent
-    debian7-64-1:
+    debian11-64-2:
       hypervisor: vagrant_libvirt
-      box: debian/wheezy64
+      box: debian/bullseye64
       synced_folder: disabled
-      platform: debian-7-amd64
+      platform: debian-11-amd64
       roles:
       - agent
 

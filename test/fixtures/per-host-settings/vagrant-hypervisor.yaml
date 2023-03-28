@@ -1,20 +1,20 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt centos6-64m-debian8-32a-redhat7-64a{hypervisor=vagrant}
+arguments_string: --hypervisor vagrant_libvirt centos9-64m-debian11-64a-redhat7-64a{hypervisor=vagrant}
 environment_variables: {}
 expected_hash:
   HOSTS:
-    centos6-64-1:
-      box: centos/6
+    centos9-64-1:
+      box: centos/9
       synced_folder: disabled
-      platform: el-6-x86_64
+      platform: el-9-x86_64
       hypervisor: vagrant_libvirt
       roles:
       - agent
       - master
-    debian8-32-1:
-      box: generic/debian8
+    debian11-64-1:
+      box: debian/bullseye64
       synced_folder: disabled
-      platform: debian-8-i386
+      platform: debian-11-amd64
       hypervisor: vagrant_libvirt
       roles:
       - agent
