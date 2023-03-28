@@ -137,11 +137,7 @@ module BeakerHostGenerator
     # @param [Integer] bhg_version The version of OS info to use when testing
     #                  for whether the token represent an OS platform.
     def is_ostype_token?(token, bhg_version)
-      BeakerHostGenerator::Data.get_platforms(bhg_version).each do |platform|
-        ostype = platform.split('-')[0]
-        return true if ostype == token
-      end
-      false
+      BeakerHostGenerator::Data.get_platforms(bhg_version).any? { |platform| platform.split('-')[0] == token }
     end
 
     # Converts a string token that represents a node (and not an OS type) into
