@@ -1,27 +1,27 @@
 ---
-arguments_string: centos6-64mcd-aix53-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-53-acceptance.delivery.puppetlabs.net%7D-POWERa%7Bfoo=bar%7D
+arguments_string: centos9-64mcd-aix71-POWERfa%7Bhypervisor=aix%2Cvmhostname=pe-aix-71-acceptance.delivery.puppetlabs.net%7D-POWERa%7Bfoo=bar%7D
 environment_variables: {}
 expected_hash:
   HOSTS:
-    centos6-64-1:
+    centos9-64-1:
       hypervisor: vmpooler
-      platform: el-6-x86_64
-      template: centos-6-x86_64
+      platform: el-9-x86_64
+      template: centos-9-x86_64
       roles:
       - agent
       - master
       - dashboard
       - database
-    aix53-POWER-1:
-      platform: aix-5.3-power
+    aix71-POWER-1:
+      platform: aix-7.1-power
       hypervisor: aix
-      vmhostname: pe-aix-53-acceptance.delivery.puppetlabs.net
+      vmhostname: pe-aix-71-acceptance.delivery.puppetlabs.net
       roles:
       - agent
       - frictionless
-    aix53-POWER-2:
+    aix71-POWER-2:
       hypervisor: vmpooler
-      platform: aix-5.3-power
+      platform: aix-7.1-power
       foo: bar
       roles:
       - agent
