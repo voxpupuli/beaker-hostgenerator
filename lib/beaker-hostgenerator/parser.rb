@@ -174,11 +174,7 @@ module BeakerHostGenerator
 
       node_info['arbitrary_roles'] = node_info.fetch('arbitrary_roles', '').split(',')
 
-      node_info['host_settings'] = if node_info['host_settings']
-                                     settings_string_to_map(node_info['host_settings'])
-                                   else
-                                     {}
-                                   end
+      node_info['host_settings'] = node_info['host_settings'] ? settings_string_to_map(node_info['host_settings']) : {}
 
       node_info
     end
