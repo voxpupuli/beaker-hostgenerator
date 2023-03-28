@@ -9,7 +9,8 @@ module BeakerHostGenerator
                  '--templates-only',
                  '--hypervisor', 'abs',]
         expect(JSON.load(BeakerHostGenerator::CLI.new(input).execute)).
-          to eq({ 'aix-5.3-power' => 1,
+          to eq({
+                  'aix-5.3-power' => 1,
                   'aix-6.1-power' => 1,
                   'aix-7.1-power' => 1,
                   'aix-7.2-power' => 1,
@@ -19,7 +20,8 @@ module BeakerHostGenerator
                   'solaris-10-sparc' => 1,
                   'solaris-11-sparc' => 1,
                   'centos-7-x86_64' => 1,
-                  'ubuntu-16.04-power8' => 1, })
+                  'ubuntu-16.04-power8' => 1,
+                })
       end
     end
   end
