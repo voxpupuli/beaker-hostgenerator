@@ -28,3 +28,6 @@ Style/TrailingCommaInArguments:
 
 Gemspec/RequireMFA:
   Enabled: false
+
+Style/GuardClause:
+  Enabled: False
