@@ -46,3 +46,12 @@ jobs:
         run: bundle exec rake
       - name: Build gem
         run: gem build *.gemspec
+
+  tests:
+    needs:
+      - rubocop
+      - test
+    runs-on: ubuntu-latest
+    name: Test suite
+    steps:
+      - run: echo Test suite completed
