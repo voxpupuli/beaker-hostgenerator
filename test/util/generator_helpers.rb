@@ -97,8 +97,6 @@ class FixtureGenerator
        },
       },
     ].each do |fixture_hash|
-      case_name = fixture_hash['case_name']
-      environment_variables = fixture_hash['case_name']
       generate_fixture(['environment_variable_tests', fixture_hash['case_name']],
                        [],
                        'centos6-32a',

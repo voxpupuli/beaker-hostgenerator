@@ -317,7 +317,7 @@ module BeakerHostGenerator
       end
 
       object
-    rescue Exception => e
+    rescue Exception
       raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
         "Malformed host settings: #{host_settings}"
     end
