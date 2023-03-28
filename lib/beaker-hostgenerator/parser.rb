@@ -172,12 +172,7 @@ module BeakerHostGenerator
               "Invalid node_info token: #{token}"
       end
 
-      node_info['arbitrary_roles'] = if node_info['arbitrary_roles']
-                                       node_info['arbitrary_roles'].split(',') || ''
-                                     else
-                                       # Default to empty list to avoid having to check for nil elsewhere
-                                       []
-                                     end
+      node_info['arbitrary_roles'] = node_info.fetch('arbitrary_roles', '').split(',')
 
       node_info['host_settings'] = if node_info['host_settings']
                                      settings_string_to_map(node_info['host_settings'])
