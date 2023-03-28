@@ -250,11 +250,7 @@ module BeakerHostGenerator
         if blob[-2] == '='
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{', '[')
 
-          current_object[blob[0..-3]] = if blob[-1] == '{'
-                                          {}
-                                        else
-                                          []
-                                        end
+          current_object[blob[0..-3]] = blob[-1] == '{' ? {} : []
           object_depth.push(current_object[blob[0..-3]])
           current_depth = current_depth.next
           next
