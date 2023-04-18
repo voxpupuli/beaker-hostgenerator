@@ -20,5 +20,5 @@ group :rubocop do
   gem 'rubocop-minitest', '~> 0.30.0'
   gem 'rubocop-performance', '~> 1.16.0'
   gem 'rubocop-rake', '~> 0.6.0'
-  gem 'rubocop-rspec', '~> 2.19.0'
+  gem 'rubocop-rspec', '~> 2.20.0'
 end
