@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.0.0) (2023-04-28)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.18.1...2.0.0)
+
+**Breaking changes:**
+
+- Drop end of life operating systems from data [\#275](https://github.com/voxpupuli/beaker-hostgenerator/pull/275) ([ekohl](https://github.com/ekohl))
+- Drop Ruby 2.4/2.5/2.6 support [\#273](https://github.com/voxpupuli/beaker-hostgenerator/pull/273) ([bastelfreak](https://github.com/bastelfreak))
+- Drop nfs\_server and consoleport defaults [\#271](https://github.com/voxpupuli/beaker-hostgenerator/pull/271) ([ekohl](https://github.com/ekohl))
+- Drop fixup\_node implementation [\#270](https://github.com/voxpupuli/beaker-hostgenerator/pull/270) ([ekohl](https://github.com/ekohl))
+- Remove deprecated genconfig2 script [\#269](https://github.com/voxpupuli/beaker-hostgenerator/pull/269) ([ekohl](https://github.com/ekohl))
+
+**Implemented enhancements:**
+
+- Set the Vagrant box URL for CentOS Stream 9 [\#301](https://github.com/voxpupuli/beaker-hostgenerator/pull/301) ([ekohl](https://github.com/ekohl))
+- CI: apply Vox Pupuli best practices [\#293](https://github.com/voxpupuli/beaker-hostgenerator/pull/293) ([bastelfreak](https://github.com/bastelfreak))
+- \(RE-14886\) Add macos-13-x86\_64 support [\#292](https://github.com/voxpupuli/beaker-hostgenerator/pull/292) ([yachub](https://github.com/yachub))
+- rubocop: fix Bundler/OrderedGems & Gemspec/OrderedDependencies [\#289](https://github.com/voxpupuli/beaker-hostgenerator/pull/289) ([bastelfreak](https://github.com/bastelfreak))
+- add freebsd data [\#282](https://github.com/voxpupuli/beaker-hostgenerator/pull/282) ([evgeni](https://github.com/evgeni))
+- dependabot: Also update github actions [\#278](https://github.com/voxpupuli/beaker-hostgenerator/pull/278) ([bastelfreak](https://github.com/bastelfreak))
+- Add Ruby 3.2 support [\#277](https://github.com/voxpupuli/beaker-hostgenerator/pull/277) ([bastelfreak](https://github.com/bastelfreak))
+- Style/TrailingCommaInArguments: Use `comma` style [\#274](https://github.com/voxpupuli/beaker-hostgenerator/pull/274) ([bastelfreak](https://github.com/bastelfreak))
+- rubocop: Fix newlines, whitespace and commas [\#272](https://github.com/voxpupuli/beaker-hostgenerator/pull/272) ([bastelfreak](https://github.com/bastelfreak))
+- Enable Rubocop in CI [\#268](https://github.com/voxpupuli/beaker-hostgenerator/pull/268) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Install hostname on CentOS 9 Stream in docker [\#287](https://github.com/voxpupuli/beaker-hostgenerator/pull/287) ([evgeni](https://github.com/evgeni))
+- gemspec: fix email address and authors list [\#276](https://github.com/voxpupuli/beaker-hostgenerator/pull/276) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.18.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.18.1) (2022-12-14)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.18.0...1.18.1)
