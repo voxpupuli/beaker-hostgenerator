@@ -252,6 +252,10 @@ module BeakerHostGenerator
           :general => {
             'platform' => 'el-9-x86_64',
           },
+          :vagrant => {
+            'box'     => 'centos/stream9',
+            'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-20230410.0.x86_64.vagrant-libvirt.box',
+          },
           :docker => {
             'image'                 => 'quay.io/centos/centos:stream9',
             'docker_image_commands' => [
