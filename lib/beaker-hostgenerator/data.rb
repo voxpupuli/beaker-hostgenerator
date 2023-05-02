@@ -239,6 +239,7 @@ module BeakerHostGenerator
           },
           :vagrant => {
             'box' => 'centos/stream8',
+            'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-20230501.0.x86_64.vagrant-libvirt.box',
           },
           :docker => {
             'image'                 => 'quay.io/centos/centos:stream8',
