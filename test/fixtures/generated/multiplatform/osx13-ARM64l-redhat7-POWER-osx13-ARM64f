@@ -1,0 +1,28 @@
+---
+arguments_string: osx13-ARM64l-redhat7-POWER-osx13-ARM64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx13-ARM64-1:
+      platform: osx-13-arm64
+      template: macos-13-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+    redhat7-POWER-1:
+      platform: el-7-ppc64le
+      hypervisor: vmpooler
+      template: redhat-7-ppc64le
+      roles:
+      - agent
+    osx13-ARM64-2:
+      platform: osx-13-arm64
+      template: macos-13-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
