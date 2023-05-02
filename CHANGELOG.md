@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.1.0) (2023-05-02)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.0.0...2.1.0)
+
+**Implemented enhancements:**
+
+- \(RE-15060\) Add macos-13-arm64 support [\#304](https://github.com/voxpupuli/beaker-hostgenerator/pull/304) ([yachub](https://github.com/yachub))
+- use centos stream 8 box from cloud.centos.org [\#303](https://github.com/voxpupuli/beaker-hostgenerator/pull/303) ([evgeni](https://github.com/evgeni))
+
 ## [2.0.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.0.0) (2023-04-28)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/1.18.1...2.0.0)
