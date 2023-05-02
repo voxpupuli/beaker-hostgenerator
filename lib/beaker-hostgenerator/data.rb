@@ -468,6 +468,14 @@ module BeakerHostGenerator
             'template' => 'macos-13-x86_64',
           },
         },
+        'osx13-ARM64' => {
+          :general => {
+            'platform' => 'osx-13-arm64',
+          },
+          :vmpooler => {
+            'template' => 'macos-13-arm64',
+          },
+        },
         'redhat6-32' => {
           :general => {
             'platform' => 'el-6-i386',
