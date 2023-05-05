@@ -29,8 +29,7 @@ module HostHelpers
                     :snapshot => 'snap',
                     :ip => 'default.ip.address',
                     :box => 'default_box_name',
-                    :box_url => 'http://default.box.url',
-  }
+                    :box_url => 'http://default.box.url', }
 
   HOST_NAME     = "vm%d"
   HOST_SNAPSHOT = "snapshot%d"
