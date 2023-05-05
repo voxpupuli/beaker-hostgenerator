@@ -29,10 +29,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~> 3.0'
   s.add_development_dependency 'rspec-its'
 
-  # Documentation dependencies
-  s.add_development_dependency 'thin'
-  s.add_development_dependency 'yard'
-
   # Run time dependencies
   s.add_runtime_dependency 'deep_merge', '~> 1.0'
 end
