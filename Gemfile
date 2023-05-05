@@ -2,17 +2,15 @@ source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 gemspec
 
-if File.exist? "#{__FILE__}.local"
-  eval(File.read("#{__FILE__}.local"), binding)
-end
+eval(File.read("#{__FILE__}.local"), binding) if File.exist? "#{__FILE__}.local"
 
 group :release do
-  gem 'github_changelog_generator', :require => false
+  gem 'github_changelog_generator', require: false
 end
 
 group :coverage, optional: ENV['COVERAGE'] != 'yes' do
-  gem 'codecov', :require => false
-  gem 'simplecov-console', :require => false
+  gem 'codecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 group :rubocop do

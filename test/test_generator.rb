@@ -1,7 +1,7 @@
-require "find"
-require "yaml"
+require 'find'
+require 'yaml'
 
-require "minitest/autorun"
+require 'minitest/autorun'
 
 require 'util/generator_helpers'
 
@@ -18,10 +18,10 @@ class TestGenerator < Minitest::Test
     hash = run_cli_with_options(@default_options)
     hosts = hash['HOSTS']
 
-    assert_includes(hosts, "centos9-64-1")
+    assert_includes(hosts, 'centos9-64-1')
     centos9 = hosts['centos9-64-1']
 
-    ["master", "database", "dashboard", "agent"].each do |role|
+    %w[master database dashboard agent].each do |role|
       assert_includes(centos9['roles'], role)
     end
   end

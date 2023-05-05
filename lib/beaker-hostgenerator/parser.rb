@@ -62,7 +62,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|\,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
@@ -137,13 +137,7 @@ module BeakerHostGenerator
     # @param [Integer] bhg_version The version of OS info to use when testing
     #                  for whether the token represent an OS platform.
     def is_ostype_token?(token, bhg_version)
-      BeakerHostGenerator::Data.get_platforms(bhg_version).each do |platform|
-        ostype = platform.split('-')[0]
-        if ostype == token
-          return true
-        end
-      end
-      return false
+      BeakerHostGenerator::Data.get_platforms(bhg_version).any? { |platform| platform.split('-')[0] == token }
     end
 
     # Converts a string token that represents a node (and not an OS type) into
@@ -168,28 +162,20 @@ module BeakerHostGenerator
       node_info = NODE_REGEX.match(token)
 
       if node_info
-        node_info = Hash[node_info.names.zip(node_info.captures)]
+        node_info = node_info.names.zip(node_info.captures).to_h
       else
         raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError.new,
               "Invalid node_info token: #{token}"
       end
+      node_info['arbitrary_roles'] = if node_info['arbitrary_roles']
+                                       node_info['arbitrary_roles'].split(',') || ''
+                                     else
+                                       # Default to empty list to avoid having to check for nil elsewhere
+                                       []
+                                     end
+      node_info['host_settings'] = node_info['host_settings'] ? settings_string_to_map(node_info['host_settings']) : {}
 
-      if node_info['arbitrary_roles']
-        node_info['arbitrary_roles'] =
-          node_info['arbitrary_roles'].split(',') || ''
-      else
-        # Default to empty list to avoid having to check for nil elsewhere
-        node_info['arbitrary_roles'] = []
-      end
-
-      if node_info['host_settings']
-        node_info['host_settings'] =
-          settings_string_to_map(node_info['host_settings'])
-      else
-        node_info['host_settings'] = {}
-      end
-
-      return node_info
+      node_info
     end
 
     # Transforms the arbitrary host settings map from a string representation
@@ -228,7 +214,7 @@ module BeakerHostGenerator
 
         break if blob.nil?
 
-        if stringscan.pos() == 1
+        if stringscan.pos == 1
           object = {}
           object_depth.push(object)
           next
@@ -251,7 +237,7 @@ module BeakerHostGenerator
           next
         end
 
-        if blob == ']' or blob == '}'
+        if [']', '}'].include?(blob)
           object_depth.pop
           current_depth = current_depth.pred
           next
@@ -263,11 +249,11 @@ module BeakerHostGenerator
         if blob[-2] == '='
           raise Beaker::HostGenerator::Exceptions::InvalidNodeSpecError unless blob.end_with?('{', '[')
 
-          if blob[-1] == '{'
-            current_object[blob[0..-3]] = {}
-          else
-            current_object[blob[0..-3]] = []
-          end
+          current_object[blob[0..-3]] = if blob[-1] == '{'
+                                          {}
+                                        else
+                                          []
+                                        end
           object_depth.push(current_object[blob[0..-3]])
           current_depth = current_depth.next
           next
@@ -288,9 +274,7 @@ module BeakerHostGenerator
           next
         end
 
-        if blob == ','
-          next
-        end
+        next if blob == ','
 
         if blob[-1] == ','
           if current_type == Hash
@@ -308,12 +292,12 @@ module BeakerHostGenerator
           end
         end
 
-        if blob[-1] == ']'
-          current_object.push(blob[0..-2])
-          object_depth.pop
-          current_depth = current_depth.pred
-          next
-        end
+        next unless blob[-1] == ']'
+
+        current_object.push(blob[0..-2])
+        object_depth.pop
+        current_depth = current_depth.pred
+        next
       end
 
       object

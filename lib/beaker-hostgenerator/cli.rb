@@ -110,7 +110,7 @@ module BeakerHostGenerator
         end
 
         opts.on('--disable-role-config',
-                "Do not include role-specific configuration.") do
+                'Do not include role-specific configuration.') do
           @options[:disable_role_config] = true
         end
 
@@ -120,19 +120,17 @@ module BeakerHostGenerator
         end
 
         opts.on('--osinfo-version MAJOR_VERSION',
-                "Use OSINFO for specified beaker-hostgenerator version. " <<
-                "Allows early access to future version of OSINFO data structure " <<
-                "used to generate host configs.") do |version|
+                'Use OSINFO for specified beaker-hostgenerator version. ' <<
+                'Allows early access to future version of OSINFO data structure ' <<
+                'used to generate host configs.') do |version|
           version = version.to_i
-          if not [0, 1].include? version
-            raise "Invalid beaker-hostgenerator version: #{version}"
-          end
+          raise "Invalid beaker-hostgenerator version: #{version}" unless [0, 1].include? version
 
           @options[:osinfo_version] = version
         end
 
         opts.on('--global-config KEYVALUE_STRING',
-                "General configuration settings to be included as-is in the " <<
+                'General configuration settings to be included as-is in the ' <<
                 "CONFIG section. Value should be in the form '{key=value,...}'.") do |p|
           @options[:global_config] = p
         end
@@ -204,7 +202,7 @@ module BeakerHostGenerator
       result << "\n\n"
 
       result << "built-in beaker-hostgenerator hypervisors:\n"
-      BeakerHostGenerator::Hypervisor.builtin_hypervisors().keys.each do |k|
+      BeakerHostGenerator::Hypervisor.builtin_hypervisors.each_key do |k|
         result << "   #{k}\n"
       end
 

@@ -1,13 +1,13 @@
-$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'beaker-hostgenerator/version'
 
 Gem::Specification.new do |s|
-  s.name        = "beaker-hostgenerator"
+  s.name        = 'beaker-hostgenerator'
   s.version     = BeakerHostGenerator::Version::STRING
-  s.authors     = ["Branan Purvine-Riley", "Wayne Warren", "Nate Wolfe", "Vox Pupuli"]
-  s.email       = ["pmc@voxpupuli.org"]
-  s.homepage    = "https://github.com/puppetlabs/beaker-hostgenerator"
-  s.summary     = "Beaker Host Generator Utility"
+  s.authors     = ['Branan Purvine-Riley', 'Wayne Warren', 'Nate Wolfe', 'Vox Pupuli']
+  s.email       = ['pmc@voxpupuli.org']
+  s.homepage    = 'https://github.com/puppetlabs/beaker-hostgenerator'
+  s.summary     = 'Beaker Host Generator Utility'
   s.description = <<~eos
     The beaker-hostgenerator tool will take a Beaker SUT (System Under Test) spec as
     its first positional argument and use that to generate a Beaker host
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.require_paths = ['lib']
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.7')
 
