@@ -23,15 +23,11 @@ Gem::Specification.new do |s|
 
   # Testing dependencies
   s.add_development_dependency 'fakefs', '>= 0.6', '< 3.0'
-  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'minitest', '~> 5.18'
   s.add_development_dependency 'pry', '~> 0.10'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.0'
-  s.add_development_dependency 'rspec-its'
-
-  # Documentation dependencies
-  s.add_development_dependency 'thin'
-  s.add_development_dependency 'yard'
+  s.add_development_dependency 'rspec-its', '~> 1.3'
 
   # Run time dependencies
   s.add_runtime_dependency 'deep_merge', '~> 1.0'
