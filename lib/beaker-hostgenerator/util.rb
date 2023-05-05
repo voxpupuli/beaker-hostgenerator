@@ -7,7 +7,7 @@ module BeakerHostGenerator
   module Utils
     module_function
 
-    def pe_dir(version, family = nil)
+    def pe_dir(version, _family = nil)
       BeakerHostGenerator::Data.pe_dir(version)
     end
 
@@ -30,7 +30,7 @@ module BeakerHostGenerator
       end
     end
 
-    def get_platforms(hypervisor_type = 'vmpooler', bhg_version = 0)
+    def get_platforms(_hypervisor_type = 'vmpooler', bhg_version = 0)
       BeakerHostGenerator::Data.get_platforms(bhg_version)
     end
 
