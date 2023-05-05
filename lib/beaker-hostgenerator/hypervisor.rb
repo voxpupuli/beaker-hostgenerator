@@ -84,7 +84,7 @@ module BeakerHostGenerator
       #
       # @param [Integer] bhg_version The version of OS info to use when building
       #                              up the node definition.
-      def generate_node(node_info, base_config, bhg_version)
+      def generate_node(_node_info, _base_config, _bhg_version)
         raise "Method 'generate_node' not implemented!"
       end
 
