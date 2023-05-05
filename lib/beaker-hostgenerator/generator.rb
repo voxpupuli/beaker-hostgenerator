@@ -29,9 +29,7 @@ module BeakerHostGenerator
 
       tokens.each do |token|
         if is_ostype_token?(token, bhg_version)
-          if nodeid[ostype] == 1 and ostype != nil
-            raise "Error: no nodes generated for #{ostype}"
-          end
+          raise "Error: no nodes generated for #{ostype}" if nodeid[ostype] == 1 and !ostype.nil?
 
           ostype = token
           next
@@ -52,7 +50,7 @@ module BeakerHostGenerator
         # Delegate to the hypervisor
         hypervisor = BeakerHostGenerator::Hypervisor.create(node_info, options)
         host_config = hypervisor.generate_node(node_info, host_config, bhg_version)
-        config['CONFIG'].deeper_merge!(hypervisor.global_config())
+        config['CONFIG'].deeper_merge!(hypervisor.global_config)
 
         # Merge in any arbitrary key-value host settings. Treat the 'hostname'
         # setting specially, and don't merge it in as an arbitrary setting.
@@ -61,7 +59,7 @@ module BeakerHostGenerator
           arbitrary_settings.has_key?('hostname')
         host_config.merge!(arbitrary_settings)
 
-        if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == "64"
+        if PE_USE_WIN32 && ostype =~ /windows/ && node_info['bits'] == '64'
           host_config['ruby_arch'] = 'x86'
           host_config['install_32'] = true
         end
@@ -77,9 +75,7 @@ module BeakerHostGenerator
         decoded = prepare(options[:global_config])
         # Support for strings without '{}' was introduced, so just double
         # check here to ensure that we pass in values surrounded by '{}'.
-        if !decoded.start_with?('{')
-          decoded = "{#{decoded}}"
-        end
+        decoded = "{#{decoded}}" unless decoded.start_with?('{')
         global_config = settings_string_to_map(decoded)
         config['CONFIG'].deeper_merge!(global_config)
       end
@@ -87,7 +83,7 @@ module BeakerHostGenerator
       # Munge non-string scalar values into proper data types
       unstringify_values!(config)
 
-      return config
+      config
     end
 
     def get_host_roles(node_info)
@@ -101,22 +97,22 @@ module BeakerHostGenerator
         roles << role
       end
 
-      return roles
+      roles
     end
 
     private
 
     def generate_host_roles!(host_config, node_info, options)
-      if not options[:disable_default_role]
-        host_config['roles'] = ['agent']
-      else
-        host_config['roles'] = []
-      end
+      host_config['roles'] = if options[:disable_default_role]
+                               []
+                             else
+                               ['agent']
+                             end
 
       host_config['roles'].concat get_host_roles(node_info)
       host_config['roles'].uniq!
 
-      if not options[:disable_role_config]
+      unless options[:disable_role_config]
         host_config['roles'].each do |role|
           host_config.deeper_merge! get_role_config(role)
         end
@@ -145,12 +141,16 @@ module BeakerHostGenerator
     # converted to true/false.
     # The only valid boolean-strings are "true" and "false".
     def unstringify_value(value)
-      result = Integer(value) rescue value
+      result = begin
+        Integer(value)
+      rescue StandardError
+        value
+      end
       if value == 'true'
         result = true
       elsif value == 'false'
         result = false
-      elsif value.kind_of?(Array)
+      elsif value.is_a?(Array)
         value.each_with_index do |v, i|
           result[i] = unstringify_value(v)
         end

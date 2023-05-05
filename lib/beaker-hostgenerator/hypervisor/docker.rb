@@ -23,9 +23,7 @@ module BeakerHostGenerator
           base_config['image'].sub!(/(\w+)/, 'almalinux')
         end
 
-        if node_info['bits'] == '64'
-          base_config['image'] = "amd64/#{base_config['image']}"
-        end
+        base_config['image'] = "amd64/#{base_config['image']}" if node_info['bits'] == '64'
 
         case node_info['ostype']
         when /^ubuntu/
@@ -37,7 +35,7 @@ module BeakerHostGenerator
           ]
         end
 
-        return base_generate_node(node_info, base_config, bhg_version, :docker)
+        base_generate_node(node_info, base_config, bhg_version, :docker)
       end
     end
   end

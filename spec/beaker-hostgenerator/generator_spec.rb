@@ -13,35 +13,35 @@ module BeakerHostGenerator
       it 'Expands default roles and merges in arbitrary roles' do
         {
           {
-            "roles" => "aulcdfm",
-            "arbitrary_roles" => [],
-          } => [
-            'agent',
-            'ca',
-            'classifier',
-            'dashboard',
-            'database',
-            'frictionless',
-            'master',
+            'roles' => 'aulcdfm',
+            'arbitrary_roles' => [],
+          } => %w[
+            agent
+            ca
+            classifier
+            dashboard
+            database
+            frictionless
+            master
           ],
           {
-            "roles" => "a",
-            "arbitrary_roles" => ["meow", "hello", "compile_master"],
+            'roles' => 'a',
+            'arbitrary_roles' => %w[meow hello compile_master],
+          } => %w[
+            agent
+            meow
+            hello
+            compile_master
+          ],
+          {
+            'roles' => '',
+            'arbitrary_roles' => ['compile_master'],
           } => [
-            'agent',
-            'meow',
-            'hello',
             'compile_master',
           ],
           {
-            "roles" => "",
-            "arbitrary_roles" => ["compile_master"],
-          } => [
-            'compile_master',
-          ],
-          {
-            "roles" => "",
-            "arbitrary_roles" => [],
+            'roles' => '',
+            'arbitrary_roles' => [],
           } => [],
         }.each do |node_info, roles|
           expect(generator.get_host_roles(node_info)).to eq(roles)
@@ -49,8 +49,8 @@ module BeakerHostGenerator
       end
     end
 
-    shared_examples "fixtures" do |fixture_hash|
-      arguments = fixture_hash["arguments_string"]
+    shared_examples 'fixtures' do |fixture_hash|
+      arguments = fixture_hash['arguments_string']
       it "beaker-hostgenerator #{arguments}" do
         arguments = arguments.split
         fixture_hash['environment_variables'].each do |key, value|
@@ -78,47 +78,45 @@ module BeakerHostGenerator
       end
     end
 
-    context "Fixtures" do
+    context 'Fixtures' do
       Find.find 'test/fixtures' do |f|
         context "#{f}" do
-          if File.directory?(f)
-            next
-          end
+          next if File.directory?(f)
 
-          include_examples "fixtures", YAML.load_file(f)
+          include_examples 'fixtures', YAML.load_file(f)
         end
       end
     end
 
-    context "pe_dir for versions < 2021.0" do
+    context 'pe_dir for versions < 2021.0' do
       let(:dev_version) { '2019.8.0-rc4-11-g123abcd' }
       let(:dev_version_no_rc) { '2019.8.0-1-g123abcd' }
       let(:pez_version) { '2019.8.0-rc4-11-g123abcd-PEZ_foo' }
       let(:release_version) { '2019.8.2' }
       let(:rc_version) { '2019.8.0-rc4' }
 
-      it "returns ci-ready for a dev version" do
+      it 'returns ci-ready for a dev version' do
         expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{2019\.8/ci-ready})
         expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{2019\.8/ci-ready})
       end
 
-      it "returns archives/releases for a release version" do
+      it 'returns archives/releases for a release version' do
         expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2019\.8})
       end
 
-      it "returns archives/internal for an rc version" do
+      it 'returns archives/internal for an rc version' do
         expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2019\.8})
       end
 
-      it "returns feature/ci-ready for a PEZ version" do
+      it 'returns feature/ci-ready for a PEZ version' do
         expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match(%r{2019\.8/feature/ci-ready})
       end
 
-      it "returns nil if version is nil" do
+      it 'returns nil if version is nil' do
         expect(BeakerHostGenerator::Data.pe_dir(nil)).to be_nil
       end
 
-      it "returns nil if version is an empty string" do
+      it 'returns nil if version is an empty string' do
         expect(BeakerHostGenerator::Data.pe_dir('')).to be_nil
       end
 
@@ -127,27 +125,27 @@ module BeakerHostGenerator
       end
     end
 
-    context "pe_dir for versions >= 2021.0" do
+    context 'pe_dir for versions >= 2021.0' do
       let(:dev_version) { '2023.0.0-rc4-11-g123abcd' }
       let(:dev_version_no_rc) { '2023.0.0-1-g123abcd' }
       let(:pez_version) { '2023.0.0-rc4-11-g123abcd-pez_foo' } # Some jobs use "PEZ" and some "pez"
       let(:release_version) { '2023.0.0' }
       let(:rc_version) { '2023.0.0-rc4' }
 
-      it "returns main/ci-ready for a dev version" do
+      it 'returns main/ci-ready for a dev version' do
         expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{main/ci-ready})
         expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{main/ci-ready})
       end
 
-      it "returns archives/releases/<version> for a release version" do
+      it 'returns archives/releases/<version> for a release version' do
         expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2023\.0\.0})
       end
 
-      it "returns archives/internal/main for an rc version" do
+      it 'returns archives/internal/main for an rc version' do
         expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2023.0})
       end
 
-      it "returns main/feature/ci-ready for a PEZ version" do
+      it 'returns main/feature/ci-ready for a PEZ version' do
         expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match('main/feature')
       end
     end

@@ -4,22 +4,22 @@ require 'rake/testtask'
 namespace :test do
   namespace :spec do
     task :minitest do
-      desc "Run minitest tests"
+      desc 'Run minitest tests'
       Rake::TestTask.new do |task|
-        task.libs << %w(test lib)
+        task.libs << %w[test lib]
         task.test_files = FileList['test/test*.rb']
         task.verbose = true
       end
     end
 
-    desc "Run spec tests"
+    desc 'Run spec tests'
     RSpec::Core::RakeTask.new(:run) do |t|
       t.rspec_opts = ['--color']
       t.pattern = 'spec/'
       t.ruby_opts = '-Itest'
     end
 
-    desc "Run spec tests with coverage"
+    desc 'Run spec tests with coverage'
     RSpec::Core::RakeTask.new(:coverage) do |t|
       ENV['BEAKER_TEMPLATE_COVERAGE'] = 'y'
       t.rspec_opts = ['--color']
@@ -29,7 +29,7 @@ namespace :test do
 end
 
 namespace :generate do
-  desc "Generate test fixtures."
+  desc 'Generate test fixtures.'
   task :fixtures do
     $LOAD_PATH.unshift(
       File.join(Dir.pwd, 'lib'),
@@ -49,8 +49,8 @@ end
 task 'test:spec' => ['test:spec:run', 'test:spec:minitest']
 
 # global defaults
-task :test => 'test:spec'
-task :default => :test
+task test: 'test:spec'
+task default: :test
 
 begin
   require 'github_changelog_generator/task'

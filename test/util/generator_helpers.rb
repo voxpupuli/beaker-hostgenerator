@@ -1,4 +1,4 @@
-require "yaml"
+require 'yaml'
 
 require 'beaker-hostgenerator'
 require 'beaker-hostgenerator/data'
@@ -10,8 +10,7 @@ module GeneratorTestHelpers
     cli = BeakerHostGenerator::CLI.new(options)
     yaml_string = cli.execute
 
-    hash = YAML.load(yaml_string)
-    return hash
+    YAML.load(yaml_string)
   end
 
   def open_file(path)
@@ -21,12 +20,12 @@ module GeneratorTestHelpers
     dirname = File.join(path[1, path.length - 2]) # wtf
     filename = File.join(path)
     FileUtils.mkdir_p(dirname)
-    return File.open(filename, "w")
+    File.open(filename, 'w')
   end
 
   def generate_fixture(relative_path, options, spec, environment_variables = {})
     specopts = options + [spec]
-    arguments_string = specopts.join(" ")
+    arguments_string = specopts.join(' ')
 
     environment_variables.each do |key, value|
       ENV[key] = value
@@ -37,10 +36,10 @@ module GeneratorTestHelpers
     end
 
     fixture_hash = {
-      "arguments_string" => arguments_string,
-      "environment_variables" => environment_variables,
-      "expected_hash" => generated_hash,
-      "expected_exception" => nil,
+      'arguments_string' => arguments_string,
+      'environment_variables' => environment_variables,
+      'expected_hash' => generated_hash,
+      'expected_exception' => nil,
     }
     fixture_yaml = fixture_hash.to_yaml
 
@@ -66,7 +65,7 @@ class FixtureGenerator
 
   def initialize
     @fixture_root = 'test/fixtures/generated/'
-    @simple_roles = ["a", "u", "l", "c", "d", "f", "m", "aulcdfm"]
+    @simple_roles = %w[a u l c d f m aulcdfm]
   end
 
   def generate
@@ -106,7 +105,7 @@ class FixtureGenerator
     [0, 1].each do |bhg_version|
       generate_fixtures_using_osinfo(["osinfo-version-#{bhg_version}"],
                                      @simple_roles.cycle,
-                                     ["--osinfo-version", "#{bhg_version}"],
+                                     ['--osinfo-version', "#{bhg_version}"],
                                      bhg_version)
     end
 
@@ -145,7 +144,7 @@ class FixtureGenerator
       @simple_roles.cycle,
       @simple_roles.reverse.cycle,
     ) do |p1, p2, p3, r1, r2|
-      generate_fixture(["multiplatform"], [], "#{p1}#{r1}-#{p2}-#{p3}#{r2}")
+      generate_fixture(['multiplatform'], [], "#{p1}#{r1}-#{p2}-#{p3}#{r2}")
     end
   end
 end

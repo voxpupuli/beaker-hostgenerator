@@ -19,7 +19,7 @@ module BeakerHostGenerator
 
         case node_info['ostype']
         when /^(almalinux|centos|redhat|rocky)/
-          base_config['template'] ||= base_config['platform'].gsub(/^el/, $1)
+          base_config['template'] ||= base_config['platform'].gsub(/^el/, ::Regexp.last_match(1))
         when /^fedora/
           base_config['template'] ||= base_config['platform']
         when /^ubuntu/
@@ -28,14 +28,12 @@ module BeakerHostGenerator
                    'x86_64'
                  when '32'
                    'i386'
-                 else
-                   nil
                  end
 
           base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
         end
 
-        return base_config
+        base_config
       end
     end
   end
