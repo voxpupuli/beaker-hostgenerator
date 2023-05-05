@@ -8,12 +8,12 @@ Gem::Specification.new do |s|
   s.email       = ["pmc@voxpupuli.org"]
   s.homepage    = "https://github.com/puppetlabs/beaker-hostgenerator"
   s.summary     = "Beaker Host Generator Utility"
-  s.description = <<-eos
-The beaker-hostgenerator tool will take a Beaker SUT (System Under Test) spec as
-its first positional argument and use that to generate a Beaker host
-configuration file.
-eos
-  s.license     = 'Apache2'
+  s.description = <<~eos
+    The beaker-hostgenerator tool will take a Beaker SUT (System Under Test) spec as
+    its first positional argument and use that to generate a Beaker host
+    configuration file.
+  eos
+  s.license = 'Apache2'
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }

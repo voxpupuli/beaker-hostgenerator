@@ -24,52 +24,52 @@ module BeakerHostGenerator
       argv.push('--help') if argv.empty?
 
       optparse = OptionParser.new do |opts|
-        opts.banner = <<-eos
-Usage: beaker-hostgenerator [options] <layout>
+        opts.banner = <<~eos
+          Usage: beaker-hostgenerator [options] <layout>
 
- where <layout> takes the following form:
-  <platform>-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}][-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}]][-<layout>]
+           where <layout> takes the following form:
+            <platform>-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}][-<arch>[[<arbitrary-roles>,[...]].]<roles>[{<arbitrary-settings>,[...]}]][-<layout>]
 
- examples:
-  centos9-64mdca-64a
-   1 CentOS 9 64 bit node with roles = master, database, agent, dashboard
-   1 CentOS 9 64 bit node with roles = agent
+           examples:
+            centos9-64mdca-64a
+             1 CentOS 9 64 bit node with roles = master, database, agent, dashboard
+             1 CentOS 9 64 bit node with roles = agent
 
-  debian11-64m-64ad-64ac-centos9-64a
-   1 Debian 11 64 bit node with roles = master
-   1 Debian 11 64 bit node with roles = agent, database
-   1 Debian 11 64 bit node with roles = agent, dashboard
-   1 CentOS 9 64 bit node with roles = agent
+            debian11-64m-64ad-64ac-centos9-64a
+             1 Debian 11 64 bit node with roles = master
+             1 Debian 11 64 bit node with roles = agent, database
+             1 Debian 11 64 bit node with roles = agent, dashboard
+             1 CentOS 9 64 bit node with roles = agent
 
-  debian11-64m-windows2019_core-64a
-   1 Debian 11 64 bit node with roles = master
-   1 Windows 2019 64 bit node with roles = agent
+            debian11-64m-windows2019_core-64a
+             1 Debian 11 64 bit node with roles = master
+             1 Windows 2019 64 bit node with roles = agent
 
- example with arbitrary roles:
-  centos9-64compile_master,another_role.ma
-   1 CentOS 9 64 bit node with roles = master, agent, compile_master, another_role
+           example with arbitrary roles:
+            centos9-64compile_master,another_role.ma
+             1 CentOS 9 64 bit node with roles = master, agent, compile_master, another_role
 
- example with arbitrary host settings:
-  centos9-64m{hypervisor=none\\,hostname=static1\\,my-key=my-value}-64a
-   1 CentOS 9 64 bit node with roles = master, hypervisor = none, node name = static1, and my-key = my-value
-   1 CentOS 9 64 bit node with roles = agent and the default hypervisor
+           example with arbitrary host settings:
+            centos9-64m{hypervisor=none\\,hostname=static1\\,my-key=my-value}-64a
+             1 CentOS 9 64 bit node with roles = master, hypervisor = none, node name = static1, and my-key = my-value
+             1 CentOS 9 64 bit node with roles = agent and the default hypervisor
 
- example of a list within arbitrary host settings:
-  centos9-64m{hostname=static1\\,disks=[8,16],my-list=[my-value1]}-64a
-   1 CentOS 9 64 bit node with roles = master, node name = static1 and lists:
-      disks:
-         - 8
-         - 16
-       my-list:
-         - my-value1
-   1 CentOS 9 64 bit node with roles = agent and the default hypervisor
+           example of a list within arbitrary host settings:
+            centos9-64m{hostname=static1\\,disks=[8,16],my-list=[my-value1]}-64a
+             1 CentOS 9 64 bit node with roles = master, node name = static1 and lists:
+                disks:
+                   - 8
+                   - 16
+                 my-list:
+                   - my-value1
+             1 CentOS 9 64 bit node with roles = agent and the default hypervisor
 
- Generally, it is expected that beaker-hostgenerator output will be redirected to a file, for example:
-  beaker-hostgenerator centos9-64ma > host.cfg
+           Generally, it is expected that beaker-hostgenerator output will be redirected to a file, for example:
+            beaker-hostgenerator centos9-64ma > host.cfg
 
- This can then be used in a Beaker call instead of a static Beaker config.
+           This can then be used in a Beaker call instead of a static Beaker config.
 
-            eos
+        eos
 
         opts.on('-l',
                 '--list',
@@ -79,7 +79,7 @@ Usage: beaker-hostgenerator [options] <layout>
         end
 
         opts.on('--templates-only',
-               'Generate a reduced output including only the templates from each host.') do
+                'Generate a reduced output including only the templates from each host.') do
           @options[:templates_only] = true
         end
 
@@ -125,7 +125,7 @@ Usage: beaker-hostgenerator [options] <layout>
                 "used to generate host configs.") do |version|
           version = version.to_i
           if not [0, 1].include? version
-              raise "Invalid beaker-hostgenerator version: #{version}"
+            raise "Invalid beaker-hostgenerator version: #{version}"
           end
 
           @options[:osinfo_version] = version
