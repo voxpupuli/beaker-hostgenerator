@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.0) (2023-05-05)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.1.0...2.2.0)
+
+**Implemented enhancements:**
+
+- switch to voxpupuli-rubocop; cleanup CI config and gemspec [\#309](https://github.com/voxpupuli/beaker-hostgenerator/pull/309) ([bastelfreak](https://github.com/bastelfreak))
+- rubocop: Fix Style violations [\#308](https://github.com/voxpupuli/beaker-hostgenerator/pull/308) ([bastelfreak](https://github.com/bastelfreak))
+- rubocop: Fix Lint violations [\#307](https://github.com/voxpupuli/beaker-hostgenerator/pull/307) ([bastelfreak](https://github.com/bastelfreak))
+- RuboCop: fix layout cops, disable GuardClause; fix license in gemspec [\#306](https://github.com/voxpupuli/beaker-hostgenerator/pull/306) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [2.1.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.1.0) (2023-05-02)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.0.0...2.1.0)
