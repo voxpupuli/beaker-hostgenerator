@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
     its first positional argument and use that to generate a Beaker host
     configuration file.
   eos
-  s.license = 'Apache2'
+  s.license = 'Apache-2.0'
 
   s.files         = `git ls-files`.split("\n").reject { |f| f.match(/^(test|spec)/) }
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
