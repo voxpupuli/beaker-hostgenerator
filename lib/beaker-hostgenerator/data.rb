@@ -244,9 +244,9 @@ module BeakerHostGenerator
                         docker: {
                           'image' => 'quay.io/centos/centos:stream8',
                           'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-            ],
+                            'cp /bin/true /sbin/agetty',
+                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
+                          ],
                         },
                       },
                       'centos9-64' => {
@@ -260,9 +260,9 @@ module BeakerHostGenerator
                         docker: {
                           'image' => 'quay.io/centos/centos:stream9',
                           'docker_image_commands' => [
-              'cp /bin/true /sbin/agetty',
-              'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-            ],
+                            'cp /bin/true /sbin/agetty',
+                            'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
+                          ],
                         },
                       },
                       'debian10-64' => {

@@ -131,7 +131,7 @@ class FixtureGenerator
         'options' => ['--pe_dir', '/opt/hello'],
         'spec' => 'centos9-64mdc',
       },
-      ].each do |fixture_info|
+    ].each do |fixture_info|
       generate_fixture(fixture_info['path'],
                        fixture_info['options'],
                        fixture_info['spec'])
