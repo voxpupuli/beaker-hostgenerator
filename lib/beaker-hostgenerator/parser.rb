@@ -1,6 +1,7 @@
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/exceptions'
 require 'cgi'
+require 'strscan'
 
 module BeakerHostGenerator
   # Functions for parsing the raw user input host layout string and turning
