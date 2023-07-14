@@ -14,7 +14,7 @@ module BeakerHostGenerator
                                when 'ubuntu'
                                  "#{os}-#{version[0, 2]}.#{version[2, 2]}"
                                when 'centos'
-                                 version.to_i == 7 ? "#{os}-#{version}" : "#{os}-stream-#{version}"
+                                 (version.to_i == 7) ? "#{os}-#{version}" : "#{os}-stream-#{version}"
                                else
                                  "#{os}-#{version}"
                                end
