@@ -240,16 +240,10 @@ module BeakerHostGenerator
                         vagrant: {
                           'box' => 'debian/buster64',
                         },
-                        vmpooler: {
-                          'template' => 'debian-10-x86_64',
-                        },
                       },
                       'debian10-32' => {
                         general: {
                           'platform' => 'debian-10-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'debian-10-i386',
                         },
                       },
                       'debian11-64' => {
@@ -259,88 +253,55 @@ module BeakerHostGenerator
                         vagrant: {
                           'box' => 'debian/bullseye64',
                         },
-                        vmpooler: {
-                          'template' => 'debian-11-x86_64',
-                        },
                       },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'palo-alto-6.1.0-x86_64',
                         },
                       },
                       'panos71-64' => {
                         general: {
                           'platform' => 'palo-alto-7.1.0-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'palo-alto-7.1.0-x86_64',
-                        },
                       },
                       'panos81-64' => {
                         general: {
                           'platform' => 'palo-alto-8.1.0-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'palo-alto-8.1.0-x86_64',
                         },
                       },
                       'opensuse15-32' => {
                         general: {
                           'platform' => 'opensuse-15-i386',
                         },
-                        vmpooler: {
-                          'template' => 'opensuse-15-i386',
-                        },
                       },
                       'opensuse15-64' => {
                         general: {
                           'platform' => 'opensuse-15-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-15-x86_64',
                         },
                       },
                       'opensuse42-32' => {
                         general: {
                           'platform' => 'opensuse-42-i386',
                         },
-                        vmpooler: {
-                          'template' => 'opensuse-42-i386',
-                        },
                       },
                       'opensuse42-64' => {
                         general: {
                           'platform' => 'opensuse-42-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-42-x86_64',
                         },
                       },
                       'oracle6-32' => {
                         general: {
                           'platform' => 'el-6-i386',
                         },
-                        vmpooler: {
-                          'template' => 'oracle-6-i386',
-                        },
                       },
                       'oracle6-64' => {
                         general: {
                           'platform' => 'el-6-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'oracle-6-x86_64',
-                        },
                       },
                       'oracle7-64' => {
                         general: {
                           'platform' => 'el-7-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'oracle-7-x86_64',
                         },
                       },
                       'osx1015-64' => {
@@ -424,9 +385,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-7-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'redhat-7-x86_64',
-                        },
                       },
                       'redhatfips7-64' => {
                         general: {
@@ -465,9 +423,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-8-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'redhat-8-x86_64',
-                        },
                       },
                       'redhatfips8-64' => {
                         general: {
@@ -501,9 +456,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-9-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'redhat-9-x86_64',
-                        },
                       },
                       'rocky8-64' => {
                         general: {
@@ -518,9 +470,6 @@ module BeakerHostGenerator
                       'scientific7-64' => {
                         general: {
                           'platform' => 'el-7-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'scientific-7-x86_64',
                         },
                       },
                       'sles11-32' => {

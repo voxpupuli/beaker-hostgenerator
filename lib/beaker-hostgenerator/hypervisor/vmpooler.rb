@@ -18,11 +18,12 @@ module BeakerHostGenerator
         base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler)
 
         case node_info['ostype']
-        when /^(almalinux|centos|redhat|rocky)/
+        when /^(almalinux|centos|oracle|redhat|rocky|scientific)/
           base_config['template'] ||= base_config['platform'].gsub(/^el/, ::Regexp.last_match(1))
-        when /^fedora/
+        when /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
-        when /^ubuntu/
+        when /^(debian|ubuntu)/
+          os = Regexp.last_match(1)
           arch = case node_info['bits']
                  when '64'
                    'x86_64'
@@ -30,7 +31,7 @@ module BeakerHostGenerator
                    'i386'
                  end
 
-          base_config['template'] ||= "#{node_info['ostype'].sub('ubuntu', 'ubuntu-')}-#{arch}" if arch
+          base_config['template'] ||= "#{node_info['ostype'].sub(os, "#{os}-")}-#{arch}" if arch
         end
 
         base_config
