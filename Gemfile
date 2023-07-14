@@ -15,5 +15,5 @@ group :coverage, optional: ENV['COVERAGE'] != 'yes' do
 end
 
 group :rubocop do
-  gem 'voxpupuli-rubocop', '~> 1.2'
+  gem 'voxpupuli-rubocop', '~> 2.0'
 end
