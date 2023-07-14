@@ -169,22 +169,10 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-8-x86_64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
-                        },
                       },
                       'almalinux9-64' => {
                         general: {
                           'platform' => 'el-9-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
                         },
                       },
                       'amazon6-64' => {
@@ -226,12 +214,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-7-x86_64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss',
-                          ],
-                        },
                       },
                       'centos8-64' => {
                         general: {
@@ -240,13 +222,6 @@ module BeakerHostGenerator
                         vagrant: {
                           'box' => 'centos/stream8',
                           'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-20230501.0.x86_64.vagrant-libvirt.box',
-                        },
-                        docker: {
-                          'image' => 'quay.io/centos/centos:stream8',
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-                          ],
                         },
                       },
                       'centos9-64' => {
@@ -257,24 +232,10 @@ module BeakerHostGenerator
                           'box' => 'centos/stream9',
                           'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-20230410.0.x86_64.vagrant-libvirt.box',
                         },
-                        docker: {
-                          'image' => 'quay.io/centos/centos:stream9',
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-                          ],
-                        },
                       },
                       'debian10-64' => {
                         general: {
                           'platform' => 'debian-10-amd64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg',
-                          ],
                         },
                         vagrant: {
                           'box' => 'debian/buster64',
@@ -287,13 +248,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'debian-10-i386',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg',
-                          ],
-                        },
                         vmpooler: {
                           'template' => 'debian-10-i386',
                         },
@@ -301,13 +255,6 @@ module BeakerHostGenerator
                       'debian11-64' => {
                         general: {
                           'platform' => 'debian-11-amd64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg iproute2',
-                          ],
                         },
                         vagrant: {
                           'box' => 'debian/bullseye64',
@@ -344,12 +291,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'opensuse-15-i386',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
                         vmpooler: {
                           'template' => 'opensuse-15-i386',
                         },
@@ -357,12 +298,6 @@ module BeakerHostGenerator
                       'opensuse15-64' => {
                         general: {
                           'platform' => 'opensuse-15-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
                         },
                         vmpooler: {
                           'template' => 'opensuse-15-x86_64',
@@ -372,12 +307,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'opensuse-42-i386',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
                         vmpooler: {
                           'template' => 'opensuse-42-i386',
                         },
@@ -385,12 +314,6 @@ module BeakerHostGenerator
                       'opensuse42-64' => {
                         general: {
                           'platform' => 'opensuse-42-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
                         },
                         vmpooler: {
                           'template' => 'opensuse-42-x86_64',
@@ -586,22 +509,10 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-8-x86_64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
-                        },
                       },
                       'rocky9-64' => {
                         general: {
                           'platform' => 'el-9-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
                         },
                       },
                       'scientific7-64' => {
