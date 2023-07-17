@@ -80,69 +80,10 @@ module BeakerHostGenerator
     def osinfo
       result = {}
 
-      # Fedora
-      (19..36).each do |release|
-        # 32 bit support was dropped in Fedora 31
-        if release < 31
-          result["fedora#{release}-32"] = {
-            general: {
-              'platform' => "fedora-#{release}-i386",
-            },
-          }
-        end
-
-        result["fedora#{release}-64"] = {
+      generate_osinfo do |name, platform|
+        result[name] = {
           general: {
-            'platform' => "fedora-#{release}-x86_64",
-          },
-        }
-      end
-
-      # Ubuntu
-      #
-      # Generate LTS platforms
-      (18..22).select(&:even?).each do |release|
-        result["ubuntu#{release}04-64"] = {
-          general: {
-            'platform' => "ubuntu-#{release}.04-amd64",
-          },
-        }
-
-        result["ubuntu#{release}04-POWER"] = {
-          general: {
-            'platform' => "ubuntu-#{release}.04-ppc64el",
-          },
-        }
-
-        result["ubuntu#{release}04-AARCH64"] = {
-          general: {
-            'platform' => "ubuntu-#{release}.04-aarch64",
-          },
-        }
-      end
-
-      # Generate STS platforms
-      [20, 21].each do |release|
-        unless release.even?
-          result["ubuntu#{release}04-64"] = {
-            general: {
-              'platform' => "ubuntu-#{release}.04-amd64",
-            },
-          }
-        end
-
-        result["ubuntu#{release}10-64"] = {
-          general: {
-            'platform' => "ubuntu-#{release}.10-amd64",
-          },
-        }
-      end
-
-      # FreeBSD
-      (12..13).each do |release|
-        result["freebsd#{release}-64"] = {
-          general: {
-            'platform' => "freebsd-#{release}-amd64",
+            'platform' => platform,
           },
         }
       end
@@ -163,28 +104,6 @@ module BeakerHostGenerator
                         },
                         abs: {
                           'template' => 'aix-7.2-power',
-                        },
-                      },
-                      'almalinux8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
-                        },
-                      },
-                      'almalinux9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
                         },
                       },
                       'amazon6-64' => {
@@ -226,12 +145,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-7-x86_64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl sysvinit-tools tar wget which ss',
-                          ],
-                        },
                       },
                       'centos8-64' => {
                         general: {
@@ -240,13 +153,6 @@ module BeakerHostGenerator
                         vagrant: {
                           'box' => 'centos/stream8',
                           'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-20230501.0.x86_64.vagrant-libvirt.box',
-                        },
-                        docker: {
-                          'image' => 'quay.io/centos/centos:stream8',
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-                          ],
                         },
                       },
                       'centos9-64' => {
@@ -257,167 +163,41 @@ module BeakerHostGenerator
                           'box' => 'centos/stream9',
                           'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-20230410.0.x86_64.vagrant-libvirt.box',
                         },
-                        docker: {
-                          'image' => 'quay.io/centos/centos:stream9',
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname',
-                          ],
-                        },
                       },
                       'debian10-64' => {
                         general: {
                           'platform' => 'debian-10-amd64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg',
-                          ],
-                        },
                         vagrant: {
                           'box' => 'debian/buster64',
-                        },
-                        vmpooler: {
-                          'template' => 'debian-10-x86_64',
                         },
                       },
                       'debian10-32' => {
                         general: {
                           'platform' => 'debian-10-i386',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg',
-                          ],
-                        },
-                        vmpooler: {
-                          'template' => 'debian-10-i386',
-                        },
                       },
                       'debian11-64' => {
                         general: {
                           'platform' => 'debian-11-amd64',
                         },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'rm -f /usr/sbin/policy-rc.d',
-                            'apt-get update && apt-get install -y cron locales-all net-tools wget gnupg iproute2',
-                          ],
-                        },
                         vagrant: {
                           'box' => 'debian/bullseye64',
-                        },
-                        vmpooler: {
-                          'template' => 'debian-11-x86_64',
                         },
                       },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'palo-alto-6.1.0-x86_64',
-                        },
                       },
                       'panos71-64' => {
                         general: {
                           'platform' => 'palo-alto-7.1.0-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'palo-alto-7.1.0-x86_64',
-                        },
                       },
                       'panos81-64' => {
                         general: {
                           'platform' => 'palo-alto-8.1.0-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'palo-alto-8.1.0-x86_64',
-                        },
-                      },
-                      'opensuse15-32' => {
-                        general: {
-                          'platform' => 'opensuse-15-i386',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-15-i386',
-                        },
-                      },
-                      'opensuse15-64' => {
-                        general: {
-                          'platform' => 'opensuse-15-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-15-x86_64',
-                        },
-                      },
-                      'opensuse42-32' => {
-                        general: {
-                          'platform' => 'opensuse-42-i386',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-42-i386',
-                        },
-                      },
-                      'opensuse42-64' => {
-                        general: {
-                          'platform' => 'opensuse-42-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'zypper install -y cron iproute2 tar wget which',
-                          ],
-                        },
-                        vmpooler: {
-                          'template' => 'opensuse-42-x86_64',
-                        },
-                      },
-                      'oracle6-32' => {
-                        general: {
-                          'platform' => 'el-6-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'oracle-6-i386',
-                        },
-                      },
-                      'oracle6-64' => {
-                        general: {
-                          'platform' => 'el-6-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'oracle-6-x86_64',
-                        },
-                      },
-                      'oracle7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'oracle-7-x86_64',
                         },
                       },
                       'osx1015-64' => {
@@ -501,9 +281,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-7-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'redhat-7-x86_64',
-                        },
                       },
                       'redhatfips7-64' => {
                         general: {
@@ -542,9 +319,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-8-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'redhat-8-x86_64',
-                        },
                       },
                       'redhatfips8-64' => {
                         general: {
@@ -577,39 +351,6 @@ module BeakerHostGenerator
                       'redhat9-64' => {
                         general: {
                           'platform' => 'el-9-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-9-x86_64',
-                        },
-                      },
-                      'rocky8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
-                        },
-                      },
-                      'rocky9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                        docker: {
-                          'docker_image_commands' => [
-                            'cp /bin/true /sbin/agetty',
-                            'yum install -y crontabs initscripts iproute openssl wget which glibc-langpack-en',
-                          ],
-                        },
-                      },
-                      'scientific7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'scientific-7-x86_64',
                         },
                       },
                       'sles11-32' => {
@@ -1292,6 +1033,63 @@ module BeakerHostGenerator
       return {} unless info
 
       {}.deeper_merge!(info[:general]).deeper_merge!(info[hypervisor])
+    end
+
+    # @api private
+    def generate_osinfo
+      # Fedora
+      (19..36).each do |release|
+        # 32 bit support was dropped in Fedora 31
+        yield ["fedora#{release}-32", "fedora-#{release}-i386"] if release < 31
+
+        yield ["fedora#{release}-64", "fedora-#{release}-x86_64"]
+      end
+
+      # Ubuntu
+      #
+      # Generate LTS platforms
+      (18..22).select(&:even?).each do |release|
+        yield ["ubuntu#{release}04-64", "ubuntu-#{release}.04-amd64"]
+
+        yield ["ubuntu#{release}04-POWER", "ubuntu-#{release}.04-ppc64el"]
+
+        yield ["ubuntu#{release}04-AARCH64", "ubuntu-#{release}.04-aarch64"]
+      end
+
+      # Generate STS platforms
+      [20, 21].each do |release|
+        # Even years are LTS releases
+        yield ["ubuntu#{release}04-64", "ubuntu-#{release}.04-amd64"] unless release.even?
+
+        yield ["ubuntu#{release}10-64", "ubuntu-#{release}.10-amd64"]
+      end
+
+      # FreeBSD
+      (12..13).each do |release|
+        yield ["freebsd#{release}-64", "freebsd-#{release}-amd64"]
+      end
+
+      # AlmaLinux and Rocky
+      %w[almalinux rocky].each do |os|
+        (8..9).each do |release|
+          yield ["#{os}#{release}-64", "el-#{release}-x86_64"]
+        end
+      end
+
+      # Oracle
+      yield ['oracle6-32', 'el-6-i386']
+      (6..7).each do |release|
+        yield ["oracle#{release}-64", "el-#{release}-x86_64"]
+      end
+
+      # Scientific Linux
+      yield ['scientific7-64', 'el-7-x86_64']
+
+      # OpenSUSE
+      [15, 42].each do |release|
+        yield ["opensuse#{release}-32", "opensuse-#{release}-i386"]
+        yield ["opensuse#{release}-64", "opensuse-#{release}-x86_64"]
+      end
     end
   end
 end
