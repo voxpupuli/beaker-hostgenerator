@@ -23,12 +23,13 @@ module BeakerHostGenerator
         base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler, :abs)
 
         case node_info['ostype']
-        when /^(almalinux|centos|redhat|rocky)/
+        when /^(almalinux|centos|oracle|redhat|rocky|scientific)/
           base_config['template'] ||= base_config['platform'].gsub(/^el/, ::Regexp.last_match(1))
-        when /^fedora/
+        when /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
-        when /^ubuntu/
-          base_template = node_info['ostype'].sub('ubuntu', 'ubuntu-')
+        when /^(debian|ubuntu)/
+          os = Regexp.last_match(1)
+          base_template = node_info['ostype'].sub(os, "#{os}-")
           arch = case node_info['bits']
                  when '64'
                    'x86_64'
@@ -37,7 +38,7 @@ module BeakerHostGenerator
                  when 'AARCH64'
                    'arm64'
                  when 'POWER'
-                   base_template.sub!(/ubuntu-(\d\d)/, 'ubuntu-\1.')
+                   base_template.sub!(/#{os}-(\d\d)/, "#{os}-\1.")
                    'power8'
                  else
                    raise "Unknown bits '#{node_info['bits']}' for '#{node_info['ostype']}'"
