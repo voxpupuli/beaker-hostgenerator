@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.2) (2023-07-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.1...2.2.2)
+
+**Fixed bugs:**
+
+- Fix typo in yum command [\#315](https://github.com/voxpupuli/beaker-hostgenerator/pull/315) ([smortex](https://github.com/smortex))
+
 ## [2.2.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.1) (2023-07-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.0...2.2.1)
