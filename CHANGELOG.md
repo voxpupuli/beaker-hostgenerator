@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.1) (2023-07-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.0...2.2.1)
+
+**Fixed bugs:**
+
+- Fix missing include for `strscan` [\#312](https://github.com/voxpupuli/beaker-hostgenerator/pull/312) ([jonathannewman](https://github.com/jonathannewman))
+
+**Merged pull requests:**
+
+- Move more data into hypervisor specific classes [\#313](https://github.com/voxpupuli/beaker-hostgenerator/pull/313) ([ekohl](https://github.com/ekohl))
+
 ## [2.2.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.0) (2023-05-05)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.1.0...2.2.0)
