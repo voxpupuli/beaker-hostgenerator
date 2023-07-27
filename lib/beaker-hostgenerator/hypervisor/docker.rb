@@ -79,7 +79,7 @@ module BeakerHostGenerator
         if version >= 8
           'dnf install -y crontabs initscripts iproute openssl wget which glibc-langpack-en hostname'
         else
-          'yum intall -y crontabs initscripts iproute openssl wget which sysvinit-tools tar ss'
+          'yum install -y crontabs initscripts iproute openssl wget which sysvinit-tools tar ss'
         end
       end
     end
