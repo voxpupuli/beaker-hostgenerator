@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.3](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.3) (2023-07-30)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.2...2.2.3)
+
+**Fixed bugs:**
+
+- Debian: Install iproute2 [\#318](https://github.com/voxpupuli/beaker-hostgenerator/pull/318) ([bastelfreak](https://github.com/bastelfreak))
+- Move abs template logic to hypervisor [\#317](https://github.com/voxpupuli/beaker-hostgenerator/pull/317) ([AriaXLi](https://github.com/AriaXLi))
+
 ## [2.2.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.2) (2023-07-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.1...2.2.2)
