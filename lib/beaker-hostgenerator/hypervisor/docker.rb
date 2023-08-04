@@ -49,7 +49,7 @@ module BeakerHostGenerator
 
       def image_commands(ostype)
         case ostype
-        when /^(almalinux|centos|rocky)/
+        when /^(almalinux|centos|rocky|oracle)/
           [
             'cp /bin/true /sbin/agetty',
             el_package_install_command(ostype.delete_prefix(Regexp.last_match(1)).to_i),
