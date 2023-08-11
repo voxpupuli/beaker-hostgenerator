@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.3.0) (2023-08-11)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.3...2.3.0)
+
+**Implemented enhancements:**
+
+- Support Debian 12 \(\#323\) [\#324](https://github.com/voxpupuli/beaker-hostgenerator/pull/324) ([deric](https://github.com/deric))
+- Add OracleLinux 8 & 9 support [\#321](https://github.com/voxpupuli/beaker-hostgenerator/pull/321) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [2.2.3](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.2.3) (2023-07-30)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.2...2.2.3)
