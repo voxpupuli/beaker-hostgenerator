@@ -10,6 +10,9 @@ expected_hash:
       hypervisor: docker
       roles:
       - agent
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - yum install -y crontabs initscripts iproute openssl wget which sysvinit-tools tar ss
     opensuse15-64-1:
       docker_cmd:
       - "/sbin/init"
