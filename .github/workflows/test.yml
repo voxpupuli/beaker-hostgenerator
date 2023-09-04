@@ -12,7 +12,7 @@ jobs:
       BUNDLE_WITHOUT: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
@@ -36,7 +36,7 @@ jobs:
       COVERAGE: ${{ matrix.coverage }}
       BUNDLE_WITHOUT: release:rubocop
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
