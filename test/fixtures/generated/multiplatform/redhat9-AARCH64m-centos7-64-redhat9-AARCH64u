@@ -1,0 +1,28 @@
+---
+arguments_string: redhat9-AARCH64m-centos7-64-redhat9-AARCH64u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat9-AARCH64-1:
+      platform: el-9-aarch64
+      template: redhat-9-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+    centos7-64-1:
+      platform: el-7-x86_64
+      hypervisor: vmpooler
+      template: centos-7-x86_64
+      roles:
+      - agent
+    redhat9-AARCH64-2:
+      platform: el-9-aarch64
+      template: redhat-9-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

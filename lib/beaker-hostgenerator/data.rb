@@ -361,6 +361,17 @@ module BeakerHostGenerator
                           'platform' => 'el-9-x86_64',
                         },
                       },
+                      'redhat9-AARCH64' => {
+                        general: {
+                          'platform' => 'el-9-aarch64',
+                        },
+                        abs: {
+                          'template' => 'redhat-9-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'redhat-9-arm64',
+                        },
+                      },
                       'sles11-32' => {
                         general: {
                           'platform' => 'sles-11-i386',
