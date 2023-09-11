@@ -1,0 +1,15 @@
+---
+arguments_string: debian11-AARCH64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian11-AARCH64-1:
+      platform: debian-11-aarch64
+      template: debian-11-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
