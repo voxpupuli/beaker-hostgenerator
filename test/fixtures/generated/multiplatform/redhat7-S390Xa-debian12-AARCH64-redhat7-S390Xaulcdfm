@@ -1,0 +1,32 @@
+---
+arguments_string: redhat7-S390Xa-debian12-AARCH64-redhat7-S390Xaulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat7-S390X-1:
+      platform: el-7-s390x
+      hypervisor: vmpooler
+      template: redhat-7-s390x
+      roles:
+      - agent
+    debian12-AARCH64-1:
+      platform: debian-12-aarch64
+      template: debian-12-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhat7-S390X-2:
+      platform: el-7-s390x
+      hypervisor: vmpooler
+      template: redhat-7-s390x
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
