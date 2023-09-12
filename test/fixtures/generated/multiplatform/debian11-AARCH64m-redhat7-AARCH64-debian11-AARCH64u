@@ -5,7 +5,6 @@ expected_hash:
   HOSTS:
     debian11-AARCH64-1:
       platform: debian-11-aarch64
-      template: debian-11-arm64
       hypervisor: vmpooler
       roles:
       - agent
@@ -18,7 +17,6 @@ expected_hash:
       - agent
     debian11-AARCH64-2:
       platform: debian-11-aarch64
-      template: debian-11-arm64
       hypervisor: vmpooler
       roles:
       - agent

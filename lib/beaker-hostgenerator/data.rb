@@ -189,12 +189,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'debian-11-aarch64',
                         },
-                        abs: {
-                          'template' => 'debian-11-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'debian-11-arm64',
-                        },
                       },
                       'debian12-64' => {
                         general: {

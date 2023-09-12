@@ -12,7 +12,6 @@ expected_hash:
       - ca
     debian11-AARCH64-1:
       platform: debian-11-aarch64
-      template: debian-11-arm64
       hypervisor: vmpooler
       roles:
       - agent
