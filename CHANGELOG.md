@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.4.0) (2023-09-12)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.3.0...2.4.0)
+
+**Implemented enhancements:**
+
+- \(RE-15541\) Add debian-12-arm64 support [\#331](https://github.com/voxpupuli/beaker-hostgenerator/pull/331) ([yachub](https://github.com/yachub))
+- Add debian-11-arm64 support [\#330](https://github.com/voxpupuli/beaker-hostgenerator/pull/330) ([yachub](https://github.com/yachub))
+- \(RE-15206\) Add ubuntu-2204-arm64 fixtures [\#328](https://github.com/voxpupuli/beaker-hostgenerator/pull/328) ([yachub](https://github.com/yachub))
+- \(RE-15156\) Add redhat-9-arm64 support [\#327](https://github.com/voxpupuli/beaker-hostgenerator/pull/327) ([yachub](https://github.com/yachub))
+
 ## [2.3.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.3.0) (2023-08-11)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.2.3...2.3.0)
