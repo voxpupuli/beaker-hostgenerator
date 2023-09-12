@@ -198,6 +198,11 @@ module BeakerHostGenerator
                           'box' => 'debian/bookworm64',
                         },
                       },
+                      'debian12-AARCH64' => {
+                        general: {
+                          'platform' => 'debian-12-aarch64',
+                        },
+                      },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
