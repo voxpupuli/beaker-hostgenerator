@@ -185,6 +185,11 @@ module BeakerHostGenerator
                           'box' => 'debian/bullseye64',
                         },
                       },
+                      'debian11-AARCH64' => {
+                        general: {
+                          'platform' => 'debian-11-aarch64',
+                        },
+                      },
                       'debian12-64' => {
                         general: {
                           'platform' => 'debian-12-amd64',
