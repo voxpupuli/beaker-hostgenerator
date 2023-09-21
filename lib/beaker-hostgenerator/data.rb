@@ -1067,7 +1067,7 @@ module BeakerHostGenerator
     # @api private
     def generate_osinfo
       # Fedora
-      (19..36).each do |release|
+      (19..38).each do |release|
         # 32 bit support was dropped in Fedora 31
         yield ["fedora#{release}-32", "fedora-#{release}-i386"] if release < 31
 
