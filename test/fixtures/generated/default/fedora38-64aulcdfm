@@ -1,0 +1,20 @@
+---
+arguments_string: fedora38-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora38-64-1:
+      platform: fedora-38-x86_64
+      hypervisor: vmpooler
+      template: fedora-38-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
