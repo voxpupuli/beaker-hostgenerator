@@ -1,0 +1,34 @@
+---
+arguments_string: fedora38-64aulcdfm-windows2012r2_wmf5-64-fedora38-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora38-64-1:
+      platform: fedora-38-x86_64
+      hypervisor: vmpooler
+      template: fedora-38-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    windows2012r2_wmf5-64-1:
+      platform: windows-2012r2-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-wmf5-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    fedora38-64-2:
+      platform: fedora-38-x86_64
+      hypervisor: vmpooler
+      template: fedora-38-x86_64
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
