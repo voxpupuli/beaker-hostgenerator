@@ -1,0 +1,14 @@
+---
+arguments_string: amazon2023-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    amazon2023-64-1:
+      platform: amazon-2023-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
