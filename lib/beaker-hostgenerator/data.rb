@@ -1098,6 +1098,9 @@ module BeakerHostGenerator
         yield ["freebsd#{release}-64", "freebsd-#{release}-amd64"]
       end
 
+      # Amazon Linux
+      yield %w[amazon2023-64 amazon-2023-x86_64]
+
       # AlmaLinux and Rocky
       %w[almalinux rocky].each do |os|
         (8..9).each do |release|
