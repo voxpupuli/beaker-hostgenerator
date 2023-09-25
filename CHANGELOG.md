@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.5.0) (2023-09-25)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.4.0...2.5.0)
+
+**Implemented enhancements:**
+
+- Add amazon-2023-x86\_64 [\#333](https://github.com/voxpupuli/beaker-hostgenerator/pull/333) ([yachub](https://github.com/yachub))
+- Add fedora-37-x86\_64 and fedora-38-x86\_64 [\#332](https://github.com/voxpupuli/beaker-hostgenerator/pull/332) ([yachub](https://github.com/yachub))
+
 ## [2.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.4.0) (2023-09-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.3.0...2.4.0)
