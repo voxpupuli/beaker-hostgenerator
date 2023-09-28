@@ -1,0 +1,29 @@
+---
+arguments_string: solaris114-64f-amazon2023-AARCH64-solaris114-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris114-64-1:
+      platform: solaris-11.4-i386
+      packaging_platform: solaris-11-i386
+      template: solaris-114-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+    amazon2023-AARCH64-1:
+      platform: amazon-2023-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    solaris114-64-2:
+      platform: solaris-11.4-i386
+      packaging_platform: solaris-11-i386
+      template: solaris-114-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
