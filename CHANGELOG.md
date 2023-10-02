@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.6.0) (2023-10-02)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.5.0...2.6.0)
+
+**Implemented enhancements:**
+
+- Add amazon2023-AARCH64 [\#335](https://github.com/voxpupuli/beaker-hostgenerator/pull/335) ([yachub](https://github.com/yachub))
+
 ## [2.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.5.0) (2023-09-25)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.4.0...2.5.0)
