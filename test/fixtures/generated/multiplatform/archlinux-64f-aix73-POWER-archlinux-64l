@@ -1,0 +1,25 @@
+---
+arguments_string: archlinux-64f-aix73-POWER-archlinux-64l
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    archlinux-64-1:
+      platform: archlinux-rolling-x64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+    aix73-POWER-1:
+      platform: aix-7.3-power
+      hypervisor: vmpooler
+      roles:
+      - agent
+    archlinux-64-2:
+      platform: archlinux-rolling-x64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
