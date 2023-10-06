@@ -19,7 +19,7 @@ module BeakerHostGenerator
 
         case node_info['ostype']
         when /^(almalinux|centos|oracle|redhat|rocky|scientific)/
-          base_config['template'] ||= base_config['platform'].gsub(/^el/, ::Regexp.last_match(1))
+          base_config['template'] ||= base_config['platform']&.gsub(/^el/, ::Regexp.last_match(1))
         when /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
         when /^(debian|ubuntu)/
