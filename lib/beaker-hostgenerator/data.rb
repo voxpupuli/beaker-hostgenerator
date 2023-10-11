@@ -382,6 +382,14 @@ module BeakerHostGenerator
                           'template' => 'redhat-9-arm64',
                         },
                       },
+                      'redhat9-POWER' => {
+                        general: {
+                          'platform' => 'el-9-ppc64le',
+                        },
+                        abs: {
+                          'template' => 'redhat-9-power',
+                        },
+                      },
                       'sles11-32' => {
                         general: {
                           'platform' => 'sles-11-i386',

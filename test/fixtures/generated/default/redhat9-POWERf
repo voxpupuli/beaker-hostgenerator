@@ -1,0 +1,15 @@
+---
+arguments_string: redhat9-POWERf
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat9-POWER-1:
+      platform: el-9-ppc64le
+      hypervisor: vmpooler
+      template: redhat-9-ppc64le
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
