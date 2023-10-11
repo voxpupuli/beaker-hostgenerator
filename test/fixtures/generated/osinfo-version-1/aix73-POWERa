@@ -1,0 +1,13 @@
+---
+arguments_string: "--osinfo-version 1 aix73-POWERa"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    aix73-POWER-1:
+      platform: aix-7.3-power
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
