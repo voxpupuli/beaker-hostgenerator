@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.7.0) (2023-10-12)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.6.0...2.7.0)
+
+**Implemented enhancements:**
+
+- Add redhat9-power [\#339](https://github.com/voxpupuli/beaker-hostgenerator/pull/339) ([yachub](https://github.com/yachub))
+- Add aix73-power [\#338](https://github.com/voxpupuli/beaker-hostgenerator/pull/338) ([yachub](https://github.com/yachub))
+
+**Fixed bugs:**
+
+- Use the safe operator to avoid crashing [\#337](https://github.com/voxpupuli/beaker-hostgenerator/pull/337) ([ekohl](https://github.com/ekohl))
+
 ## [2.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.6.0) (2023-10-02)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.5.0...2.6.0)
