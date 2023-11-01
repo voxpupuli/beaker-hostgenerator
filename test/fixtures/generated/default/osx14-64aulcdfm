@@ -1,0 +1,19 @@
+---
+arguments_string: osx14-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx14-64-1:
+      platform: osx-14-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
