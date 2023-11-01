@@ -1,0 +1,13 @@
+---
+arguments_string: "--osinfo-version 0 osx14-ARM64a"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx14-ARM64-1:
+      platform: osx-14-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

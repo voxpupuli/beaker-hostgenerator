@@ -44,6 +44,8 @@ module BeakerHostGenerator
                    raise "Unknown bits '#{node_info['bits']}' for '#{node_info['ostype']}'"
                  end
           base_config['template'] ||= "#{base_template}-#{arch}"
+        when /^osx/
+          base_config['template'] ||= base_config['platform']&.gsub(/^osx/, 'macos')
         end
 
         base_config

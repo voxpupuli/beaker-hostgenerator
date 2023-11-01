@@ -1134,6 +1134,10 @@ module BeakerHostGenerator
         yield ["opensuse#{release}-32", "opensuse-#{release}-i386"]
         yield ["opensuse#{release}-64", "opensuse-#{release}-x86_64"]
       end
+
+      # macOS
+      yield %w[osx14-64 osx-14-x86_64]
+      yield %w[osx14-ARM64 osx-14-arm64]
     end
   end
 end
