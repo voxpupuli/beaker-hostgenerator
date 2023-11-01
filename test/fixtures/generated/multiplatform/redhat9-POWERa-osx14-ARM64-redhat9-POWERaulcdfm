@@ -1,0 +1,31 @@
+---
+arguments_string: redhat9-POWERa-osx14-ARM64-redhat9-POWERaulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat9-POWER-1:
+      platform: el-9-ppc64le
+      hypervisor: vmpooler
+      template: redhat-9-ppc64le
+      roles:
+      - agent
+    osx14-ARM64-1:
+      platform: osx-14-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhat9-POWER-2:
+      platform: el-9-ppc64le
+      hypervisor: vmpooler
+      template: redhat-9-ppc64le
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
