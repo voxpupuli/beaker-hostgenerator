@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.0) (2023-11-01)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.7.0...2.8.0)
+
+**Implemented enhancements:**
+
+- Add osx14-64 and osx14-ARM64 support [\#341](https://github.com/voxpupuli/beaker-hostgenerator/pull/341) ([yachub](https://github.com/yachub))
+
 ## [2.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.7.0) (2023-10-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.6.0...2.7.0)
