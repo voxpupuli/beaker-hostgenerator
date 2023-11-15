@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.1) (2023-11-15)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.0...2.8.1)
+
+**Fixed bugs:**
+
+- explicitly install cronie on EL8+ [\#343](https://github.com/voxpupuli/beaker-hostgenerator/pull/343) ([evgeni](https://github.com/evgeni))
+
 ## [2.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.0) (2023-11-01)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.7.0...2.8.0)
