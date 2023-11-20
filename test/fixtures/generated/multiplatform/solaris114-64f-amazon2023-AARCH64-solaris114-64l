@@ -12,7 +12,7 @@ expected_hash:
       - agent
       - frictionless
     amazon2023-AARCH64-1:
-      platform: amazon-2023-arm64
+      platform: amazon-2023-aarch64
       hypervisor: vmpooler
       roles:
       - agent

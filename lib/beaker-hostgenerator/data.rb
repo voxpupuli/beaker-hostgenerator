@@ -1111,7 +1111,7 @@ module BeakerHostGenerator
 
       # Amazon Linux
       yield %w[amazon2023-64 amazon-2023-x86_64]
-      yield %w[amazon2023-AARCH64 amazon-2023-arm64]
+      yield %w[amazon2023-AARCH64 amazon-2023-aarch64]
 
       # AlmaLinux and Rocky
       %w[almalinux rocky].each do |os|
