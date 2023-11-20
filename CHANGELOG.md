@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.2) (2023-11-20)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.1...2.8.2)
+
+**Fixed bugs:**
+
+- \(PA-5948\) Update host generator to use aarch64 for amazon linux [\#345](https://github.com/voxpupuli/beaker-hostgenerator/pull/345) ([span786](https://github.com/span786))
+
 ## [2.8.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.1) (2023-11-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.0...2.8.1)
