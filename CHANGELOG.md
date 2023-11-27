@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.9.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.9.0) (2023-11-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.2...2.9.0)
+
+**Implemented enhancements:**
+
+- Add Fedora 39 support [\#347](https://github.com/voxpupuli/beaker-hostgenerator/pull/347) ([kenyon](https://github.com/kenyon))
+
+**Fixed bugs:**
+
+- readme fixes [\#348](https://github.com/voxpupuli/beaker-hostgenerator/pull/348) ([kenyon](https://github.com/kenyon))
+
 ## [2.8.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.8.2) (2023-11-20)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.1...2.8.2)
