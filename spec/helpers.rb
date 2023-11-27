@@ -64,8 +64,7 @@ module HostHelpers
     stderr = opts.has_key?(:stderr) ? opts[:stderr] : name
     exit_code = opts.has_key?(:exit_code) ? opts[:exit_code] : 0
     exit_code = [exit_code].flatten
-    allow(result).to receive(:stdout).and_return(stdout)
-    allow(result).to receive(:stderr).and_return(stderr)
+    allow(result).to receive_messages(stdout: stdout, stderr: stderr)
     allow(result).to receive(:exit_code).and_return(*exit_code)
     result
   end
@@ -79,9 +78,7 @@ module HostHelpers
 
     host = make_opts.merge(host_hash)
 
-    allow(host).to receive(:name).and_return(name)
-    allow(host).to receive(:to_s).and_return(name)
-    allow(host).to receive(:exec).and_return(generate_result(name, host_hash))
+    allow(host).to receive_messages(name: name, to_s: name, exec: generate_result(name, host_hash))
     host
   end
 
