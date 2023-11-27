@@ -421,7 +421,7 @@ keys:
 - `environment_variables`: The environment variables that should be set during
   the `beaker-hostgenerator` call.
 - `expected_hash`: A hash that should match the output of `beaker-hostgenerator`
-  when it is run with `options\_string`
+  when it is run with `arguments_string`
 - `expected_exception`: If the `arguments_string` passed to `beaker-hostgenerator`
   is expected to lead to an exceptional state, this is the name of the exception
   that the fixture test will attempt to match.
