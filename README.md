@@ -394,9 +394,9 @@ expected_hash:
   HOSTS:
     centos9-64-1:
       pe_dir: "/opt/hello"
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: el-9-x86_64
       template: centos-9-x86_64
@@ -409,7 +409,7 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:
 ```
 
 These test fixtures are yaml files searched for in the directory
