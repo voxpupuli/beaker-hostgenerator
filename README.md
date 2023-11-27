@@ -394,9 +394,9 @@ expected_hash:
   HOSTS:
     centos9-64-1:
       pe_dir: "/opt/hello"
-      pe_ver: 
-      pe_upgrade_dir: 
-      pe_upgrade_ver: 
+      pe_ver:
+      pe_upgrade_dir:
+      pe_upgrade_ver:
       hypervisor: vmpooler
       platform: el-9-x86_64
       template: centos-9-x86_64
@@ -409,7 +409,7 @@ expected_hash:
     nfs_server: none
     consoleport: 443
     pooling_api: http://vmpooler.delivery.puppetlabs.net/
-expected_exception: 
+expected_exception:
 ```
 
 These test fixtures are yaml files searched for in the directory
@@ -421,7 +421,7 @@ keys:
 - `environment_variables`: The environment variables that should be set during
   the `beaker-hostgenerator` call.
 - `expected_hash`: A hash that should match the output of `beaker-hostgenerator`
-  when it is run with `options\_string`
+  when it is run with `arguments_string`
 - `expected_exception`: If the `arguments_string` passed to `beaker-hostgenerator`
   is expected to lead to an exceptional state, this is the name of the exception
   that the fixture test will attempt to match.
