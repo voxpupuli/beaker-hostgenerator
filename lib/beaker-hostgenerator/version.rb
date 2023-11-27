@@ -1,5 +1,5 @@
 module BeakerHostGenerator
   module Version
-    STRING = '2.8.2'
+    STRING = '2.9.0'
   end
 end
