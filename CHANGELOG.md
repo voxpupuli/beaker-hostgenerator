@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.9.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.9.1) (2024-01-24)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.9.0...2.9.1)
+
+**Fixed bugs:**
+
+- Pull correct vagrant boxes for AlmaLinux [\#351](https://github.com/voxpupuli/beaker-hostgenerator/pull/351) ([traylenator](https://github.com/traylenator))
+- Fix rhel9 power ABS name [\#350](https://github.com/voxpupuli/beaker-hostgenerator/pull/350) ([nmburgan](https://github.com/nmburgan))
+
 ## [2.9.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.9.0) (2023-11-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.8.2...2.9.0)
