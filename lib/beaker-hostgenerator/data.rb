@@ -152,7 +152,7 @@ module BeakerHostGenerator
                         },
                         vagrant: {
                           'box' => 'centos/stream8',
-                          'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-20230501.0.x86_64.vagrant-libvirt.box',
+                          'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-latest.x86_64.vagrant-libvirt.box',
                         },
                       },
                       'centos9-64' => {
@@ -161,7 +161,7 @@ module BeakerHostGenerator
                         },
                         vagrant: {
                           'box' => 'centos/stream9',
-                          'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-20230410.0.x86_64.vagrant-libvirt.box',
+                          'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-latest.x86_64.vagrant-libvirt.box',
                         },
                       },
                       'debian10-64' => {
