@@ -1,0 +1,33 @@
+---
+arguments_string: redhatfips9-64a-aix71-POWER-redhatfips9-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhatfips9-64-1:
+      platform: el-9-x86_64
+      packaging_platform: redhatfips-9-x86_64
+      template: redhat-fips-9-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    aix71-POWER-1:
+      platform: aix-7.1-power
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhatfips9-64-2:
+      platform: el-9-x86_64
+      packaging_platform: redhatfips-9-x86_64
+      template: redhat-fips-9-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

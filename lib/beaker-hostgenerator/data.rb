@@ -371,6 +371,15 @@ module BeakerHostGenerator
                           'platform' => 'el-9-x86_64',
                         },
                       },
+                      'redhatfips9-64' => {
+                        general: {
+                          'platform' => 'el-9-x86_64',
+                          'packaging_platform' => 'redhatfips-9-x86_64',
+                        },
+                        vmpooler: {
+                          'template' => 'redhat-fips-9-x86_64',
+                        },
+                      },
                       'redhat9-AARCH64' => {
                         general: {
                           'platform' => 'el-9-aarch64',
