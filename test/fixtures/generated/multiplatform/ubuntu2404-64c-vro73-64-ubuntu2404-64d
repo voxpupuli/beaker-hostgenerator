@@ -1,0 +1,28 @@
+---
+arguments_string: ubuntu2404-64c-vro73-64-ubuntu2404-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2404-64-1:
+      platform: ubuntu-24.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2404-x86_64
+      roles:
+      - agent
+      - dashboard
+    vro73-64-1:
+      platform: sles-11-x86_64
+      template: vro-73-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2404-64-2:
+      platform: ubuntu-24.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2404-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
