@@ -30,10 +30,8 @@ jobs:
           - ruby: "2.7"
           - ruby: "3.0"
           - ruby: "3.1"
-            coverage: "yes"
           - ruby: "3.2"
     env:
-      COVERAGE: ${{ matrix.coverage }}
       BUNDLE_WITHOUT: release:rubocop
     steps:
       - uses: actions/checkout@v4

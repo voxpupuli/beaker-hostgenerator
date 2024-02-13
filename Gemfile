@@ -9,11 +9,6 @@ group :release do
   gem 'github_changelog_generator', require: false
 end
 
-group :coverage, optional: ENV['COVERAGE'] != 'yes' do
-  gem 'codecov', require: false
-  gem 'simplecov-console', require: false
-end
-
 group :rubocop do
   gem 'voxpupuli-rubocop', '~> 2.0'
 end

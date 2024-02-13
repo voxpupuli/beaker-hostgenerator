@@ -18,13 +18,6 @@ namespace :test do
       t.pattern = 'spec/'
       t.ruby_opts = '-Itest'
     end
-
-    desc 'Run spec tests with coverage'
-    RSpec::Core::RakeTask.new(:coverage) do |t|
-      ENV['BEAKER_TEMPLATE_COVERAGE'] = 'y'
-      t.rspec_opts = ['--color']
-      t.pattern = 'spec/'
-    end
   end
 end
 
