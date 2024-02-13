@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 redhatfips9-64a"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhatfips9-64-1:
+      platform: el-9-x86_64
+      packaging_platform: redhatfips-9-x86_64
+      template: redhat-fips-9-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
