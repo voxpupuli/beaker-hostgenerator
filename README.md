@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/github/license/voxpupuli/beaker-hostgenerator.svg)](https://github.com/voxpupuli/beaker-hostgenerator/blob/master/LICENSE)
 [![Test](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/test.yml/badge.svg)](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/voxpupuli/beaker-hostgenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/voxpupuli/beaker-hostgenerator)
 [![Release](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/beaker-hostgenerator/actions/workflows/release.yml)
 [![RubyGem Version](https://img.shields.io/gem/v/beaker-hostgenerator.svg)](https://rubygems.org/gems/beaker-hostgenerator)
 [![RubyGem Downloads](https://img.shields.io/gem/dt/beaker-hostgenerator.svg)](https://rubygems.org/gems/beaker-hostgenerator)
