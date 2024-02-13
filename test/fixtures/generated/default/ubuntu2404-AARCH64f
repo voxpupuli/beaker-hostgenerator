@@ -1,0 +1,14 @@
+---
+arguments_string: ubuntu2404-AARCH64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2404-AARCH64-1:
+      platform: ubuntu-24.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

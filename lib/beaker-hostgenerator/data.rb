@@ -1088,7 +1088,7 @@ module BeakerHostGenerator
       # Ubuntu
       #
       # Generate LTS platforms
-      (18..22).select(&:even?).each do |release|
+      (18..24).select(&:even?).each do |release|
         yield ["ubuntu#{release}04-64", "ubuntu-#{release}.04-amd64"]
 
         yield ["ubuntu#{release}04-POWER", "ubuntu-#{release}.04-ppc64el"]

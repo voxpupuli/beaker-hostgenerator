@@ -1,0 +1,31 @@
+---
+arguments_string: vro71-64a-ubuntu2404-POWER-vro71-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    vro71-64-1:
+      platform: sles-11-x86_64
+      template: vro-71-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2404-POWER-1:
+      platform: ubuntu-24.04-ppc64el
+      hypervisor: vmpooler
+      roles:
+      - agent
+    vro71-64-2:
+      platform: sles-11-x86_64
+      template: vro-71-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

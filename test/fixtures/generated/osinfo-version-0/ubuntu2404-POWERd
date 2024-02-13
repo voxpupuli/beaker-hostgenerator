@@ -1,0 +1,14 @@
+---
+arguments_string: "--osinfo-version 0 ubuntu2404-POWERd"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2404-POWER-1:
+      platform: ubuntu-24.04-ppc64el
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
