@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.10.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.10.0) (2024-02-13)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.9.1...2.10.0)
+
+**Implemented enhancements:**
+
+- Add Ubuntu 24.04 support [\#357](https://github.com/voxpupuli/beaker-hostgenerator/pull/357) ([h0tw1r3](https://github.com/h0tw1r3))
+- Add beaker-hostgenerator support for redhatfips-9-x86\_64 [\#355](https://github.com/voxpupuli/beaker-hostgenerator/pull/355) ([rhegde0722](https://github.com/rhegde0722))
+
 ## [2.9.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.9.1) (2024-01-24)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.9.0...2.9.1)
