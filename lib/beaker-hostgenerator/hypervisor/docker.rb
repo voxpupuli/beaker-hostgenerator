@@ -17,7 +17,7 @@ module BeakerHostGenerator
         end
 
         base_config['image'] = image(ostype)
-        base_config['image'].prepend('amd64/') if node_info['bits'] == '64' && !base_config['image'].start_with?('quay.io/')
+        base_config['image'].prepend('amd64/') if node_info['bits'] == '64' && !base_config['image'].start_with?('quay.io/', 'registry.access.redhat.com/')
 
         base_generate_node(node_info, base_config, bhg_version, :docker)
       end
@@ -32,6 +32,9 @@ module BeakerHostGenerator
           version = ostype.delete_prefix('centos')
           tag = (version.to_i >= 8) ? "stream#{version}" : "centos#{version}"
           image = "quay.io/centos/centos:#{tag}"
+        when /^redhat/
+          version = ostype.delete_prefix('redhat')
+          image = "registry.access.redhat.com/ubi#{version}/ubi-init:latest"
         when /^oracle/
           image.sub!(/\w+/, 'oraclelinux')
         when /^opensuse/
@@ -49,7 +52,7 @@ module BeakerHostGenerator
 
       def image_commands(ostype)
         case ostype
-        when /^(almalinux|centos|rocky|oracle)/
+        when /^(almalinux|centos|rocky|oracle|redhat)/
           [
             'cp /bin/true /sbin/agetty',
             el_package_install_command(ostype.delete_prefix(Regexp.last_match(1)).to_i),
