@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 fedora40-64l"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora40-64-1:
+      platform: fedora-40-x86_64
+      hypervisor: vmpooler
+      template: fedora-40-x86_64
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
