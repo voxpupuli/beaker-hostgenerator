@@ -8,7 +8,3 @@ group :release do
   gem 'faraday-retry', require: false
   gem 'github_changelog_generator', require: false
 end
-
-group :rubocop do
-  gem 'voxpupuli-rubocop', '~> 2.0'
-end
