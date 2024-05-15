@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.12.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.0) (2024-05-15)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.11.0...2.12.0)
+
+**Implemented enhancements:**
+
+- Add beaker-hostgenerator support for Windows 2016 FIPS [\#364](https://github.com/voxpupuli/beaker-hostgenerator/pull/364) ([smahima27](https://github.com/smahima27))
+- Add Ruby 3.3 to CI [\#363](https://github.com/voxpupuli/beaker-hostgenerator/pull/363) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [2.11.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.11.0) (2024-04-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.10.0...2.11.0)
