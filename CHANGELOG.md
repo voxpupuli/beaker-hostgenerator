@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.12.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.1) (2024-05-21)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.0...2.12.1)
+
+**Fixed bugs:**
+
+- Update Amazon Linux 2 bindings [\#367](https://github.com/voxpupuli/beaker-hostgenerator/pull/367) ([mhashizume](https://github.com/mhashizume))
+
 ## [2.12.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.0) (2024-05-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.11.0...2.12.0)
