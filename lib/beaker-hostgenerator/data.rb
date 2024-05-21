@@ -114,22 +114,6 @@ module BeakerHostGenerator
                           'template' => 'amazon-6-x86_64',
                         },
                       },
-                      'amazon7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                        abs: {
-                          'template' => 'amazon-7-x86_64',
-                        },
-                      },
-                      'amazon7-ARM64' => {
-                        general: {
-                          'platform' => 'el-7-aarch64',
-                        },
-                        abs: {
-                          'template' => 'amazon-7-arm64',
-                        },
-                      },
                       'archlinuxrolling-64' => {
                         general: {
                           'platform' => 'archlinux-rolling-x64',
@@ -1129,6 +1113,8 @@ module BeakerHostGenerator
       end
 
       # Amazon Linux
+      yield %w[amazon7-64 amazon-7-x86_64]
+      yield %w[amazon7-AARCH64 amazon-7-aarch64]
       yield %w[amazon2023-64 amazon-2023-x86_64]
       yield %w[amazon2023-AARCH64 amazon-2023-aarch64]
 
