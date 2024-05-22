@@ -114,6 +114,14 @@ module BeakerHostGenerator
                           'template' => 'amazon-6-x86_64',
                         },
                       },
+                      'amazon7-64' => {
+                        general: {
+                          'platform' => 'el-7-x86_64',
+                        },
+                        abs: {
+                          'template' => 'amazon-7-x86_64',
+                        },
+                      },
                       'archlinuxrolling-64' => {
                         general: {
                           'platform' => 'archlinux-rolling-x64',
