@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.12.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.2) (2024-05-22)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.1...2.12.2)
+
+**Fixed bugs:**
+
+- Use Red Hat 7 for Amazon Linux 2 x86\_64 [\#369](https://github.com/voxpupuli/beaker-hostgenerator/pull/369) ([mhashizume](https://github.com/mhashizume))
+
 ## [2.12.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.1) (2024-05-21)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.0...2.12.1)
