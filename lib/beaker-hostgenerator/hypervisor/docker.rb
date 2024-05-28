@@ -17,7 +17,10 @@ module BeakerHostGenerator
         end
 
         base_config['image'] = image(ostype)
-        base_config['image'].prepend('amd64/') if node_info['bits'] == '64' && !base_config['image'].start_with?('quay.io/')
+        base_config['image'].prepend('amd64/') if
+          node_info['bits'] == '64' &&
+          !base_config['image'].start_with?('quay.io/') &&
+          !base_config['image'].start_with?('opensuse/')
 
         base_generate_node(node_info, base_config, bhg_version, :docker)
       end
