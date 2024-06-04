@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.13.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.13.0) (2024-06-04)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.2...2.13.0)
+
+**Implemented enhancements:**
+
+- Add Amazon 2 [\#372](https://github.com/voxpupuli/beaker-hostgenerator/pull/372) ([joshcooper](https://github.com/joshcooper))
+
+**Fixed bugs:**
+
+- Don't prepend amd64/ for opensuse images [\#371](https://github.com/voxpupuli/beaker-hostgenerator/pull/371) ([h-haaks](https://github.com/h-haaks))
+
 ## [2.12.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.2) (2024-05-22)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.1...2.12.2)
