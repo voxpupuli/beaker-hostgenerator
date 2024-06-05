@@ -1143,8 +1143,7 @@ module BeakerHostGenerator
       end
 
       # Oracle / OracleLinux
-      yield ['oracle6-32', 'el-6-i386']
-      (6..9).each do |release|
+      (7..9).each do |release|
         yield ["oracle#{release}-64", "el-#{release}-x86_64"]
       end
 
