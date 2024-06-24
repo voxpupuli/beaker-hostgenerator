@@ -1,0 +1,14 @@
+---
+arguments_string: "--osinfo-version 1 rocky9-AARCH64a"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    rocky9-AARCH64-1:
+      platform: rocky9-aarch64
+      hypervisor: vmpooler
+      template: rocky9-aarch64
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

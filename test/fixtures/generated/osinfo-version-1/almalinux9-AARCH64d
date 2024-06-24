@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 almalinux9-AARCH64d"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    almalinux9-AARCH64-1:
+      platform: almalinux9-aarch64
+      hypervisor: vmpooler
+      template: almalinux9-aarch64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

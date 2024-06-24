@@ -1,0 +1,27 @@
+---
+arguments_string: almalinux9-AARCH64d-sles12-S390X-almalinux9-AARCH64c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    almalinux9-AARCH64-1:
+      platform: almalinux9-aarch64
+      hypervisor: vmpooler
+      template: almalinux9-aarch64
+      roles:
+      - agent
+      - database
+    sles12-S390X-1:
+      platform: sles-12-s390x
+      hypervisor: vmpooler
+      roles:
+      - agent
+    almalinux9-AARCH64-2:
+      platform: almalinux9-aarch64
+      hypervisor: vmpooler
+      template: almalinux9-aarch64
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

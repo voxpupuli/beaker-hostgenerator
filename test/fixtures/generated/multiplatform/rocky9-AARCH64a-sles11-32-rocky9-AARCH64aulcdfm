@@ -1,0 +1,32 @@
+---
+arguments_string: rocky9-AARCH64a-sles11-32-rocky9-AARCH64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    rocky9-AARCH64-1:
+      platform: rocky9-aarch64
+      hypervisor: vmpooler
+      template: rocky9-aarch64
+      roles:
+      - agent
+    sles11-32-1:
+      platform: sles-11-i386
+      template: sles-11-i386
+      hypervisor: vmpooler
+      roles:
+      - agent
+    rocky9-AARCH64-2:
+      platform: rocky9-aarch64
+      hypervisor: vmpooler
+      template: rocky9-aarch64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
