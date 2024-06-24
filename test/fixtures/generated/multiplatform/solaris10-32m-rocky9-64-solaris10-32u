@@ -1,0 +1,28 @@
+---
+arguments_string: solaris10-32m-rocky9-64-solaris10-32u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    solaris10-32-1:
+      platform: solaris-10-i386
+      template: solaris-10-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+    rocky9-64-1:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: rocky-9-x86_64
+      roles:
+      - agent
+    solaris10-32-2:
+      platform: solaris-10-i386
+      template: solaris-10-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

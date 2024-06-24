@@ -1,0 +1,31 @@
+---
+arguments_string: almalinux9-64aulcdfm-solaris10-SPARC-almalinux9-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    almalinux9-64-1:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: almalinux-9-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+    solaris10-SPARC-1:
+      platform: solaris-10-sparc
+      hypervisor: vmpooler
+      roles:
+      - agent
+    almalinux9-64-2:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: almalinux-9-x86_64
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
