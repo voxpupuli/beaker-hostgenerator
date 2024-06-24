@@ -1135,7 +1135,7 @@ module BeakerHostGenerator
       # AlmaLinux and Rocky
       %w[almalinux rocky].each do |os|
         (8..9).each do |release|
-          yield ["#{os}#{release}-64", "el-#{release}-x86_64","#{os}#{release}-amd64"]
+          yield ["#{os}#{release}-64", "el-#{release}-x86_64", "#{os}#{release}-amd64"]
         end
       end
 
