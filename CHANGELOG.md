@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.14.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.14.0) (2024-06-26)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.13.0...2.14.0)
+
+**Implemented enhancements:**
+
+- Add Almalinux9 AARCH64 and Rocky9 AARCH64 [\#376](https://github.com/voxpupuli/beaker-hostgenerator/pull/376) ([smahima27](https://github.com/smahima27))
+
 ## [2.13.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.13.0) (2024-06-04)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.12.2...2.13.0)
