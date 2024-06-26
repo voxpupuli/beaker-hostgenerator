@@ -11,9 +11,9 @@ expected_hash:
       - agent
       - database
     rocky9-AARCH64-1:
-      platform: rocky9-aarch64
+      platform: el-9-aarch64
       hypervisor: vmpooler
-      template: rocky9-aarch64
+      template: rocky-9-aarch64
       roles:
       - agent
     sles11-32-2:

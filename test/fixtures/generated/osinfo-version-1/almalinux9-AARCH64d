@@ -4,9 +4,9 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     almalinux9-AARCH64-1:
-      platform: almalinux9-aarch64
+      platform: el-9-aarch64
       hypervisor: vmpooler
-      template: almalinux9-aarch64
+      template: almalinux-9-aarch64
       roles:
       - agent
       - database

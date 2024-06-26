@@ -4,9 +4,9 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     rocky9-AARCH64-1:
-      platform: rocky9-aarch64
+      platform: el-9-aarch64
       hypervisor: vmpooler
-      template: rocky9-aarch64
+      template: rocky-9-aarch64
       roles:
       - agent
     sles11-32-1:
@@ -16,9 +16,9 @@ expected_hash:
       roles:
       - agent
     rocky9-AARCH64-2:
-      platform: rocky9-aarch64
+      platform: el-9-aarch64
       hypervisor: vmpooler
-      template: rocky9-aarch64
+      template: rocky-9-aarch64
       roles:
       - agent
       - ca
