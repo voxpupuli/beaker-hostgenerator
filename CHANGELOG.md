@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.14.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.14.1) (2024-06-28)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.14.0...2.14.1)
+
+**Fixed bugs:**
+
+- Use latest CentOS boxes instead of specific dates [\#374](https://github.com/voxpupuli/beaker-hostgenerator/pull/374) ([daberkow](https://github.com/daberkow))
+
 ## [2.14.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.14.0) (2024-06-26)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.13.0...2.14.0)
