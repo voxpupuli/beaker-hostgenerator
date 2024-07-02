@@ -391,6 +391,48 @@ module BeakerHostGenerator
                           'template' => 'redhat-9-arm64',
                         },
                       },
+                      'rocky8-64' => {
+                        general: {
+                          'platform' => 'el-8-x86_64',
+                        },
+                      },
+                      'rocky9-64' => {
+                        general: {
+                          'platform' => 'el-9-x86_64',
+                        },
+                      },
+                      'rocky9-AARCH64' => {
+                        general: {
+                          'platform' => 'el-9-aarch64',
+                        },
+                        abs: {
+                          'template' => 'rocky-9-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'rocky-9-arm64',
+                        },
+                      },
+                      'almalinux8-64' => {
+                        general: {
+                          'platform' => 'el-8-x86_64',
+                        },
+                      },
+                      'almalinux9-64' => {
+                        general: {
+                          'platform' => 'el-9-x86_64',
+                        },
+                      },
+                      'almalinux9-AARCH64' => {
+                        general: {
+                          'platform' => 'el-9-aarch64',
+                        },
+                        abs: {
+                          'template' => 'almalinux-9-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'almalinux-9-arm64',
+                        },
+                      },
                       'redhat9-POWER' => {
                         general: {
                           'platform' => 'el-9-ppc64le',
@@ -1134,14 +1176,6 @@ module BeakerHostGenerator
       yield %w[amazon2-AARCH64 amazon-2-aarch64]
       yield %w[amazon2023-64 amazon-2023-x86_64]
       yield %w[amazon2023-AARCH64 amazon-2023-aarch64]
-
-      # AlmaLinux and Rocky
-      %w[almalinux rocky].each do |os|
-        (8..9).each do |release|
-          yield ["#{os}#{release}-64", "el-#{release}-x86_64"]
-          yield ["#{os}#{release}-AARCH64", "el-#{release}-aarch64"]
-        end
-      end
 
       # Oracle / OracleLinux
       yield ['oracle6-32', 'el-6-i386']
