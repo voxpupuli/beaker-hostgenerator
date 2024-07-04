@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.14.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.14.2) (2024-07-04)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.14.1...2.14.2)
+
+**Fixed bugs:**
+
+- Fix template name for rocky9 and almalinux9 arm [\#380](https://github.com/voxpupuli/beaker-hostgenerator/pull/380) ([daberkow](https://github.com/daberkow))
+
 ## [2.14.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.14.1) (2024-06-28)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.14.0...2.14.1)
