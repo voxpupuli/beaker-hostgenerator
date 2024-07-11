@@ -43,6 +43,7 @@ module BeakerHostGenerator
         'vagrant' => BeakerHostGenerator::Hypervisor::Vagrant,
         'vagrant_libvirt' => BeakerHostGenerator::Hypervisor::Vagrant,
         'docker' => BeakerHostGenerator::Hypervisor::Docker,
+        'docker_podman' => BeakerHostGenerator::Hypervisor::Docker,
         'abs' => BeakerHostGenerator::Hypervisor::ABS,
         'hcloud' => BeakerHostGenerator::Hypervisor::Hcloud,
       }
