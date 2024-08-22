@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 oracle9-AARCH64l"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle9-AARCH64-1:
+      platform: el-9-aarch64
+      template: oracle-9-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

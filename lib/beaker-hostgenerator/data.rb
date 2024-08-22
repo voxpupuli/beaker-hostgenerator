@@ -441,6 +441,17 @@ module BeakerHostGenerator
                           'template' => 'redhat-9-power9',
                         },
                       },
+                      'oracle9-AARCH64' => {
+                        general: {
+                          'platform' => 'el-9-aarch64',
+                        },
+                        abs: {
+                          'template' => 'oracle-9-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'oracle-9-arm64',
+                        },
+                      },
                       'sles11-32' => {
                         general: {
                           'platform' => 'sles-11-i386',
