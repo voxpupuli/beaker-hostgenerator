@@ -14,7 +14,7 @@ module BeakerHostGenerator
   module Data
     module_function
 
-    MAIN_PE_VERSION = '2023.0'
+    MAIN_PE_VERSION = '2025.0'
     PE_TARBALL_SERVER = 'https://artifactory.delivery.puppetlabs.net/artifactory/generic_enterprise__local'
 
     def pe_version
