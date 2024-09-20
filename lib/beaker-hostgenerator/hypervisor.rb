@@ -39,12 +39,16 @@ module BeakerHostGenerator
     #                                                and their implementations.
     def self.builtin_hypervisors
       {
-        'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler,
+        'abs' => BeakerHostGenerator::Hypervisor::ABS,
+        'container' => BeakerHostGenerator::Hypervisor::Docker,
+        'container_docker' => BeakerHostGenerator::Hypervisor::Docker,
+        'container_podman' => BeakerHostGenerator::Hypervisor::Docker,
+        'container_swarm' => BeakerHostGenerator::Hypervisor::Docker,
+        'docker' => BeakerHostGenerator::Hypervisor::Docker,
+        'hcloud' => BeakerHostGenerator::Hypervisor::Hcloud,
         'vagrant' => BeakerHostGenerator::Hypervisor::Vagrant,
         'vagrant_libvirt' => BeakerHostGenerator::Hypervisor::Vagrant,
-        'docker' => BeakerHostGenerator::Hypervisor::Docker,
-        'abs' => BeakerHostGenerator::Hypervisor::ABS,
-        'hcloud' => BeakerHostGenerator::Hypervisor::Hcloud,
+        'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler,
       }
     end
 
