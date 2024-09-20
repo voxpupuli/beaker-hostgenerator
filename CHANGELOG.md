@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.17.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.17.0) (2024-09-20)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.16.0...2.17.0)
+
+**Implemented enhancements:**
+
+- Support different container implementations from beaker-docker [\#360](https://github.com/voxpupuli/beaker-hostgenerator/pull/360) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [2.16.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.16.0) (2024-09-10)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.15.0...2.16.0)
