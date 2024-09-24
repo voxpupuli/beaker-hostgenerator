@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.18.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.18.0) (2024-09-24)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.17.0...2.18.0)
+
+**Implemented enhancements:**
+
+- Add Fedora 41 support [\#387](https://github.com/voxpupuli/beaker-hostgenerator/pull/387) ([shubhamperforce](https://github.com/shubhamperforce))
+
 ## [2.17.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.17.0) (2024-09-20)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.16.0...2.17.0)
