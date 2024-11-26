@@ -1,0 +1,17 @@
+---
+arguments_string: windowsfips2016-64u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windowsfips2016-64-1:
+      platform: windows-2016-64
+      packaging_platform: windowsfips-2016-x64
+      ruby_arch: x64
+      template: win-2016-fips-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
