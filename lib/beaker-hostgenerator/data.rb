@@ -1199,8 +1199,7 @@ module BeakerHostGenerator
       yield %w[amazon2023-AARCH64 amazon-2023-aarch64]
 
       # Oracle / OracleLinux
-      yield ['oracle6-32', 'el-6-i386']
-      (6..9).each do |release|
+      (7..9).each do |release|
         yield ["oracle#{release}-64", "el-#{release}-x86_64"]
       end
 
