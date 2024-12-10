@@ -31,6 +31,8 @@ module BeakerHostGenerator
         image = ostype.sub(/(\d)/, ':\1')
 
         case ostype
+        when /^(fedora)/
+          image = "quay.io/fedora/#{image}"
         when /^centos/
           version = ostype.delete_prefix('centos')
           tag = (version.to_i >= 8) ? "stream#{version}" : "centos#{version}"

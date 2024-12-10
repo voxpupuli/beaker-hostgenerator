@@ -1160,10 +1160,7 @@ module BeakerHostGenerator
       yield %w[aix73-POWER aix-7.3-power]
 
       # Fedora
-      (19..41).each do |release|
-        # 32 bit support was dropped in Fedora 31
-        yield ["fedora#{release}-32", "fedora-#{release}-i386"] if release < 31
-
+      (36..41).each do |release|
         yield ["fedora#{release}-64", "fedora-#{release}-x86_64"]
       end
 
