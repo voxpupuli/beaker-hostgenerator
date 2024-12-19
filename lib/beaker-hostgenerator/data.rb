@@ -1216,6 +1216,7 @@ module BeakerHostGenerator
       # macOS
       yield %w[osx14-64 osx-14-x86_64]
       yield %w[osx14-ARM64 osx-14-arm64]
+      yield %w[osx15-ARM64 osx-15-arm64]
     end
   end
 end
