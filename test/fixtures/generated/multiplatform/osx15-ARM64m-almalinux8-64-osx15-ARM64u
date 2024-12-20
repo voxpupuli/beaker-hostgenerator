@@ -1,0 +1,26 @@
+---
+arguments_string: osx15-ARM64m-almalinux8-64-osx15-ARM64u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx15-ARM64-1:
+      platform: osx-15-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+    almalinux8-64-1:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: almalinux-8-x86_64
+      roles:
+      - agent
+    osx15-ARM64-2:
+      platform: osx-15-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
