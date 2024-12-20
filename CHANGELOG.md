@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.19.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.19.0) (2024-12-20)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.18.0...2.19.0)
+
+**Implemented enhancements:**
+
+- Add support for macos15\(ARM\) [\#392](https://github.com/voxpupuli/beaker-hostgenerator/pull/392) ([skyamgarp](https://github.com/skyamgarp))
+- Add support for windowsfips 2016 x64 [\#390](https://github.com/voxpupuli/beaker-hostgenerator/pull/390) ([skyamgarp](https://github.com/skyamgarp))
+
 ## [2.18.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.18.0) (2024-09-24)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.17.0...2.18.0)
