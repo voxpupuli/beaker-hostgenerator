@@ -31,5 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
 
   # Run time dependencies
-  s.add_runtime_dependency 'deep_merge', '~> 1.0'
+  s.add_dependency 'deep_merge', '~> 1.0'
 end
