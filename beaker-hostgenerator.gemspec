@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry', '~> 0.10'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.0'
-  s.add_development_dependency 'rspec-its', '~> 1.3'
+  s.add_development_dependency 'rspec-its', '>= 1.3.1', '< 3'
   s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
 
   # Run time dependencies
