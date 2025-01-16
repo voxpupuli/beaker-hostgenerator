@@ -1,0 +1,26 @@
+---
+arguments_string: amazonfips2023-64l-solaris10-32-amazonfips2023-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    amazonfips2023-64-1:
+      platform: amazonfips-2023-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+    solaris10-32-1:
+      platform: solaris-10-i386
+      template: solaris-10-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    amazonfips2023-64-2:
+      platform: amazonfips-2023-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
