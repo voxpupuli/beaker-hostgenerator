@@ -11,10 +11,10 @@ jobs:
     if: github.repository_owner == 'voxpupuli'
     steps:
       - uses: actions/checkout@v4
-      - name: Install Ruby 3.3
+      - name: Install Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4'
         env:
           BUNDLE_WITHOUT: release
       - name: Build gem
@@ -30,3 +30,8 @@ jobs:
           chmod 0600 ~/.gem/credentials
       - name: Publish gem to GitHub packages
         run: gem push --key github --host https://rubygems.pkg.github.com/voxpupuli *.gem
+      - name: Wait for release to propagate
+        shell: bash
+        run: |
+          gem install rubygems-await
+          gem await *.gem
