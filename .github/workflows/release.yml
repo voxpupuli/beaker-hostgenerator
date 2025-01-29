@@ -30,3 +30,8 @@ jobs:
           chmod 0600 ~/.gem/credentials
       - name: Publish gem to GitHub packages
         run: gem push --key github --host https://rubygems.pkg.github.com/voxpupuli *.gem
+      - name: Wait for release to propagate
+        shell: bash
+        run: |
+          gem install rubygems-await
+          gem await *.gem
