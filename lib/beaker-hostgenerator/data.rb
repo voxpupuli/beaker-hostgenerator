@@ -1197,6 +1197,7 @@ module BeakerHostGenerator
       yield %w[amazon2-AARCH64 amazon-2-aarch64]
       yield %w[amazon2023-64 amazon-2023-x86_64]
       yield %w[amazon2023-AARCH64 amazon-2023-aarch64]
+      yield %w[amazonfips2023-64 amazonfips-2023-x86_64]
 
       # Oracle / OracleLinux
       yield ['oracle6-32', 'el-6-i386']
