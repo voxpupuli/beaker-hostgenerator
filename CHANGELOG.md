@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.21.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.21.0) (2025-02-13)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.20.0...2.21.0)
+
+**Implemented enhancements:**
+
+- Add new platform for windows server 2025 [\#396](https://github.com/voxpupuli/beaker-hostgenerator/pull/396) ([shubhamperforce](https://github.com/shubhamperforce))
+- Add support for amazonfips-2023 [\#395](https://github.com/voxpupuli/beaker-hostgenerator/pull/395) ([smahima27](https://github.com/smahima27))
+
 ## [2.20.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.20.0) (2025-01-30)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.19.0...2.20.0)
