@@ -27,7 +27,7 @@ module BeakerHostGenerator
           base_config['template'] ||= base_config['platform']&.gsub(/^el/, ::Regexp.last_match(1))
         when /^aix/, /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
-        when /^(debian|ubuntu|amazon)/
+        when /^(debian|ubuntu|amazon(fips)?)/
           os = Regexp.last_match(1)
           base_template = node_info['ostype'].sub(os, "#{os}-")
           arch = case node_info['bits']
