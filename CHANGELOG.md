@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.21.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.21.0) (2025-02-13)
+## [2.22.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.22.0) (2025-03-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.21.0...2.22.0)
+
+**Implemented enhancements:**
+
+- \(PA-7210\) Add support for amazonfips [\#401](https://github.com/voxpupuli/beaker-hostgenerator/pull/401) ([shubhamshinde360](https://github.com/shubhamshinde360))
+
+**Merged pull requests:**
+
+- fakefs: Allow 3.x [\#403](https://github.com/voxpupuli/beaker-hostgenerator/pull/403) ([bastelfreak](https://github.com/bastelfreak))
+
+## [2.21.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.21.0) (2025-02-14)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.20.0...2.21.0)
 
