@@ -395,7 +395,7 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'el-10-x86_64',
                         },
-                      },  
+                      },
                       'rocky8-64' => {
                         general: {
                           'platform' => 'el-8-x86_64',
