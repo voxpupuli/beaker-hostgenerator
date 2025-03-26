@@ -1,0 +1,26 @@
+---
+arguments_string: archlinuxrolling-64l-redhat10-64-archlinuxrolling-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    archlinuxrolling-64-1:
+      platform: archlinux-rolling-x64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+    redhat10-64-1:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: redhat-10-x86_64
+      roles:
+      - agent
+    archlinuxrolling-64-2:
+      platform: archlinux-rolling-x64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
