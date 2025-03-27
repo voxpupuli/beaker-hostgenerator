@@ -972,6 +972,16 @@ module BeakerHostGenerator
                           'template' => 'win-2019-core-x86_64',
                         },
                       },
+                      'windows2025_ent-64' => {
+                        general: {
+                          'platform' => 'windows-2025-64',
+                          'packaging_platform' => 'windows-2025-x64',
+                          'ruby_arch' => 'x64',
+                        },
+                        vmpooler: {
+                          'template' => 'win-2025-ent-x64',
+                        },
+                      },
                       'windows2022-64' => {
                         general: {
                           'platform' => 'windows-2022-64',
@@ -1200,6 +1210,7 @@ module BeakerHostGenerator
       yield %w[amazonfips2023-64 amazonfips-2023-x86_64]
       # Azure Linux
       yield %w[azure3-64 azure-3-x86_64]
+
       # Oracle / OracleLinux
       yield ['oracle6-32', 'el-6-i386']
       (6..9).each do |release|
@@ -1219,6 +1230,7 @@ module BeakerHostGenerator
       yield %w[osx14-64 osx-14-x86_64]
       yield %w[osx14-ARM64 osx-14-arm64]
       yield %w[osx15-ARM64 osx-15-arm64]
+      yield %w[osx15-64 osx-15-x86_64]
     end
   end
 end

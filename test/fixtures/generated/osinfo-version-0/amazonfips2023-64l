@@ -1,0 +1,14 @@
+---
+arguments_string: "--osinfo-version 0 amazonfips2023-64l"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    amazonfips2023-64-1:
+      platform: amazonfips-2023-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

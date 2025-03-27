@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.22.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.22.0) (2025-03-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.21.0...2.22.0)
+
+**Implemented enhancements:**
+
+- \(PA-7210\) Add support for amazonfips [\#401](https://github.com/voxpupuli/beaker-hostgenerator/pull/401) ([shubhamshinde360](https://github.com/shubhamshinde360))
+
+**Merged pull requests:**
+
+- fakefs: Allow 3.x [\#403](https://github.com/voxpupuli/beaker-hostgenerator/pull/403) ([bastelfreak](https://github.com/bastelfreak))
+
+## [2.21.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.21.0) (2025-02-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.20.0...2.21.0)
+
+**Implemented enhancements:**
+
+- Add new platform for windows server 2025 [\#396](https://github.com/voxpupuli/beaker-hostgenerator/pull/396) ([shubhamperforce](https://github.com/shubhamperforce))
+- Add support for amazonfips-2023 [\#395](https://github.com/voxpupuli/beaker-hostgenerator/pull/395) ([smahima27](https://github.com/smahima27))
+
+## [2.20.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.20.0) (2025-01-30)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.19.0...2.20.0)
+
+**Implemented enhancements:**
+
+- \(PA-6776\): Add osx-15-x86\_64 support. [\#397](https://github.com/voxpupuli/beaker-hostgenerator/pull/397) ([span786](https://github.com/span786))
+
+**Merged pull requests:**
+
+- CI: Switch to voxpupuli/ruby-version@v1 & Run release job on Ruby 3.4 & Make release action synchronous [\#398](https://github.com/voxpupuli/beaker-hostgenerator/pull/398) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [2.19.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.19.0) (2024-12-20)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.18.0...2.19.0)
