@@ -1,0 +1,14 @@
+---
+arguments_string: "--osinfo-version 1 azure3-64c"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    azure3-64-1:
+      platform: azure-3-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
