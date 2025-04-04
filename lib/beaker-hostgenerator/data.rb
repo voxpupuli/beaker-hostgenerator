@@ -391,6 +391,11 @@ module BeakerHostGenerator
                           'template' => 'redhat-9-arm64',
                         },
                       },
+                      'redhat10-64' => {
+                        general: {
+                          'platform' => 'el-10-x86_64',
+                        },
+                      },
                       'rocky8-64' => {
                         general: {
                           'platform' => 'el-8-x86_64',

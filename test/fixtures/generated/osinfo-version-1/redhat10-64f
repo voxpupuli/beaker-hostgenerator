@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 redhat10-64f"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat10-64-1:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: redhat-10-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
