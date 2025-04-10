@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.23.0) (2025-04-11)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.22.0...2.23.0)
+
+**Implemented enhancements:**
+
+- Add Redhat-10-beta  [\#404](https://github.com/voxpupuli/beaker-hostgenerator/pull/404) ([shubhamperforce](https://github.com/shubhamperforce))
+
 ## [2.22.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.22.0) (2025-03-14)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.21.0...2.22.0)
