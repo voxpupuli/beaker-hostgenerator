@@ -1,0 +1,26 @@
+---
+arguments_string: azure3-64c-sles15-64-azure3-64d
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    azure3-64-1:
+      platform: azure-3-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+    sles15-64-1:
+      platform: sles-15-x86_64
+      template: sles-15-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    azure3-64-2:
+      platform: azure-3-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
