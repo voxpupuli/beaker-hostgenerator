@@ -977,14 +977,14 @@ module BeakerHostGenerator
                           'template' => 'win-2019-core-x86_64',
                         },
                       },
-                      'windows2025_ent-64' => {
+                      'windows2025-64' => {
                         general: {
                           'platform' => 'windows-2025-64',
-                          'packaging_platform' => 'windows-2025-x64',
+                          'packaging_platform' => 'windows-2012-x64',
                           'ruby_arch' => 'x64',
                         },
                         vmpooler: {
-                          'template' => 'win-2025-ent-x64',
+                          'template' => 'win-2025-x64',
                         },
                       },
                       'windows2022-64' => {
