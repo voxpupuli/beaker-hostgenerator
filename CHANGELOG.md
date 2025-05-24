@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.24.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.24.0) (2025-05-24)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.23.0...2.24.0)
+
+**Implemented enhancements:**
+
+- add CentOS Stream 10 to the BHG data source [\#408](https://github.com/voxpupuli/beaker-hostgenerator/pull/408) ([duritong](https://github.com/duritong))
+- Add Azure linux 3 [\#407](https://github.com/voxpupuli/beaker-hostgenerator/pull/407) ([smahima27](https://github.com/smahima27))
+
+**Fixed bugs:**
+
+- \(PA-7442\) Fix Windows Server 2025 platform entry in beaker-hostgenerator [\#410](https://github.com/voxpupuli/beaker-hostgenerator/pull/410) ([imaqsood](https://github.com/imaqsood))
+
 ## [2.23.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.23.0) (2025-04-11)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.22.0...2.23.0)
