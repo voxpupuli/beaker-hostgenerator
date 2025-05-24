@@ -164,6 +164,15 @@ module BeakerHostGenerator
                           'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-latest.x86_64.vagrant-libvirt.box',
                         },
                       },
+                      'centos10-64' => {
+                        general: {
+                          'platform' => 'el-10-x86_64',
+                        },
+                        vagrant: {
+                          'box' => 'centos/stream10',
+                          'box_url' => 'https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-Vagrant-10-latest.x86_64.vagrant-libvirt.box',
+                        },
+                      },
                       'debian10-64' => {
                         general: {
                           'platform' => 'debian-10-amd64',
