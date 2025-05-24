@@ -50,7 +50,7 @@ module BeakerHostGenerator
                     'main'
                   end
 
-      format(source, ("#{pe_branch}" || ''))
+      format(source, "#{pe_branch}" || '')
     end
 
     PE_USE_WIN32 = ENV.fetch('pe_use_win32', nil)
