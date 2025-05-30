@@ -993,7 +993,7 @@ module BeakerHostGenerator
                           'ruby_arch' => 'x64',
                         },
                         vmpooler: {
-                          'template' => 'win-2025-x64',
+                          'template' => 'win-2025-ent-x64',
                         },
                       },
                       'windows2022-64' => {
