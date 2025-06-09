@@ -1,0 +1,27 @@
+---
+arguments_string: redhat10-64u-amazon6-64-redhat10-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat10-64-1:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: redhat-10-x86_64
+      roles:
+      - agent
+      - ca
+    amazon6-64-1:
+      platform: el-6-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhat10-64-2:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: redhat-10-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

@@ -1,0 +1,28 @@
+---
+arguments_string: redhat10-AARCH64l-aix72-POWER-redhat10-AARCH64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    redhat10-AARCH64-1:
+      platform: el-10-aarch64
+      template: redhat-10-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - classifier
+    aix72-POWER-1:
+      platform: aix-7.2-power
+      packaging_platform: aix-7.1-power
+      hypervisor: vmpooler
+      roles:
+      - agent
+    redhat10-AARCH64-2:
+      platform: el-10-aarch64
+      template: redhat-10-arm64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
