@@ -1,30 +1,27 @@
 ---
-arguments_string: amazon6-64a-redhat9-POWER-amazon6-64aulcdfm
+arguments_string: redhat9-POWERf-amazon7-64-redhat9-POWERl
 environment_variables: {}
 expected_hash:
   HOSTS:
-    amazon6-64-1:
-      platform: el-6-x86_64
-      hypervisor: vmpooler
-      roles:
-      - agent
     redhat9-POWER-1:
       platform: el-9-ppc64le
       hypervisor: vmpooler
       template: redhat-9-ppc64le
       roles:
       - agent
-    amazon6-64-2:
-      platform: el-6-x86_64
+      - frictionless
+    amazon7-64-1:
+      platform: el-7-x86_64
       hypervisor: vmpooler
       roles:
       - agent
-      - ca
+    redhat9-POWER-2:
+      platform: el-9-ppc64le
+      hypervisor: vmpooler
+      template: redhat-9-ppc64le
+      roles:
+      - agent
       - classifier
-      - dashboard
-      - database
-      - frictionless
-      - master
   CONFIG:
     pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
 expected_exception:
