@@ -3,6 +3,7 @@ require 'rake/testtask'
 
 namespace :test do
   namespace :spec do
+    desc 'run minitest tests'
     task :minitest do
       desc 'Run minitest tests'
       Rake::TestTask.new do |task|
@@ -42,6 +43,7 @@ end
 task 'test:spec' => ['test:spec:run', 'test:spec:minitest']
 
 # global defaults
+desc 'run all unit tests'
 task test: 'test:spec'
 task default: :test
 
@@ -57,7 +59,7 @@ begin
 
   # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
   require 'rbconfig'
-  if RbConfig::CONFIG['host_os'] =~ /linux/
+  if /linux/.match?(RbConfig::CONFIG['host_os'])
     task :changelog do
       puts 'Fixing line endings...'
       changelog_file = File.join(__dir__, 'CHANGELOG.md')

@@ -121,7 +121,7 @@ module BeakerHostGenerator
         end
       end
       tokens = spec.split('-')
-      tokens.map { |t| t.gsub('|', '-') }
+      tokens.map { |t| t.tr('|', '-') }
     end
 
     # Tests if a string token represents an OS platform (i.e. "centos9" or

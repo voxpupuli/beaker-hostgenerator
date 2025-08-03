@@ -83,7 +83,7 @@ module BeakerHostGenerator
         context "#{f}" do
           next if File.directory?(f)
 
-          include_examples 'fixtures', YAML.load_file(f)
+          it_behaves_like 'fixtures', YAML.load_file(f)
         end
       end
     end
