@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.0.0) (2025-08-03)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.24.0...3.0.0)
+
+**Breaking changes:**
+
+- Require Ruby 3.2 or newer [\#416](https://github.com/voxpupuli/beaker-hostgenerator/pull/416) ([bastelfreak](https://github.com/bastelfreak))
+- Drop legacy EL6 data [\#322](https://github.com/voxpupuli/beaker-hostgenerator/pull/322) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Redhat 10 AARCH [\#415](https://github.com/voxpupuli/beaker-hostgenerator/pull/415) ([smahima27](https://github.com/smahima27))
+
 ## [2.24.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.24.0) (2025-05-24)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.23.0...2.24.0)
