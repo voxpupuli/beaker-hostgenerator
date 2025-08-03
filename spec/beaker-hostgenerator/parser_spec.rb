@@ -97,7 +97,7 @@ module BeakerHostGenerator
             .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
         end
 
-        it 'It supports no static roles.' do
+        it 'supports no static roles.' do
           expect(parse_node_info_token('64compile_master,ca,blah.'))
             .to eq({
                      'roles' => '',
