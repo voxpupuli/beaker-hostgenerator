@@ -106,14 +106,6 @@ module BeakerHostGenerator
                           'template' => 'aix-7.2-power',
                         },
                       },
-                      'amazon6-64' => {
-                        general: {
-                          'platform' => 'el-6-x86_64',
-                        },
-                        abs: {
-                          'template' => 'amazon-6-x86_64',
-                        },
-                      },
                       'amazon7-64' => {
                         general: {
                           'platform' => 'el-7-x86_64',
@@ -281,27 +273,6 @@ module BeakerHostGenerator
                         },
                         vmpooler: {
                           'template' => 'macos-13-arm64',
-                        },
-                      },
-                      'redhat6-32' => {
-                        general: {
-                          'platform' => 'el-6-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-6-i386',
-                        },
-                      },
-                      'redhat6-64' => {
-                        general: {
-                          'platform' => 'el-6-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-6-x86_64',
-                        },
-                      },
-                      'redhat6-S390X' => {
-                        general: {
-                          'platform' => 'el-6-s390x',
                         },
                       },
                       'redhat7-64' => {
