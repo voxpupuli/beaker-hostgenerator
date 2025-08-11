@@ -165,36 +165,6 @@ module BeakerHostGenerator
                           'box_url' => 'https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-Vagrant-10-latest.x86_64.vagrant-libvirt.box',
                         },
                       },
-                      'debian10-64' => {
-                        general: {
-                          'platform' => 'debian-10-amd64',
-                        },
-                      },
-                      'debian10-32' => {
-                        general: {
-                          'platform' => 'debian-10-i386',
-                        },
-                      },
-                      'debian11-64' => {
-                        general: {
-                          'platform' => 'debian-11-amd64',
-                        },
-                      },
-                      'debian11-AARCH64' => {
-                        general: {
-                          'platform' => 'debian-11-aarch64',
-                        },
-                      },
-                      'debian12-64' => {
-                        general: {
-                          'platform' => 'debian-12-amd64',
-                        },
-                      },
-                      'debian12-AARCH64' => {
-                        general: {
-                          'platform' => 'debian-12-aarch64',
-                        },
-                      },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
@@ -1155,6 +1125,15 @@ module BeakerHostGenerator
     def generate_osinfo
       # AIX
       yield %w[aix73-POWER aix-7.3-power]
+
+      # Debian
+      (10..12).each do |release|
+        yield ["debian#{release}-32", "debian-#{release}-i386"] if release < 11
+
+        yield ["debian#{release}-64", "debian-#{release}-amd64"]
+
+        yield ["debian#{release}-AARCH64", "debian-#{release}-aarch64"] if release >= 11
+      end
 
       # Fedora
       (19..41).each do |release|
