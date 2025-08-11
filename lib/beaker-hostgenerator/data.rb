@@ -199,6 +199,11 @@ module BeakerHostGenerator
                           'box' => 'debian/bookworm64',
                         },
                       },
+                      'debian13-64' => {
+                        general: {
+                          'platform' => 'debian-13-amd64',
+                        },
+                      },
                       'debian12-AARCH64' => {
                         general: {
                           'platform' => 'debian-12-aarch64',
