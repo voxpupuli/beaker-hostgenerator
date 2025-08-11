@@ -1100,7 +1100,7 @@ module BeakerHostGenerator
       end
 
       # Debian
-      (10..12).each do |release|
+      (10..13).each do |release|
         yield ["debian#{release}-32", "debian-#{release}-i386"] if release < 11
 
         yield ["debian#{release}-64", "debian-#{release}-amd64"]
