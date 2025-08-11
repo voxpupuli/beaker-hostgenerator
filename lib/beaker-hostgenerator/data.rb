@@ -169,9 +169,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'debian-10-amd64',
                         },
-                        vagrant: {
-                          'box' => 'debian/buster64',
-                        },
                       },
                       'debian10-32' => {
                         general: {
@@ -182,9 +179,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'debian-11-amd64',
                         },
-                        vagrant: {
-                          'box' => 'debian/bullseye64',
-                        },
                       },
                       'debian11-AARCH64' => {
                         general: {
@@ -194,9 +188,6 @@ module BeakerHostGenerator
                       'debian12-64' => {
                         general: {
                           'platform' => 'debian-12-amd64',
-                        },
-                        vagrant: {
-                          'box' => 'debian/bookworm64',
                         },
                       },
                       'debian12-AARCH64' => {
