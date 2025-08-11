@@ -133,26 +133,6 @@ module BeakerHostGenerator
                           'image' => 'archlinux/archlinux',
                         },
                       },
-                      'centos7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                      },
-                      'centos8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                      },
-                      'centos9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                      },
-                      'centos10-64' => {
-                        general: {
-                          'platform' => 'el-10-x86_64',
-                        },
-                      },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
@@ -1113,6 +1093,11 @@ module BeakerHostGenerator
     def generate_osinfo
       # AIX
       yield %w[aix73-POWER aix-7.3-power]
+
+      # CentOS
+      (7..10).each do |release|
+        yield ["centos#{release}-64", "el-#{release}-x86_64"]
+      end
 
       # Debian
       (10..12).each do |release|
