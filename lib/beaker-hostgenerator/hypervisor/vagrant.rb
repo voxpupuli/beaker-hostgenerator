@@ -17,7 +17,7 @@ module BeakerHostGenerator
 
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
-                             when /^centos/, /^almalinux/
+                             when /^almalinux/
                                node_info['ostype'].sub(/(\d)/, '/\1')
                              when /^fedora/
                                node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
@@ -30,6 +30,14 @@ module BeakerHostGenerator
           version = Regexp.last_match(1)
           if (codename = DEBIAN_VERSION_CODES[version])
             base_config['box'] = "debian/#{codename}64"
+          end
+        when /^centos(\d+)-64/
+          version = Regexp.last_match(1)
+          if version.to_i >= 8
+            base_config['box'] = "centos/stream#{version}"
+            base_config['box_url'] = "https://cloud.centos.org/centos/#{version}-stream/x86_64/images/CentOS-Stream-Vagrant-#{version}-latest.x86_64.vagrant-libvirt.box"
+          else
+            base_config = "centos/#{version}"
           end
         end
 
