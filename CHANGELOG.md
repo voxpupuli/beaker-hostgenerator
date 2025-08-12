@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.1.0) (2025-08-12)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.0.0...3.1.0)
+
+**Implemented enhancements:**
+
+- Add Debian 13 support and make CentOS & Debian easier to maintain [\#422](https://github.com/voxpupuli/beaker-hostgenerator/pull/422) ([ekohl](https://github.com/ekohl))
+
 ## [3.0.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.0.0) (2025-08-03)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/2.24.0...3.0.0)
