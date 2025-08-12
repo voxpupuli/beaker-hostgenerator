@@ -133,41 +133,6 @@ module BeakerHostGenerator
                           'image' => 'archlinux/archlinux',
                         },
                       },
-                      'osx1015-64' => {
-                        general: {
-                          'platform' => 'osx-10.15-x86_64',
-                        },
-                      },
-                      'osx11-64' => {
-                        general: {
-                          'platform' => 'osx-11-x86_64',
-                        },
-                      },
-                      'osx11-ARM64' => {
-                        general: {
-                          'platform' => 'osx-11-arm64',
-                        },
-                      },
-                      'osx12-64' => {
-                        general: {
-                          'platform' => 'osx-12-x86_64',
-                        },
-                      },
-                      'osx12-ARM64' => {
-                        general: {
-                          'platform' => 'osx-12-arm64',
-                        },
-                      },
-                      'osx13-64' => {
-                        general: {
-                          'platform' => 'osx-13-x86_64',
-                        },
-                      },
-                      'osx13-ARM64' => {
-                        general: {
-                          'platform' => 'osx-13-arm64',
-                        },
-                      },
                       'redhat7-64' => {
                         general: {
                           'platform' => 'el-7-x86_64',
@@ -1128,10 +1093,11 @@ module BeakerHostGenerator
       end
 
       # macOS
-      yield %w[osx14-64 osx-14-x86_64]
-      yield %w[osx14-ARM64 osx-14-arm64]
-      yield %w[osx15-ARM64 osx-15-arm64]
-      yield %w[osx15-64 osx-15-x86_64]
+      yield %w[osx1015-64 osx-10.15-x86_64]
+      (11..15).each do |release|
+        yield ["osx#{release}-64", "osx-#{release}-x86_64"]
+        yield ["osx#{release}-ARM64", "osx-#{release}-arm64"]
+      end
 
       # Palo Alto OS
       yield %w[panos61-64 palo-alto-6.1.0-x86_64]
