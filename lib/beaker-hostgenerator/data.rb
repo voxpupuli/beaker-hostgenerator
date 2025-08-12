@@ -133,77 +133,6 @@ module BeakerHostGenerator
                           'image' => 'archlinux/archlinux',
                         },
                       },
-                      'centos7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                      },
-                      'centos8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                        vagrant: {
-                          'box' => 'centos/stream8',
-                          'box_url' => 'https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-Vagrant-8-latest.x86_64.vagrant-libvirt.box',
-                        },
-                      },
-                      'centos9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                        vagrant: {
-                          'box' => 'centos/stream9',
-                          'box_url' => 'https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-9-latest.x86_64.vagrant-libvirt.box',
-                        },
-                      },
-                      'centos10-64' => {
-                        general: {
-                          'platform' => 'el-10-x86_64',
-                        },
-                        vagrant: {
-                          'box' => 'centos/stream10',
-                          'box_url' => 'https://cloud.centos.org/centos/10-stream/x86_64/images/CentOS-Stream-Vagrant-10-latest.x86_64.vagrant-libvirt.box',
-                        },
-                      },
-                      'debian10-64' => {
-                        general: {
-                          'platform' => 'debian-10-amd64',
-                        },
-                        vagrant: {
-                          'box' => 'debian/buster64',
-                        },
-                      },
-                      'debian10-32' => {
-                        general: {
-                          'platform' => 'debian-10-i386',
-                        },
-                      },
-                      'debian11-64' => {
-                        general: {
-                          'platform' => 'debian-11-amd64',
-                        },
-                        vagrant: {
-                          'box' => 'debian/bullseye64',
-                        },
-                      },
-                      'debian11-AARCH64' => {
-                        general: {
-                          'platform' => 'debian-11-aarch64',
-                        },
-                      },
-                      'debian12-64' => {
-                        general: {
-                          'platform' => 'debian-12-amd64',
-                        },
-                        vagrant: {
-                          'box' => 'debian/bookworm64',
-                        },
-                      },
-                      'debian12-AARCH64' => {
-                        general: {
-                          'platform' => 'debian-12-aarch64',
-                        },
-                      },
                       'panos61-64' => {
                         general: {
                           'platform' => 'palo-alto-6.1.0-x86_64',
@@ -1164,6 +1093,20 @@ module BeakerHostGenerator
     def generate_osinfo
       # AIX
       yield %w[aix73-POWER aix-7.3-power]
+
+      # CentOS
+      (7..10).each do |release|
+        yield ["centos#{release}-64", "el-#{release}-x86_64"]
+      end
+
+      # Debian
+      (10..13).each do |release|
+        yield ["debian#{release}-32", "debian-#{release}-i386"] if release < 11
+
+        yield ["debian#{release}-64", "debian-#{release}-amd64"]
+
+        yield ["debian#{release}-AARCH64", "debian-#{release}-aarch64"] if release >= 11
+      end
 
       # Fedora
       (19..41).each do |release|
