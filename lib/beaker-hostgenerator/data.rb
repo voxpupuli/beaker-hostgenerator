@@ -133,21 +133,6 @@ module BeakerHostGenerator
                           'image' => 'archlinux/archlinux',
                         },
                       },
-                      'panos61-64' => {
-                        general: {
-                          'platform' => 'palo-alto-6.1.0-x86_64',
-                        },
-                      },
-                      'panos71-64' => {
-                        general: {
-                          'platform' => 'palo-alto-7.1.0-x86_64',
-                        },
-                      },
-                      'panos81-64' => {
-                        general: {
-                          'platform' => 'palo-alto-8.1.0-x86_64',
-                        },
-                      },
                       'osx1015-64' => {
                         general: {
                           'platform' => 'osx-10.15-x86_64',
@@ -1168,6 +1153,11 @@ module BeakerHostGenerator
       yield %w[osx14-ARM64 osx-14-arm64]
       yield %w[osx15-ARM64 osx-15-arm64]
       yield %w[osx15-64 osx-15-x86_64]
+
+      # Palo Alto OS
+      yield %w[panos61-64 palo-alto-6.1.0-x86_64]
+      yield %w[panos71-64 palo-alto-7.1.0-x86_64]
+      yield %w[panos81-64 palo-alto-8.1.0-x86_64]
     end
   end
 end
