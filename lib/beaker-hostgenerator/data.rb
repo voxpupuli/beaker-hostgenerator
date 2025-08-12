@@ -80,12 +80,13 @@ module BeakerHostGenerator
     def osinfo
       result = {}
 
-      generate_osinfo do |name, platform|
+      generate_osinfo do |name, platform, packaging_platform = nil|
         result[name] = {
           general: {
             'platform' => platform,
           },
         }
+        result[name][:general]['packaging_platform'] = packaging_platform if packaging_platform
       end
 
       result.merge!({
@@ -354,90 +355,6 @@ module BeakerHostGenerator
                         },
                         vmpooler: {
                           'template' => 'sles-15-x86_64',
-                        },
-                      },
-                      'solaris10-32' => {
-                        general: {
-                          'platform' => 'solaris-10-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-10-x86_64',
-                        },
-                      },
-                      'solaris10-64' => {
-                        general: {
-                          'platform' => 'solaris-10-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-10-x86_64',
-                        },
-                      },
-                      'solaris10-SPARC' => {
-                        general: {
-                          'platform' => 'solaris-10-sparc',
-                        },
-                        abs: {
-                          'template' => 'solaris-10-sparc',
-                        },
-                      },
-                      'solaris11-32' => {
-                        general: {
-                          'platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-11-x86_64',
-                        },
-                      },
-                      'solaris11-64' => {
-                        general: {
-                          'platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-11-x86_64',
-                        },
-                      },
-                      'solaris11-SPARC' => {
-                        general: {
-                          'platform' => 'solaris-11-sparc',
-                        },
-                        abs: {
-                          'template' => 'solaris-11-sparc',
-                        },
-                      },
-                      'solaris112-32' => {
-                        general: {
-                          'platform' => 'solaris-11.2-i386',
-                          'packaging_platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-112-x86_64',
-                        },
-                      },
-                      'solaris112-64' => {
-                        general: {
-                          'platform' => 'solaris-11.2-i386',
-                          'packaging_platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-112-x86_64',
-                        },
-                      },
-                      'solaris114-32' => {
-                        general: {
-                          'platform' => 'solaris-11.4-i386',
-                          'packaging_platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-114-x86_64',
-                        },
-                      },
-                      'solaris114-64' => {
-                        general: {
-                          'platform' => 'solaris-11.4-i386',
-                          'packaging_platform' => 'solaris-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'solaris-114-x86_64',
                         },
                       },
                       'vro6-64' => {
@@ -1103,6 +1020,18 @@ module BeakerHostGenerator
       yield %w[panos61-64 palo-alto-6.1.0-x86_64]
       yield %w[panos71-64 palo-alto-7.1.0-x86_64]
       yield %w[panos81-64 palo-alto-8.1.0-x86_64]
+
+      # Solaris
+      (10..11).each do |release|
+        yield ["solaris#{release}-32", "solaris-#{release}-i386"]
+        # This is not a typo, 64 bits is i386
+        yield ["solaris#{release}-64", "solaris-#{release}-i386"]
+        yield ["solaris#{release}-SPARC", "solaris-#{release}-sparc"]
+      end
+      yield ['solaris112-32', 'solaris-11.2-i386', 'solaris-11-i386']
+      yield ['solaris112-64', 'solaris-11.2-i386', 'solaris-11-i386']
+      yield ['solaris114-32', 'solaris-11.4-i386', 'solaris-11-i386']
+      yield ['solaris114-64', 'solaris-11.4-i386', 'solaris-11-i386']
     end
   end
 end

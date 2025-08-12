@@ -45,6 +45,15 @@ module BeakerHostGenerator
           version = '112' if version == '11' && arch == 'x86_64'
 
           base_config['template'] ||= "#{name}-#{version}-#{arch}"
+        when /^solaris(\d+)/
+          version = Regexp.last_match(1)
+          # for some reason 32 bits is also using x86_64
+          arch = case node_info['bits']
+                 when '64', '32'
+                   'x86_64'
+                 end
+
+          base_config['template'] ||= "solaris-#{version}-#{arch}" if arch
         end
 
         base_config
