@@ -6,6 +6,7 @@ expected_hash:
     osx14-ARM64-1:
       platform: osx-14-arm64
       hypervisor: vmpooler
+      template: macos-14-arm64
       roles:
       - agent
     redhat9-POWER-1:
@@ -17,6 +18,7 @@ expected_hash:
     osx14-ARM64-2:
       platform: osx-14-arm64
       hypervisor: vmpooler
+      template: macos-14-arm64
       roles:
       - agent
       - ca

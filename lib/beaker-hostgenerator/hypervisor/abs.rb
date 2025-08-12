@@ -46,6 +46,11 @@ module BeakerHostGenerator
           base_config['template'] ||= "#{base_template}-#{arch}"
         when /^osx/
           base_config['template'] ||= base_config['platform']&.gsub(/^osx/, 'macos')
+        when /^solaris(\d+)/
+          version = Regexp.last_match(1)
+          arch = (node_info['bits'] == 'SPARC') ? 'sparc' : nil
+
+          base_config['template'] ||= "solaris-#{version}-#{arch}" if arch
         end
 
         base_config

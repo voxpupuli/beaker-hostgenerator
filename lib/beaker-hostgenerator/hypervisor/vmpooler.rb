@@ -22,7 +22,7 @@ module BeakerHostGenerator
           base_config['template'] ||= base_config['platform']&.gsub(/^el/, ::Regexp.last_match(1))
         when /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
-        when /^(debian|ubuntu)/
+        when /^(debian|ubuntu|vro)/
           os = Regexp.last_match(1)
           arch = case node_info['bits']
                  when '64'
@@ -32,6 +32,28 @@ module BeakerHostGenerator
                  end
 
           base_config['template'] ||= "#{node_info['ostype'].sub(os, "#{os}-")}-#{arch}" if arch
+        when /^osx(\d+)/
+          version = Regexp.last_match(1)
+          arch = case node_info['bits']
+                 when '64'
+                   'x86_64'
+                 when 'ARM64'
+                   'arm64'
+                 end
+          name = version.start_with?('10') ? 'osx' : 'macos'
+          # Weird exception, but ok
+          version = '112' if version == '11' && arch == 'x86_64'
+
+          base_config['template'] ||= "#{name}-#{version}-#{arch}"
+        when /^solaris(\d+)/
+          version = Regexp.last_match(1)
+          # for some reason 32 bits is also using x86_64
+          arch = case node_info['bits']
+                 when '64', '32'
+                   'x86_64'
+                 end
+
+          base_config['template'] ||= "solaris-#{version}-#{arch}" if arch
         end
 
         base_config
