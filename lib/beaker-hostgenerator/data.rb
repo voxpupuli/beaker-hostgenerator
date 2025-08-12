@@ -357,46 +357,6 @@ module BeakerHostGenerator
                           'template' => 'sles-15-x86_64',
                         },
                       },
-                      'vro6-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'vro-6-x86_64',
-                        },
-                      },
-                      'vro7-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'vro-7-x86_64',
-                        },
-                      },
-                      'vro71-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'vro-71-x86_64',
-                        },
-                      },
-                      'vro73-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'vro-73-x86_64',
-                        },
-                      },
-                      'vro74-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'vro-74-x86_64',
-                        },
-                      },
                       'windows2008-64' => {
                         general: {
                           'platform' => 'windows-2008-64',
@@ -1032,6 +992,11 @@ module BeakerHostGenerator
       yield ['solaris112-64', 'solaris-11.2-i386', 'solaris-11-i386']
       yield ['solaris114-32', 'solaris-11.4-i386', 'solaris-11-i386']
       yield ['solaris114-64', 'solaris-11.4-i386', 'solaris-11-i386']
+
+      # VRO
+      %w[6 7 71 73 74].each do |release|
+        yield ["vro#{release}-64", 'sles-11-x86_64']
+      end
     end
   end
 end
