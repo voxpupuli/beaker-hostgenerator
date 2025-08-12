@@ -6,6 +6,7 @@ expected_hash:
     osx15-ARM64-1:
       platform: osx-15-arm64
       hypervisor: vmpooler
+      template: macos-15-arm64
       roles:
       - agent
       - master
@@ -18,6 +19,7 @@ expected_hash:
     osx15-ARM64-2:
       platform: osx-15-arm64
       hypervisor: vmpooler
+      template: macos-15-arm64
       roles:
       - agent
       - ca

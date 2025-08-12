@@ -6,6 +6,7 @@ expected_hash:
     osx14-64-1:
       platform: osx-14-x86_64
       hypervisor: vmpooler
+      template: macos-14-x86_64
       roles:
       - agent
       - ca
@@ -23,6 +24,7 @@ expected_hash:
     osx14-64-2:
       platform: osx-14-x86_64
       hypervisor: vmpooler
+      template: macos-14-x86_64
       roles:
       - agent
   CONFIG:

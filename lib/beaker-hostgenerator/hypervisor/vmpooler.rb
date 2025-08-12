@@ -32,6 +32,19 @@ module BeakerHostGenerator
                  end
 
           base_config['template'] ||= "#{node_info['ostype'].sub(os, "#{os}-")}-#{arch}" if arch
+        when /^osx(\d+)/
+          version = Regexp.last_match(1)
+          arch = case node_info['bits']
+                 when '64'
+                   'x86_64'
+                 when 'ARM64'
+                   'arm64'
+                 end
+          name = version.start_with?('10') ? 'osx' : 'macos'
+          # Weird exception, but ok
+          version = '112' if version == '11' && arch == 'x86_64'
+
+          base_config['template'] ||= "#{name}-#{version}-#{arch}"
         end
 
         base_config

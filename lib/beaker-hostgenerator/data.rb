@@ -137,56 +137,35 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'osx-10.15-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'osx-1015-x86_64',
-                        },
                       },
                       'osx11-64' => {
                         general: {
                           'platform' => 'osx-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'macos-112-x86_64',
                         },
                       },
                       'osx11-ARM64' => {
                         general: {
                           'platform' => 'osx-11-arm64',
                         },
-                        vmpooler: {
-                          'template' => 'macos-11-arm64',
-                        },
                       },
                       'osx12-64' => {
                         general: {
                           'platform' => 'osx-12-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'macos-12-x86_64',
                         },
                       },
                       'osx12-ARM64' => {
                         general: {
                           'platform' => 'osx-12-arm64',
                         },
-                        vmpooler: {
-                          'template' => 'macos-12-arm64',
-                        },
                       },
                       'osx13-64' => {
                         general: {
                           'platform' => 'osx-13-x86_64',
                         },
-                        vmpooler: {
-                          'template' => 'macos-13-x86_64',
-                        },
                       },
                       'osx13-ARM64' => {
                         general: {
                           'platform' => 'osx-13-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'macos-13-arm64',
                         },
                       },
                       'redhat7-64' => {

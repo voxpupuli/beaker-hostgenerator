@@ -12,6 +12,7 @@ expected_hash:
     osx15-64-1:
       platform: osx-15-x86_64
       hypervisor: vmpooler
+      template: macos-15-x86_64
       roles:
       - agent
     rocky9-AARCH64-2:
