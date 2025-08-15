@@ -42,7 +42,8 @@ module BeakerHostGenerator
         when /^ubuntu/
           image.sub!(/(\d{2})/, '\1.')
         when /^rocky/
-          image.sub!(/(\w+)/, 'rockylinux')
+          version = ostype.delete_prefix('rocky')
+          image = "quay.io/rockylinux/rockylinux:#{version}"
         when /^alma/
           image.sub!(/(\w+)/, 'almalinux')
         end
