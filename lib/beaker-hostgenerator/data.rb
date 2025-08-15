@@ -267,6 +267,22 @@ module BeakerHostGenerator
                           'template' => 'rocky-9-arm64',
                         },
                       },
+                      'rocky10-64' => {
+                        general: {
+                          'platform' => 'el-10-x86_64',
+                        },
+                      },
+                      'rocky10-AARCH64' => {
+                        general: {
+                          'platform' => 'el-10-aarch64',
+                        },
+                        abs: {
+                          'template' => 'rocky-10-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'rocky-10-arm64',
+                        },
+                      },
                       'almalinux8-64' => {
                         general: {
                           'platform' => 'el-8-x86_64',
@@ -286,6 +302,22 @@ module BeakerHostGenerator
                         },
                         vmpooler: {
                           'template' => 'almalinux-9-arm64',
+                        },
+                      },
+                      'almalinux10-64' => {
+                        general: {
+                          'platform' => 'el-10-x86_64',
+                        },
+                      },
+                      'almalinux10-AARCH64' => {
+                        general: {
+                          'platform' => 'el-10-aarch64',
+                        },
+                        abs: {
+                          'template' => 'almalinux-10-arm64',
+                        },
+                        vmpooler: {
+                          'template' => 'almalinux-10-arm64',
                         },
                       },
                       'redhat9-POWER' => {
