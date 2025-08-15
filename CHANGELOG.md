@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.2.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.2.1) (2025-08-15)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.2.0...3.2.1)
+
+**Fixed bugs:**
+
+- Use non library path for rocky 10 [\#428](https://github.com/voxpupuli/beaker-hostgenerator/pull/428) ([traylenator](https://github.com/traylenator))
+
 ## [3.2.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.2.0) (2025-08-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.1.0...3.2.0)
