@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.2.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.2.0) (2025-08-15)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.1.0...3.2.0)
+
+**Implemented enhancements:**
+
+- Add data for Almalinux and Rocky 10 [\#426](https://github.com/voxpupuli/beaker-hostgenerator/pull/426) ([traylenator](https://github.com/traylenator))
+- Generate OS X, MacOS, Palo Alto OS, Solaris & VRO in loops [\#425](https://github.com/voxpupuli/beaker-hostgenerator/pull/425) ([ekohl](https://github.com/ekohl))
+
 ## [3.1.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.1.0) (2025-08-12)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.0.0...3.1.0)
