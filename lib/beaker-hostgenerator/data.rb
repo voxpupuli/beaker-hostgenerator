@@ -988,7 +988,7 @@ module BeakerHostGenerator
       # Azure Linux
       yield %w[azure3-64 azure-3-x86_64]
       # Oracle / OracleLinux
-      (7..9).each do |release|
+      (7..10).each do |release|
         yield ["oracle#{release}-64", "el-#{release}-x86_64"]
       end
 
