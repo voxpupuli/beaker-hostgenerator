@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.3.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.3.0) (2025-08-19)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.2.1...3.3.0)
+
+**Implemented enhancements:**
+
+- Add OracleLinux 10 support [\#430](https://github.com/voxpupuli/beaker-hostgenerator/pull/430) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [3.2.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.2.1) (2025-08-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.2.0...3.2.1)
