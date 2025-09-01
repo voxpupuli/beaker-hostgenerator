@@ -24,7 +24,17 @@ module BeakerHostGenerator
 
         case node_info['ostype']
         when /^(almalinux|centos|oracle|redhat|rocky|scientific)/
-          base_config['template'] ||= base_config['platform']&.gsub(/^el/, ::Regexp.last_match(1))
+          os = Regexp.last_match(1)
+          arch = case node_info['bits']
+                 when '64'
+                   'x86_64'
+                 when 'AARCH64'
+                   'arm64'
+                 when 'POWER'
+                   "power#{node_info['ostype'].sub(os, '')}"
+                 end
+          base_config['template'] ||= "#{node_info['ostype'].sub(os, "#{os}-")}-#{arch}" if arch
+
         when /^aix/, /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
         when /^(debian|ubuntu|amazon(fips)?)/
