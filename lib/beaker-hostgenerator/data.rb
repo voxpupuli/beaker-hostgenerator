@@ -134,11 +134,6 @@ module BeakerHostGenerator
                           'image' => 'archlinux/archlinux',
                         },
                       },
-                      'redhat7-64' => {
-                        general: {
-                          'platform' => 'el-7-x86_64',
-                        },
-                      },
                       'redhatfips7-64' => {
                         general: {
                           'platform' => 'el-7-x86_64',
@@ -146,35 +141,6 @@ module BeakerHostGenerator
                         },
                         vmpooler: {
                           'template' => 'redhat-fips-7-x86_64',
-                        },
-                      },
-                      'redhat7-POWER' => {
-                        general: {
-                          'platform' => 'el-7-ppc64le',
-                        },
-                        abs: {
-                          'template' => 'redhat-7.3-power8',
-                        },
-                      },
-                      'redhat7-S390X' => {
-                        general: {
-                          'platform' => 'el-7-s390x',
-                        },
-                      },
-                      'redhat7-AARCH64' => {
-                        general: {
-                          'platform' => 'el-7-aarch64',
-                        },
-                        abs: {
-                          'template' => 'centos-7-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-7-x86_64',
-                        },
-                      },
-                      'redhat8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
                         },
                       },
                       'redhatfips8-64' => {
@@ -186,30 +152,6 @@ module BeakerHostGenerator
                           'template' => 'redhat-fips-8-x86_64',
                         },
                       },
-                      'redhat8-AARCH64' => {
-                        general: {
-                          'platform' => 'el-8-aarch64',
-                        },
-                        abs: {
-                          'template' => 'redhat-8-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-8-x86_64',
-                        },
-                      },
-                      'redhat8-POWER' => {
-                        general: {
-                          'platform' => 'el-8-ppc64le',
-                        },
-                        abs: {
-                          'template' => 'redhat-8-power8',
-                        },
-                      },
-                      'redhat9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                      },
                       'redhatfips9-64' => {
                         general: {
                           'platform' => 'el-9-x86_64',
@@ -219,124 +161,12 @@ module BeakerHostGenerator
                           'template' => 'redhat-fips-9-x86_64',
                         },
                       },
-                      'redhat9-AARCH64' => {
+                      'redhat7-POWER' => {
                         general: {
-                          'platform' => 'el-9-aarch64',
+                          'platform' => 'el-7-ppc64le',
                         },
                         abs: {
-                          'template' => 'redhat-9-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-9-arm64',
-                        },
-                      },
-                      'redhat10-64' => {
-                        general: {
-                          'platform' => 'el-10-x86_64',
-                        },
-                      },
-                      'redhat10-AARCH64' => {
-                        general: {
-                          'platform' => 'el-10-aarch64',
-                        },
-                        abs: {
-                          'template' => 'redhat-10-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'redhat-10-arm64',
-                        },
-                      },
-                      'rocky8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                      },
-                      'rocky9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                      },
-                      'rocky9-AARCH64' => {
-                        general: {
-                          'platform' => 'el-9-aarch64',
-                        },
-                        abs: {
-                          'template' => 'rocky-9-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'rocky-9-arm64',
-                        },
-                      },
-                      'rocky10-64' => {
-                        general: {
-                          'platform' => 'el-10-x86_64',
-                        },
-                      },
-                      'rocky10-AARCH64' => {
-                        general: {
-                          'platform' => 'el-10-aarch64',
-                        },
-                        abs: {
-                          'template' => 'rocky-10-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'rocky-10-arm64',
-                        },
-                      },
-                      'almalinux8-64' => {
-                        general: {
-                          'platform' => 'el-8-x86_64',
-                        },
-                      },
-                      'almalinux9-64' => {
-                        general: {
-                          'platform' => 'el-9-x86_64',
-                        },
-                      },
-                      'almalinux9-AARCH64' => {
-                        general: {
-                          'platform' => 'el-9-aarch64',
-                        },
-                        abs: {
-                          'template' => 'almalinux-9-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'almalinux-9-arm64',
-                        },
-                      },
-                      'almalinux10-64' => {
-                        general: {
-                          'platform' => 'el-10-x86_64',
-                        },
-                      },
-                      'almalinux10-AARCH64' => {
-                        general: {
-                          'platform' => 'el-10-aarch64',
-                        },
-                        abs: {
-                          'template' => 'almalinux-10-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'almalinux-10-arm64',
-                        },
-                      },
-                      'redhat9-POWER' => {
-                        general: {
-                          'platform' => 'el-9-ppc64le',
-                        },
-                        abs: {
-                          'template' => 'redhat-9-power9',
-                        },
-                      },
-                      'oracle9-AARCH64' => {
-                        general: {
-                          'platform' => 'el-9-aarch64',
-                        },
-                        abs: {
-                          'template' => 'oracle-9-arm64',
-                        },
-                        vmpooler: {
-                          'template' => 'oracle-9-arm64',
+                          'template' => 'redhat-7.3-power8', # special case ?
                         },
                       },
                       'sles11-32' => {
@@ -937,6 +767,32 @@ module BeakerHostGenerator
         yield ["centos#{release}-64", "el-#{release}-x86_64"]
       end
 
+      # AlmaLinux
+      (8..10).each do |release|
+        yield ["almalinux#{release}-64", "el-#{release}-x86_64"]
+        yield ["almalinux#{release}-AARCH64", "el-#{release}-aarch64"] if release >= 9
+      end
+
+      # RedHat
+      (7..10).each do |release|
+        yield ["redhat#{release}-64", "el-#{release}-x86_64"]
+        yield ["redhat#{release}-AARCH64", "el-#{release}-aarch64"]
+        yield ["redhat#{release}-POWER", "el-#{release}-ppc64le"] if release <= 9
+        yield ["redhat#{release}-S390X", "el-#{release}-s390x"] if release == 7
+      end
+
+      # Rocky
+      (8..10).each do |release|
+        yield ["rocky#{release}-64", "el-#{release}-x86_64"]
+        yield ["rocky#{release}-AARCH64", "el-#{release}-aarch64"] if release >= 9
+      end
+
+      # Oracle
+      (7..10).each do |release|
+        yield ["oracle#{release}-64", "el-#{release}-x86_64"]
+        yield ["oracle#{release}-AARCH64", "el-#{release}-aarch64"] if release == 9
+      end
+
       # Debian
       (10..13).each do |release|
         yield ["debian#{release}-32", "debian-#{release}-i386"] if release < 11
@@ -987,10 +843,6 @@ module BeakerHostGenerator
       yield %w[amazonfips2023-64 amazonfips-2023-x86_64]
       # Azure Linux
       yield %w[azure3-64 azure-3-x86_64]
-      # Oracle / OracleLinux
-      (7..10).each do |release|
-        yield ["oracle#{release}-64", "el-#{release}-x86_64"]
-      end
 
       # Scientific Linux
       yield ['scientific7-64', 'el-7-x86_64']
