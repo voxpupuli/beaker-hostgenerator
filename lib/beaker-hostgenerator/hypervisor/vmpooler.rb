@@ -17,7 +17,6 @@ module BeakerHostGenerator
       def generate_node(node_info, base_config, bhg_version)
         base_config = base_generate_node(node_info, base_config, bhg_version, :vmpooler)
 
-        pp node_info
         case node_info['ostype']
         when /^(almalinux|centos|oracle|redhat|rocky|scientific)/
           os = Regexp.last_match(1)
