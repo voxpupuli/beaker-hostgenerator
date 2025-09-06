@@ -169,56 +169,6 @@ module BeakerHostGenerator
                           'template' => 'redhat-7.3-power8', # special case ?
                         },
                       },
-                      'sles11-32' => {
-                        general: {
-                          'platform' => 'sles-11-i386',
-                        },
-                        vmpooler: {
-                          'template' => 'sles-11-i386',
-                        },
-                      },
-                      'sles11-64' => {
-                        general: {
-                          'platform' => 'sles-11-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'sles-11-x86_64',
-                        },
-                      },
-                      'sles11-S390X' => {
-                        general: {
-                          'platform' => 'sles-11-s390x',
-                        },
-                      },
-                      'sles12-64' => {
-                        general: {
-                          'platform' => 'sles-12-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'sles-12-x86_64',
-                        },
-                      },
-                      'sles12-S390X' => {
-                        general: {
-                          'platform' => 'sles-12-s390x',
-                        },
-                      },
-                      'sles12-POWER' => {
-                        general: {
-                          'platform' => 'sles-12-ppc64le',
-                        },
-                        abs: {
-                          'template' => 'sles-12-power8',
-                        },
-                      },
-                      'sles15-64' => {
-                        general: {
-                          'platform' => 'sles-15-x86_64',
-                        },
-                        vmpooler: {
-                          'template' => 'sles-15-x86_64',
-                        },
-                      },
                       'windows2008-64' => {
                         general: {
                           'platform' => 'windows-2008-64',
@@ -761,6 +711,14 @@ module BeakerHostGenerator
     def generate_osinfo
       # AIX
       yield %w[aix73-POWER aix-7.3-power]
+
+      # SLES
+      [11, 12, 15].each do |release|
+        yield ["sles#{release}-32", "sles-#{release}-i386"] if release == 11
+        yield ["sles#{release}-64", "sles-#{release}-x86_64"]
+        yield ["sles#{release}-S390X", "sles-#{release}-s390x"]
+        yield ["sles#{release}-POWER", "sles-#{release}-ppc64le"] if release >= 12
+      end
 
       # CentOS
       (7..10).each do |release|
