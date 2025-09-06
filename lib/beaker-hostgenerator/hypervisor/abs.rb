@@ -35,6 +35,15 @@ module BeakerHostGenerator
                  end
           base_config['template'] ||= "#{node_info['ostype'].sub(os, "#{os}-")}-#{arch}" if arch
 
+        when /^(sles)/
+          os = Regexp.last_match(1)
+          version = node_info['ostype'].sub(os, '')
+          arch = case node_info['bits']
+                 when 'POWER'
+                   'power8'
+                 end
+          base_config['template'] ||= "#{os}-#{version}-#{arch}" if arch
+
         when /^aix/, /^fedora/, /^opensuse/, /^panos/
           base_config['template'] ||= base_config['platform']
         when /^(debian|ubuntu|amazon(fips)?)/
