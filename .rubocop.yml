@@ -5,6 +5,3 @@ inherit_gem:
 
 Style/GuardClause:
   Enabled: False
-
-AllCops:
-  TargetRubyVersion: 3.2
