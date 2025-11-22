@@ -11,7 +11,7 @@ expected_hash:
       - agent
       - dashboard
     amazon2023-64-1:
-      platform: amazon-2023-x86_64
+      platform: el-9-x86_64
       hypervisor: vmpooler
       roles:
       - agent
