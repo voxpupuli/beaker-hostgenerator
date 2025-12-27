@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.4.0) (2025-12-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.3.0...3.4.0)
+
+**Implemented enhancements:**
+
+- Add Ruby 4.0 support [\#445](https://github.com/voxpupuli/beaker-hostgenerator/pull/445) ([bastelfreak](https://github.com/bastelfreak))
+- Add Amazonlinux 2023 support [\#440](https://github.com/voxpupuli/beaker-hostgenerator/pull/440) ([bastelfreak](https://github.com/bastelfreak))
+- Use a loop for SLES [\#433](https://github.com/voxpupuli/beaker-hostgenerator/pull/433) ([traylenator](https://github.com/traylenator))
+- Generate Rocky, Alma and RedHat dynamically [\#432](https://github.com/voxpupuli/beaker-hostgenerator/pull/432) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+- Remove debug statement [\#434](https://github.com/voxpupuli/beaker-hostgenerator/pull/434) ([ekohl](https://github.com/ekohl))
+
 ## [3.3.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.3.0) (2025-08-19)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.2.1...3.3.0)
