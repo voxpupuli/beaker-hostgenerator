@@ -123,6 +123,14 @@ module BeakerHostGenerator
                           'template' => 'amazon-7-arm64',
                         },
                       },
+                      'amazon2023-64' => {
+                        general: {
+                          'platform' => 'el-9-x86_64',
+                        },
+                        docker: {
+                          'image' => 'amazonlinux:2023',
+                        },
+                      },
                       'archlinuxrolling-64' => {
                         general: {
                           'platform' => 'archlinux-rolling-x64',
