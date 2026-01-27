@@ -15,26 +15,53 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
-      def generate_node(node_info, base_config, bhg_version)
-        base_config['box'] = case node_info['ostype']
-                             when /^almalinux/
-                               node_info['ostype'].sub(/(\d)/, '/\1')
-                             when /^fedora/
-                               node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
-                             else
-                               "generic/#{node_info['ostype']}"
-                             end
+      # Map ostype OS names to their bento box equivalents
+      OSTYPE_TO_BENTO_OS_NAME = {
+        'rocky' => 'rockylinux',
+        'oracle' => 'oraclelinux',
+        'amazon' => 'amazonlinux',
+        'osx' => 'macos',
+        'opensuse' => 'opensuse-leap',
+      }.freeze
 
-        case node_info['platform']
-        when /^debian(\d+)-64/
+      # Transforms an ostype to a vagrant box name
+      def ostype_to_box(ostype)
+        case ostype
+        when /^almalinux(\d+)/
+          ostype.sub(/(\d)/, '/\1')
+        when /^debian(\d+)/
           version = Regexp.last_match(1)
           if (codename = DEBIAN_VERSION_CODES[version])
-            base_config['box'] = "debian/#{codename}64"
+            "debian/#{codename}64"
           end
-        when /^centos(\d+)-64/
+        when /^centos(\d+)/
           version = Regexp.last_match(1)
-          base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
+          (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
+        when /^fedora/
+          ostype.sub(/(\d)/, '/\1') + '-cloud-base'
+        when /ubuntu(\d\d)(\d\d)/
+          version = "#{Regexp.last_match(1)}.#{Regexp.last_match(2)}"
+          "bento/ubuntu-#{version}"
+        when /^([a-z]+)(\d+)$/
+          # For RHEL, we want to use the generic boxes since the bento ones are not released publicly
+          if ostype.start_with?('redhat')
+            "generic/#{ostype}"
+          else
+            os_name = Regexp.last_match(1)
+            version = Regexp.last_match(2)
+
+            bento_os_name = OSTYPE_TO_BENTO_OS_NAME.fetch(os_name, os_name)
+
+            "bento/#{bento_os_name}-#{version}"
+          end
+        else
+          # Fallback to generic if pattern doesn't match
+          "generic/#{ostype}"
         end
+      end
+
+      def generate_node(node_info, base_config, bhg_version)
+        base_config['box'] = ostype_to_box(node_info['ostype'])
 
         # We don't use this by default
         base_config['synced_folder'] = 'disabled'
