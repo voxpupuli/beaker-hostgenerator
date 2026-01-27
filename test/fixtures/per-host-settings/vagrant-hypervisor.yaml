@@ -28,7 +28,7 @@ expected_hash:
       roles:
       - agent
     redhat7-64-1:
-      box: generic/redhat7
+      box: bento/rhel-7
       synced_folder: disabled
       platform: el-7-x86_64
       hypervisor: vagrant
