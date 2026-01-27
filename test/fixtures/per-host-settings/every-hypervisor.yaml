@@ -36,7 +36,7 @@ expected_hash:
       - agent
     ubuntu1804-64-1:
       hypervisor: vagrant
-      box: generic/ubuntu1804
+      box: bento/ubuntu-18.04
       synced_folder: disabled
       platform: ubuntu-18.04-amd64
       roles:
