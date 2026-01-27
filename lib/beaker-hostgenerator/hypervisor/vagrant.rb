@@ -37,7 +37,7 @@ module BeakerHostGenerator
             base_config['box'] = "centos/stream#{version}"
             base_config['box_url'] = "https://cloud.centos.org/centos/#{version}-stream/x86_64/images/CentOS-Stream-Vagrant-#{version}-latest.x86_64.vagrant-libvirt.box"
           else
-            base_config = "centos/#{version}"
+            base_config['box'] = "centos/#{version}"
           end
         end
 
