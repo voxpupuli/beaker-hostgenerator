@@ -41,8 +41,6 @@ module BeakerHostGenerator
           version = Regexp.last_match(1)
           if (codename = DEBIAN_VERSION_CODES[version])
             "debian/#{codename}64"
-          else
-            nil
           end
         when /^fedora/
           ostype.sub(/(\d)/, '/\1') + '-cloud-base'
