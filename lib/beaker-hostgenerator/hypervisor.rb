@@ -46,6 +46,7 @@ module BeakerHostGenerator
         'container_swarm' => BeakerHostGenerator::Hypervisor::Docker,
         'docker' => BeakerHostGenerator::Hypervisor::Docker,
         'hcloud' => BeakerHostGenerator::Hypervisor::Hcloud,
+        'lima' => BeakerHostGenerator::Hypervisor::Lima,
         'vagrant' => BeakerHostGenerator::Hypervisor::Vagrant,
         'vagrant_libvirt' => BeakerHostGenerator::Hypervisor::Vagrant,
         'vmpooler' => BeakerHostGenerator::Hypervisor::Vmpooler,
@@ -118,3 +119,4 @@ require 'beaker-hostgenerator/hypervisor/vagrant'
 require 'beaker-hostgenerator/hypervisor/docker'
 require 'beaker-hostgenerator/hypervisor/abs'
 require 'beaker-hostgenerator/hypervisor/hcloud'
+require 'beaker-hostgenerator/hypervisor/lima'

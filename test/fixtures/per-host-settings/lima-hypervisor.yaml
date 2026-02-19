@@ -1,0 +1,33 @@
+---
+arguments_string: --hypervisor lima ubuntu2204-64a-oracle8-AARCH64madclf
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2204-64-1:
+      lima:
+        config:
+          arch: x86_64
+          vmType: qemu
+          base:
+          - template:ubuntu-22.04
+      platform: ubuntu-22.04-amd64
+      hypervisor: lima
+      roles:
+      - agent
+    oracle8-AARCH64-1:
+      lima:
+        config:
+          arch: aarch64
+          vmType: qemu
+          base:
+          - template:oraclelinux-8
+      hypervisor: lima
+      roles:
+      - agent
+      - master
+      - database
+      - dashboard
+      - classifier
+      - frictionless
+  CONFIG: {}
+expected_exception:
