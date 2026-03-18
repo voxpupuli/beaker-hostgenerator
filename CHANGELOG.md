@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.5.0) (2026-03-18)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.4.0...3.5.0)
+
+**Implemented enhancements:**
+
+- Add Lima hypervisor support with template and arch support on qemu [\#452](https://github.com/voxpupuli/beaker-hostgenerator/pull/452) ([Valantin](https://github.com/Valantin))
+- Pull CentOS vagrant boxes from the registry [\#451](https://github.com/voxpupuli/beaker-hostgenerator/pull/451) ([silug](https://github.com/silug))
+
+**Fixed bugs:**
+
+- Correct non-stream CentOS boxes [\#448](https://github.com/voxpupuli/beaker-hostgenerator/pull/448) ([ekohl](https://github.com/ekohl))
+
 ## [3.4.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.4.0) (2025-12-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.3.0...3.4.0)
@@ -852,7 +865,7 @@ All notable changes to this project will be documented in this file.
 
 **Merged pull requests:**
 
-- \(QENG-7134\) Individualize cisco IOS platforms [\#153](https://github.com/voxpupuli/beaker-hostgenerator/pull/153) ([smcelmurry](https://github.com/smcelmurry))
+- \(QENG-7134\) Individualize cisco IOS platforms [\#153](https://github.com/voxpupuli/beaker-hostgenerator/pull/153) ([junebug-spencer](https://github.com/junebug-spencer))
 
 ## [1.1.27](https://github.com/voxpupuli/beaker-hostgenerator/tree/1.1.27) (2019-04-25)
 
