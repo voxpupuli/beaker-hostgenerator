@@ -20,7 +20,8 @@ module BeakerHostGenerator
         base_config['image'].prepend('amd64/') if
           node_info['bits'] == '64' &&
           !base_config['image'].start_with?('quay.io/') &&
-          !base_config['image'].start_with?('opensuse/')
+          !base_config['image'].start_with?('opensuse/') &&
+          !ostype.start_with?('redhat')
 
         base_generate_node(node_info, base_config, bhg_version, :docker)
       end
@@ -31,6 +32,9 @@ module BeakerHostGenerator
         image = ostype.sub(/(\d)/, ':\1')
 
         case ostype
+        when /^redhat/
+          version = ostype.delete_prefix('redhat')
+          image = "redhat/ubi#{version}-init:latest"
         when /^centos/
           version = ostype.delete_prefix('centos')
           tag = (version.to_i >= 8) ? "stream#{version}" : "centos#{version}"
