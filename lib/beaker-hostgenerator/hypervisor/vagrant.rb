@@ -10,6 +10,7 @@ module BeakerHostGenerator
       DEBIAN_VERSION_CODES = {
         # No newer releases available
         # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1104105
+        '13' => 'trixie',
         '12' => 'bookworm',
         '11' => 'bullseye',
         '10' => 'buster',
