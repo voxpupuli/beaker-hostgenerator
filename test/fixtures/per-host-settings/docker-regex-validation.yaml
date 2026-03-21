@@ -1,4 +1,4 @@
-arguments_string: --hypervisor=docker oracle7-64-opensuse15-64-ubuntu2004-64
+arguments_string: --hypervisor=docker oracle7-64-opensuse15-64-redhat10-64-ubuntu2004-64
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -21,6 +21,14 @@ expected_hash:
       docker_image_commands:
       - cp /bin/true /sbin/agetty
       - zypper install -y cron iproute2 tar wget which
+      hypervisor: docker
+      roles:
+      - agent
+    redhat10-64-1:
+      image: redhat/ubi10-init:latest
+      platform: el-10-x86_64
+      docker_cmd:
+      - "/sbin/init"
       hypervisor: docker
       roles:
       - agent
