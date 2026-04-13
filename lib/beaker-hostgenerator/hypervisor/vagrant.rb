@@ -23,6 +23,12 @@ module BeakerHostGenerator
         '8' => 'generic/rocky8',
       }.freeze
 
+      ORACLE_LINUX_BOXES = {
+        '10' => 'bento/oraclelinux-10',
+        '9' => 'generic/oracle9',
+        '8' => 'generic/oracle8',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -32,6 +38,9 @@ module BeakerHostGenerator
                              when /^rocky/
                                majorversion = node_info['ostype'].match(/\d+/)[0]
                                ROCKY_LINUX_BOXES[majorversion]
+                             when /^oracle/
+                               majorversion = node_info['ostype'].match(/\d+/)[0]
+                               ORACLE_LINUX_BOXES[majorversion]
                              else
                                "generic/#{node_info['ostype']}"
                              end
