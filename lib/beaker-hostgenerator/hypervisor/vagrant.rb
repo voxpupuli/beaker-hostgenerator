@@ -16,12 +16,22 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
+      ROCKY_LINUX_BOXES = {
+        # there is no generic/rocky10, so we introduce this workaround
+        '10' => 'bento/rockylinux-10',
+        '9' => 'generic/rocky9',
+        '8' => 'generic/rocky8',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
                                node_info['ostype'].sub(/(\d)/, '/\1')
                              when /^fedora/
                                node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
+                             when /^rocky/
+                               majorversion = node_info['ostype'].match(/\d+/)[0]
+                               ROCKY_LINUX_BOXES[majorversion]
                              else
                                "generic/#{node_info['ostype']}"
                              end
