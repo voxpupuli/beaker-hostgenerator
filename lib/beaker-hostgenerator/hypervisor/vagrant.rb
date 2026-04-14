@@ -30,6 +30,11 @@ module BeakerHostGenerator
         '8' => 'generic/oracle8',
       }.freeze
 
+      UBUNTU_LINUX_BOXES = {
+        '2404' => 'crystax/ubuntu24.04',
+        '2204' => 'generic/ubuntu2204',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -42,6 +47,9 @@ module BeakerHostGenerator
                              when /^oracle/
                                majorversion = node_info['ostype'].match(/\d+/)[0]
                                ORACLE_LINUX_BOXES[majorversion]
+                             when /^ubuntu/
+                               version = node_info['ostype'].match(/\d+/)[0]
+                               UBUNTU_LINUX_BOXES[version]
                              else
                                "generic/#{node_info['ostype']}"
                              end
