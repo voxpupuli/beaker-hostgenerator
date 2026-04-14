@@ -18,13 +18,14 @@ module BeakerHostGenerator
 
       ROCKY_LINUX_BOXES = {
         # there is no generic/rocky10, so we introduce this workaround
-        '10' => 'bento/rockylinux-10',
+        # bento/ does not support libvirt
+        '10' => 'cloud-image/rocky-10',
         '9' => 'generic/rocky9',
         '8' => 'generic/rocky8',
       }.freeze
 
       ORACLE_LINUX_BOXES = {
-        '10' => 'bento/oraclelinux-10',
+        '10' => 'cloud-image/rocky-10', # We know this is wrong, but there is no Oracle-10
         '9' => 'generic/oracle9',
         '8' => 'generic/oracle8',
       }.freeze
