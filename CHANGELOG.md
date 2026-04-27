@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.6.0) (2026-04-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.5.0...3.6.0)
+
+**Implemented enhancements:**
+
+- Add Ubuntu 26.04 support [\#463](https://github.com/voxpupuli/beaker-hostgenerator/pull/463) ([bastelfreak](https://github.com/bastelfreak))
+- Add redhat support to docker hypervisor [\#459](https://github.com/voxpupuli/beaker-hostgenerator/pull/459) ([melck](https://github.com/melck))
+- Add Debian 13 \(Trixie\) support for Vagrant hypervisor [\#458](https://github.com/voxpupuli/beaker-hostgenerator/pull/458) ([melck](https://github.com/melck))
+
 ## [3.5.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.5.0) (2026-03-18)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.4.0...3.5.0)
