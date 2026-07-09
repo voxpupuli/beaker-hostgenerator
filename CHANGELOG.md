@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.7.0) (2026-07-09)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.6.0...3.7.0)
+
+**Implemented enhancements:**
+
+- Add Oracle 10 Support [\#468](https://github.com/voxpupuli/beaker-hostgenerator/pull/468) ([smahima27](https://github.com/smahima27))
+
+**Fixed bugs:**
+
+- EL8 & newer: Install gnupg2 [\#462](https://github.com/voxpupuli/beaker-hostgenerator/pull/462) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [3.6.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.6.0) (2026-04-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.5.0...3.6.0)
@@ -212,10 +224,6 @@ All notable changes to this project will be documented in this file.
 **Implemented enhancements:**
 
 - Add Amazon 2 [\#372](https://github.com/voxpupuli/beaker-hostgenerator/pull/372) ([joshcooper](https://github.com/joshcooper))
-
-**Fixed bugs:**
-
-- Don't prepend amd64/ for opensuse images [\#371](https://github.com/voxpupuli/beaker-hostgenerator/pull/371) ([h-haaks](https://github.com/h-haaks))
 
 ## [2.12.2](https://github.com/voxpupuli/beaker-hostgenerator/tree/2.12.2) (2024-05-22)
 
