@@ -1,0 +1,34 @@
+---
+arguments_string: oracle10-64a-windows2012-64-oracle10-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle10-64-1:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: oracle-10-x86_64
+      roles:
+      - agent
+    windows2012-64-1:
+      platform: windows-2012-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      template: win-2012-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    oracle10-64-2:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: oracle-10-x86_64
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

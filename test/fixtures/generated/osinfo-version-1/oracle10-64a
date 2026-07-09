@@ -1,0 +1,14 @@
+---
+arguments_string: "--osinfo-version 1 oracle10-64a"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle10-64-1:
+      platform: el-10-x86_64
+      hypervisor: vmpooler
+      template: oracle-10-x86_64
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

@@ -1,0 +1,15 @@
+---
+arguments_string: oracle9-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle9-64-1:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: oracle-9-x86_64
+      roles:
+      - agent
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

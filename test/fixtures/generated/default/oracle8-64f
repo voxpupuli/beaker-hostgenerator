@@ -1,0 +1,15 @@
+---
+arguments_string: oracle8-64f
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle8-64-1:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: oracle-8-x86_64
+      roles:
+      - agent
+      - frictionless
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

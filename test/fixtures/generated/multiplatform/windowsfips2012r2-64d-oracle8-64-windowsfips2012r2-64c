@@ -1,0 +1,32 @@
+---
+arguments_string: windowsfips2012r2-64d-oracle8-64-windowsfips2012r2-64c
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    windowsfips2012r2-64-1:
+      platform: windows-2012r2-64
+      packaging_platform: windowsfips-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-fips-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - database
+    oracle8-64-1:
+      platform: el-8-x86_64
+      hypervisor: vmpooler
+      template: oracle-8-x86_64
+      roles:
+      - agent
+    windowsfips2012r2-64-2:
+      platform: windows-2012r2-64
+      packaging_platform: windowsfips-2012-x64
+      ruby_arch: x64
+      template: win-2012r2-fips-x86_64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 1 oracle7-64d"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle7-64-1:
+      platform: el-7-x86_64
+      hypervisor: vmpooler
+      template: oracle-7-x86_64
+      roles:
+      - agent
+      - database
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
