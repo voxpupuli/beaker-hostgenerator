@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.8.0) (2026-07-15)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.7.0...3.8.0)
+
+**Implemented enhancements:**
+
+- Add Fedora 42, 43 and 44 [\#472](https://github.com/voxpupuli/beaker-hostgenerator/pull/472) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [3.7.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.7.0) (2026-07-09)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.6.0...3.7.0)
