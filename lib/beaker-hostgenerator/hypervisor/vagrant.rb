@@ -16,12 +16,40 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
+      ROCKY_LINUX_BOXES = {
+        # there is no generic/rocky10, so we introduce this workaround
+        # bento/ does not support libvirt
+        '10' => 'cloud-image/rocky-10',
+        '9' => 'generic/rocky9',
+        '8' => 'generic/rocky8',
+      }.freeze
+
+      ORACLE_LINUX_BOXES = {
+        '10' => 'cloud-image/rocky-10', # We know this is wrong, but there is no Oracle-10
+        '9' => 'generic/oracle9',
+        '8' => 'generic/oracle8',
+      }.freeze
+
+      UBUNTU_LINUX_BOXES = {
+        '2404' => 'crystax/ubuntu24.04',
+        '2204' => 'generic/ubuntu2204',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
                                node_info['ostype'].sub(/(\d)/, '/\1')
                              when /^fedora/
                                node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
+                             when /^rocky/
+                               majorversion = node_info['ostype'].match(/\d+/)[0]
+                               ROCKY_LINUX_BOXES[majorversion]
+                             when /^oracle/
+                               majorversion = node_info['ostype'].match(/\d+/)[0]
+                               ORACLE_LINUX_BOXES[majorversion]
+                             when /^ubuntu/
+                               version = node_info['ostype'].match(/\d+/)[0]
+                               UBUNTU_LINUX_BOXES[version]
                              else
                                "generic/#{node_info['ostype']}"
                              end
