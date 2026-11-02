@@ -106,6 +106,29 @@ module BeakerHostGenerator
                      'host_settings' => {},
                    })
         end
+
+        it 'supports digits within role names.' do
+          expect(parse_node_info_token('64abc,def6,default.a'))
+            .to eq({
+                     'roles' => 'a',
+                     'arbitrary_roles' => %w[abc def6 default],
+                     'bits' => '64',
+                     'host_settings' => {},
+                   })
+
+          expect(parse_node_info_token('64role_1,r2d2.'))
+            .to eq({
+                     'roles' => '',
+                     'arbitrary_roles' => %w[role_1 r2d2],
+                     'bits' => '64',
+                     'host_settings' => {},
+                   })
+        end
+
+        it 'rejects role names that start with a digit.' do
+          expect { parse_node_info_token('64abc,6def.a') }
+            .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+        end
       end
 
       context 'When using arbitrary host settings' do
