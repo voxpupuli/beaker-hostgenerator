@@ -7,6 +7,20 @@ module BeakerHostGenerator
     class Docker < BeakerHostGenerator::Hypervisor::Interface
       include BeakerHostGenerator::Data
 
+      # The Docker platform to request for each architecture token. It is
+      # emitted as the `docker_platform` host setting, which beaker-docker
+      # passes to Docker when it builds or pulls the image. Versions of
+      # beaker-docker that do not know the setting ignore it.
+      DOCKER_PLATFORMS = {
+        '64' => 'linux/amd64',
+        'AARCH64' => 'linux/arm64',
+        'POWER' => 'linux/ppc64le',
+      }.freeze
+
+      # Operating systems that are not Linux have no Linux container image, so
+      # they get no `docker_platform`.
+      NON_LINUX_OSTYPES = /\A(aix|freebsd|osx|panos|solaris|windows)/
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['docker_cmd'] = ['/sbin/init']
 
@@ -22,6 +36,9 @@ module BeakerHostGenerator
           !base_config['image'].start_with?('quay.io/') &&
           !base_config['image'].start_with?('opensuse/') &&
           !ostype.start_with?('redhat')
+
+        docker_platform = DOCKER_PLATFORMS[node_info['bits']]
+        base_config['docker_platform'] = docker_platform if docker_platform && !NON_LINUX_OSTYPES.match?(ostype)
 
         base_generate_node(node_info, base_config, bhg_version, :docker)
       end

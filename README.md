@@ -15,6 +15,7 @@ host config files using a compact command line SUT specification.
 
 - [Beaker Host Generator](#beaker-host-generator)
     - [Hypervisors](#hypervisors)
+        - [Docker](#docker)
     - [Usage](#usage)
         - [Simple two-host layout](#simple-two-host-layout)
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
@@ -50,6 +51,17 @@ To see the list of built-in hypervisors you can run:
 ```
 $ beaker-hostgenerator --list
 ```
+
+### Docker
+
+With `--hypervisor=docker` each host gets an `image`. Linux hosts also get a
+`docker_platform` setting that matches the architecture in the host
+specification: `linux/amd64` for `64`, `linux/arm64` for `AARCH64` and
+`linux/ppc64le` for `POWER`. [beaker-docker][beaker-docker] versions that
+support it pass it to Docker when building or pulling the image, so the image is
+for the requested architecture even if it differs from that of the Docker host.
+Older versions ignore it. Override it for a single host with a host setting,
+e.g. `ubuntu2204-64{docker_platform=linux/arm64}`.
 
 ## Usage
 
@@ -490,6 +502,7 @@ To make a new release:
 
 [vmpooler]: https://github.com/puppetlabs/vmpooler
 [beaker]: https://github.com/puppetlabs/beaker
+[beaker-docker]: https://github.com/voxpupuli/beaker-docker
 [license]: LICENSE
 [contributing]: CONTRIBUTING.md
 [apache-v2]: http://www.apache.org/licenses/LICENSE-2.0.html

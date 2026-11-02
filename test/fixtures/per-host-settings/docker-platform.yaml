@@ -1,0 +1,101 @@
+---
+arguments_string: "--hypervisor=docker almalinux9-64-almalinux9-AARCH64-redhat9-POWER-centos9-64-debian10-32-windows2019-64-aix72-POWER-ubuntu2204-64{docker_platform=linux/arm64}"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    almalinux9-64-1:
+      docker_cmd:
+      - "/sbin/init"
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - dnf install -y cronie crontabs initscripts iproute openssl wget which glibc-langpack-en
+        hostname gnupg2
+      image: amd64/almalinux:9
+      docker_platform: linux/amd64
+      platform: el-9-x86_64
+      hypervisor: docker
+      roles:
+      - agent
+    almalinux9-AARCH64-2:
+      docker_cmd:
+      - "/sbin/init"
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - dnf install -y cronie crontabs initscripts iproute openssl wget which glibc-langpack-en
+        hostname gnupg2
+      image: almalinux:9
+      docker_platform: linux/arm64
+      platform: el-9-aarch64
+      hypervisor: docker
+      roles:
+      - agent
+    redhat9-POWER-1:
+      docker_cmd:
+      - "/sbin/init"
+      image: redhat/ubi9-init:latest
+      docker_platform: linux/ppc64le
+      platform: el-9-ppc64le
+      hypervisor: docker
+      roles:
+      - agent
+    centos9-64-1:
+      docker_cmd:
+      - "/sbin/init"
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - dnf install -y cronie crontabs initscripts iproute openssl wget which glibc-langpack-en
+        hostname gnupg2
+      image: quay.io/centos/centos:stream9
+      docker_platform: linux/amd64
+      platform: el-9-x86_64
+      hypervisor: docker
+      roles:
+      - agent
+    debian10-32-1:
+      docker_cmd:
+      - "/sbin/init"
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - rm -f /usr/sbin/policy-rc.d
+      - apt-get update && apt-get install -y cron locales-all net-tools wget gnupg
+        iproute2
+      image: debian:10
+      platform: debian-10-i386
+      hypervisor: docker
+      roles:
+      - agent
+    windows2019-64-1:
+      docker_cmd:
+      - "/sbin/init"
+      image: amd64/windows:2019
+      platform: windows-2019-64
+      packaging_platform: windows-2012-x64
+      ruby_arch: x64
+      hypervisor: docker
+      roles:
+      - agent
+    aix72-POWER-1:
+      docker_cmd:
+      - "/sbin/init"
+      image: aix:72
+      platform: aix-7.2-power
+      packaging_platform: aix-7.1-power
+      hypervisor: docker
+      roles:
+      - agent
+    ubuntu2204-64-1:
+      docker_cmd:
+      - "/sbin/init"
+      docker_image_commands:
+      - cp /bin/true /sbin/agetty
+      - apt-get install -y net-tools wget locales iproute2 gnupg
+      - locale-gen en_US.UTF-8
+      - echo LANG=en_US.UTF-8 > /etc/default/locale
+      image: amd64/ubuntu:22.04
+      docker_platform: linux/arm64
+      platform: ubuntu-22.04-amd64
+      hypervisor: docker
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

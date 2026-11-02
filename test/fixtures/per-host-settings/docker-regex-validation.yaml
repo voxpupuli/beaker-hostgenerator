@@ -6,6 +6,7 @@ expected_hash:
       docker_cmd:
       - "/sbin/init"
       image: amd64/oraclelinux:7
+      docker_platform: linux/amd64
       platform: el-7-x86_64
       hypervisor: docker
       roles:
@@ -17,6 +18,7 @@ expected_hash:
       docker_cmd:
       - "/sbin/init"
       image: opensuse/leap:15
+      docker_platform: linux/amd64
       platform: opensuse-15-x86_64
       docker_image_commands:
       - cp /bin/true /sbin/agetty
@@ -26,6 +28,7 @@ expected_hash:
       - agent
     redhat10-64-1:
       image: redhat/ubi10-init:latest
+      docker_platform: linux/amd64
       platform: el-10-x86_64
       docker_cmd:
       - "/sbin/init"
@@ -36,6 +39,7 @@ expected_hash:
       docker_cmd:
       - "/sbin/init"
       image: amd64/ubuntu:20.04
+      docker_platform: linux/amd64
       platform: ubuntu-20.04-amd64
       docker_image_commands:
       - cp /bin/true /sbin/agetty
