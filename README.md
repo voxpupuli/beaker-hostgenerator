@@ -15,6 +15,7 @@ host config files using a compact command line SUT specification.
 
 - [Beaker Host Generator](#beaker-host-generator)
     - [Hypervisors](#hypervisors)
+        - [Docker](#docker)
     - [Usage](#usage)
         - [Simple two-host layout](#simple-two-host-layout)
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
@@ -50,6 +51,28 @@ To see the list of built-in hypervisors you can run:
 ```
 $ beaker-hostgenerator --list
 ```
+
+### Docker
+
+With `--hypervisor=docker` each host gets an `image`. Linux hosts also get a
+`docker_platform` setting that matches the architecture in the host
+specification: `linux/amd64` for `64`, `linux/arm64` for `AARCH64` and
+`linux/ppc64le` for `POWER`. [beaker-docker][beaker-docker] versions that
+support it pass it to Docker when building or pulling the image, so the image is
+for the requested architecture even if it differs from that of the Docker host.
+Older versions ignore it.
+
+To test another architecture, change the architecture in the host
+specification: `ubuntu2204-AARCH64` generates an ARM host, with an ARM image and
+Beaker `platform` to match. Overriding `docker_platform` alone does not do that.
+Most `64` hosts use an `amd64/` image repository, which only contains amd64
+images, and their Beaker `platform` stays amd64, so
+`ubuntu2204-64{docker_platform=linux/arm64}` would produce a host whose settings
+contradict each other.
+
+`docker_platform` is an ordinary host setting, so it can be overridden to refine
+the generated value for a single host while the architecture stays the same,
+e.g. `ubuntu2204-AARCH64{docker_platform=linux/arm64/v8}`.
 
 ## Usage
 
@@ -490,6 +513,7 @@ To make a new release:
 
 [vmpooler]: https://github.com/puppetlabs/vmpooler
 [beaker]: https://github.com/puppetlabs/beaker
+[beaker-docker]: https://github.com/voxpupuli/beaker-docker
 [license]: LICENSE
 [contributing]: CONTRIBUTING.md
 [apache-v2]: http://www.apache.org/licenses/LICENSE-2.0.html
