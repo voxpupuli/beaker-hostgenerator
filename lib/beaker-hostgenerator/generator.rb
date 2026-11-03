@@ -140,22 +140,25 @@ module BeakerHostGenerator
     # For example "123" would be converted to 123, and "true"/"false" would be
     # converted to true/false.
     # The only valid boolean-strings are "true" and "false".
+    # Only plain decimal integers are converted ("-5" and "0" are, but "007",
+    # "010", "0x1F", "1_000" and "+5" are not), because Kernel#Integer would
+    # also read leading zeros as octal and accept hex, binary and underscores,
+    # silently changing the value the user typed.
     def unstringify_value(value)
-      result = begin
-        Integer(value)
-      rescue StandardError
+      case value
+      when 'true'
+        true
+      when 'false'
+        false
+      when /\A-?(?:0|[1-9]\d*)\z/
+        value.to_i
+      when Array
+        value.each_with_index do |v, i|
+          value[i] = unstringify_value(v)
+        end
+      else
         value
       end
-      if value == 'true'
-        result = true
-      elsif value == 'false'
-        result = false
-      elsif value.is_a?(Array)
-        value.each_with_index do |v, i|
-          result[i] = unstringify_value(v)
-        end
-      end
-      result
     end
   end
 end

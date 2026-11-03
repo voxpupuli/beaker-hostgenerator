@@ -1,0 +1,27 @@
+---
+arguments_string: centos9-64a{octal=010,hex=0x1F,under=1_000,sign=%2B5,padded=007,neg=-5,zero=0,port=443,on=true,off=false,list=[8,016,true]}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    centos9-64-1:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: centos-9-x86_64
+      octal: '010'
+      hex: '0x1F'
+      under: '1_000'
+      sign: "+5"
+      padded: '007'
+      neg: -5
+      zero: 0
+      port: 443
+      'on': true
+      'off': false
+      list:
+      - 8
+      - '016'
+      - true
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
