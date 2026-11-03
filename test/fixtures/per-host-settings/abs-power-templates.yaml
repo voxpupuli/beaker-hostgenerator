@@ -1,0 +1,24 @@
+---
+arguments_string: "--hypervisor abs ubuntu1804-POWERa-ubuntu2204-POWERa-redhat8-POWERa"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu1804-POWER-1:
+      platform: ubuntu-18.04-ppc64el
+      hypervisor: abs
+      template: ubuntu-18.04-power8
+      roles:
+      - agent
+    ubuntu2204-POWER-1:
+      platform: ubuntu-22.04-ppc64el
+      hypervisor: abs
+      template: ubuntu-22.04-power8
+      roles:
+      - agent
+    redhat8-POWER-1:
+      platform: el-8-ppc64le
+      hypervisor: abs
+      template: redhat-8-power8
+      roles:
+      - agent
+  CONFIG: {}
