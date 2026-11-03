@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-ubuntu2404-64a-ubuntu1804-64a
+arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-rocky9-64a-rocky8-64a-ubuntu2404-64a-ubuntu1804-64a
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -30,6 +30,20 @@ expected_hash:
       box: cloud-image/rocky-10
       synced_folder: disabled
       platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    rocky9-64-1:
+      box: generic/rocky9
+      synced_folder: disabled
+      platform: el-9-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    rocky8-64-1:
+      box: generic/rocky8
+      synced_folder: disabled
+      platform: el-8-x86_64
       hypervisor: vagrant_libvirt
       roles:
       - agent
