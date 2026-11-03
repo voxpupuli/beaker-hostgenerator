@@ -11,6 +11,39 @@ module BeakerHostGenerator
       end
     end
 
+    describe 'tokenize_layout' do
+      it 'Splits the layout on dashes' do
+        expect(tokenize_layout('centos9-64m-debian11-64a'))
+          .to eq(%w[centos9 64m debian11 64a])
+      end
+
+      it 'Keeps dashes that are inside braces' do
+        expect(tokenize_layout('centos9-64m{hostname=foo-bar}-debian11-64'))
+          .to eq(['centos9', '64m{hostname=foo-bar}', 'debian11', '64'])
+      end
+
+      it 'Keeps dashes that come after a nested hash has closed' do
+        expect(tokenize_layout('centos9-64m{a={b=c},hostname=foo-bar}-64a'))
+          .to eq(['centos9', '64m{a={b=c},hostname=foo-bar}', '64a'])
+      end
+
+      it 'Keeps dashes on both sides of a nested hash' do
+        expect(tokenize_layout('centos9-64m{x=a-b,a={b=c-d},y=e-f}-64a'))
+          .to eq(['centos9', '64m{x=a-b,a={b=c-d},y=e-f}', '64a'])
+      end
+
+      it 'Does not treat a stray closing brace as nesting' do
+        expect(tokenize_layout('centos9-64m}-64a'))
+          .to eq(['centos9', '64m}', '64a'])
+      end
+
+      it 'Does not modify the input string' do
+        layout = 'centos9-64m{hostname=foo-bar}-64a'
+        tokenize_layout(layout)
+        expect(layout).to eq('centos9-64m{hostname=foo-bar}-64a')
+      end
+    end
+
     describe 'parse_node_info_token' do
       it 'Raises InvalidNodeSpecError for invalid tokens.' do
         expect { parse_node_info_token('64compile_master') }

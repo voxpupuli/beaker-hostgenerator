@@ -1,0 +1,25 @@
+---
+arguments_string: centos9-64m{foo={bar=baz},hostname=foo-bar}-64a{k=a-b,n={x=1-2},hostname=my-agent-1}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    foo-bar:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: centos-9-x86_64
+      foo:
+        bar: baz
+      roles:
+      - agent
+      - master
+    my-agent-1:
+      platform: el-9-x86_64
+      hypervisor: vmpooler
+      template: centos-9-x86_64
+      k: a-b
+      "n":
+        x: 1-2
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
