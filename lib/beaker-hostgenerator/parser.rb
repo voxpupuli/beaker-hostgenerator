@@ -119,9 +119,9 @@ module BeakerHostGenerator
         when '{'
           brace_depth += 1
         when '}'
-          brace_depth -= 1 if brace_depth > 0
+          brace_depth -= 1 if brace_depth.positive?
         when '-'
-          spec[index] = '|' if brace_depth > 0
+          spec[index] = '|' if brace_depth.positive?
         end
       end
       tokens = spec.split('-')
