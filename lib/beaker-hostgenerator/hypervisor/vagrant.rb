@@ -16,6 +16,15 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
+      # Rocky Linux boxes by major version. BOX_OVERRIDES below is applied
+      # afterwards and takes precedence for the platforms it lists.
+      ROCKY_LINUX_BOXES = {
+        # there is no generic/rocky10, so we introduce this workaround
+        '10' => 'bento/rockylinux-10',
+        '9' => 'generic/rocky9',
+        '8' => 'generic/rocky8',
+      }.freeze
+
       # Platforms where the generic/ namespace has no image. Those boxes were
       # built by Lavabit, which has ceased operations, so no new images are
       # published there. Any platform not listed here falls back to generic/.
@@ -41,6 +50,9 @@ module BeakerHostGenerator
                                node_info['ostype'].sub(/(\d)/, '/\1')
                              when /^fedora/
                                node_info['ostype'].sub(/(\d)/, '/\1') + '-cloud-base'
+                             when /^rocky/
+                               majorversion = node_info['ostype'].match(/\d+/)[0]
+                               ROCKY_LINUX_BOXES.fetch(majorversion, "generic/#{node_info['ostype']}")
                              else
                                "generic/#{node_info['ostype']}"
                              end
