@@ -16,6 +16,25 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
+      # Platforms where the generic/ namespace has no image. Those boxes were
+      # built by Lavabit, which has ceased operations, so no new images are
+      # published there. Any platform not listed here falls back to generic/.
+      BOX_OVERRIDES = {
+        'rocky10' => {
+          'box' => 'cloud-image/rocky-10',
+        },
+        # Oracle publishes its own boxes (including libvirt) in a catalog rather
+        # than on Vagrant Cloud, so the box needs to be fetched from there.
+        # https://yum.oracle.com/boxes/
+        'oracle10' => {
+          'box' => 'oraclelinux/10',
+          'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10.json',
+        },
+        'ubuntu2404' => {
+          'box' => 'crystax/ubuntu24.04',
+        },
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -35,6 +54,10 @@ module BeakerHostGenerator
         when /^centos(\d+)-64/
           version = Regexp.last_match(1)
           base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
+        end
+
+        if (override = BOX_OVERRIDES[node_info['ostype']])
+          base_config.merge!(override)
         end
 
         # We don't use this by default

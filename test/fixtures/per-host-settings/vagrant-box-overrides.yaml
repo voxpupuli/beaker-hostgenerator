@@ -1,0 +1,51 @@
+---
+arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-ubuntu2404-64a-ubuntu1804-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle10-64-1:
+      box: oraclelinux/10
+      box_url: https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10.json
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+      - master
+    oracle9-64-1:
+      box: generic/oracle9
+      synced_folder: disabled
+      platform: el-9-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    oracle7-64-1:
+      box: generic/oracle7
+      synced_folder: disabled
+      platform: el-7-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    rocky10-64-1:
+      box: cloud-image/rocky-10
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    ubuntu2404-64-1:
+      box: crystax/ubuntu24.04
+      synced_folder: disabled
+      platform: ubuntu-24.04-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    ubuntu1804-64-1:
+      box: generic/ubuntu1804
+      synced_folder: disabled
+      platform: ubuntu-18.04-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:
