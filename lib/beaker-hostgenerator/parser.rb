@@ -91,37 +91,20 @@ module BeakerHostGenerator
     #                          processing by the generator. For example
     #                          `["centos9", "64m", "debian11", "64a"]`.
     def tokenize_layout(layout_spec)
-      # Here we allow dashes in certain parts of the spec string
-      # i.e. "centos9-64m{hostname=foo-bar}-debian11-64"
-      # by first replacing all occurrences of - with | that exist within
-      # the braces {...}.
-      #
-      # So we'd end up with:
-      #   "centos9-64m{hostname=foo|bar}-debian11-64"
-      #
-      # Which we can then simply split on - into:
-      #   ["centos9", "64m{hostname=foo|bar}", "debian11", "64"]
-      #
-      # And then finally turn the | back into - now that we've
-      # properly decomposed the spec string:
-      #   ["centos9", "64m{hostname=foo-bar}", "debian11", "64"]
-      #
-      # NOTE we've specifically chosen to use the pipe character |
-      # due to its unlikely occurrence in the user input string.
-      spec = String.new(layout_spec) # Copy so we can replace characters inline
-      within_braces = false
-      spec.chars.each_with_index do |char, index|
-        case char
-        when '{'
-          within_braces = true
-        when '}'
-          within_braces = false
-        when '-'
-          spec[index] = '|' if within_braces
+      tokens = [+'']
+      brace_depth = 0
+      layout_spec.each_char do |char|
+        if char == '-' && brace_depth.zero?
+          tokens << +''
+          next
         end
+
+        tokens.last << char
+        brace_depth += 1 if char == '{'
+        brace_depth -= 1 if char == '}' && brace_depth.positive?
       end
-      tokens = spec.split('-')
-      tokens.map { |t| t.tr('|', '-') }
+      tokens.pop while tokens.last == ''
+      tokens
     end
 
     # Tests if a string token represents an OS platform (i.e. "centos9" or
