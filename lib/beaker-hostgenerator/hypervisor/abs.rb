@@ -57,7 +57,7 @@ module BeakerHostGenerator
                  when 'AARCH64'
                    'arm64'
                  when 'POWER'
-                   base_template.sub!(/#{os}-(\d\d)/, "#{os}-\1.")
+                   base_template.sub!(/#{os}-(\d\d)/, "#{os}-\\1.")
                    'power8'
                  else
                    raise "Unknown bits '#{node_info['bits']}' for '#{node_info['ostype']}'"
