@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-rocky9-64a-rocky8-64a-ubuntu2404-64a-ubuntu1804-64a
+arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-rocky9-64a-rocky8-64a-ubuntu2604-64a-ubuntu2404-64a-ubuntu1804-64a
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -47,8 +47,15 @@ expected_hash:
       hypervisor: vagrant_libvirt
       roles:
       - agent
+    ubuntu2604-64-1:
+      box: cloud-image/ubuntu-26.04
+      synced_folder: disabled
+      platform: ubuntu-26.04-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
     ubuntu2404-64-1:
-      box: crystax/ubuntu24.04
+      box: cloud-image/ubuntu-24.04
       synced_folder: disabled
       platform: ubuntu-24.04-amd64
       hypervisor: vagrant_libvirt

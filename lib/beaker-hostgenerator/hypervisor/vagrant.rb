@@ -31,7 +31,10 @@ module BeakerHostGenerator
           'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10.json',
         },
         'ubuntu2404' => {
-          'box' => 'crystax/ubuntu24.04',
+          'box' => 'cloud-image/ubuntu-24.04',
+        },
+        'ubuntu2604' => {
+          'box' => 'cloud-image/ubuntu-26.04',
         },
       }.freeze
 
