@@ -21,8 +21,9 @@ permissions:
 
 jobs:
   smoke:
-    # Don't run the nightly schedule on forks
-    if: github.repository_owner == 'voxpupuli'
+    # The nightly schedule only runs upstream. Pull requests and manual runs
+    # also work in forks, e.g. to try box changes before opening a PR.
+    if: github.event_name != 'schedule' || github.repository_owner == 'voxpupuli'
     name: ${{ matrix.platform }}
     runs-on: ubuntu-24.04
     timeout-minutes: 30
