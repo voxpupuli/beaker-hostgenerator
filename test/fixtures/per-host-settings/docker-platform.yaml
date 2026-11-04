@@ -1,5 +1,5 @@
 ---
-arguments_string: "--hypervisor=docker almalinux9-64-almalinux9-AARCH64-redhat9-POWER-centos9-64-debian10-32-windows2019-64-aix72-POWER-ubuntu2204-64{docker_platform=linux/arm64}"
+arguments_string: "--hypervisor=docker almalinux9-64-almalinux9-AARCH64-redhat9-POWER-centos9-64-debian10-32-windows2019-64-aix72-POWER-ubuntu2204-AARCH64{docker_platform=linux/arm64/v8}"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -83,7 +83,7 @@ expected_hash:
       hypervisor: docker
       roles:
       - agent
-    ubuntu2204-64-1:
+    ubuntu2204-AARCH64-1:
       docker_cmd:
       - "/sbin/init"
       docker_image_commands:
@@ -91,9 +91,9 @@ expected_hash:
       - apt-get install -y net-tools wget locales iproute2 gnupg
       - locale-gen en_US.UTF-8
       - echo LANG=en_US.UTF-8 > /etc/default/locale
-      image: amd64/ubuntu:22.04
-      docker_platform: linux/arm64
-      platform: ubuntu-22.04-amd64
+      image: ubuntu:22.04
+      docker_platform: linux/arm64/v8
+      platform: ubuntu-22.04-aarch64
       hypervisor: docker
       roles:
       - agent
