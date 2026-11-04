@@ -1,4 +1,5 @@
 require 'beaker-hostgenerator/data'
+require 'beaker-hostgenerator/exceptions'
 require 'beaker-hostgenerator/hypervisor'
 require 'deep_merge/rails_compat'
 
@@ -41,6 +42,13 @@ module BeakerHostGenerator
         },
       }.freeze
 
+      # Architectures the BOX_OVERRIDES boxes are known to be published for.
+      # The box architecture is not part of the generated config: Vagrant
+      # detects it from the host. Offering these boxes for any other
+      # architecture (POWER, S390X, ...) would hand out a box that does not
+      # match the platform, so those are rejected instead.
+      BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -62,18 +70,40 @@ module BeakerHostGenerator
           base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
         end
 
-        # The overrides come as a set: Oracle's box is only valid together with
-        # the catalog URL it is fetched from. User host settings are merged in
-        # after this method, so a custom box replaces only 'box' and would keep
-        # a leftover 'box_url', which Vagrant would then resolve the custom box
-        # against. When the user picks their own box, skip the whole set.
-        override = BOX_OVERRIDES[node_info['ostype']]
-        base_config.merge!(override) if override && !node_info['host_settings'].key?('box')
+        apply_box_override(node_info, base_config)
 
         # We don't use this by default
         base_config['synced_folder'] = 'disabled'
 
         base_generate_node(node_info, base_config, bhg_version, :vagrant)
+      end
+
+      private
+
+      # Replaces the default box with the BOX_OVERRIDES entry for the platform,
+      # if there is one.
+      #
+      # The overrides come as a set: Oracle's box is only valid together with
+      # the catalog URL it is fetched from. User host settings are merged in
+      # after this method, so a custom box replaces only 'box' and would keep
+      # a leftover 'box_url', which Vagrant would then resolve the custom box
+      # against. When the user picks their own box, skip the whole set (this
+      # also lets them use an architecture that has no override). A 'box_url'
+      # on its own is kept as given and applies to the overridden box.
+      def apply_box_override(node_info, base_config)
+        return if node_info['host_settings'].key?('box')
+
+        override = BOX_OVERRIDES[node_info['ostype']]
+        return unless override
+
+        unless BOX_OVERRIDE_BITS.include?(node_info['bits'])
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "No Vagrant box is available for #{node_info['platform']}. " \
+                "Supported architectures: #{BOX_OVERRIDE_BITS.join(', ')}. " \
+                'Choose a box with {box=...} to use another architecture.'
+        end
+
+        base_config.merge!(override)
       end
     end
   end
