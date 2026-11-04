@@ -17,9 +17,11 @@ module BeakerHostGenerator
         '10' => 'buster',
       }.freeze
 
-      # Platforms where the generic/ namespace has no image. Those boxes were
-      # built by Lavabit, which has ceased operations, so no new images are
-      # published there. Any platform not listed here falls back to generic/.
+      # Platforms whose default box does not exist. For most of them that is the
+      # generic/ namespace: those boxes were built by Lavabit, which has ceased
+      # operations, so no new images are published there. A platform not listed
+      # here keeps its default box (generic/<ostype>, or the OS's own box such
+      # as debian/ or centos/).
       BOX_OVERRIDES = {
         'rocky10' => {
           'box' => 'cloud-image/rocky-10',
@@ -66,8 +68,11 @@ module BeakerHostGenerator
         'debian13-AARCH64' => {
           'box' => 'cloud-image/debian-13',
         },
-        # The official almalinux/10 box has no aarch64 build for libvirt or
-        # VirtualBox. https://wiki.almalinux.org/installation/vagrant-boxes
+        # The official almalinux/<version> boxes have no aarch64 build for
+        # libvirt or VirtualBox. https://wiki.almalinux.org/installation/vagrant-boxes
+        'almalinux9-AARCH64' => {
+          'box' => 'cloud-image/almalinux-9',
+        },
         'almalinux10-AARCH64' => {
           'box' => 'cloud-image/almalinux-10',
         },

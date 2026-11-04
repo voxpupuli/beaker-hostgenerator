@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux10-64a-AARCH64a
+arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux9-64a-AARCH64a-almalinux10-64a-AARCH64a
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -14,6 +14,20 @@ expected_hash:
       box: cloud-image/debian-13
       synced_folder: disabled
       platform: debian-13-aarch64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    almalinux9-64-1:
+      box: almalinux/9
+      synced_folder: disabled
+      platform: el-9-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    almalinux9-AARCH64-2:
+      box: cloud-image/almalinux-9
+      synced_folder: disabled
+      platform: el-9-aarch64
       hypervisor: vagrant_libvirt
       roles:
       - agent
