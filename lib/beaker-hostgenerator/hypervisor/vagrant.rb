@@ -23,9 +23,6 @@ module BeakerHostGenerator
       # here keeps its default box (generic/<ostype>, or the OS's own box such
       # as debian/ or centos/).
       BOX_OVERRIDES = {
-        'rocky10' => {
-          'box' => 'cloud-image/rocky-10',
-        },
         # Oracle publishes its own boxes (including libvirt) in a catalog rather
         # than on Vagrant Cloud, so the box needs to be fetched from there.
         # https://yum.oracle.com/boxes/
@@ -54,10 +51,15 @@ module BeakerHostGenerator
 
       # Architectures the BOX_OVERRIDES boxes are known to be published for.
       # The box architecture is not part of the generated config: Vagrant
-      # detects it from the host. Offering these boxes for any other
-      # architecture (POWER, S390X, ...) would hand out a box that does not
-      # match the platform, so those are rejected instead.
-      BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
+      # detects it from the host. Offering a box for an architecture it has
+      # no build for would hand out a box that does not match the platform,
+      # so those are rejected instead. Boxes not listed in BOX_OVERRIDE_BITS
+      # are taken to have 64 bit and AARCH64 builds.
+      DEFAULT_BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
+      BOX_OVERRIDE_BITS = {
+        # Oracle's catalog only lists x86_64 boxes.
+        'oracle10' => %w[64].freeze,
+      }.freeze
 
       # Platforms (OS and architecture) whose default box has no build for that
       # architecture, while the same OS on another architecture is fine.
@@ -85,6 +87,24 @@ module BeakerHostGenerator
         'vagrant_libvirt' => 'Libvirt',
       }.freeze
 
+      # Rocky Linux releases whose boxes are fetched from Rocky's own mirror
+      # rather than Vagrant Cloud (HCP Vagrant), which ends operations on
+      # 31 December 2026. https://dl.rockylinux.org/pub/rocky/10/images/
+      ROCKY_BOX_VERSIONS = %w[10].freeze
+
+      # Vagrant provider used by each hypervisor, as Rocky spells it in the
+      # names of its box files: [label, provider].
+      ROCKY_BOX_PROVIDERS = {
+        'vagrant' => %w[Vbox virtualbox],
+        'vagrant_libvirt' => %w[Libvirt libvirt],
+      }.freeze
+
+      # Architecture in box file names, by beaker-hostgenerator bits.
+      BOX_FILE_ARCHITECTURES = {
+        '64' => 'x86_64',
+        'AARCH64' => 'aarch64',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -107,6 +127,9 @@ module BeakerHostGenerator
           # Like the box overrides below, a box picked by the user replaces this
           box_url = centos_stream_box_url(version)
           base_config['box_url'] = box_url if box_url && !node_info['host_settings'].key?('box')
+        when /^rocky(\d+)-/
+          version = Regexp.last_match(1)
+          apply_rocky_box(node_info, base_config, version) if ROCKY_BOX_VERSIONS.include?(version)
         end
 
         apply_box_override(node_info, base_config)
@@ -132,6 +155,29 @@ module BeakerHostGenerator
           "CentOS-Stream-Vagrant-#{provider}-#{version}-latest.x86_64.vagrant-#{provider.downcase}.box"
       end
 
+      # Rocky publishes its boxes on its mirror as one plain .box file per
+      # architecture and provider. As with CentOS, the 'latest' files are
+      # replaced in place on every release. The architecture is part of the
+      # file name, so the box matches the platform whatever the host is. It is
+      # part of the local box name too, so that a box of the other
+      # architecture already in the Vagrant cache is not used instead.
+      def apply_rocky_box(node_info, base_config, version)
+        return if node_info['host_settings'].key?('box')
+
+        arch = BOX_FILE_ARCHITECTURES[node_info['bits']]
+        label, provider = ROCKY_BOX_PROVIDERS[@name]
+        unless arch && label
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "No Vagrant box is available for #{node_info['platform']}. " \
+                "Supported architectures: #{BOX_FILE_ARCHITECTURES.keys.join(', ')}. " \
+                'Choose a box with {box=...} to use another architecture.'
+        end
+
+        base_config['box'] = "rockylinux-#{version}-#{arch}"
+        base_config['box_url'] = "https://dl.rockylinux.org/pub/rocky/#{version}/images/#{arch}/" \
+                                 "Rocky-#{version}-Vagrant-#{label}.latest.#{arch}.vagrant.#{provider}.box"
+      end
+
       # Replaces the default box with the PLATFORM_BOX_OVERRIDES or
       # BOX_OVERRIDES entry for the platform, if there is one.
       #
@@ -154,10 +200,11 @@ module BeakerHostGenerator
         override = BOX_OVERRIDES[node_info['ostype']]
         return unless override
 
-        unless BOX_OVERRIDE_BITS.include?(node_info['bits'])
+        supported_bits = BOX_OVERRIDE_BITS.fetch(node_info['ostype'], DEFAULT_BOX_OVERRIDE_BITS)
+        unless supported_bits.include?(node_info['bits'])
           raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
                 "No Vagrant box is available for #{node_info['platform']}. " \
-                "Supported architectures: #{BOX_OVERRIDE_BITS.join(', ')}. " \
+                "Supported architectures: #{supported_bits.join(', ')}. " \
                 'Choose a box with {box=...} to use another architecture.'
         end
 

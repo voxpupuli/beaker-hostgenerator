@@ -27,7 +27,8 @@ expected_hash:
       roles:
       - agent
     rocky10-64-1:
-      box: cloud-image/rocky-10
+      box: rockylinux-10-x86_64
+      box_url: https://dl.rockylinux.org/pub/rocky/10/images/x86_64/Rocky-10-Vagrant-Libvirt.latest.x86_64.vagrant.libvirt.box
       synced_folder: disabled
       platform: el-10-x86_64
       hypervisor: vagrant_libvirt

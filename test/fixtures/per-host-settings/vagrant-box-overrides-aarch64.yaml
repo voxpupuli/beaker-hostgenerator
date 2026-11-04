@@ -4,7 +4,8 @@ environment_variables: {}
 expected_hash:
   HOSTS:
     rocky10-AARCH64-1:
-      box: cloud-image/rocky-10
+      box: rockylinux-10-aarch64
+      box_url: https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-Vagrant-Libvirt.latest.aarch64.vagrant.libvirt.box
       synced_folder: disabled
       platform: el-10-aarch64
       hypervisor: vagrant_libvirt
