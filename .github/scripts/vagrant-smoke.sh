@@ -115,12 +115,37 @@ Vagrant.configure('2') do |config|
 end
 EOF
 
+# True when the failed `vagrant up` in $1 was a download problem that is not an
+# HTTP client error: a 5xx from the registry, a dropped connection, a timeout.
+# Those come and go, and reporting them would make a healthy box look broken.
+# A 404 means the box is gone, and a box that downloads but does not boot is a
+# real result as well. Neither is retried (a slow boot also prints "Connection
+# reset" while Vagrant waits for SSH, so connection errors alone say nothing).
+is_transient() {
+  grep -qE 'error occurred while downloading|remote catalog' "$1" &&
+    ! grep -qE 'returned error: 4[0-9][0-9]' "$1"
+}
+
+attempts=3
+up_ok=''
 echo "::group::vagrant up ${platform} (box=${SMOKE_BOX} box_url=${SMOKE_BOX_URL:-none})"
-if ! vagrant up --provider=libvirt 2>&1 | tee up.log; then
-  echo "::endgroup::"
+for attempt in $(seq 1 "$attempts"); do
+  if vagrant up --provider=libvirt 2>&1 | tee up.log; then
+    up_ok=1
+    break
+  fi
+  if [ "$attempt" -lt "$attempts" ] && is_transient up.log; then
+    echo "::warning title=${platform}: vagrant up hit a download error::attempt ${attempt} of ${attempts} failed, trying again"
+    vagrant destroy -f || true
+    sleep "${SMOKE_RETRY_DELAY:-30}"
+    continue
+  fi
+  break
+done
+echo "::endgroup::"
+if [ -z "$up_ok" ]; then
   fail "vagrant up failed" "box ${SMOKE_BOX}${SMOKE_BOX_URL:+ from ${SMOKE_BOX_URL}}"$'\n'"$(error_tail up.log)"
 fi
-echo "::endgroup::"
 
 echo "::group::Guest information"
 if ! vagrant ssh -c 'cat /etc/os-release' > os-release 2>&1; then
