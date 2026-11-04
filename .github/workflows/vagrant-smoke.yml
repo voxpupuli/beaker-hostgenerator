@@ -19,6 +19,12 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # A new push to a pull request replaces its run in progress. Nightly and
+  # manual runs have a group of their own each, so they never cancel anything.
+  group: vagrant-smoke-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   smoke:
     # The nightly schedule only runs upstream. Pull requests and manual runs
