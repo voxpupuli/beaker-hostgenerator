@@ -1,0 +1,35 @@
+---
+arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux10-64a-AARCH64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian13-64-1:
+      box: debian/trixie64
+      synced_folder: disabled
+      platform: debian-13-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    debian13-AARCH64-2:
+      box: cloud-image/debian-13
+      synced_folder: disabled
+      platform: debian-13-aarch64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    almalinux10-64-1:
+      box: almalinux/10
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    almalinux10-AARCH64-2:
+      box: cloud-image/almalinux-10
+      synced_folder: disabled
+      platform: el-10-aarch64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

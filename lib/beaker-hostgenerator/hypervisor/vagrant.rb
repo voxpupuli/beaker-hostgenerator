@@ -49,6 +49,22 @@ module BeakerHostGenerator
       # match the platform, so those are rejected instead.
       BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
 
+      # Platforms (OS and architecture) whose default box has no build for that
+      # architecture, while the same OS on another architecture is fine.
+      # These take precedence over BOX_OVERRIDES.
+      PLATFORM_BOX_OVERRIDES = {
+        # The debian/ boxes are only mapped for 64 bit, so ARM64 would fall
+        # back to generic/debian13 (see BOX_OVERRIDES for generic/).
+        'debian13-AARCH64' => {
+          'box' => 'cloud-image/debian-13',
+        },
+        # The official almalinux/10 box has no aarch64 build for libvirt or
+        # VirtualBox. https://wiki.almalinux.org/installation/vagrant-boxes
+        'almalinux10-AARCH64' => {
+          'box' => 'cloud-image/almalinux-10',
+        },
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -80,8 +96,8 @@ module BeakerHostGenerator
 
       private
 
-      # Replaces the default box with the BOX_OVERRIDES entry for the platform,
-      # if there is one.
+      # Replaces the default box with the PLATFORM_BOX_OVERRIDES or
+      # BOX_OVERRIDES entry for the platform, if there is one.
       #
       # The overrides come as a set: Oracle's box is only valid together with
       # the catalog URL it is fetched from. User host settings are merged in
@@ -92,6 +108,12 @@ module BeakerHostGenerator
       # on its own is kept as given and applies to the overridden box.
       def apply_box_override(node_info, base_config)
         return if node_info['host_settings'].key?('box')
+
+        platform_override = PLATFORM_BOX_OVERRIDES[node_info['platform']]
+        if platform_override
+          base_config.merge!(platform_override)
+          return
+        end
 
         override = BOX_OVERRIDES[node_info['ostype']]
         return unless override
