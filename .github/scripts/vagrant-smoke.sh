@@ -11,6 +11,10 @@
 #
 # Needs Vagrant with the vagrant-libvirt plugin, a working libvirt and the
 # gems from the Gemfile (bundle install).
+#
+# The box is left in the local Vagrant cache afterwards, because a box with
+# the same name may have been there before the test. Set SMOKE_REMOVE_BOX=1
+# to remove it (all its libvirt versions) when the test is done.
 
 set -euo pipefail
 
@@ -64,8 +68,8 @@ workdir=$(mktemp -d)
 cleanup() {
   if [ -f "$workdir/Vagrantfile" ]; then
     (cd "$workdir" && vagrant destroy -f) || true
-    if [ -n "${SMOKE_BOX:-}" ]; then
-      vagrant box remove "$SMOKE_BOX" --all --force || true
+    if [ -n "${SMOKE_BOX:-}" ] && [ "${SMOKE_REMOVE_BOX:-}" = 1 ]; then
+      vagrant box remove "$SMOKE_BOX" --provider libvirt --all || true
     fi
   fi
   rm -rf "$workdir"
@@ -160,6 +164,28 @@ echo "::endgroup::"
 
 if [ "$actual_arch" != "$expected_arch" ]; then
   fail "Wrong guest architecture" "expected ${expected_arch}, the box is ${actual_arch:-unknown}"
+fi
+
+# The guest has to be the OS and release the platform names, not just boot.
+# VERSION_ID matches exactly or with more components (10 matches 10.1, but
+# 24.04 does not match 24.10). os-release IDs that differ from the platform
+# name are mapped here.
+os_id=$(sed -n 's/^ID=//p' os-release | tr -d '"\r')
+os_version=$(sed -n 's/^VERSION_ID=//p' os-release | tr -d '"\r')
+platform_os=${platform%%-*}
+expected_version=$(sed -E 's/^[a-z]+//' <<<"$platform_os")
+case "$platform_os" in
+  ubuntu*)
+    expected_id=ubuntu
+    expected_version="${expected_version:0:2}.${expected_version:2}"
+    ;;
+  oracle*) expected_id=ol ;;
+  amazon*) expected_id=amzn ;;
+  *) expected_id=$(sed -E 's/[0-9].*//' <<<"$platform_os") ;;
+esac
+if [ "$os_id" != "$expected_id" ] ||
+  { [ "$os_version" != "$expected_version" ] && [ "${os_version#"$expected_version".}" = "$os_version" ]; }; then
+  fail "Wrong guest OS" "expected ${expected_id} ${expected_version}, the box is ${os_id:-unknown} ${os_version:-unknown}"
 fi
 
 os_name=$(grep -m 1 '^PRETTY_NAME=' os-release | cut -d= -f2- | tr -d '"\r') || true
