@@ -73,6 +73,13 @@ module BeakerHostGenerator
         },
       }.freeze
 
+      # Vagrant provider used by each hypervisor, as CentOS spells it in the
+      # names of its box files.
+      CENTOS_STREAM_PROVIDERS = {
+        'vagrant' => 'VirtualBox',
+        'vagrant_libvirt' => 'Libvirt',
+      }.freeze
+
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
                              when /^almalinux/
@@ -92,6 +99,9 @@ module BeakerHostGenerator
         when /^centos(\d+)-64/
           version = Regexp.last_match(1)
           base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
+          # Like the box overrides below, a box picked by the user replaces this
+          box_url = centos_stream_box_url(version)
+          base_config['box_url'] = box_url if box_url && !node_info['host_settings'].key?('box')
         end
 
         apply_box_override(node_info, base_config)
@@ -103,6 +113,19 @@ module BeakerHostGenerator
       end
 
       private
+
+      # CentOS publishes its Stream boxes on its own mirror, as one plain .box
+      # file per provider. The copies on Vagrant Cloud fail to download
+      # (HTTP 502), and Vagrant Cloud shuts down at the end of 2026, so fetch
+      # the box from the mirror. The 'latest' files are replaced in place on
+      # every release.
+      def centos_stream_box_url(version)
+        provider = CENTOS_STREAM_PROVIDERS[@name]
+        return unless provider && version.to_i >= 9
+
+        "https://cloud.centos.org/centos/#{version}-stream/x86_64/images/" \
+          "CentOS-Stream-Vagrant-#{provider}-#{version}-latest.x86_64.vagrant-#{provider.downcase}.box"
+      end
 
       # Replaces the default box with the PLATFORM_BOX_OVERRIDES or
       # BOX_OVERRIDES entry for the platform, if there is one.
