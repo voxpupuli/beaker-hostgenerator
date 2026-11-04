@@ -62,9 +62,13 @@ module BeakerHostGenerator
           base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
         end
 
-        if (override = BOX_OVERRIDES[node_info['ostype']])
-          base_config.merge!(override)
-        end
+        # The overrides come as a set: Oracle's box is only valid together with
+        # the catalog URL it is fetched from. User host settings are merged in
+        # after this method, so a custom box replaces only 'box' and would keep
+        # a leftover 'box_url', which Vagrant would then resolve the custom box
+        # against. When the user picks their own box, skip the whole set.
+        override = BOX_OVERRIDES[node_info['ostype']]
+        base_config.merge!(override) if override && !node_info['host_settings'].key?('box')
 
         # We don't use this by default
         base_config['synced_folder'] = 'disabled'
