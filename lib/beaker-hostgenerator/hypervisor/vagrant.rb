@@ -40,6 +40,14 @@ module BeakerHostGenerator
         'amazon2023' => {
           'box' => 'cloud-image/amazon-linux-2023',
         },
+        # Replace the official fedora/<version>-cloud-base box, which is not
+        # available for these releases.
+        'fedora42' => {
+          'box' => 'cloud-image/fedora-42',
+        },
+        'fedora43' => {
+          'box' => 'cloud-image/fedora-43',
+        },
       }.freeze
 
       # Architectures the BOX_OVERRIDES boxes are known to be published for.
