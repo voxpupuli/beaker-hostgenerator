@@ -36,6 +36,9 @@ module BeakerHostGenerator
         'ubuntu2604' => {
           'box' => 'cloud-image/ubuntu-26.04',
         },
+        'amazon2023' => {
+          'box' => 'cloud-image/amazon-linux-2023',
+        },
       }.freeze
 
       def generate_node(node_info, base_config, bhg_version)

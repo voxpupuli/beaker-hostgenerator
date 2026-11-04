@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-rocky9-64a-rocky8-64a-ubuntu2604-64a-ubuntu2404-64a-ubuntu1804-64a
+arguments_string: --hypervisor vagrant_libvirt oracle10-64m-oracle9-64a-oracle7-64a-rocky10-64a-rocky9-64a-rocky8-64a-ubuntu2604-64a-ubuntu2404-64a-ubuntu1804-64a-amazon2023-64a
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -65,6 +65,13 @@ expected_hash:
       box: generic/ubuntu1804
       synced_folder: disabled
       platform: ubuntu-18.04-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    amazon2023-64-1:
+      box: cloud-image/amazon-linux-2023
+      synced_folder: disabled
+      platform: el-9-x86_64
       hypervisor: vagrant_libvirt
       roles:
       - agent
