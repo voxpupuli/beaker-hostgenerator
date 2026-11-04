@@ -50,10 +50,13 @@ summary() {
   fi
 }
 
-# The last lines of a command's output, without blank lines and download
-# progress, which is where Vagrant prints its error message.
+# The last lines of a command's output, which is where Vagrant prints its
+# error message. Blank lines, download progress and the fog warning that
+# vagrant-libvirt prints on every run are left out.
 error_tail() {
-  tr '\r' '\n' < "$1" | grep -v -e '^[[:space:]]*$' -e 'Progress: ' | tail -n 15 || true
+  tr '\r' '\n' < "$1" |
+    grep -v -e '^[[:space:]]*$' -e 'Progress: ' -e '^\[fog\]\[WARNING\]' |
+    tail -n 15 || true
 }
 
 workdir=$(mktemp -d)
