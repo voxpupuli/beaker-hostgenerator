@@ -27,8 +27,54 @@ case "$platform" in
     ;;
 esac
 
+# Report a failure as a GitHub Actions annotation and in the job summary.
+# Annotations are shown on the run page to everyone, while the job log needs
+# a sign-in, so the reason has to be in the annotation to be useful.
+fail() {
+  local title=$1 message=$2
+  if [ -n "${GITHUB_ACTIONS:-}" ]; then
+    message=${message//'%'/'%25'}
+    message=${message//$'\r'/'%0D'}
+    message=${message//$'\n'/'%0A'}
+    echo "::error title=${title}::${message}"
+  else
+    printf '%s\n%s\n' "$title" "$message" >&2
+  fi
+  summary "❌ **${platform}** (\`${SMOKE_BOX:-no box}\`): ${title}"
+  exit 1
+}
+
+summary() {
+  if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+    echo "$1" >> "$GITHUB_STEP_SUMMARY"
+  fi
+}
+
+# The last lines of a command's output, without blank lines and download
+# progress, which is where Vagrant prints its error message.
+error_tail() {
+  tr '\r' '\n' < "$1" | grep -v -e '^[[:space:]]*$' -e 'Progress: ' | tail -n 15 || true
+}
+
+workdir=$(mktemp -d)
+
+cleanup() {
+  if [ -f "$workdir/Vagrantfile" ]; then
+    (cd "$workdir" && vagrant destroy -f) || true
+    if [ -n "${SMOKE_BOX:-}" ]; then
+      vagrant box remove "$SMOKE_BOX" --all --force || true
+    fi
+  fi
+  rm -rf "$workdir"
+}
+trap cleanup EXIT
+
 echo "::group::Generate host config for ${platform}"
-hosts=$(cd "$root" && bundle exec ruby bin/beaker-hostgenerator --hypervisor vagrant_libvirt "${platform}a")
+if ! hosts=$(cd "$root" && bundle exec ruby bin/beaker-hostgenerator --hypervisor vagrant_libvirt "${platform}a" 2>"$workdir/generate.err"); then
+  cat "$workdir/generate.err" >&2
+  echo "::endgroup::"
+  fail "beaker-hostgenerator failed" "$(error_tail "$workdir/generate.err")"
+fi
 echo "$hosts"
 echo "::endgroup::"
 
@@ -42,22 +88,12 @@ read -r box box_url < <(ruby -ryaml -e '
 ' <<<"$hosts") || true
 
 if [ -z "${box:-}" ]; then
-  echo "::error::beaker-hostgenerator did not generate a box for ${platform}"
-  exit 1
+  fail "No box in the generated host config" "$hosts"
 fi
 
 export SMOKE_BOX=$box
 export SMOKE_BOX_URL=${box_url:-}
 export VAGRANT_DEFAULT_PROVIDER=libvirt
-
-workdir=$(mktemp -d)
-
-cleanup() {
-  cd "$workdir" && vagrant destroy -f || true
-  vagrant box remove "$SMOKE_BOX" --all --force || true
-  cd / && rm -rf "$workdir"
-}
-trap cleanup EXIT
 
 cd "$workdir"
 
@@ -77,18 +113,27 @@ end
 EOF
 
 echo "::group::vagrant up ${platform} (box=${SMOKE_BOX} box_url=${SMOKE_BOX_URL:-none})"
-vagrant up --provider=libvirt
+if ! vagrant up --provider=libvirt 2>&1 | tee up.log; then
+  echo "::endgroup::"
+  fail "vagrant up failed" "box ${SMOKE_BOX}${SMOKE_BOX_URL:+ from ${SMOKE_BOX_URL}}"$'\n'"$(error_tail up.log)"
+fi
 echo "::endgroup::"
 
 echo "::group::Guest information"
-vagrant ssh -c 'cat /etc/os-release'
-actual_arch=$(vagrant ssh -c 'uname -m' 2>/dev/null | tr -d '\r' | tail -n 1)
+if ! vagrant ssh -c 'cat /etc/os-release' > os-release 2>&1; then
+  cat os-release
+  echo "::endgroup::"
+  fail "SSH into the guest failed" "$(error_tail os-release)"
+fi
+cat os-release
+actual_arch=$(vagrant ssh -c 'uname -m' 2>/dev/null | tr -d '\r' | tail -n 1) || true
 echo "Guest architecture: ${actual_arch}"
 echo "::endgroup::"
 
 if [ "$actual_arch" != "$expected_arch" ]; then
-  echo "::error::${platform} was expected to be ${expected_arch} but the box is ${actual_arch}"
-  exit 1
+  fail "Wrong guest architecture" "expected ${expected_arch}, the box is ${actual_arch:-unknown}"
 fi
 
+os_name=$(grep -m 1 '^PRETTY_NAME=' os-release | cut -d= -f2- | tr -d '"\r') || true
+summary "✅ **${platform}** (\`${SMOKE_BOX}\`): booted ${os_name:-unknown OS}, ${actual_arch}"
 echo "${platform}: box ${SMOKE_BOX} booted"

@@ -13,6 +13,8 @@ on:
     paths:
       - .github/workflows/vagrant-smoke.yml
       - .github/scripts/vagrant-smoke.sh
+      # Box mappings: a PR that changes them should show whether the boxes boot
+      - lib/beaker-hostgenerator/hypervisor/vagrant.rb
 
 permissions:
   contents: read
