@@ -1,0 +1,114 @@
+name: Vagrant smoke
+
+# Boots the Vagrant box that beaker-hostgenerator hands out for each platform
+# below under libvirt. The normal test suite only checks the generated config,
+# so a box that disappeared or stopped booting would otherwise go unnoticed
+# until someone tried to use it.
+
+on:
+  schedule:
+    - cron: '23 3 * * *'
+  workflow_dispatch: {}
+  pull_request:
+    paths:
+      - .github/workflows/vagrant-smoke.yml
+      - .github/scripts/vagrant-smoke.sh
+      # Box mappings: a PR that changes them should show whether the boxes boot
+      - lib/beaker-hostgenerator/hypervisor/vagrant.rb
+
+permissions:
+  contents: read
+
+concurrency:
+  # A new push to a pull request replaces its run in progress. Nightly and
+  # manual runs have a group of their own each, so they never cancel anything.
+  group: vagrant-smoke-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  smoke:
+    # The nightly schedule only runs upstream. Pull requests and manual runs
+    # also work in forks, e.g. to try box changes before opening a PR.
+    if: github.event_name != 'schedule' || github.repository_owner == 'voxpupuli'
+    name: ${{ matrix.platform }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      # One broken box must not hide the others
+      fail-fast: false
+      matrix:
+        # <os>-64 platforms that map to a Vagrant box. Add a platform here when
+        # support for a new one is added to the Vagrant hypervisor.
+        platform:
+          - almalinux9-64
+          - almalinux10-64
+          - amazon2023-64
+          - centos9-64
+          - centos10-64
+          - debian12-64
+          - debian13-64
+          - fedora42-64
+          - fedora43-64
+          - oracle9-64
+          - oracle10-64
+          - rocky9-64
+          - rocky10-64
+          - ubuntu2204-64
+          - ubuntu2404-64
+          - ubuntu2604-64
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install Ruby 4.0
+        uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1.336.0
+        with:
+          ruby-version: '4.0'
+          bundler-cache: true
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Install libvirt and Vagrant
+        uses: voxpupuli/setup-vagrant@c03d701c92d3321a87bdb6586fc567fa8b0b8339 # v0
+      - name: Boot ${{ matrix.platform }}
+        env:
+          PLATFORM: ${{ matrix.platform }}
+        run: .github/scripts/vagrant-smoke.sh "$PLATFORM"
+
+  report:
+    # A red nightly run that nobody opens goes unnoticed, so a failed nightly run
+    # is reported in an issue. There is only ever one open issue: later failures
+    # are added to it as comments. Pull requests and manual runs do not report.
+    needs: smoke
+    if: ${{ always() && needs.smoke.result == 'failure' && github.event_name == 'schedule' && github.repository_owner == 'voxpupuli' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      issues: write
+    steps:
+      - name: Open an issue, or comment on the open one
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          title='Nightly Vagrant smoke test is failing'
+
+          # shellcheck disable=SC2016
+          failed=$(gh api "repos/${GH_REPO}/actions/runs/${RUN_ID}/jobs?per_page=100" --paginate \
+            --jq '.jobs[] | select(.conclusion == "failure") | "- `" + .name + "`"')
+
+          comment=$(printf 'Failed on %s:\n\n%s\n\n[Run %s](%s)\n' \
+            "$(date -u +%F)" "${failed:-unknown platforms}" "$RUN_ID" "$RUN_URL")
+
+          existing=$(gh issue list --state open --limit 100 --json number,title |
+            jq -r --arg title "$title" 'map(select(.title == $title)) | first | .number // empty')
+
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$comment"
+          else
+            gh issue create --title "$title" --body "$(printf '%s\n\nThis issue is opened by the nightly workflow when a platform fails. While it stays open, later failures are added as comments instead of new issues. Close it once the boxes boot again.\n' "$comment")"
+          fi
