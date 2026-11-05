@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt centos10-64m-centos9-64a-centos8-64a-debian11-64a-redhat7-64a{hypervisor=vagrant}
+arguments_string: --hypervisor vagrant_libvirt centos10-64m-centos9-64a{hypervisor=vagrant}-centos8-64a-debian11-64a-redhat7-64a{hypervisor=vagrant}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -14,10 +14,10 @@ expected_hash:
       - master
     centos9-64-1:
       box: centos/stream9
-      box_url: https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-Libvirt-9-latest.x86_64.vagrant-libvirt.box
+      box_url: https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-Vagrant-VirtualBox-9-latest.x86_64.vagrant-virtualbox.box
       synced_folder: disabled
       platform: el-9-x86_64
-      hypervisor: vagrant_libvirt
+      hypervisor: vagrant
       roles:
       - agent
     centos8-64-1:
