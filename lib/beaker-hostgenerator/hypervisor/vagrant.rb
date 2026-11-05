@@ -34,7 +34,15 @@ module BeakerHostGenerator
           end
         when /^centos(\d+)-64/
           version = Regexp.last_match(1)
-          base_config['box'] = (version.to_i >= 8) ? "centos/stream#{version}" : "centos/#{version}"
+          ver = version.to_i
+          if ver >= 8
+            base_config['box'] = "centos/stream#{version}"
+            provider, extension = (@name == 'vagrant_libvirt') ? %w[Libvirt vagrant-libvirt] : %w[VirtualBox vagrant-virtualbox]
+            variant = (ver == 8) ? 'Vagrant' : "Vagrant-#{provider}"
+            base_config['box_url'] = "https://cloud.centos.org/centos/#{version}-stream/x86_64/images/CentOS-Stream-#{variant}-#{version}-latest.x86_64.#{extension}.box"
+          else
+            base_config['box'] = "centos/#{version}"
+          end
         end
 
         # We don't use this by default
