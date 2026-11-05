@@ -96,20 +96,20 @@ module BeakerHostGenerator
       let(:rc_version) { '2019.8.0-rc4' }
 
       it 'returns ci-ready for a dev version' do
-        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{2019\.8/ci-ready})
-        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{2019\.8/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to include('2019.8/ci-ready')
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to include('2019.8/ci-ready')
       end
 
       it 'returns archives/releases for a release version' do
-        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2019\.8})
+        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to include('archives/releases/2019.8')
       end
 
       it 'returns archives/internal for an rc version' do
-        expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to match(%r{archives/internal/2019\.8})
+        expect(BeakerHostGenerator::Data.pe_dir(rc_version)).to include('archives/internal/2019.8')
       end
 
       it 'returns feature/ci-ready for a PEZ version' do
-        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to match(%r{2019\.8/feature/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(pez_version)).to include('2019.8/feature/ci-ready')
       end
 
       it 'returns nil if version is nil' do
@@ -133,12 +133,12 @@ module BeakerHostGenerator
       let(:rc_version) { '2025.0.0-rc4' }
 
       it 'returns main/ci-ready for a dev version' do
-        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to match(%r{main/ci-ready})
-        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to match(%r{main/ci-ready})
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version)).to include('main/ci-ready')
+        expect(BeakerHostGenerator::Data.pe_dir(dev_version_no_rc)).to include('main/ci-ready')
       end
 
       it 'returns archives/releases/<version> for a release version' do
-        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to match(%r{archives/releases/2025\.0\.0})
+        expect(BeakerHostGenerator::Data.pe_dir(release_version)).to include('archives/releases/2025.0.0')
       end
 
       it 'returns archives/internal/main for an rc version' do
