@@ -149,10 +149,12 @@ module BeakerHostGenerator
       # every release.
       def centos_stream_box_url(version)
         provider = CENTOS_STREAM_PROVIDERS[@name]
-        return unless provider && version.to_i >= 9
+        return unless provider && version.to_i >= 8
 
+        # The Stream 8 file has no provider in its name
+        variant = (version.to_i == 8) ? 'Vagrant' : "Vagrant-#{provider}"
         "https://cloud.centos.org/centos/#{version}-stream/x86_64/images/" \
-          "CentOS-Stream-Vagrant-#{provider}-#{version}-latest.x86_64.vagrant-#{provider.downcase}.box"
+          "CentOS-Stream-#{variant}-#{version}-latest.x86_64.vagrant-#{provider.downcase}.box"
       end
 
       # Rocky publishes its boxes on its mirror as one plain .box file per
