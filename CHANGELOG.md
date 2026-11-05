@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.8.1](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.8.1) (2026-11-05)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.8.0...3.8.1)
+
+**Fixed bugs:**
+
+- fix\(vagrant\): select CentOS box URL by provider [\#504](https://github.com/voxpupuli/beaker-hostgenerator/pull/504) ([alaunay](https://github.com/alaunay))
+- CentOS: Add 10 support, fix vagrant libvirt image URLs [\#501](https://github.com/voxpupuli/beaker-hostgenerator/pull/501) ([bastelfreak](https://github.com/bastelfreak))
+- Fix ABS template for Ubuntu POWER platforms [\#497](https://github.com/voxpupuli/beaker-hostgenerator/pull/497) ([GlazerMann](https://github.com/GlazerMann))
+- Only convert plain decimal integers in host settings [\#496](https://github.com/voxpupuli/beaker-hostgenerator/pull/496) ([GlazerMann](https://github.com/GlazerMann))
+
 ## [3.8.0](https://github.com/voxpupuli/beaker-hostgenerator/tree/3.8.0) (2026-07-15)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-hostgenerator/compare/3.7.0...3.8.0)
