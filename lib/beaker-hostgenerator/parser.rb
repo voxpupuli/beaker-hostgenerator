@@ -108,16 +108,20 @@ module BeakerHostGenerator
       #
       # NOTE we've specifically chosen to use the pipe character |
       # due to its unlikely occurrence in the user input string.
+      #
+      # Braces can be nested (i.e. "64m{a={b=c},hostname=foo-bar}"), so track
+      # the nesting depth instead of a flag. Otherwise the first closing brace
+      # of an inner hash would end the protected region too early.
       spec = String.new(layout_spec) # Copy so we can replace characters inline
-      within_braces = false
+      brace_depth = 0
       spec.chars.each_with_index do |char, index|
         case char
         when '{'
-          within_braces = true
+          brace_depth += 1
         when '}'
-          within_braces = false
+          brace_depth -= 1 if brace_depth.positive?
         when '-'
-          spec[index] = '|' if within_braces
+          spec[index] = '|' if brace_depth.positive?
         end
       end
       tokens = spec.split('-')
