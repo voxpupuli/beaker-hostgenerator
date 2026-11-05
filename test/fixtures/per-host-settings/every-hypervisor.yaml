@@ -27,6 +27,7 @@ expected_hash:
       docker_cmd:
       - /sbin/init
       image: amd64/debian:10
+      docker_platform: linux/amd64
       platform: debian-10-amd64
       docker_image_commands:
       - cp /bin/true /sbin/agetty
