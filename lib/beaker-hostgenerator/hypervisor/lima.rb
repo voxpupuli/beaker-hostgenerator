@@ -11,12 +11,12 @@ module BeakerHostGenerator
       def generate_node(node_info, base_config, bhg_version)
         # Generate the Lima template URL based on the OS type
         template = get_template(node_info['ostype'])
-        arch =  case node_info['bits']
-                when '64'
-                  'x86_64'
-                when 'AARCH64'
-                  'aarch64'
-                end
+        arch = case node_info['bits']
+               when '64'
+                 'x86_64'
+               when 'AARCH64'
+                 'aarch64'
+               end
 
         base_config['lima'] = {
           'config' => {
