@@ -21,6 +21,7 @@ expected_hash:
           vmType: qemu
           base:
           - template:oraclelinux-8
+      platform: el-8-aarch64
       hypervisor: lima
       roles:
       - agent
