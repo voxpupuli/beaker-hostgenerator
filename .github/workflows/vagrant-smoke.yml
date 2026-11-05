@@ -69,21 +69,7 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
       - name: Install libvirt and Vagrant
-        run: |
-          sudo install -d -m 0755 /usr/share/keyrings
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-          sudo apt-get update
-          # Keep recommends: they bring in libvirt's QEMU driver and default network
-          sudo apt-get install -y \
-            acl build-essential dnsmasq-base libkrb5-dev libvirt-clients libvirt-daemon-system \
-            libvirt-dev libxml2-dev libxslt1-dev pkg-config qemu-system-x86 qemu-utils \
-            ruby-dev vagrant zlib1g-dev
-          vagrant plugin install vagrant-libvirt
-      - name: Allow the runner user to use libvirt
-        # A group added with usermod only applies to new logins, so grant
-        # access to the system socket directly
-        run: sudo setfacl -m "user:$USER:rw" /var/run/libvirt/libvirt-sock
+        uses: voxpupuli/setup-vagrant@c03d701c92d3321a87bdb6586fc567fa8b0b8339 # v0
       - name: Boot ${{ matrix.platform }}
         env:
           PLATFORM: ${{ matrix.platform }}
