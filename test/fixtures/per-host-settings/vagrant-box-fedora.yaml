@@ -1,0 +1,28 @@
+---
+arguments_string: --hypervisor vagrant_libvirt fedora41-64a-fedora42-64a-fedora43-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora41-64-1:
+      box: fedora/41-cloud-base
+      synced_folder: disabled
+      platform: fedora-41-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora42-64-1:
+      box: cloud-image/fedora-42
+      synced_folder: disabled
+      platform: fedora-42-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora43-64-1:
+      box: cloud-image/fedora-43
+      synced_folder: disabled
+      platform: fedora-43-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:
