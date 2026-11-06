@@ -30,6 +30,10 @@ module BeakerHostGenerator
           'box' => 'oraclelinux/10',
           'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10.json',
         },
+        # The generic/ubuntu2204 box has DNS issues.
+        'ubuntu2204' => {
+          'box' => 'cloud-image/ubuntu-22.04',
+        },
         'ubuntu2404' => {
           'box' => 'cloud-image/ubuntu-24.04',
         },
@@ -57,8 +61,38 @@ module BeakerHostGenerator
       # are taken to have 64 bit and AARCH64 builds.
       DEFAULT_BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
       BOX_OVERRIDE_BITS = {
-        # Oracle's catalog only lists x86_64 boxes.
+        # The x86_64 box in BOX_OVERRIDES is for 64 bit only. The aarch64 boxes
+        # are in PROVIDER_PLATFORM_BOX_OVERRIDES, which is checked first.
         'oracle10' => %w[64].freeze,
+      }.freeze
+
+      # Platforms whose box depends on the hypervisor, by platform and then by
+      # hypervisor name. A hypervisor that is not listed for the platform has no
+      # box, and raises an error. These take precedence over
+      # PLATFORM_BOX_OVERRIDES and BOX_OVERRIDES.
+      #
+      # Oracle publishes aarch64 boxes in a catalog of their own, for
+      # VirtualBox only (the "Apple Silicon" boxes). The libvirt boxes are
+      # x86_64 only. https://yum.oracle.com/boxes/
+      PROVIDER_PLATFORM_BOX_OVERRIDES = {
+        'oracle8-AARCH64' => {
+          'vagrant' => {
+            'box' => 'oraclelinux/8-aarch64',
+            'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8-aarch64.json',
+          },
+        },
+        'oracle9-AARCH64' => {
+          'vagrant' => {
+            'box' => 'oraclelinux/9-aarch64',
+            'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/9-aarch64.json',
+          },
+        },
+        'oracle10-AARCH64' => {
+          'vagrant' => {
+            'box' => 'oraclelinux/10-aarch64',
+            'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10-aarch64.json',
+          },
+        },
       }.freeze
 
       # Platforms (OS and architecture) whose default box has no build for that
@@ -180,8 +214,9 @@ module BeakerHostGenerator
                                  "Rocky-#{version}-Vagrant-#{label}.latest.#{arch}.vagrant.#{provider}.box"
       end
 
-      # Replaces the default box with the PLATFORM_BOX_OVERRIDES or
-      # BOX_OVERRIDES entry for the platform, if there is one.
+      # Replaces the default box with the PROVIDER_PLATFORM_BOX_OVERRIDES,
+      # PLATFORM_BOX_OVERRIDES or BOX_OVERRIDES entry for the platform, if there
+      # is one.
       #
       # The overrides come as a set: Oracle's box is only valid together with
       # the catalog URL it is fetched from. User host settings are merged in
@@ -192,6 +227,20 @@ module BeakerHostGenerator
       # on its own is kept as given and applies to the overridden box.
       def apply_box_override(node_info, base_config)
         return if node_info['host_settings'].key?('box')
+
+        provider_overrides = PROVIDER_PLATFORM_BOX_OVERRIDES[node_info['platform']]
+        if provider_overrides
+          provider_override = provider_overrides[@name]
+          unless provider_override
+            raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                  "No Vagrant box is available for #{node_info['platform']} with the #{@name} hypervisor. " \
+                  "Supported hypervisors: #{provider_overrides.keys.join(', ')}. " \
+                  'Choose a box with {box=...} to use another hypervisor.'
+          end
+
+          base_config.merge!(provider_override)
+          return
+        end
 
         platform_override = PLATFORM_BOX_OVERRIDES[node_info['platform']]
         if platform_override
