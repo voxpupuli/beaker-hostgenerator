@@ -74,3 +74,41 @@ jobs:
         env:
           PLATFORM: ${{ matrix.platform }}
         run: .github/scripts/vagrant-smoke.sh "$PLATFORM"
+
+  report:
+    # A red nightly run that nobody opens goes unnoticed, so a failed nightly run
+    # is reported in an issue. There is only ever one open issue: later failures
+    # are added to it as comments. Pull requests and manual runs do not report.
+    needs: smoke
+    if: ${{ always() && needs.smoke.result == 'failure' && github.event_name == 'schedule' && github.repository_owner == 'voxpupuli' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      issues: write
+    steps:
+      - name: Open an issue, or comment on the open one
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          title='Nightly Vagrant smoke test is failing'
+
+          # shellcheck disable=SC2016
+          failed=$(gh api "repos/${GH_REPO}/actions/runs/${RUN_ID}/jobs?per_page=100" --paginate \
+            --jq '.jobs[] | select(.conclusion == "failure") | "- `" + .name + "`"')
+
+          comment=$(printf 'Failed on %s:\n\n%s\n\n[Run %s](%s)\n' \
+            "$(date -u +%F)" "${failed:-unknown platforms}" "$RUN_ID" "$RUN_URL")
+
+          existing=$(gh issue list --state open --limit 100 --json number,title |
+            jq -r --arg title "$title" 'map(select(.title == $title)) | first | .number // empty')
+
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$comment"
+          else
+            gh issue create --title "$title" --body "$(printf '%s\n\nThis issue is opened by the nightly workflow when a platform fails. While it stays open, later failures are added as comments instead of new issues. Close it once the boxes boot again.\n' "$comment")"
+          fi

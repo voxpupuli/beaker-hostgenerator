@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # Boot the Vagrant box that beaker-hostgenerator generates for a platform and
-# check that it comes up under libvirt and answers over SSH.
+# check that it comes up under libvirt, answers over SSH, resolves names and can
+# refresh its package metadata.
 #
 # The regular test suite only compares generated host configs with fixtures,
 # so it cannot notice a box that was removed, moved or no longer boots.
@@ -187,6 +188,43 @@ if [ "$os_id" != "$expected_id" ] ||
   { [ "$os_version" != "$expected_version" ] && [ "${os_version#"$expected_version".}" = "$os_version" ]; }; then
   fail "Wrong guest OS" "expected ${expected_id} ${expected_version}, the box is ${os_id:-unknown} ${os_version:-unknown}"
 fi
+
+# A guest that boots is not necessarily usable: a broken resolver or stale
+# package repositories only show up when someone tries to install something.
+# Check that the guest can resolve names, then that its package manager can
+# refresh its metadata.
+echo "::group::Guest network and package manager"
+if ! vagrant ssh -c 'getent hosts github.com' > dns.log 2>&1; then
+  cat dns.log
+  echo "::endgroup::"
+  fail "DNS resolution failed in the guest" "getent hosts github.com failed"$'\n'"$(error_tail dns.log)"
+fi
+cat dns.log
+
+# apt-get update exits 0 when it could not fetch some indexes, so the output is
+# checked as well. dnf makecache --refresh exits non-zero on its own. The
+# command runs in the guest, so its variables must not expand here.
+# shellcheck disable=SC2016
+apt_refresh='
+out=$(sudo apt-get -q update 2>&1)
+status=$?
+echo "$out"
+[ "$status" -eq 0 ] && ! echo "$out" | grep -qE "^(E:|W: Failed to fetch)"
+'
+dnf_refresh='sudo dnf -q -y makecache --refresh'
+
+case "$platform_os" in
+  debian* | ubuntu*) refresh=$apt_refresh ;;
+  *) refresh=$dnf_refresh ;;
+esac
+
+if ! vagrant ssh -c "$refresh" > refresh.log 2>&1; then
+  cat refresh.log
+  echo "::endgroup::"
+  fail "Package metadata refresh failed" "$(error_tail refresh.log)"
+fi
+cat refresh.log
+echo "::endgroup::"
 
 os_name=$(grep -m 1 '^PRETTY_NAME=' os-release | cut -d= -f2- | tr -d '"\r') || true
 summary "✅ **${platform}** (\`${SMOKE_BOX}\`): booted ${os_name:-unknown OS}, ${actual_arch}"
