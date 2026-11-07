@@ -796,7 +796,7 @@ module BeakerHostGenerator
       end
 
       # FreeBSD
-      (12..13).each do |release|
+      (12..15).each do |release|
         yield ["freebsd#{release}-64", "freebsd-#{release}-amd64"]
       end
 
