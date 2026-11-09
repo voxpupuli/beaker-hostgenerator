@@ -1,0 +1,13 @@
+---
+arguments_string: openbsd79-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    openbsd79-64-1:
+      platform: openbsd-7.9-amd64
+      hypervisor: vmpooler
+      roles:
+      - agent
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception: 
