@@ -10,15 +10,21 @@ test_name 'OpenBSD SSH file transfer' do
     Dir.mktmpdir('beaker-openbsd-') do |local_directory|
       payload = "OpenBSD via Beaker \n#{SecureRandom.hex(32)}\n"
       source = File.join(local_directory, 'source.txt')
-      destination = File.join(local_directory, 'returned.txt')
+      download_directory = File.join(local_directory, 'download')
+      destination = File.join(download_directory, 'source.txt')
       File.binwrite(source, payload)
+      Dir.mkdir(download_directory)
       remote_directory = "/tmp/beaker-openbsd-#{SecureRandom.hex(12)}"
+      remote_file = "#{remote_directory}/source.txt"
 
       begin
         on(host, "mkdir #{remote_directory}")
-        scp_to(host, source, "#{remote_directory}/source.txt")
-        scp_from(host, "#{remote_directory}/source.txt", destination)
-        raise 'SCP destination does not exist' unless File.file?(destination)
+        scp_to(host, source, remote_file)
+        on(host, "test -f #{remote_file} && test -s #{remote_file}")
+        # Beaker defaults to recursive downloads; use a known directory
+        # and disable recursion when transferring one regular file.
+        scp_from(host, remote_file, download_directory, recursive: false)
+        raise "SCP download did not create #{destination}" unless File.file?(destination)
 
         source_digest = Digest::SHA256.file(source).digest
         returned_digest = Digest::SHA256.file(destination).digest
