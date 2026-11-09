@@ -821,7 +821,8 @@ module BeakerHostGenerator
 
       # macOS
       yield %w[osx1015-64 osx-10.15-x86_64]
-      (11..15).each do |release|
+      # macOS versions jump from 15 to 26
+      [*11..15, 26, 27].each do |release|
         yield ["osx#{release}-64", "osx-#{release}-x86_64"]
         yield ["osx#{release}-ARM64", "osx-#{release}-arm64"]
       end

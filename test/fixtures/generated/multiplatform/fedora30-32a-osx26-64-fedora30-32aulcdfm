@@ -1,0 +1,32 @@
+---
+arguments_string: fedora30-32a-osx26-64-fedora30-32aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora30-32-1:
+      platform: fedora-30-i386
+      hypervisor: vmpooler
+      template: fedora-30-i386
+      roles:
+      - agent
+    osx26-64-1:
+      platform: osx-26-x86_64
+      hypervisor: vmpooler
+      template: macos-26-x86_64
+      roles:
+      - agent
+    fedora30-32-2:
+      platform: fedora-30-i386
+      hypervisor: vmpooler
+      template: fedora-30-i386
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

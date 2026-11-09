@@ -1,0 +1,15 @@
+---
+arguments_string: "--osinfo-version 0 osx26-64c"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    osx26-64-1:
+      platform: osx-26-x86_64
+      hypervisor: vmpooler
+      template: macos-26-x86_64
+      roles:
+      - agent
+      - dashboard
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

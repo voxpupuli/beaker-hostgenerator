@@ -1,0 +1,28 @@
+---
+arguments_string: fedora29-32m-osx27-64-fedora29-32u
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora29-32-1:
+      platform: fedora-29-i386
+      hypervisor: vmpooler
+      template: fedora-29-i386
+      roles:
+      - agent
+      - master
+    osx27-64-1:
+      platform: osx-27-x86_64
+      hypervisor: vmpooler
+      template: macos-27-x86_64
+      roles:
+      - agent
+    fedora29-32-2:
+      platform: fedora-29-i386
+      hypervisor: vmpooler
+      template: fedora-29-i386
+      roles:
+      - agent
+      - ca
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:
