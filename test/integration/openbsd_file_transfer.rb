@@ -19,6 +19,7 @@ test_name 'OpenBSD SSH file transfer' do
         scp_to(host, source, "#{remote_directory}/source.txt")
         scp_from(host, "#{remote_directory}/source.txt", destination)
         raise 'SCP destination does not exist' unless File.file?(destination)
+
         source_digest = Digest::SHA256.file(source).digest
         returned_digest = Digest::SHA256.file(destination).digest
         raise 'SCP changed the file contents' unless source_digest == returned_digest

@@ -9,21 +9,21 @@ platform = "openbsd-#{release}-amd64"
 host_name = "openbsd#{short_release}-64-1"
 
 overrides = {
-  'vmpooler' => ['template', "openbsd-#{release}-amd64"],
-  'abs' => ['template', "openbsd-#{release}-amd64"],
-  'vagrant' => ['box', 'custom/openbsd'],
-  'vagrant_libvirt' => ['box', 'custom/openbsd'],
-  'docker' => ['image', 'example/openbsd:custom'],
-  'none' => ['user', 'test-user'],
+  'vmpooler'       => %W[template openbsd-#{release}-amd64],
+  'abs'            => %W[template openbsd-#{release}-amd64],
+  'vagrant'        => %w[box custom/openbsd],
+  'vagrant_libvirt' => %w[box custom/openbsd],
+  'docker'         => %w[image example/openbsd:custom],
+  'none'           => %w[user test-user],
 }
 
 backends = {
-  'vmpooler' => {},
-  'abs' => {},
-  'vagrant' => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
+  'vmpooler'       => {},
+  'abs'            => {},
+  'vagrant'        => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
   'vagrant_libvirt' => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
-  'docker' => { 'image' => "amd64/openbsd:#{short_release}", 'docker_cmd' => ['/sbin/init'] },
-  'none' => {},
+  'docker'         => { 'image' => "amd64/openbsd:#{short_release}", 'docker_cmd' => ['/sbin/init'] },
+  'none'           => {},
 }
 
 def generate(*arguments)
@@ -35,22 +35,26 @@ end
 
 (0..1).each do |osinfo|
   # The public --list interface must advertise the exact new host keys.
-  output, errors, status = Open3.capture3('bundle', 'exec', 'beaker-hostgenerator',
-                                           '--osinfo-version', osinfo.to_s, '--list')
+  list_args = ['bundle', 'exec', 'beaker-hostgenerator', '--osinfo-version', osinfo.to_s, '--list']
+  output, errors, status = Open3.capture3(*list_args)
   raise "Cannot enumerate OSINFO #{osinfo}: #{errors}" unless status.success?
+
   listed = output.lines.any? { |line| line.strip == "openbsd#{short_release}-64" }
   raise "OpenBSD #{release} missing from --list (OSINFO #{osinfo})" unless listed
 
   backends.each do |backend, expected_fields|
-    config = generate('--osinfo-version', osinfo.to_s, '--hypervisor', backend,
-                      "openbsd#{short_release}-64a")
+    config_args = ['--osinfo-version', osinfo.to_s, '--hypervisor', backend, "openbsd#{short_release}-64a"]
+    config = generate(*config_args)
     hosts = config.fetch('HOSTS')
     raise "Unexpected #{backend} host names: #{hosts.keys.inspect}" unless hosts.keys == [host_name]
 
     host = hosts.fetch(host_name)
     raise "Wrong platform (#{backend}): #{host['platform']}" unless host['platform'] == platform
+
     raise "Wrong hypervisor (#{backend}): #{host['hypervisor']}" unless host['hypervisor'] == backend
-    raise "Missing agent role (#{backend})" unless host.fetch('roles') == ['agent']
+
+    raise "Missing agent role (#{backend})" unless host.fetch('roles') == %w[agent]
+
     expected_fields.each do |key, value|
       raise "Wrong #{backend} #{key}: #{host[key].inspect}" unless host[key] == value
     end
@@ -63,10 +67,11 @@ end
     # User-provided, verified image/pool identifiers must override guesses.
     override_key, override_value = overrides.fetch(backend)
     override_spec = "openbsd#{short_release}-64a{#{override_key}=#{override_value}}"
-    configured = generate('--osinfo-version', osinfo.to_s, '--hypervisor', backend,
-                          override_spec)
+    override_args = ['--osinfo-version', osinfo.to_s, '--hypervisor', backend, override_spec]
+    configured = generate(*override_args)
     override_host = configured.fetch('HOSTS').fetch(host_name)
     raise "#{backend} override lost" unless override_host.fetch(override_key) == override_value
+
     raise "#{backend} override changed platform" unless override_host.fetch('platform') == platform
 
     puts "#{release} OSINFO #{osinfo} #{backend}: default and override OK"
@@ -82,6 +87,7 @@ mixed = generate('openbsd79-64a-openbsd80-64a')
   raise "Missing mixed-layout host: #{key}" unless actual_platform == "openbsd-#{version}-amd64"
 end
 raise 'Extra mixed-layout hosts' unless mixed.fetch('HOSTS').size == 2
+
 puts 'Mixed OpenBSD 7.9/8.0 layout: OK'
 
 # The native QEMU image uses SSH forwarding on the host. It is a static host:
@@ -91,9 +97,9 @@ host = static_config.fetch('HOSTS').fetch(host_name)
 host['ip'] = '127.0.0.1'
 host['user'] = 'root'
 host['ssh'] = {
-  'user' => 'root',
-  'port' => 20_022,
-  'keys' => [File.join(ENV.fetch('HOME'), '.ssh/id_rsa')],
-  'auth_methods' => ['publickey'],
+  'user'         => 'root',
+  'port'         => 20_022,
+  'keys'         => [File.join(Dir.home, '.ssh/id_rsa')],
+  'auth_methods' => %w[publickey],
 }
 File.write(ENV.fetch('BEAKER_HOSTS_FILE'), YAML.dump(static_config))

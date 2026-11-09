@@ -6,7 +6,9 @@ require 'yaml'
 backend = ENV.fetch('PROVISION_BACKEND')
 release = ENV.fetch('OPENBSD_RELEASE')
 raise "Invalid release #{release}" unless %w[7.9 8.0].include?(release)
+
 raise "Invalid backend #{backend}" unless %w[vagrant_libvirt vmpooler abs].include?(backend)
+
 short = release.delete('.')
 image = if backend == 'vagrant_libvirt'
           ENV.fetch("VAGRANT_BOX_#{short}", '').strip
@@ -14,19 +16,23 @@ image = if backend == 'vagrant_libvirt'
           ENV.fetch("TEMPLATE_#{short}", '').strip
         end
 raise "No #{backend} image/pool supplied for #{release}" if image.empty?
+
 raise 'Invalid image/pool identifier' if image.match?(/[{},\r\n]/)
 
-setting_name = backend == 'vagrant_libvirt' ? 'box' : 'template'
+setting_name = (backend == 'vagrant_libvirt') ? 'box' : 'template'
 spec = "openbsd#{short}-64a{#{setting_name}=#{image}}"
-output, stderr, status = Open3.capture3('bundle', 'exec', 'beaker-hostgenerator',
-                                        '--hypervisor', backend, spec)
+args = ['bundle', 'exec', 'beaker-hostgenerator', '--hypervisor', backend, spec]
+output, stderr, status = Open3.capture3(*args)
 raise "Generator failed: #{stderr}" unless status.success?
 
 config = YAML.safe_load(output)
 host = config.fetch('HOSTS').fetch("openbsd#{short}-64-1")
 raise 'Wrong platform' unless host['platform'] == "openbsd-#{release}-amd64"
+
 raise 'Wrong hypervisor' unless host['hypervisor'] == backend
+
 raise 'Wrong image/pool' unless host[setting_name] == image
+
 File.write(ENV.fetch('BEAKER_HOSTS_FILE'), YAML.dump(config))
 
 # Export resolved box for the subsequent `vagrant box add` step.

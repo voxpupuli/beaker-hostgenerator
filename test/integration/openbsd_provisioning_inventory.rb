@@ -8,7 +8,7 @@ require 'uri'
 release = ENV.fetch('OPENBSD_RELEASE')
 short_release = release.delete('.')
 box = "generic/openbsd#{short_release}"
-summary = ENV['GITHUB_STEP_SUMMARY']
+summary = ENV.fetch('GITHUB_STEP_SUMMARY', nil)
 rows = []
 
 begin
@@ -18,9 +18,13 @@ begin
   if response.is_a?(Net::HTTPSuccess)
     info = JSON.parse(response.body)
     providers = Array(info['versions']).flat_map { |version| Array(version['providers']) }
-                     .map { |provider| provider['name'] }.uniq
+    provider_names = providers.map { |provider| provider['name'] }.uniq
     %w[virtualbox libvirt].each do |provider|
-      status = providers.include?(provider) ? 'Listed (boot unverified)' : 'Not listed (boot unverified)'
+      status = if provider_names.include?(provider)
+                 'Listed (boot unverified)'
+               else
+                 'Not listed (boot unverified)'
+               end
       rows << ["Vagrant #{provider}", status]
     end
   elsif response.code == '404'
@@ -39,7 +43,11 @@ end
 image = "amd64/openbsd:#{short_release}"
 if system('command -v docker >/dev/null 2>&1')
   _out, _err, process = Open3.capture3('timeout', '20', 'docker', 'manifest', 'inspect', image)
-  result = process.success? ? 'Found; cannot boot OpenBSD on Linux' : 'Not resolved; cannot boot OpenBSD on Linux'
+  result = if process.success?
+             'Found; cannot boot OpenBSD on Linux'
+           else
+             'Not resolved; cannot boot OpenBSD on Linux'
+           end
   rows << ['Docker image manifest', result]
 else
   rows << ['Docker image manifest', 'Docker CLI absent; not checked']
