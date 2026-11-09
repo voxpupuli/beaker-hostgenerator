@@ -46,7 +46,7 @@ jobs:
         release: ['7.9', '8.0']
     env:
       OPENBSD_RELEASE: ${{ matrix.release }}
-      BEAKER_HOSTS_FILE: ${{ runner.temp }}/openbsd-hosts.yml
+      BEAKER_HOSTS_FILE: /tmp/openbsd-hosts.yml
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -187,7 +187,7 @@ jobs:
       VAGRANT_BOX_80: ${{ inputs.vagrant_box_80 }}
       TEMPLATE_79: ${{ inputs.template_79 }}
       TEMPLATE_80: ${{ inputs.template_80 }}
-      BEAKER_HOSTS_FILE: ${{ runner.temp }}/openbsd-provision-hosts.yml
+      BEAKER_HOSTS_FILE: /tmp/openbsd-provision-hosts.yml
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
