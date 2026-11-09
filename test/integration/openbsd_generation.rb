@@ -9,21 +9,21 @@ platform = "openbsd-#{release}-amd64"
 host_name = "openbsd#{short_release}-64-1"
 
 overrides = {
-  'vmpooler'       => %W[template openbsd-#{release}-amd64],
-  'abs'            => %W[template openbsd-#{release}-amd64],
-  'vagrant'        => %w[box custom/openbsd],
+  'vmpooler' => %W[template openbsd-#{release}-amd64],
+  'abs' => %W[template openbsd-#{release}-amd64],
+  'vagrant' => %w[box custom/openbsd],
   'vagrant_libvirt' => %w[box custom/openbsd],
-  'docker'         => %w[image example/openbsd:custom],
-  'none'           => %w[user test-user],
+  'docker' => %w[image example/openbsd:custom],
+  'none' => %w[user test-user],
 }
 
 backends = {
-  'vmpooler'       => {},
-  'abs'            => {},
-  'vagrant'        => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
+  'vmpooler' => {},
+  'abs' => {},
+  'vagrant' => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
   'vagrant_libvirt' => { 'box' => "generic/openbsd#{short_release}", 'synced_folder' => 'disabled' },
-  'docker'         => { 'image' => "amd64/openbsd:#{short_release}", 'docker_cmd' => ['/sbin/init'] },
-  'none'           => {},
+  'docker' => { 'image' => "amd64/openbsd:#{short_release}", 'docker_cmd' => ['/sbin/init'] },
+  'none' => {},
 }
 
 def generate(*arguments)
@@ -97,9 +97,9 @@ host = static_config.fetch('HOSTS').fetch(host_name)
 host['ip'] = '127.0.0.1'
 host['user'] = 'root'
 host['ssh'] = {
-  'user'         => 'root',
-  'port'         => 20_022,
-  'keys'         => [File.join(Dir.home, '.ssh/id_rsa')],
+  'user' => 'root',
+  'port' => 20_022,
+  'keys' => [File.join(Dir.home, '.ssh/id_rsa')],
   'auth_methods' => %w[publickey],
 }
 File.write(ENV.fetch('BEAKER_HOSTS_FILE'), YAML.dump(static_config))

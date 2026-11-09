@@ -14,7 +14,7 @@ rows = []
 begin
   uri = URI("https://app.vagrantup.com/api/v2/vagrant/#{box}")
   response = Net::HTTP.start(uri.host, uri.port, use_ssl: true,
-                             open_timeout: 8, read_timeout: 8) { |http| http.get(uri.request_uri) }
+                                                 open_timeout: 8, read_timeout: 8) { |http| http.get(uri.request_uri) }
   if response.is_a?(Net::HTTPSuccess)
     info = JSON.parse(response.body)
     providers = Array(info['versions']).flat_map { |version| Array(version['providers']) }
