@@ -1,0 +1,252 @@
+name: OpenBSD QEMU integration
+
+on:
+  workflow_dispatch:
+    inputs:
+      provision_backend:
+        description: 'Optional real provisioning on a prepared self-hosted runner'
+        type: choice
+        required: true
+        default: none
+        options: [none, vagrant_libvirt, vmpooler, abs]
+      vagrant_box_79:
+        description: 'Trusted OpenBSD 7.9 Vagrant/libvirt box'
+        type: string
+        required: false
+      vagrant_box_80:
+        description: 'Trusted OpenBSD 8.0 Vagrant/libvirt box'
+        type: string
+        required: false
+      template_79:
+        description: 'Existing OpenBSD 7.9 VMPooler/ABS template'
+        type: string
+        required: false
+      template_80:
+        description: 'Existing OpenBSD 8.0 VMPooler/ABS template'
+        type: string
+        required: false
+  pull_request:
+    paths:
+      - '.github/workflows/openbsd-qemu.yml'
+      - 'lib/beaker-hostgenerator/data.rb'
+      - 'test/fixtures/generated/**'
+      - 'test/integration/**'
+
+permissions:
+  contents: read
+
+jobs:
+  openbsd:
+    name: OpenBSD ${{ matrix.release }} (QEMU / Beaker)
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        release: ['7.9', '8.0']
+    env:
+      OPENBSD_RELEASE: ${{ matrix.release }}
+      BEAKER_HOSTS_FILE: /tmp/openbsd-hosts.yml
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install Beaker
+        run: gem install beaker --no-document
+
+      # Validate both OSINFO revisions and all six generator backends before
+      # starting an expensive VM. Includes a two-release layout regression.
+      - name: Verify OpenBSD generated configurations (all backends, OSINFO 0 and 1)
+        run: bundle exec ruby test/integration/openbsd_generation.rb
+
+      - name: Check external provisioning image availability (informational)
+        run: ruby test/integration/openbsd_provisioning_inventory.rb
+
+      - name: Create temporary SSH identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p "$HOME/.ssh"
+          ssh-keygen -q -t rsa -b 3072 -N '' -f "$HOME/.ssh/id_rsa"
+          echo "BEAKER_PUBKEY=$(cat "$HOME/.ssh/id_rsa.pub")" >> "$GITHUB_ENV"
+
+      # These are preinstalled QEMU guest images built from official OpenBSD
+      # install media. Pin the third-party action to an audited commit.
+      # The NAT forwarding is tested in vmactions' own CI.
+      - name: Boot OpenBSD ${{ matrix.release }} in QEMU
+        uses: vmactions/openbsd-vm@f1ca8bc8ecc5b6ef7218e5b914836e067e1546d3 # v1, 2026-11-09
+        with:
+          release: ${{ matrix.release }}
+          arch: x86_64
+          mem: 2048
+          cpu: 2
+          sync: rsync
+          copyback: false
+          envs: 'BEAKER_PUBKEY OPENBSD_RELEASE'
+          nat: |
+            "20022": "22"
+          run: |
+            set -eu
+            test "$(uname -s)" = 'OpenBSD'
+            test "$(uname -r)" = "$OPENBSD_RELEASE"
+            test "$(uname -m)" = 'amd64'
+            install -d -m 700 /root/.ssh
+            printf '%s\n' "$BEAKER_PUBKEY" >> /root/.ssh/authorized_keys
+            chmod 600 /root/.ssh/authorized_keys
+            rcctl check sshd
+            command -v pkg_info
+            command -v pkg_add
+            command -v pkg_delete
+            pkg_info -a >/dev/null
+
+      - name: Verify forwarded SSH connection
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -p 20022 -i "$HOME/.ssh/id_rsa" \
+            -o BatchMode=yes \
+            -o ConnectTimeout=15 \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            root@127.0.0.1 \
+            'uname -s; uname -r; uname -m'
+
+      - name: Check generated Beaker host file (real guest endpoint)
+        run: |
+          ruby -ryaml -e '
+            config = YAML.safe_load(File.read(ENV.fetch("BEAKER_HOSTS_FILE")))
+            host = config.fetch("HOSTS").values.fetch(0)
+            abort "missing SSH configuration" unless host.dig("ssh", "port") == 20_022
+            abort "wrong IP" unless host["ip"] == "127.0.0.1"
+          '
+
+      - name: Run Beaker SSH smoke test against OpenBSD
+        run: |
+          beaker --no-provision \
+            --hosts "$BEAKER_HOSTS_FILE" \
+            --tests test/integration/openbsd_smoke.rb
+
+      - name: Test Beaker SCP upload and download
+        run: |
+          beaker --no-provision \
+            --hosts "$BEAKER_HOSTS_FILE" \
+            --tests test/integration/openbsd_file_transfer.rb
+
+      - name: Test Beaker OpenBSD package database and filesystem operations
+        run: |
+          beaker --no-provision \
+            --hosts "$BEAKER_HOSTS_FILE" \
+            --tests test/integration/openbsd_package_smoke.rb
+
+      - name: Summarize remaining infrastructure-only tests
+        if: always()
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ### Scope of this OpenBSD QEMU run
+
+          The workflow runs a **real OpenBSD guest** and tests Beaker over SSH,
+          package metadata, file operations, and SCP. Generator mappings are
+          checked for VMPooler, ABS, Vagrant, libvirt, Docker, and static hosts.
+
+          | External backend | Actual provisioning in this workflow |
+          | --- | --- |
+          | Vagrant/VirtualBox | Not run: requires a verified VM box and provider |
+          | Vagrant/libvirt | Not run: requires a verified libvirt box and a separate Vagrant lifecycle |
+          | VMPooler | Not run: requires accessible pools, template, and credentials |
+          | ABS | Not run: requires accessible scheduler and credentials |
+          | Docker | Not run: Linux containers cannot boot a native OpenBSD kernel |
+
+          The separate inventory step checks public image metadata, but a
+          catalog result **does not** prove that a VM boots.
+          EOF
+
+  # External providers require an operator-owned runner with network/SSH
+  # access, Beaker, provider plugins, and prepared credentials. Do not run
+  # privileged provisioning against untrusted pull-request code.
+  provision:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.provision_backend != 'none' }}
+    name: '${{ inputs.provision_backend }} OpenBSD ${{ matrix.release }} (real provisioning)'
+    runs-on: [self-hosted, linux, x64, beaker-provisioning]
+    timeout-minutes: 90
+    needs: openbsd
+    strategy:
+      fail-fast: false
+      matrix:
+        release: ['7.9', '8.0']
+    env:
+      OPENBSD_RELEASE: ${{ matrix.release }}
+      PROVISION_BACKEND: ${{ inputs.provision_backend }}
+      VAGRANT_BOX_79: ${{ inputs.vagrant_box_79 }}
+      VAGRANT_BOX_80: ${{ inputs.vagrant_box_80 }}
+      TEMPLATE_79: ${{ inputs.template_79 }}
+      TEMPLATE_80: ${{ inputs.template_80 }}
+      BEAKER_HOSTS_FILE: /tmp/openbsd-provision-hosts.yml
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Check required provider tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v beaker >/dev/null || {
+            echo 'Install Beaker on this runner, then retry.' >&2
+            exit 1
+          }
+          case "$PROVISION_BACKEND" in
+            vagrant_libvirt)
+              command -v vagrant >/dev/null
+              command -v virsh >/dev/null
+              virsh -c qemu:///system list --all
+              vagrant plugin list | grep -q 'vagrant-libvirt'
+              gem list --local --exact beaker-vagrant | grep -q 'beaker-vagrant'
+              ;;
+            vmpooler)
+              gem list --local --exact beaker-vmpooler | grep -q 'beaker-vmpooler'
+              ;;
+            abs)
+              gem list --local --exact beaker-abs | grep -q 'beaker-abs'
+              ;;
+            *) echo "Unsupported provider: $PROVISION_BACKEND" >&2; exit 1 ;;
+          esac
+
+      - name: Verify supplied image or pool and generate provider config
+        run: ruby test/integration/openbsd_provision.rb
+
+      - name: Fetch trusted Vagrant/libvirt box
+        if: ${{ inputs.provision_backend == 'vagrant_libvirt' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This fails if the requested image does not exist for libvirt.
+          vagrant box add "$PROVISION_IMAGE" --provider libvirt
+
+      - name: Provision OpenBSD and run Beaker tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Provider plugins control VM creation/destruction. --no-configure
+          # avoids Puppet-specific setup when only OS/SSH integration is tested.
+          timeout 60m beaker \
+            --no-configure \
+            --hosts "$BEAKER_HOSTS_FILE" \
+            --tests test/integration/openbsd_smoke.rb \
+            --preserve-hosts never
+
+      - name: Record provisioning scope
+        if: always()
+        shell: bash
+        run: |
+          printf '### Real provisioning attempt\n- Backend: `%s`\n- OpenBSD: `%s`\n- Runner: self-hosted\n' \
+            "$PROVISION_BACKEND" "$OPENBSD_RELEASE" >> "$GITHUB_STEP_SUMMARY"

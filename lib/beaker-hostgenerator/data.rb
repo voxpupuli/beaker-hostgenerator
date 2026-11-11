@@ -800,6 +800,15 @@ module BeakerHostGenerator
         yield ["freebsd#{release}-64", "freebsd-#{release}-amd64"]
       end
 
+      # OpenBSD
+      #
+      # Only the two most recent releases are supported upstream. The version
+      # keeps its dot in the platform (openbsd-7.9-amd64) like other platforms
+      # with minor versions, but not in the host name (openbsd79-64).
+      %w[7.9 8.0].each do |release|
+        yield ["openbsd#{release.delete('.')}-64", "openbsd-#{release}-amd64"]
+      end
+
       # Amazon Linux
       yield %w[amazon7-64 amazon-7-x86_64]
       yield %w[amazon7-AARCH64 amazon-7-aarch64]
