@@ -1,0 +1,23 @@
+---
+arguments_string: "--hypervisor vagrant_libvirt oracle10-64a{box_url=https://example.com/oracle.json}-rocky10-64a{box_url=https://example.com/rocky.json}"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    oracle10-64-1:
+      box: oraclelinux/10
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      box_url: https://example.com/oracle.json
+      roles:
+      - agent
+    rocky10-64-1:
+      box: rockylinux-10-x86_64
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant_libvirt
+      box_url: https://example.com/rocky.json
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

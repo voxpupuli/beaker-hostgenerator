@@ -756,7 +756,7 @@ module BeakerHostGenerator
       # Oracle
       (7..11).each do |release|
         yield ["oracle#{release}-64", "el-#{release}-x86_64"]
-        yield ["oracle#{release}-AARCH64", "el-#{release}-aarch64"] if release == 9
+        yield ["oracle#{release}-AARCH64", "el-#{release}-aarch64"] if release.between?(8, 10)
       end
 
       # Debian

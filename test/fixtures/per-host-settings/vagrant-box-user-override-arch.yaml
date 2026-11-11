@@ -1,0 +1,14 @@
+---
+arguments_string: "--hypervisor vagrant_libvirt ubuntu2404-POWERa{box=company/ppc64el}"
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2404-POWER-1:
+      box: company/ppc64el
+      synced_folder: disabled
+      platform: ubuntu-24.04-ppc64el
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:
