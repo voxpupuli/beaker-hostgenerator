@@ -97,8 +97,10 @@ CONFIG:
 
 ### Single host with Arbitrary Roles
 
+Arbitrary role names start with a lowercase letter or an underscore. Later characters can also be digits.
+
 ```
-$ beaker-hostgenerator centos9-64compile_master,another_role.ma
+$ beaker-hostgenerator centos9-64compile_master,role2.ma
 ```
 
 Will generate
@@ -118,7 +120,7 @@ HOSTS:
     - agent
     - master
     - compile_master
-    - another_role
+    - role2
     frictionless_options:
       main:
         dns_alt_names: puppet
