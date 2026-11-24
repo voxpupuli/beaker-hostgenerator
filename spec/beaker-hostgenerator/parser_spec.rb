@@ -11,6 +11,54 @@ module BeakerHostGenerator
       end
     end
 
+    describe 'parse_layout' do
+      it 'assigns each host the most recent OS type and preserves layout order' do
+        nodes = parse_layout('centos9-64m-64a-debian11-64-centos9-64m--', 0)
+
+        expect(nodes.map { |node| node.values_at('ostype', 'bits', 'roles') }).to eq(
+          [%w[centos9 64 m], %w[centos9 64 a], ['debian11', '64', ''], %w[centos9 64 m]],
+        )
+      end
+
+      it 'decodes nested settings and preserves literal dashes and pipes' do
+        nodes = parse_layout('centos9-64m%7Bbefore=a-b,nested={value=c-d|e},after=f-g%7D-64a', 0)
+
+        expect(nodes.first['host_settings']).to eq('before' => 'a-b', 'nested' => { 'value' => 'c-d|e' }, 'after' => 'f-g')
+      end
+
+      it 'rejects an unclosed settings block that would absorb the next host' do
+        expect { parse_layout('centos9-64m{a={b=c}-64a{d=e}', 0) }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, "Unclosed '{' in host layout")
+      end
+
+      it 'rejects a closing brace after the settings block has ended' do
+        expect { parse_layout('centos9-64m{key=value}}', 0) }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, "Unmatched '}' in host layout")
+      end
+
+      it 'rejects a switch away from an OS type with no hosts' do
+        expect { parse_layout('centos9-debian11-64a', 0) }
+          .to raise_error(RuntimeError, 'Error: no nodes generated for centos9')
+      end
+
+      it 'accepts a repeated OS type that already has a host' do
+        nodes = parse_layout('centos9-64m-centos9-debian11-64a', 0)
+
+        expect(nodes.map { |node| node['ostype'] }).to eq(%w[centos9 debian11])
+      end
+
+      it 'ignores a trailing OS type without hosts' do
+        nodes = parse_layout('centos9-64m-debian11', 0)
+
+        expect(nodes.map { |node| node['ostype'] }).to eq(['centos9'])
+      end
+
+      it 'rejects an empty node between delimiters' do
+        expect { parse_layout('centos9--64m', 0) }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+      end
+    end
+
     describe 'parse_node_info_token' do
       it 'Raises InvalidNodeSpecError for invalid tokens.' do
         expect { parse_node_info_token('64compile_master') }
