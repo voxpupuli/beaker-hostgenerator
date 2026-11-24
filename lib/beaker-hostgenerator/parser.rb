@@ -79,9 +79,7 @@ module BeakerHostGenerator
 
       tokenize_layout(prepare(layout_spec)).each_with_object([]) do |token, nodes|
         if is_ostype_token?(token, bhg_version)
-          if ostype && !populated_ostypes.include?(ostype)
-            raise Exceptions::InvalidNodeSpecError, "Error: no nodes generated for #{ostype}"
-          end
+          raise Exceptions::InvalidNodeSpecError, "Error: no nodes generated for #{ostype}" if ostype && !populated_ostypes.include?(ostype)
 
           ostype = token
         else
