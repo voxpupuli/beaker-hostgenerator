@@ -72,13 +72,16 @@ module BeakerHostGenerator
     # @param layout_spec [String] Raw host layout, such as `centos9-64m-64a`.
     # @param bhg_version [Integer] Version of the OS info to use.
     # @returns [Array<Hash{String=>Object}>] Parsed hosts in layout order.
+    # @raise [Exceptions::InvalidNodeSpecError] Invalid layout or node settings.
     def parse_layout(layout_spec, bhg_version)
       ostype = nil
       populated_ostypes = Set.new
 
       tokenize_layout(prepare(layout_spec)).each_with_object([]) do |token, nodes|
         if is_ostype_token?(token, bhg_version)
-          raise "Error: no nodes generated for #{ostype}" if ostype && !populated_ostypes.include?(ostype)
+          if ostype && !populated_ostypes.include?(ostype)
+            raise Exceptions::InvalidNodeSpecError, "Error: no nodes generated for #{ostype}"
+          end
 
           ostype = token
         else
@@ -99,7 +102,15 @@ module BeakerHostGenerator
       CGI.unescape(spec)
     end
 
-    # Splits the layout at dashes outside balanced host settings braces.
+    # Splits a host layout at dashes outside host settings.
+    #
+    # Dashes inside braces are preserved, including within nested settings.
+    # Literal pipe characters are unchanged.
+    #
+    # @param layout_spec [String] Layout to split, such as
+    #                             `"centos9-64m{hostname=a-b}-debian11-64a"`.
+    # @returns [Array<String>] OS and node tokens in layout order.
+    # @raise [Exceptions::InvalidNodeSpecError] Unbalanced braces.
     def tokenize_layout(layout_spec)
       tokens = [+'']
       brace_depth = 0

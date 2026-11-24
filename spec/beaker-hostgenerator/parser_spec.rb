@@ -38,7 +38,7 @@ module BeakerHostGenerator
 
       it 'rejects a switch away from an OS type with no hosts' do
         expect { parse_layout('centos9-debian11-64a', 0) }
-          .to raise_error(RuntimeError, 'Error: no nodes generated for centos9')
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, 'Error: no nodes generated for centos9')
       end
 
       it 'accepts a repeated OS type that already has a host' do
