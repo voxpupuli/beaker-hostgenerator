@@ -1,0 +1,25 @@
+---
+arguments_string: openbsd80-64u-ubuntu1804-AARCH64-openbsd80-64m
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    openbsd80-64-1:
+      platform: openbsd-8.0-amd64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+    ubuntu1804-AARCH64-1:
+      platform: ubuntu-18.04-aarch64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    openbsd80-64-2:
+      platform: openbsd-8.0-amd64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

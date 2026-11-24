@@ -154,6 +154,14 @@ module BeakerHostGenerator
 
       def generate_node(node_info, base_config, bhg_version)
         base_config['box'] = case node_info['ostype']
+                             when /^openbsd/
+                               box = node_info['host_settings']['box']
+                               unless box.is_a?(String) && !box.strip.empty?
+                                 raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                                       "No default Vagrant box for #{node_info['platform']} with #{@name}. " \
+                                       'Specify a provider-compatible box with {box=...}.'
+                               end
+                               box
                              when /^almalinux/
                                node_info['ostype'].sub(/(\d)/, '/\1')
                              when /^fedora/

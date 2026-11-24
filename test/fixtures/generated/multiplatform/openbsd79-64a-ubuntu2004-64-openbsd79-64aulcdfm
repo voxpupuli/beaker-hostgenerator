@@ -1,0 +1,30 @@
+---
+arguments_string: openbsd79-64a-ubuntu2004-64-openbsd79-64aulcdfm
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    openbsd79-64-1:
+      platform: openbsd-7.9-amd64
+      hypervisor: vmpooler
+      roles:
+      - agent
+    ubuntu2004-64-1:
+      platform: ubuntu-20.04-amd64
+      hypervisor: vmpooler
+      template: ubuntu-2004-x86_64
+      roles:
+      - agent
+    openbsd79-64-2:
+      platform: openbsd-7.9-amd64
+      hypervisor: vmpooler
+      roles:
+      - agent
+      - ca
+      - classifier
+      - dashboard
+      - database
+      - frictionless
+      - master
+  CONFIG:
+    pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
+expected_exception:

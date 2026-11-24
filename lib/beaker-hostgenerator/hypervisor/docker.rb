@@ -1,4 +1,5 @@
 require 'beaker-hostgenerator/data'
+require 'beaker-hostgenerator/exceptions'
 require 'beaker-hostgenerator/hypervisor'
 require 'deep_merge/rails_compat'
 
@@ -22,6 +23,11 @@ module BeakerHostGenerator
       NON_LINUX_OSTYPES = /\A(aix|freebsd|osx|panos|solaris|windows)/
 
       def generate_node(node_info, base_config, bhg_version)
+        if node_info['ostype'].start_with?('openbsd')
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "#{@name} cannot run OpenBSD hosts. Use --hypervisor none with an existing OpenBSD host."
+        end
+
         base_config['docker_cmd'] = ['/sbin/init']
 
         ostype = node_info['ostype']
