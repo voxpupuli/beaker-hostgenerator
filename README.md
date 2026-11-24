@@ -25,6 +25,7 @@ host config files using a compact command line SUT specification.
         - [Arbitrary global configuration settings](#arbitrary-global-configuration-settings)
         - [Custom hypervisor](#custom-hypervisor)
         - [URL-encoded input](#url-encoded-input)
+        - [OpenBSD hosts](#openbsd-hosts)
     - [Testing](#testing)
         - [Test Fixtures](#test-fixtures)
             - [Generated Fixtures](#generated-fixtures)
@@ -394,6 +395,21 @@ CONFIG:
   consoleport: 443
   pooling_api: http://vmpooler.delivery.puppetlabs.net/
 ```
+
+### OpenBSD hosts
+
+OpenBSD 7.9 and 8.0 on amd64 use the layout keys `openbsd79-64` and
+`openbsd80-64`. Use `none` for an existing machine, for example:
+
+```sh
+beaker-hostgenerator --hypervisor none 'openbsd80-64a{ip=192.0.2.10}'
+```
+
+For `vagrant` or `vagrant_libvirt`, specify your own provider-compatible box
+with `{box=...}` and optionally `{box=...,box_url=...}` for a custom download
+location. VMPooler (the CLI default) and ABS require a template from your
+service. Supply it with `{template=...}`. Docker and the container hypervisor
+aliases cannot run OpenBSD guests.
 
 ## Testing
 
