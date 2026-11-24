@@ -9,6 +9,13 @@ module BeakerHostGenerator
   describe Generator do
     let(:generator) { BeakerHostGenerator::Generator.new }
 
+    describe 'generate' do
+      it 'preserves arbitrary role names containing digits' do
+        config = generator.generate('centos9-64abc,def6,default.a', hypervisor: 'vmpooler')
+        expect(config.fetch('HOSTS').fetch('centos9-64-1').fetch('roles')).to eq(%w[agent abc def6 default])
+      end
+    end
+
     describe 'get_host_roles' do
       it 'Expands default roles and merges in arbitrary roles' do
         {

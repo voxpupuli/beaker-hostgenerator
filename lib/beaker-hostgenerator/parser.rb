@@ -21,8 +21,10 @@ module BeakerHostGenerator
     #   * bits             Uppercase-only alphanumeric
     #                      Examples: 32, 64, POWER, S390X
     #
-    #   * arbitrary_roles  Lowercase-only alphabetical & underscores
-    #                      Examples: myrole, role_a
+    #   * arbitrary_roles  Lowercase letters, ASCII digits & underscores. Each
+    #                      role must start with a lowercase letter or underscore.
+    #                      This avoids ambiguity between bits and the first role.
+    #                      Examples: myrole, role_a, role2
     #
     #   * roles            Lowercase-only, any combination of: u, a, c, l, d, f, m
     #                      Examples: m, mdca
@@ -63,7 +65,7 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>([[:lower:]_]*|,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>(?:[[:lower:]_][[:lower:]0-9_]*|,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
 
     module_function
 
