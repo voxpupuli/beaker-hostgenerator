@@ -1,0 +1,5 @@
+---
+arguments_string: --hypervisor vagrant_libvirt ubuntu2404-POWERa
+environment_variables: {}
+expected_hash:
+expected_exception: BeakerHostGenerator::Exceptions::InvalidNodeSpecError

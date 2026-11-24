@@ -1,0 +1,5 @@
+---
+arguments_string: --hypervisor vagrant_libvirt oracle8-AARCH64a
+environment_variables: {}
+expected_hash:
+expected_exception: BeakerHostGenerator::Exceptions::InvalidNodeSpecError

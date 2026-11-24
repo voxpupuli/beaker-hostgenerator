@@ -1,0 +1,23 @@
+---
+arguments_string: --hypervisor vagrant rocky10-64a-AARCH64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    rocky10-64-1:
+      box: rockylinux-10-x86_64
+      box_url: https://dl.rockylinux.org/pub/rocky/10/images/x86_64/Rocky-10-Vagrant-Vbox.latest.x86_64.vagrant.virtualbox.box
+      synced_folder: disabled
+      platform: el-10-x86_64
+      hypervisor: vagrant
+      roles:
+      - agent
+    rocky10-AARCH64-2:
+      box: rockylinux-10-aarch64
+      box_url: https://dl.rockylinux.org/pub/rocky/10/images/aarch64/Rocky-10-Vagrant-Vbox.latest.aarch64.vagrant.virtualbox.box
+      synced_folder: disabled
+      platform: el-10-aarch64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:
