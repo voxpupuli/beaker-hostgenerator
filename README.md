@@ -122,8 +122,13 @@ CONFIG:
 
 ### Single host with Arbitrary Roles
 
+Start each role name with one or more lowercase letters. From the first digit or
+underscore onward, use only `a-z`, `0-9`, and `_`.
+Separate names with commas and end the list with a period, even when no static
+roles follow (for example, `centos9-64role2.`).
+
 ```
-$ beaker-hostgenerator centos9-64compile_master,another_role.ma
+$ beaker-hostgenerator centos9-64compile_master,role2.ma
 ```
 
 Will generate
@@ -132,26 +137,19 @@ Will generate
 ---
 HOSTS:
   centos9-64-1:
-    pe_dir:
-    pe_ver:
-    pe_upgrade_dir:
-    pe_upgrade_ver:
-    hypervisor: vmpooler
     platform: el-9-x86_64
+    hypervisor: vmpooler
     template: centos-9-x86_64
     roles:
     - agent
     - master
     - compile_master
-    - another_role
-    frictionless_options:
-      main:
-        dns_alt_names: puppet
-        environmentpath: "/etc/puppetlabs/puppet/environments"
+    - role2
+    main:
+      dns_alt_names: puppet
+      environmentpath: "/etc/puppetlabs/puppet/environments"
 CONFIG:
-  nfs_server: none
-  consoleport: 443
-  pooling_api: http://vmpooler.delivery.puppetlabs.net/
+  pooling_api: https://vmpooler-prod.k8s.infracore.puppet.net/
 ```
 
 ### Two hosts with multiple hypervisors and arbitrary host settings
