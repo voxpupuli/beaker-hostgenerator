@@ -132,15 +132,13 @@ Vagrant.configure('2') do |config|
 end
 EOF
 
-# True when the failed `vagrant up` in $1 was a download problem that is not an
-# HTTP client error: a 5xx from the registry, a dropped connection, a timeout.
-# Those come and go, and reporting them would make a healthy box look broken.
-# A 404 means the box is gone, and a box that downloads but does not boot is a
-# real result as well. Neither is retried (a slow boot also prints "Connection
-# reset" while Vagrant waits for SSH, so connection errors alone say nothing).
+# Retry download errors such as 5xx, 408, 429 and connection failures.
+# Other HTTP 4xx responses (such as 400 or 404) are permanent failures.
+# A box that downloads but does not boot is not retried either: Vagrant may
+# print "Connection reset" while waiting for SSH during a slow boot.
 is_transient() {
   grep -qE 'error occurred while downloading|remote catalog' "$1" &&
-    ! grep -qE 'returned error: 4[0-9][0-9]' "$1"
+    ! grep -qE 'returned error: 4(0[0-79]|1[0-9]|2[0-8]|[3-9][0-9])' "$1"
 }
 
 attempts=3

@@ -42,7 +42,8 @@ jobs:
         platform:
           - almalinux9-64
           - almalinux10-64
-          - amazon2023-64
+          # amazon2023-64: the cloud-image/amazon-linux-2023 libvirt artifact
+          # returns HTTP 400 (artifact not ready). Re-add once downloadable.
           - centos9-64
           - centos10-64
           - debian12-64
