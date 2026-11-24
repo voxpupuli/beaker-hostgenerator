@@ -20,29 +20,17 @@ module BeakerHostGenerator
     # @returns [Hash] A complete Ruby map as defining the HOSTS and CONFIG
     #                 sections as required by Beaker.
     def generate(layout, options)
-      layout = prepare(layout)
-      tokens = tokenize_layout(layout)
       config = {}.deeper_merge(BASE_CONFIG)
       nodeid = Hash.new(1)
-      ostype = nil
       bhg_version = options[:osinfo_version] || 0
 
-      tokens.each do |token|
-        if is_ostype_token?(token, bhg_version)
-          raise "Error: no nodes generated for #{ostype}" if nodeid[ostype] == 1 and !ostype.nil?
-
-          ostype = token
-          next
-        end
-
-        node_info = parse_node_info_token(token)
-
+      parse_layout(layout, bhg_version).each do |node_info|
         # Build node host name
+        ostype = node_info['ostype']
         platform = "#{ostype}-#{node_info['bits']}"
         host_name = "#{platform}-#{nodeid[ostype]}"
 
         node_info['platform'] = platform
-        node_info['ostype'] = ostype
         node_info['nodeid'] = nodeid[ostype]
 
         host_config = base_host_config(options)

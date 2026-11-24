@@ -1,20 +1,11 @@
 require 'beaker-hostgenerator/data'
 require 'beaker-hostgenerator/exceptions'
 require 'cgi'
+require 'deep_merge/rails_compat'
 require 'strscan'
 
 module BeakerHostGenerator
-  # Functions for parsing the raw user input host layout string and turning
-  # them into proper data structures suitable for processing by the Generator.
-  #
-  # The functions mainly perform data type conversions, like splitting the
-  # single input string into a list of strings, each of which will be processed
-  # further by other functions in this module.
-  #
-  # For example, given the raw user input string that defines the host layout,
-  # you would first prepare it for tokenization via `prepare`, then split it
-  # into tokens via `tokenize_layout`, and then for each token you would call
-  # `is_ostype_token?` and/or `parse_node_info_token`.
+  # Parses a host layout into an ordered list of node-info hashes for the Generator.
   module Parser
     # Beaker permits Unicode letters in the initial run of letters in a role name.
     ARBITRARY_ROLE = /[[:lower:]]+[a-z0-9_]*/
@@ -76,6 +67,28 @@ module BeakerHostGenerator
 
     module_function
 
+    # Each host inherits the most recent OS type in the layout.
+    #
+    # @param layout_spec [String] Raw host layout, such as `centos9-64m-64a`.
+    # @param bhg_version [Integer] Version of the OS info to use.
+    # @returns [Array<Hash{String=>Object}>] Parsed hosts in layout order.
+    # @raise [Exceptions::InvalidNodeSpecError] Invalid layout or node settings.
+    def parse_layout(layout_spec, bhg_version)
+      ostype = nil
+      populated_ostypes = Set.new
+
+      tokenize_layout(prepare(layout_spec)).each_with_object([]) do |token, nodes|
+        if is_ostype_token?(token, bhg_version)
+          raise Exceptions::InvalidNodeSpecError, "Error: no nodes generated for #{ostype}" if ostype && !populated_ostypes.include?(ostype)
+
+          ostype = token
+        else
+          nodes << parse_node_info_token(token).merge('ostype' => ostype)
+          populated_ostypes.add(ostype)
+        end
+      end
+    end
+
     # Prepares the host input string for tokenization, such as URL-decoding.
     #
     # @param spec [String] Raw user input; well-formatted string specification
@@ -87,50 +100,38 @@ module BeakerHostGenerator
       CGI.unescape(spec)
     end
 
-    # Breaks apart the host input string into chunks suitable for processing
-    # by the generator. Returns an array of substrings of the input spec string.
+    # Splits a host layout at dashes outside host settings.
     #
-    # The input string is expected to be properly formatted using the dash `-`
-    # character as a delimiter. Dashes may also be used within braces `{...}`,
-    # which are used to define arbitrary key-values on a node.
+    # Dashes inside braces are preserved, including within nested settings.
+    # Literal pipe characters are unchanged.
     #
-    # @param spec [String] Well-formatted string specification of the hosts to
-    #                      generate. For example `"centos9-64m-debian11-64a"`.
-    # @returns [Array<String>] Input string split into substrings suitable for
-    #                          processing by the generator. For example
-    #                          `["centos9", "64m", "debian11", "64a"]`.
+    # @param layout_spec [String] Layout to split, such as
+    #                             `"centos9-64m{hostname=a-b}-debian11-64a"`.
+    # @returns [Array<String>] OS and node tokens in layout order.
+    # @raise [Exceptions::InvalidNodeSpecError] Unbalanced braces.
     def tokenize_layout(layout_spec)
-      # Here we allow dashes in certain parts of the spec string
-      # i.e. "centos9-64m{hostname=foo-bar}-debian11-64"
-      # by first replacing all occurrences of - with | that exist within
-      # the braces {...}.
-      #
-      # So we'd end up with:
-      #   "centos9-64m{hostname=foo|bar}-debian11-64"
-      #
-      # Which we can then simply split on - into:
-      #   ["centos9", "64m{hostname=foo|bar}", "debian11", "64"]
-      #
-      # And then finally turn the | back into - now that we've
-      # properly decomposed the spec string:
-      #   ["centos9", "64m{hostname=foo-bar}", "debian11", "64"]
-      #
-      # NOTE we've specifically chosen to use the pipe character |
-      # due to its unlikely occurrence in the user input string.
-      spec = String.new(layout_spec) # Copy so we can replace characters inline
-      within_braces = false
-      spec.chars.each_with_index do |char, index|
-        case char
-        when '{'
-          within_braces = true
-        when '}'
-          within_braces = false
-        when '-'
-          spec[index] = '|' if within_braces
+      tokens = [+'']
+      brace_depth = 0
+      layout_spec.each_char do |char|
+        if char == '-' && brace_depth.zero?
+          tokens << +''
+        else
+          tokens.last << char
+          case char
+          when '{'
+            brace_depth += 1
+          when '}'
+            raise Exceptions::InvalidNodeSpecError, "Unmatched '}' in host layout" if brace_depth.zero?
+
+            brace_depth -= 1
+          end
         end
       end
-      tokens = spec.split('-')
-      tokens.map { |t| t.tr('|', '-') }
+      raise Exceptions::InvalidNodeSpecError, "Unclosed '{' in host layout" if brace_depth.positive?
+
+      # Match String#split by dropping trailing empty tokens only.
+      tokens.pop while tokens.last == ''
+      tokens
     end
 
     # Tests if a string token represents an OS platform (i.e. "centos9" or
