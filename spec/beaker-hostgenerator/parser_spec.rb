@@ -125,9 +125,18 @@ module BeakerHostGenerator
                    })
         end
 
-        it 'rejects role names that start with a digit.' do
-          expect { parse_node_info_token('64abc,6def.a') }
-            .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+        it 'requires each arbitrary role name to start with a lowercase letter.' do
+          %w[64_.a 64_1.a 64abc,_1.a 64abc,6def.a].each do |token|
+            expect { parse_node_info_token(token) }
+              .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+          end
+        end
+
+        it 'rejects empty entries in a comma-separated role list.' do
+          %w[64,role2.a 64abc,,role2.a 64role2,.a 64,.].each do |token|
+            expect { parse_node_info_token(token) }
+              .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+          end
         end
 
         it 'preserves architecture bits when parsing arbitrary roles.' do
@@ -139,9 +148,16 @@ module BeakerHostGenerator
             .to include('bits' => '6432', 'arbitrary_roles' => ['role2'])
         end
 
-        it 'supports underscores and lowercase Unicode letters in role names.' do
-          expect(parse_node_info_token('64_,_1,role_,é2.'))
-            .to include('arbitrary_roles' => %w[_ _1 role_ é2])
+        it 'supports lowercase Unicode letters before digits or underscores.' do
+          expect(parse_node_info_token('64role_,é2,café_1.'))
+            .to include('arbitrary_roles' => %w[role_ é2 café_1])
+        end
+
+        it 'rejects non-ASCII letters after a digit or underscore.' do
+          %w[64r2é.a 64abc,r_é.a].each do |token|
+            expect { parse_node_info_token(token) }
+              .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError)
+          end
         end
 
         it 'rejects non-ASCII digits in role names.' do

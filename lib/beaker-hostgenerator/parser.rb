@@ -16,14 +16,16 @@ module BeakerHostGenerator
   # into tokens via `tokenize_layout`, and then for each token you would call
   # `is_ostype_token?` and/or `parse_node_info_token`.
   module Parser
+    # Beaker permits Unicode letters in the initial run of letters in a role name.
+    ARBITRARY_ROLE = /[[:lower:]]+[a-z0-9_]*/
+
     # Parses a single node definition into the following components:
     #
     #   * bits             Uppercase-only alphanumeric
     #                      Examples: 32, 64, POWER, S390X
     #
-    #   * arbitrary_roles  Lowercase letters, ASCII digits & underscores. Each
-    #                      role must start with a lowercase letter or underscore.
-    #                      This avoids ambiguity between bits and the first role.
+    #   * arbitrary_roles  Comma-separated names, each starting with a lowercase
+    #                      letter. This also separates the first name from the bits.
     #                      Examples: myrole, role_a, role2
     #
     #   * roles            Lowercase-only, any combination of: u, a, c, l, d, f, m
@@ -65,7 +67,12 @@ module BeakerHostGenerator
     #   * agent
     #   * database
     #
-    NODE_REGEX = /\A(?<bits>[A-Z0-9]+|\d+)((?<arbitrary_roles>(?:[[:lower:]_][[:lower:]0-9_]*|,)*)\.)?(?<roles>[uacldfm]*)(?<host_settings>\{[[:print:]]*\})?\Z/
+    NODE_REGEX = /
+      \A(?<bits>[A-Z0-9]+|\d+)
+      (?:(?<arbitrary_roles>(?:#{ARBITRARY_ROLE}(?:,#{ARBITRARY_ROLE})*)?)\.)?
+      (?<roles>[uacldfm]*)
+      (?<host_settings>\{[[:print:]]*\})?\Z
+    /x
 
     module_function
 
