@@ -33,6 +33,18 @@ module BeakerHostGenerator
         # Oracle publishes its own boxes (including libvirt) in a catalog rather
         # than on Vagrant Cloud, so the box needs to be fetched from there.
         # https://yum.oracle.com/boxes/
+        'oracle7' => {
+          'box' => 'oraclelinux/7',
+          'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json',
+        },
+        'oracle8' => {
+          'box' => 'oraclelinux/8',
+          'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json',
+        },
+        'oracle9' => {
+          'box' => 'oraclelinux/9',
+          'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/9.json',
+        },
         'oracle10' => {
           'box' => 'oraclelinux/10',
           'box_url' => 'https://oracle.github.io/vagrant-projects/boxes/oraclelinux/10.json',
@@ -68,8 +80,11 @@ module BeakerHostGenerator
       # are taken to have 64 bit and AARCH64 builds.
       DEFAULT_BOX_OVERRIDE_BITS = %w[64 AARCH64].freeze
       BOX_OVERRIDE_BITS = {
-        # The x86_64 box in BOX_OVERRIDES is for 64 bit only. The aarch64 boxes
+        # These Oracle catalogs are for x86_64 only. The aarch64 boxes
         # are in PROVIDER_PLATFORM_BOX_OVERRIDES, which is checked first.
+        'oracle7' => %w[64].freeze,
+        'oracle8' => %w[64].freeze,
+        'oracle9' => %w[64].freeze,
         'oracle10' => %w[64].freeze,
       }.freeze
 
@@ -111,14 +126,6 @@ module BeakerHostGenerator
         # back to generic/debian13 (see BOX_OVERRIDES for generic/).
         'debian13-AARCH64' => {
           'box' => 'cloud-image/debian-13',
-        },
-        # The official almalinux/<version> boxes have no aarch64 build for
-        # libvirt or VirtualBox. https://wiki.almalinux.org/installation/vagrant-boxes
-        'almalinux9-AARCH64' => {
-          'box' => 'cloud-image/almalinux-9',
-        },
-        'almalinux10-AARCH64' => {
-          'box' => 'cloud-image/almalinux-10',
         },
       }.freeze
 
@@ -171,6 +178,14 @@ module BeakerHostGenerator
                              end
 
         case node_info['platform']
+        when /\Aalmalinux(8|9|10)-(?:64|AARCH64)\z/
+          # The vendor catalog has ARM64 boxes for VirtualBox. The libvirt
+          # fallback is hosted on HCP Vagrant until 31 December 2026.
+          if node_info['bits'] == 'AARCH64' && @name == 'vagrant_libvirt'
+            base_config['box'] = "cloud-image/almalinux-#{Regexp.last_match(1)}"
+          elsif !node_info['host_settings'].key?('box')
+            base_config['box_url'] = "https://vagrant.almalinux.org/#{base_config['box']}"
+          end
         when /^debian(\d+)-64/
           version = Regexp.last_match(1)
           if (codename = DEBIAN_VERSION_CODES[version])

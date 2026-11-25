@@ -1,5 +1,5 @@
 ---
-arguments_string: "--hypervisor vagrant_libvirt oracle10-64a{box_url=https://example.com/oracle.json}-rocky10-64a{box_url=https://example.com/rocky.json}"
+arguments_string: "--hypervisor vagrant_libvirt oracle10-64a{box_url=https://example.com/oracle.json}-rocky10-64a{box_url=https://example.com/rocky.json}-almalinux9-AARCH64a{hypervisor=vagrant,box_url=https://example.com/almalinux.json}"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -17,6 +17,14 @@ expected_hash:
       platform: el-10-x86_64
       hypervisor: vagrant_libvirt
       box_url: https://example.com/rocky.json
+      roles:
+      - agent
+    almalinux9-AARCH64-1:
+      box: almalinux/9
+      synced_folder: disabled
+      platform: el-9-aarch64
+      hypervisor: vagrant
+      box_url: https://example.com/almalinux.json
       roles:
       - agent
   CONFIG: {}
