@@ -16,6 +16,7 @@ host config files using a compact command line SUT specification.
 - [Beaker Host Generator](#beaker-host-generator)
     - [Hypervisors](#hypervisors)
         - [Docker](#docker)
+        - [Vagrant box catalogs](#vagrant-box-catalogs)
     - [Usage](#usage)
         - [Simple two-host layout](#simple-two-host-layout)
         - [Single host with Arbitrary Roles](#single-host-with-arbitrary-roles)
@@ -75,6 +76,18 @@ contradict each other.
 `docker_platform` is an ordinary host setting, so it can be overridden to refine
 the generated value for a single host while the architecture stays the same,
 e.g. `ubuntu2204-AARCH64{docker_platform=linux/arm64/v8}`.
+
+### Vagrant box catalogs
+
+The generated config includes a vendor catalog URL for Oracle Linux 7–10 and
+AlmaLinux 8–10 on x86_64. Use Vagrant 2.4 or newer for AlmaLinux 9 and 10
+with VirtualBox, on ARM64 and x86_64 alike. Their ARM64 libvirt defaults use
+`cloud-image/` boxes from HCP Vagrant, which shuts down on 31 December 2026.
+To use a different box, supply `{box=...}` and, if needed, `box_url` in the same host settings.
+
+If you already have an AlmaLinux box installed from HCP Vagrant, follow the
+vendor's migration steps to refresh its cached catalog URL.
+[AlmaLinux catalog migration guide](https://almalinux.org/blog/2026-11-02-vagrant-catalog/#boxes-you-already-have)
 
 ## Usage
 

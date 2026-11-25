@@ -1,5 +1,5 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux9-64a-AARCH64a-almalinux10-64a-AARCH64a
+arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux8-64a-almalinux9-64a-AARCH64a-AARCH64a{hypervisor=vagrant}-almalinux10-64a-AARCH64a-AARCH64a{hypervisor=vagrant}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -17,8 +17,17 @@ expected_hash:
       hypervisor: vagrant_libvirt
       roles:
       - agent
+    almalinux8-64-1:
+      box: almalinux/8
+      box_url: https://vagrant.almalinux.org/almalinux/8
+      synced_folder: disabled
+      platform: el-8-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
     almalinux9-64-1:
       box: almalinux/9
+      box_url: https://vagrant.almalinux.org/almalinux/9
       synced_folder: disabled
       platform: el-9-x86_64
       hypervisor: vagrant_libvirt
@@ -31,8 +40,17 @@ expected_hash:
       hypervisor: vagrant_libvirt
       roles:
       - agent
+    almalinux9-AARCH64-3:
+      box: almalinux/9
+      box_url: https://vagrant.almalinux.org/almalinux/9
+      synced_folder: disabled
+      platform: el-9-aarch64
+      hypervisor: vagrant
+      roles:
+      - agent
     almalinux10-64-1:
       box: almalinux/10
+      box_url: https://vagrant.almalinux.org/almalinux/10
       synced_folder: disabled
       platform: el-10-x86_64
       hypervisor: vagrant_libvirt
@@ -43,6 +61,14 @@ expected_hash:
       synced_folder: disabled
       platform: el-10-aarch64
       hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    almalinux10-AARCH64-3:
+      box: almalinux/10
+      box_url: https://vagrant.almalinux.org/almalinux/10
+      synced_folder: disabled
+      platform: el-10-aarch64
+      hypervisor: vagrant
       roles:
       - agent
   CONFIG: {}
