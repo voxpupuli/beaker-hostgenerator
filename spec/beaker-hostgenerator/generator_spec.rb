@@ -14,6 +14,18 @@ module BeakerHostGenerator
         config = generator.generate('centos9-64abc,def6,default.a', hypervisor: 'vmpooler')
         expect(config.fetch('HOSTS').fetch('centos9-64-1').fetch('roles')).to eq(%w[agent abc def6 default])
       end
+
+      it 'rejects empty entries in an arbitrary role list' do
+        expect { generator.generate('centos9-64abc,,def.a', hypervisor: 'vmpooler') }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, /Invalid node_info token: 64abc,,def\.a/)
+      end
+
+      it 'preserves static roles and host settings after an empty arbitrary role list' do
+        config = generator.generate('centos9-64.m{foo=bar}', hypervisor: 'vmpooler')
+        host = config.fetch('HOSTS').fetch('centos9-64-1')
+
+        expect(host.values_at('roles', 'foo')).to eq([%w[agent master], 'bar'])
+      end
     end
 
     describe 'get_host_roles' do
