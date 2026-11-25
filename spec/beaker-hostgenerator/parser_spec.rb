@@ -287,5 +287,52 @@ module BeakerHostGenerator
         end
       end
     end
+
+    describe 'tokenize_layout' do
+      it 'Splits the layout on dashes' do
+        expect(tokenize_layout('centos9-64m-debian11-64a'))
+          .to eq(%w[centos9 64m debian11 64a])
+      end
+
+      it 'Keeps dashes that are inside braces' do
+        expect(tokenize_layout('centos9-64m{hostname=foo-bar}-debian11-64'))
+          .to eq(['centos9', '64m{hostname=foo-bar}', 'debian11', '64'])
+      end
+
+      it 'Keeps dashes that come after a nested hash has closed' do
+        expect(tokenize_layout('centos9-64m{a={b=c},hostname=foo-bar}-64a'))
+          .to eq(['centos9', '64m{a={b=c},hostname=foo-bar}', '64a'])
+      end
+
+      it 'Keeps dashes on both sides of a nested hash' do
+        expect(tokenize_layout('centos9-64m{x=a-b,a={b=c-d},y=e-f}-64a'))
+          .to eq(['centos9', '64m{x=a-b,a={b=c-d},y=e-f}', '64a'])
+      end
+
+      it 'Preserves literal pipes in host settings' do
+        expect(tokenize_layout('centos9-64m{a={pattern=foo|bar-baz}}-64a'))
+          .to eq(['centos9', '64m{a={pattern=foo|bar-baz}}', '64a'])
+      end
+
+      it 'Preserves interior empty tokens and discards trailing delimiters' do
+        expect(tokenize_layout('centos9--64a--')).to eq(['centos9', '', '64a'])
+      end
+
+      it 'Rejects a stray closing brace' do
+        expect { tokenize_layout('centos9-64m}-64a') }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, "Unmatched '}' in host layout")
+      end
+
+      it 'Rejects an unclosed brace block' do
+        expect { tokenize_layout('centos9-64m{a=b-debian11-64a') }
+          .to raise_error(BeakerHostGenerator::Exceptions::InvalidNodeSpecError, "Unclosed '{' in host layout")
+      end
+
+      it 'Does not modify the input string' do
+        layout = 'centos9-64m{hostname=foo-bar}-64a'
+        tokenize_layout(layout)
+        expect(layout).to eq('centos9-64m{hostname=foo-bar}-64a')
+      end
+    end
   end
 end
