@@ -1,5 +1,5 @@
 ---
-arguments_string: redhat7-64role_a,role_b.m{hypervisor=none,hostname=redhat,vmhostname=vm-redhat,ip=1.2.3.4}-sles11-32a-64a{key=value-with-dashes}-64dc
+arguments_string: redhat7-64role_a,role_b.m{hypervisor=none,hostname=redhat,vmhostname=vm-redhat,ip=1.2.3.4}-sles11-32a-64a{key=value-with-dashes,n={x=one|two-three}}-64dc
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -24,6 +24,8 @@ expected_hash:
       platform: sles-11-x86_64
       template: sles-11-x86_64
       key: value-with-dashes
+      "n":
+        x: one|two-three
       roles:
       - agent
     sles11-64-3:
