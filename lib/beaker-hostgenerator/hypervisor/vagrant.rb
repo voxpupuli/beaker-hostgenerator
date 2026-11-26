@@ -160,6 +160,9 @@ module BeakerHostGenerator
       # 31 December 2026. https://dl.rockylinux.org/pub/rocky/<version>/images/
       ROCKY_BOX_VERSIONS = %w[9 10].freeze
 
+      # Release compose IDs appearing in Fedora's official box filenames.
+      FEDORA_BOX_COMPOSES = { '44' => '1.7', '45' => '1.4' }.freeze
+
       # Architecture in box file names, by beaker-hostgenerator bits.
       BOX_FILE_ARCHITECTURES = {
         '64' => 'x86_64',
@@ -204,6 +207,8 @@ module BeakerHostGenerator
           # Like the box overrides below, a box picked by the user replaces this
           box_url = centos_stream_box_url(version)
           base_config['box_url'] = box_url if box_url && !node_info['host_settings'].key?('box')
+        when /\Afedora(44|45)-(?:64|AARCH64)\z/
+          apply_fedora_box(node_info, base_config, Regexp.last_match(1))
         when /^rocky(\d+)-/
           version = Regexp.last_match(1)
           apply_rocky_box(node_info, base_config, version) if ROCKY_BOX_VERSIONS.include?(version)
@@ -258,6 +263,24 @@ module BeakerHostGenerator
         file = "Rocky-#{version}-Vagrant-#{provider['rocky_label']}.latest.#{arch}.vagrant.#{provider['provider']}.box"
         base_config['box'] = "rockylinux-#{version}-#{arch}"
         base_config['box_url'] = "https://dl.rockylinux.org/pub/rocky/#{version}/images/#{arch}/#{file}"
+      end
+
+      def apply_fedora_box(node_info, base_config, version)
+        return if node_info['host_settings'].key?('box')
+
+        arch = BOX_FILE_ARCHITECTURES.fetch(node_info['bits'])
+        provider = MIRROR_BOX_PROVIDERS.fetch(@name).fetch('provider')
+        if arch == 'aarch64' && provider == 'virtualbox'
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "No default Vagrant box for #{node_info['platform']} with #{@name}. " \
+                'Specify a provider-compatible box with {box=...}.'
+        end
+
+        label = (provider == 'virtualbox') ? 'VirtualBox' : provider
+        compose = FEDORA_BOX_COMPOSES.fetch(version)
+        file = "Fedora-Cloud-Base-Vagrant-#{label}-#{version}-#{compose}.#{arch}.vagrant.#{provider}.box"
+        base_config['box'] = "fedora-#{version}-#{arch}"
+        base_config['box_url'] = "https://download.fedoraproject.org/pub/fedora/linux/releases/#{version}/Cloud/#{arch}/images/#{file}"
       end
 
       # Replaces the default box with the PROVIDER_PLATFORM_BOX_OVERRIDES,

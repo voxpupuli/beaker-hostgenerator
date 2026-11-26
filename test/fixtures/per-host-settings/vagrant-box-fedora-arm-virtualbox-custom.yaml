@@ -1,0 +1,22 @@
+---
+arguments_string: --hypervisor vagrant fedora44-AARCH64a{box=company/fedora44}-fedora45-AARCH64a{box=company/fedora45,box_url=https://example.com/fedora45.box}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora44-AARCH64-1:
+      box: company/fedora44
+      synced_folder: disabled
+      platform: fedora-44-aarch64
+      hypervisor: vagrant
+      roles:
+      - agent
+    fedora45-AARCH64-1:
+      box: company/fedora45
+      box_url: https://example.com/fedora45.box
+      synced_folder: disabled
+      platform: fedora-45-aarch64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

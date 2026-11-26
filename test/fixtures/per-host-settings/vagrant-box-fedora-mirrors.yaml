@@ -1,0 +1,55 @@
+---
+arguments_string: --hypervisor vagrant_libvirt fedora44-64a-AARCH64a-64a{hypervisor=vagrant}-fedora45-64a-AARCH64a-64a{hypervisor=vagrant}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    fedora44-64-1:
+      box: fedora-44-x86_64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-libvirt-44-1.7.x86_64.vagrant.libvirt.box
+      synced_folder: disabled
+      platform: fedora-44-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora44-AARCH64-2:
+      box: fedora-44-aarch64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/aarch64/images/Fedora-Cloud-Base-Vagrant-libvirt-44-1.7.aarch64.vagrant.libvirt.box
+      synced_folder: disabled
+      platform: fedora-44-aarch64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora44-64-3:
+      box: fedora-44-x86_64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-VirtualBox-44-1.7.x86_64.vagrant.virtualbox.box
+      synced_folder: disabled
+      platform: fedora-44-x86_64
+      hypervisor: vagrant
+      roles:
+      - agent
+    fedora45-64-1:
+      box: fedora-45-x86_64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-libvirt-45-1.4.x86_64.vagrant.libvirt.box
+      synced_folder: disabled
+      platform: fedora-45-x86_64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora45-AARCH64-2:
+      box: fedora-45-aarch64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/aarch64/images/Fedora-Cloud-Base-Vagrant-libvirt-45-1.4.aarch64.vagrant.libvirt.box
+      synced_folder: disabled
+      platform: fedora-45-aarch64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
+    fedora45-64-3:
+      box: fedora-45-x86_64
+      box_url: https://download.fedoraproject.org/pub/fedora/linux/releases/45/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-VirtualBox-45-1.4.x86_64.vagrant.virtualbox.box
+      synced_folder: disabled
+      platform: fedora-45-x86_64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

@@ -48,8 +48,8 @@ jobs:
           - centos10-64
           - debian12-64
           - debian13-64
-          - fedora42-64
-          - fedora43-64
+          - fedora44-64
+          - fedora45-64
           - oracle9-64
           - oracle10-64
           - rocky9-64
