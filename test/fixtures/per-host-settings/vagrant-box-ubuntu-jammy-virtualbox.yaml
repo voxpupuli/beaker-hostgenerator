@@ -1,0 +1,22 @@
+---
+arguments_string: --hypervisor vagrant ubuntu2204-64a-64a{box=custom/jammy}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2204-64-1:
+      box: ubuntu-jammy-amd64
+      box_url: https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64-vagrant.box
+      synced_folder: disabled
+      platform: ubuntu-22.04-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+    ubuntu2204-64-2:
+      box: custom/jammy
+      synced_folder: disabled
+      platform: ubuntu-22.04-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

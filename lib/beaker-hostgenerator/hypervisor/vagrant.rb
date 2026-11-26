@@ -97,6 +97,13 @@ module BeakerHostGenerator
       # VirtualBox only (the "Apple Silicon" boxes). The libvirt boxes are
       # x86_64 only. https://yum.oracle.com/boxes/
       PROVIDER_PLATFORM_BOX_OVERRIDES = {
+        'ubuntu2204-64' => {
+          'vagrant' => {
+            'box' => 'ubuntu-jammy-amd64',
+            'box_url' => 'https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64-vagrant.box',
+          },
+          'vagrant_libvirt' => BOX_OVERRIDES.fetch('ubuntu2204'),
+        },
         'oracle8-AARCH64' => {
           'vagrant' => {
             'box' => 'oraclelinux/8-aarch64',
