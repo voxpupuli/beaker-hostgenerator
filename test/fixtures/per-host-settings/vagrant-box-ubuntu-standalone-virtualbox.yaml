@@ -1,0 +1,31 @@
+---
+arguments_string: --hypervisor vagrant ubuntu2404-64a-ubuntu2604-64a-64a{box_url=https://example.com/ubuntu.json}
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    ubuntu2404-64-1:
+      box: cloudsoe/ubuntu-24.04
+      box_url: https://boxes.cloudsoe.com/cloudsoe/ubuntu-24.04.json
+      synced_folder: disabled
+      platform: ubuntu-24.04-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+    ubuntu2604-64-1:
+      box: cloudsoe/ubuntu-26.04
+      box_url: https://boxes.cloudsoe.com/cloudsoe/ubuntu-26.04.json
+      synced_folder: disabled
+      platform: ubuntu-26.04-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+    ubuntu2604-64-2:
+      box: cloudsoe/ubuntu-26.04
+      box_url: https://example.com/ubuntu.json
+      synced_folder: disabled
+      platform: ubuntu-26.04-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:

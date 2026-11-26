@@ -129,6 +129,14 @@ module BeakerHostGenerator
       # These take precedence over BOX_OVERRIDES. The cloud-image/ boxes are
       # temporary, as explained at BOX_OVERRIDES.
       PLATFORM_BOX_OVERRIDES = {
+        'ubuntu2404-64' => {
+          'box' => 'cloudsoe/ubuntu-24.04',
+          'box_url' => 'https://boxes.cloudsoe.com/cloudsoe/ubuntu-24.04.json',
+        },
+        'ubuntu2604-64' => {
+          'box' => 'cloudsoe/ubuntu-26.04',
+          'box_url' => 'https://boxes.cloudsoe.com/cloudsoe/ubuntu-26.04.json',
+        },
         # The debian/ boxes are only mapped for 64 bit, so ARM64 would fall
         # back to generic/debian13 (see BOX_OVERRIDES for generic/).
         'debian13-AARCH64' => {
