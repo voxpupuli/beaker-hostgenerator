@@ -1,0 +1,30 @@
+---
+arguments_string: --hypervisor vagrant debian12-64a-64a{box=company/bookworm}-debian13-64a
+environment_variables: {}
+expected_hash:
+  HOSTS:
+    debian12-64-1:
+      box: cloudsoe/debian-12
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-12.json
+      synced_folder: disabled
+      platform: debian-12-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+    debian12-64-2:
+      box: company/bookworm
+      synced_folder: disabled
+      platform: debian-12-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+    debian13-64-1:
+      box: cloudsoe/debian-13
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-13.json
+      synced_folder: disabled
+      platform: debian-13-amd64
+      hypervisor: vagrant
+      roles:
+      - agent
+  CONFIG: {}
+expected_exception:
