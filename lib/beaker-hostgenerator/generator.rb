@@ -111,8 +111,12 @@ module BeakerHostGenerator
     # subsequent arrays to convert numbers or booleans into proper integer
     # or boolean types.
     def unstringify_values!(config)
+      vagrant_hypervisors = %w[vagrant vagrant_libvirt]
       config['HOSTS'].each do |host, settings|
         settings.each do |k, v|
+          # Vagrant's box name is a string even when it looks like an integer or boolean.
+          next if k == 'box' && vagrant_hypervisors.include?(settings['hypervisor'])
+
           config['HOSTS'][host][k] = unstringify_value(v)
         end
       end

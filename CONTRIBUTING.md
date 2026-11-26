@@ -52,3 +52,19 @@ provided by [Semantic Versioning 2.0.0](http://semver.org).
 * [Contributor License Agreement](http://links.puppetlabs.com/cla)
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
+
+### Vagrant smoke tests
+
+Run `.github/scripts/vagrant-smoke.sh rocky10-AARCH64 libvirt` on a native ARM64
+host or `.github/scripts/vagrant-smoke.sh rocky10-64 virtualbox` on an x86_64
+host. Install Vagrant 2.4 or newer, the provider and the bundle first. The
+libvirt provider also needs the `vagrant-libvirt` plugin.
+
+To enable the manual **Native Vagrant smoke** workflow upstream, provision
+Linux runners with Ruby, Bundler, Vagrant 2.4 or newer and a working provider.
+Label the ARM64 runner `vagrant-libvirt` and the x86_64 runner
+`vagrant-virtualbox`. The libvirt runner also needs the build dependencies
+for installing the plugin. Set the repository variable
+`ENABLE_NATIVE_VAGRANT_SMOKE` to `true`, then dispatch from the default branch
+with a platform matching the runner. Each dispatch downloads into a fresh
+Vagrant home.

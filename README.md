@@ -79,11 +79,32 @@ e.g. `ubuntu2204-AARCH64{docker_platform=linux/arm64/v8}`.
 
 ### Vagrant box catalogs
 
-The generated config includes a vendor catalog URL for Oracle Linux 7–10 and
-AlmaLinux 8–10 on x86_64. Use Vagrant 2.4 or newer for AlmaLinux 9 and 10
-with VirtualBox, on ARM64 and x86_64 alike. Their ARM64 libvirt defaults use
-`cloud-image/` boxes from HCP Vagrant, which shuts down on 31 December 2026.
-To use a different box, supply `{box=...}` and, if needed, `box_url` in the same host settings.
+The `vagrant` (VirtualBox) and `vagrant_libvirt` hypervisors use direct
+downloads and standalone Vagrant catalogs. Built-in downloads depend on
+the release, provider and architecture. Use Vagrant 2.4 or newer for
+catalogs with multiple architectures.
+
+| Platform | Built-in Vagrant downloads |
+| --- | --- |
+| AlmaLinux 8–10 | x86_64 on both providers, ARM64 on VirtualBox for 9 and 10 |
+| CentOS Stream 8–10 | x86_64 on both providers |
+| Debian 12 and 13 | x86_64 on both providers |
+| Fedora 44 and 45 | x86_64 on both providers, ARM64 on libvirt |
+| Oracle Linux 7–10 | x86_64 on both providers, ARM64 on VirtualBox for 8–10 |
+| Rocky Linux 8 | x86_64 on VirtualBox |
+| Rocky Linux 9 and 10 | x86_64 and ARM64 on both providers |
+| Ubuntu 22.04 | x86_64 on VirtualBox |
+| Ubuntu 24.04 and 26.04 | x86_64 on both providers |
+
+For Amazon Linux 2023, other operating systems, and combinations without
+a built-in download, supply a provider-compatible box with `{box=...}` or
+`{box=...,box_url=...}`. This also lets you supply your own box for any listed
+platform. The generated defaults no longer rely on HCP Vagrant.
+
+Rocky Linux 8 uses the official x86_64 mirror box with VirtualBox. For libvirt,
+supply a provider-compatible box with `{box=...}` or `{box=...,box_url=...}`.
+The vendor libvirt image needs a rebuild with the
+[BIOS boot fix](https://github.com/rocky-linux/kickstarts/pull/9).
 
 If you already have an AlmaLinux box installed from HCP Vagrant, follow the
 vendor's migration steps to refresh its cached catalog URL.

@@ -15,6 +15,7 @@ on:
       - .github/scripts/vagrant-smoke.sh
       # Box mappings: a PR that changes them should show whether the boxes boot
       - lib/beaker-hostgenerator/hypervisor/vagrant.rb
+      - lib/beaker-hostgenerator/data.rb
 
 permissions:
   contents: read
@@ -42,19 +43,18 @@ jobs:
         platform:
           - almalinux9-64
           - almalinux10-64
-          # amazon2023-64: the cloud-image/amazon-linux-2023 libvirt artifact
-          # returns HTTP 400 (artifact not ready). Re-add once downloadable.
           - centos9-64
           - centos10-64
           - debian12-64
           - debian13-64
-          - fedora42-64
-          - fedora43-64
+          - fedora44-64
+          - fedora45-64
           - oracle9-64
           - oracle10-64
+          # Rocky 8 libvirt requires a custom box until the BIOS boot fix ships.
+          # https://github.com/rocky-linux/kickstarts/pull/9
           - rocky9-64
           - rocky10-64
-          - ubuntu2204-64
           - ubuntu2404-64
           - ubuntu2604-64
     steps:

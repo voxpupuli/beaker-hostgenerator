@@ -1,5 +1,5 @@
 ---
-arguments_string: centos9-64m{hypervisor=vmpooler}-debian11-64a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian10-64a{hypervisor=docker}-ubuntu1804-64{hypervisor=vagrant}-debian11-64{hypervisor=vagrant_libvirt}
+arguments_string: centos9-64m{hypervisor=vmpooler}-debian11-64a{hypervisor=none}-redhat7-64f{hypervisor=abs}-debian10-64a{hypervisor=docker}-ubuntu1804-64{hypervisor=vagrant,box=company/ubuntu1804}-debian11-64{hypervisor=vagrant_libvirt,box=company/debian11}
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -37,14 +37,14 @@ expected_hash:
       - agent
     ubuntu1804-64-1:
       hypervisor: vagrant
-      box: generic/ubuntu1804
+      box: company/ubuntu1804
       synced_folder: disabled
       platform: ubuntu-18.04-amd64
       roles:
       - agent
     debian11-64-2:
       hypervisor: vagrant_libvirt
-      box: debian/bullseye64
+      box: company/debian11
       synced_folder: disabled
       platform: debian-11-amd64
       roles:

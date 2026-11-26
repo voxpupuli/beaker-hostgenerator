@@ -1,25 +1,36 @@
 #!/usr/bin/env bash
 #
 # Boot the Vagrant box that beaker-hostgenerator generates for a platform and
-# check that it comes up under libvirt, answers over SSH, resolves names and can
+# check that it comes up under the chosen provider, answers over SSH, resolves names and can
 # refresh its package metadata.
 #
 # The regular test suite only compares generated host configs with fixtures,
 # so it cannot notice a box that was removed, moved or no longer boots.
 #
-# Usage: .github/scripts/vagrant-smoke.sh <platform>
-#   e.g. .github/scripts/vagrant-smoke.sh rocky10-64
+# Usage: .github/scripts/vagrant-smoke.sh <platform> [libvirt|virtualbox]
+#   e.g. .github/scripts/vagrant-smoke.sh rocky10-AARCH64 libvirt
 #
-# Needs Vagrant 2.4 or newer with vagrant-libvirt, a working libvirt and the
-# gems from the Gemfile (bundle install).
+# Needs Vagrant 2.4 or newer, a working provider (including the vagrant-libvirt
+# plugin for libvirt), and the gems from the Gemfile (bundle install).
 #
-# The box is left in the local Vagrant cache afterwards, because a box with
-# the same name may have been there before the test. Set SMOKE_REMOVE_BOX=1
-# to remove it (all its libvirt versions) when the test is done.
+# The box is left in the local Vagrant cache afterwards. Set SMOKE_REMOVE_BOX=1
+# to remove all its versions for the chosen provider when the test is done.
+# Use an empty VAGRANT_HOME with the provider installed to test a fresh download.
 
 set -euo pipefail
 
-platform=${1:?usage: $0 <platform>, e.g. rocky10-64}
+usage="usage: $0 <platform> [libvirt|virtualbox], e.g. rocky10-64 libvirt"
+platform=${1:?${usage}}
+provider=${2-libvirt}
+
+case "$provider" in
+  libvirt) hypervisor=vagrant_libvirt ;;
+  virtualbox) hypervisor=vagrant ;;
+  *)
+    echo "$usage" >&2
+    exit 2
+    ;;
+esac
 
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
@@ -45,7 +56,7 @@ fail() {
   else
     printf '%s\n%s\n' "$title" "$message" >&2
   fi
-  summary "❌ **${platform}** (\`${SMOKE_BOX:-no box}\`): ${title}"
+  summary "❌ **${platform} (${provider})** (\`${SMOKE_BOX:-no box}\`): ${title}"
   exit 1
 }
 
@@ -82,7 +93,7 @@ cleanup() {
   if [ -f "$workdir/Vagrantfile" ]; then
     (cd "$workdir" && vagrant destroy -f) || true
     if [ -n "${SMOKE_BOX:-}" ] && [ "${SMOKE_REMOVE_BOX:-}" = 1 ]; then
-      vagrant box remove "$SMOKE_BOX" --provider libvirt --all || true
+      vagrant box remove "$SMOKE_BOX" --provider "$provider" --all || true
     fi
   fi
   rm -rf "$workdir"
@@ -90,7 +101,7 @@ cleanup() {
 trap cleanup EXIT
 
 echo "::group::Generate host config for ${platform}"
-if ! hosts=$(cd "$root" && bundle exec ruby bin/beaker-hostgenerator --hypervisor vagrant_libvirt "${platform}a" 2>"$workdir/generate.err"); then
+if ! hosts=$(cd "$root" && bundle exec ruby bin/beaker-hostgenerator --hypervisor "$hypervisor" "${platform}a" 2>"$workdir/generate.err"); then
   cat "$workdir/generate.err" >&2
   echo "::endgroup::"
   fail "beaker-hostgenerator failed" "$(error_tail "$workdir/generate.err")"
@@ -113,7 +124,7 @@ fi
 
 export SMOKE_BOX=$box
 export SMOKE_BOX_URL=${box_url:-}
-export VAGRANT_DEFAULT_PROVIDER=libvirt
+export VAGRANT_DEFAULT_PROVIDER=$provider
 
 cd "$workdir"
 
@@ -125,9 +136,9 @@ Vagrant.configure('2') do |config|
   config.vm.box_url = box_url unless box_url.empty?
   config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.boot_timeout = 600
-  config.vm.provider :libvirt do |libvirt|
-    libvirt.cpus = 2
-    libvirt.memory = 2048
+  config.vm.provider ENV.fetch('VAGRANT_DEFAULT_PROVIDER') do |provider|
+    provider.cpus = 2
+    provider.memory = 2048
   end
 end
 EOF
@@ -145,7 +156,7 @@ attempts=3
 up_ok=''
 echo "::group::vagrant up ${platform} (box=${SMOKE_BOX} box_url=${SMOKE_BOX_URL:-none})"
 for attempt in $(seq 1 "$attempts"); do
-  if vagrant up --provider=libvirt 2>&1 | tee up.log; then
+  if vagrant up --provider="$provider" 2>&1 | tee up.log; then
     up_ok=1
     break
   fi
@@ -237,5 +248,5 @@ cat refresh.log
 echo "::endgroup::"
 
 os_name=$(grep -m 1 '^PRETTY_NAME=' os-release | cut -d= -f2- | tr -d '"\r') || true
-summary "✅ **${platform}** (\`${SMOKE_BOX}\`): booted ${os_name:-unknown OS}, ${actual_arch}"
+summary "✅ **${platform} (${provider})** (\`${SMOKE_BOX}\`): booted ${os_name:-unknown OS}, ${actual_arch}"
 echo "${platform}: box ${SMOKE_BOX} booted"
