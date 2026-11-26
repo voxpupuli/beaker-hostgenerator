@@ -1,0 +1,43 @@
+name: Native Vagrant smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Provider and native runner
+        type: choice
+        options:
+          - arm64-libvirt
+          - x64-virtualbox
+        required: true
+      platform:
+        description: Beaker platform matching the runner (for example, rocky10-AARCH64)
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    # Native runners must be provisioned before enabling this workflow.
+    # Dispatch from the upstream default branch to run reviewed code.
+    if: github.repository == 'voxpupuli/beaker-hostgenerator' && github.ref_name == github.event.repository.default_branch && vars.ENABLE_NATIVE_VAGRANT_SMOKE == 'true'
+    runs-on: ${{ fromJSON(inputs.target == 'arm64-libvirt' && '["self-hosted","linux","ARM64","vagrant-libvirt"]' || '["self-hosted","linux","X64","vagrant-virtualbox"]') }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Boot and check the guest
+        env:
+          PLATFORM: ${{ inputs.platform }}
+          PROVIDER: ${{ inputs.target == 'arm64-libvirt' && 'libvirt' || 'virtualbox' }}
+        run: |
+          export VAGRANT_HOME="$(mktemp -d)"
+          trap 'rm -rf "$VAGRANT_HOME"' EXIT
+          bundle install
+          if [ "$PROVIDER" = libvirt ]; then
+            vagrant plugin install vagrant-libvirt --plugin-version 0.12.2
+          fi
+          .github/scripts/vagrant-smoke.sh "$PLATFORM" "$PROVIDER"
