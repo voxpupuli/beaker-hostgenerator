@@ -85,6 +85,11 @@ with VirtualBox, on ARM64 and x86_64 alike. Their ARM64 libvirt defaults use
 `cloud-image/` boxes from HCP Vagrant, which shuts down on 31 December 2026.
 To use a different box, supply `{box=...}` and, if needed, `box_url` in the same host settings.
 
+Rocky Linux 8 uses the official x86_64 mirror box with VirtualBox. For libvirt,
+supply a provider-compatible box with `{box=...}` or `{box=...,box_url=...}`.
+The vendor libvirt image needs a rebuild with the
+[BIOS boot fix](https://github.com/rocky-linux/kickstarts/pull/9).
+
 If you already have an AlmaLinux box installed from HCP Vagrant, follow the
 vendor's migration steps to refresh its cached catalog URL.
 [AlmaLinux catalog migration guide](https://almalinux.org/blog/2026-11-02-vagrant-catalog/#boxes-you-already-have)
