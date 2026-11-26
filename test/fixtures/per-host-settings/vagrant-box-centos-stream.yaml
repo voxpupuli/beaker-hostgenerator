@@ -1,5 +1,5 @@
 ---
-arguments_string: "--hypervisor vagrant_libvirt centos10-64a-centos9-64a{hypervisor=vagrant}-centos7-64a-centos9-64a{box=company/centos9}"
+arguments_string: "--hypervisor vagrant_libvirt centos10-64a-centos9-64a{hypervisor=vagrant}-centos9-64a{box=company/centos9}"
 environment_variables: {}
 expected_hash:
   HOSTS:
@@ -17,13 +17,6 @@ expected_hash:
       synced_folder: disabled
       platform: el-9-x86_64
       hypervisor: vagrant
-      roles:
-      - agent
-    centos7-64-1:
-      box: centos/7
-      synced_folder: disabled
-      platform: el-7-x86_64
-      hypervisor: vagrant_libvirt
       roles:
       - agent
     centos9-64-2:

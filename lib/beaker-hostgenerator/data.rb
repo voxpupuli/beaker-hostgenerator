@@ -135,9 +135,6 @@ module BeakerHostGenerator
                         general: {
                           'platform' => 'archlinux-rolling-x64',
                         },
-                        vagrant: {
-                          'box' => 'archlinux/archlinux',
-                        },
                         docker: {
                           'image' => 'archlinux/archlinux',
                         },
@@ -769,11 +766,12 @@ module BeakerHostGenerator
       end
 
       # Fedora
-      (19..44).each do |release|
+      (19..45).each do |release|
         # 32 bit support was dropped in Fedora 31
         yield ["fedora#{release}-32", "fedora-#{release}-i386"] if release < 31
 
         yield ["fedora#{release}-64", "fedora-#{release}-x86_64"]
+        yield ["fedora#{release}-AARCH64", "fedora-#{release}-aarch64"] if release >= 44
       end
 
       # Ubuntu

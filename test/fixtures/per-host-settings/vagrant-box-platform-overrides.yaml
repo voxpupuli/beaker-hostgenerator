@@ -1,19 +1,21 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux8-64a-almalinux9-64a-AARCH64a-AARCH64a{hypervisor=vagrant}-almalinux10-64a-AARCH64a-AARCH64a{hypervisor=vagrant}
+arguments_string: --hypervisor vagrant_libvirt debian12-64a-debian13-64a-almalinux8-64a-almalinux9-64a-AARCH64a{box=company/almalinux9}-AARCH64a{hypervisor=vagrant}-almalinux10-64a-AARCH64a{box=company/almalinux10}-AARCH64a{hypervisor=vagrant}
 environment_variables: {}
 expected_hash:
   HOSTS:
-    debian13-64-1:
-      box: debian/trixie64
+    debian12-64-1:
+      box: cloudsoe/debian-12
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-12.json
       synced_folder: disabled
-      platform: debian-13-amd64
+      platform: debian-12-amd64
       hypervisor: vagrant_libvirt
       roles:
       - agent
-    debian13-AARCH64-2:
-      box: cloud-image/debian-13
+    debian13-64-1:
+      box: cloudsoe/debian-13
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-13.json
       synced_folder: disabled
-      platform: debian-13-aarch64
+      platform: debian-13-amd64
       hypervisor: vagrant_libvirt
       roles:
       - agent
@@ -34,7 +36,7 @@ expected_hash:
       roles:
       - agent
     almalinux9-AARCH64-2:
-      box: cloud-image/almalinux-9
+      box: company/almalinux9
       synced_folder: disabled
       platform: el-9-aarch64
       hypervisor: vagrant_libvirt
@@ -57,7 +59,7 @@ expected_hash:
       roles:
       - agent
     almalinux10-AARCH64-2:
-      box: cloud-image/almalinux-10
+      box: company/almalinux10
       synced_folder: disabled
       platform: el-10-aarch64
       hypervisor: vagrant_libvirt
