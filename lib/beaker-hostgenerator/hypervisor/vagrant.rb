@@ -158,7 +158,7 @@ module BeakerHostGenerator
       # Rocky Linux releases whose boxes are fetched from Rocky's own mirror
       # rather than Vagrant Cloud (HCP Vagrant), which ends operations on
       # 31 December 2026. https://dl.rockylinux.org/pub/rocky/<version>/images/
-      ROCKY_BOX_VERSIONS = %w[9 10].freeze
+      ROCKY_BOX_VERSIONS = %w[8 9 10].freeze
 
       # Architecture in box file names, by beaker-hostgenerator bits.
       BOX_FILE_ARCHITECTURES = {
@@ -243,19 +243,30 @@ module BeakerHostGenerator
       def apply_rocky_box(node_info, base_config, version)
         return if node_info['host_settings'].key?('box')
 
-        arch = BOX_FILE_ARCHITECTURES[node_info['bits']]
-        unless arch
+        if version == '8' && @name == 'vagrant_libvirt'
+          raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                "No default Vagrant box for #{node_info['platform']} with #{@name}. " \
+                'The official Rocky Linux 8 libvirt box fails to boot under BIOS. ' \
+                'Specify a provider-compatible box with {box=...}.'
+        end
+
+        supported_bits = (version == '8') ? ['64'] : BOX_FILE_ARCHITECTURES.keys
+        unless supported_bits.include?(node_info['bits'])
           raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
                 "No Vagrant box is available for #{node_info['platform']}. " \
-                "Supported architectures: #{BOX_FILE_ARCHITECTURES.keys.join(', ')}. " \
+                "Supported architectures: #{supported_bits.join(', ')}. " \
                 'Choose a box with {box=...} to use another architecture.'
         end
+
+        arch = BOX_FILE_ARCHITECTURES.fetch(node_info['bits'])
 
         # Not a user error if the hypervisor is missing: fail loudly (KeyError)
         # instead of reporting it as an unsupported architecture.
         provider = MIRROR_BOX_PROVIDERS.fetch(@name)
 
-        file = "Rocky-#{version}-Vagrant-#{provider['rocky_label']}.latest.#{arch}.vagrant.#{provider['provider']}.box"
+        # Rocky 8 predates the provider suffix used by Rocky 9 and 10.
+        suffix = (version == '8') ? 'box' : "vagrant.#{provider['provider']}.box"
+        file = "Rocky-#{version}-Vagrant-#{provider['rocky_label']}.latest.#{arch}.#{suffix}"
         base_config['box'] = "rockylinux-#{version}-#{arch}"
         base_config['box_url'] = "https://dl.rockylinux.org/pub/rocky/#{version}/images/#{arch}/#{file}"
       end

@@ -52,6 +52,8 @@ jobs:
           - fedora43-64
           - oracle9-64
           - oracle10-64
+          # Rocky 8 libvirt requires a custom box until the BIOS boot fix ships.
+          # https://github.com/rocky-linux/kickstarts/pull/9
           - rocky9-64
           - rocky10-64
           - ubuntu2204-64
