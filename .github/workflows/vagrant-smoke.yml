@@ -15,6 +15,7 @@ on:
       - .github/scripts/vagrant-smoke.sh
       # Box mappings: a PR that changes them should show whether the boxes boot
       - lib/beaker-hostgenerator/hypervisor/vagrant.rb
+      - lib/beaker-hostgenerator/data.rb
 
 permissions:
   contents: read
