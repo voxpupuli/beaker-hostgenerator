@@ -1,10 +1,19 @@
 ---
-arguments_string: --hypervisor vagrant_libvirt debian13-64a-AARCH64a-almalinux8-64a-almalinux9-64a-AARCH64a-AARCH64a{hypervisor=vagrant}-almalinux10-64a-AARCH64a-AARCH64a{hypervisor=vagrant}
+arguments_string: --hypervisor vagrant_libvirt debian12-64a-debian13-64a-AARCH64a-almalinux8-64a-almalinux9-64a-AARCH64a-AARCH64a{hypervisor=vagrant}-almalinux10-64a-AARCH64a-AARCH64a{hypervisor=vagrant}
 environment_variables: {}
 expected_hash:
   HOSTS:
+    debian12-64-1:
+      box: cloudsoe/debian-12
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-12.json
+      synced_folder: disabled
+      platform: debian-12-amd64
+      hypervisor: vagrant_libvirt
+      roles:
+      - agent
     debian13-64-1:
-      box: debian/trixie64
+      box: cloudsoe/debian-13
+      box_url: https://boxes.cloudsoe.com/cloudsoe/debian-13.json
       synced_folder: disabled
       platform: debian-13-amd64
       hypervisor: vagrant_libvirt
