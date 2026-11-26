@@ -185,12 +185,18 @@ module BeakerHostGenerator
                              end
 
         case node_info['platform']
-        when /\Aalmalinux(8|9|10)-(?:64|AARCH64)\z/
-          # The vendor catalog has ARM64 boxes for VirtualBox. The libvirt
-          # fallback is hosted on HCP Vagrant until 31 December 2026.
-          if node_info['bits'] == 'AARCH64' && @name == 'vagrant_libvirt'
-            base_config['box'] = "cloud-image/almalinux-#{Regexp.last_match(1)}"
-          elsif !node_info['host_settings'].key?('box')
+        when /\Aalmalinux(?:8|9|10)-(?:64|AARCH64)\z/
+          if node_info['host_settings'].key?('box')
+            box = node_info['host_settings']['box']
+            unless box.is_a?(String) && !box.strip.empty?
+              raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                    'Specify a provider-compatible box with {box=...}.'
+            end
+          elsif node_info['platform'] == 'almalinux8-AARCH64' || (node_info['bits'] == 'AARCH64' && @name == 'vagrant_libvirt')
+            raise BeakerHostGenerator::Exceptions::InvalidNodeSpecError,
+                  "No default Vagrant box for #{node_info['platform']} with #{@name}. " \
+                  'Specify a provider-compatible box with {box=...}.'
+          else
             base_config['box_url'] = "https://vagrant.almalinux.org/#{base_config['box']}"
           end
         when /^debian(\d+)-64/
