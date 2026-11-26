@@ -28,6 +28,58 @@ module BeakerHostGenerator
       end
     end
 
+    context 'AlmaLinux ARM64 Vagrant hosts requiring a custom box' do
+      invalid_box_values = ['%20', '[]', '{}']
+
+      {
+        'almalinux8' => %w[vagrant vagrant_libvirt],
+        'almalinux9' => %w[vagrant_libvirt],
+        'almalinux10' => %w[vagrant_libvirt],
+      }.each do |ostype, backends|
+        backends.each do |backend|
+          context "with #{ostype} and #{backend}" do
+            let(:layout) { "#{ostype}-AARCH64a" }
+
+            it 'rejects a missing box' do
+              expect { generator.generate(layout, hypervisor: backend) }
+                .to raise_error(Exceptions::InvalidNodeSpecError, /Specify a provider-compatible box/)
+            end
+
+            it 'rejects a URL without a box name' do
+              expect { generator.generate("#{layout}{box_url=https://example.com/custom.box}", hypervisor: backend) }
+                .to raise_error(Exceptions::InvalidNodeSpecError, /Specify a provider-compatible box/)
+            end
+
+            invalid_box_values.each do |value|
+              it "rejects an invalid box value (#{value})" do
+                expect { generator.generate("#{layout}{box=#{value}}", hypervisor: backend) }
+                  .to raise_error(Exceptions::InvalidNodeSpecError, /Specify a provider-compatible box/)
+              end
+            end
+
+            it 'rejects an empty box value' do
+              expect { generator.generate("#{layout}{box=}", hypervisor: backend) }
+                .to raise_error(Exceptions::InvalidNodeSpecError)
+            end
+
+            it 'preserves a custom box without adding a vendor URL' do
+              config = generator.generate("#{layout}{box=custom/almalinux}", hypervisor: backend)
+              host = config.fetch('HOSTS').values.first
+              expect(host).to include('box' => 'custom/almalinux', 'hypervisor' => backend)
+              expect(host).not_to have_key('box_url')
+            end
+
+            it 'preserves a custom box and URL' do
+              url = 'https://example.com/custom.box'
+              config = generator.generate("#{layout}{box=custom/almalinux,box_url=#{url}}", hypervisor: backend)
+              host = config.fetch('HOSTS').values.first
+              expect(host).to include('box' => 'custom/almalinux', 'box_url' => url, 'hypervisor' => backend)
+            end
+          end
+        end
+      end
+    end
+
     describe 'get_host_roles' do
       it 'Expands default roles and merges in arbitrary roles' do
         {

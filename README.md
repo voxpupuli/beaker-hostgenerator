@@ -81,12 +81,30 @@ e.g. `ubuntu2204-AARCH64{docker_platform=linux/arm64/v8}`.
 
 The generated config includes a vendor catalog URL for Oracle Linux 7–10 and
 AlmaLinux 8–10 on x86_64. Use Vagrant 2.4 or newer for AlmaLinux 9 and 10
-with VirtualBox, on ARM64 and x86_64 alike. Their ARM64 libvirt defaults use
-`cloud-image/` boxes from HCP Vagrant, which shuts down on 31 December 2026.
-To use a different box, supply `{box=...}` and, if needed, `box_url` in the same host settings.
+with VirtualBox, on ARM64 and x86_64 alike. AlmaLinux 9 and 10 on ARM64 with
+libvirt require a provider-compatible ARM64 box. AlmaLinux 8 on ARM64
+requires a custom box with either provider. With `--hypervisor vagrant_libvirt`,
+use a host spec such as `almalinux9-AARCH64a{box=company/almalinux9}`.
+For a box hosted outside a registry, include its download or catalog URL
+in the same host settings with `{box=...,box_url=...}`.
 
-If you already have an AlmaLinux box installed from HCP Vagrant, follow the
-vendor's migration steps to refresh its cached catalog URL.
+This is a backwards-incompatible change: previously, ARM64 libvirt hosts
+used third-party `cloud-image/almalinux-*` defaults on HCP Vagrant, and
+AlmaLinux 8 ARM64 VirtualBox hosts received an unsupported vendor default.
+If you already have a compatible third-party box installed locally, use its
+exact name from `vagrant box list`, for example:
+
+```sh
+beaker-hostgenerator --hypervisor vagrant_libvirt 'almalinux9-AARCH64a{box=cloud-image/almalinux-9}'
+```
+
+This preserves the box name in the generated configuration; it does not
+migrate the box or guarantee that Vagrant can check for updates or download
+it again after HCP Vagrant shuts down on 31 December 2026. Use a compatible
+box with an independent download or catalog URL for future installations.
+
+For official AlmaLinux boxes installed from HCP Vagrant, follow the vendor's
+migration steps to refresh their cached catalog URLs.
 [AlmaLinux catalog migration guide](https://almalinux.org/blog/2026-11-02-vagrant-catalog/#boxes-you-already-have)
 
 ## Usage
