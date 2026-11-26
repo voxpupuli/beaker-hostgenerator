@@ -60,14 +60,16 @@ expected_hash:
       roles:
       - agent
     ubuntu2604-64-1:
-      box: cloud-image/ubuntu-26.04
+      box: cloudsoe/ubuntu-26.04
+      box_url: https://boxes.cloudsoe.com/cloudsoe/ubuntu-26.04.json
       synced_folder: disabled
       platform: ubuntu-26.04-amd64
       hypervisor: vagrant_libvirt
       roles:
       - agent
     ubuntu2404-64-1:
-      box: cloud-image/ubuntu-24.04
+      box: cloudsoe/ubuntu-24.04
+      box_url: https://boxes.cloudsoe.com/cloudsoe/ubuntu-24.04.json
       synced_folder: disabled
       platform: ubuntu-24.04-amd64
       hypervisor: vagrant_libvirt
